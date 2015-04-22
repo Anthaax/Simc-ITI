@@ -10,7 +10,7 @@ namespace ITI.Simc_ITI
     class Box
     {
         private int x, y, width, height;
-        Bitmap bmpPicture = new Bitmap("C:/Users/Kappa/Desktop/Sim/textures/RV2.bmp");
+        Bitmap bmpPicture = new Bitmap("C:/dev/Textures/RV2.bmp");
         public Box(int x, int y, int width, int height)
         {
             this.x = x;
