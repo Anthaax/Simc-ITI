@@ -15,7 +15,7 @@ namespace ITI.Simc_ITI
         private Graphics g, screeng;
         private Timer t;
         private Bitmap bmp;
-        private Game game;
+        private Map game;
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace ITI.Simc_ITI
             t.Tick += new EventHandler(T_loop);
             t.Start();
 
-            game = new Game(100,50);
+            game = new Map(30,25);
 
         }
 

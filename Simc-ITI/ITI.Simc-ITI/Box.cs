@@ -7,16 +7,20 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI
 {
-    class Box
+    public class Box
     {
-        private int x, y, width, height;
+        private Map map;
+        private int x, y, width, height, line, column;
         Bitmap bmpPicture = new Bitmap("C:/dev/Textures/RV2.bmp");
-        public Box(int x, int y, int width, int height)
+        public Box(int x, int y, int width, int height, Map map, int line, int column)
         {
             this.x = x;
             this.y = y;
             this.width = width;
             this.height = height;
+            this.map = map;
+            this.column = column;
+            this.line = line;
         }
 
         public Rectangle Area
