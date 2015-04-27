@@ -22,5 +22,10 @@ namespace ITI.Simc_ITI.Lib
             Habitation h = new Habitation(this);
             _habitation = h;
         }
+
+        public Habitation MyHabitation
+        {
+            get { return _habitation; }
+        }
     }
 }

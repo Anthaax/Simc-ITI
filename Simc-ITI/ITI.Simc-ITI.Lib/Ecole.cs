@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ITI.Simc_ITI.Lib
 {
-    class Ecole
+    public class Ecole
     {
         Public _public;
         int _price;
@@ -19,6 +19,12 @@ namespace ITI.Simc_ITI.Lib
             _price = 500;
             _pricePerMonth = 20;
             _areaEffect = 3;
+        }
+
+        public int AreaEffect
+        {
+            get { return _areaEffect; }
+            internal set { _areaEffect = value; }
         }
     }
 }

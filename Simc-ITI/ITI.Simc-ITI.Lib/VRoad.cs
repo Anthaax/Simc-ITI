@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ITI.Simc_ITI.Lib
 {
-    class VRoad
+    public class VRoad
     {
         Road _road;
         int _price;
@@ -13,7 +13,7 @@ namespace ITI.Simc_ITI.Lib
         bool _IsWater;
         int _pricePerMonth;
 
-        internal VRoad( Road road )
+        public VRoad( Road road )
         {
             // TODO: Complete member initialization
             _road = road;
@@ -23,10 +23,12 @@ namespace ITI.Simc_ITI.Lib
             _pricePerMonth = 5;
         }
 
-        bool Electricity
+        public bool Electricity
         {
             get { return _IsElectric; }
-            internal set { _IsElectric = value; }
+            set { _IsElectric = value; }
         }
+
+         
     }
 }

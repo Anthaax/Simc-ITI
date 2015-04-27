@@ -15,17 +15,17 @@ namespace ITI.Simc_ITI.Lib
         {
             if( ID == 0)
             {
-                CreateBuilding( this, ID );
+                CreateRoad( this ); 
             }
             else
             {
-                CreateRoad( this, ID );
+                CreateBuilding( this, ID );
             }
         }
 
-        private void CreateRoad( Infrastructure infrastructure, int ID )
+        private void CreateRoad( Infrastructure infrastructure)
         {
-            Road r = new Road( this, ID );
+            Road r = new Road(this);
             _road = r;
         }
 
@@ -33,6 +33,16 @@ namespace ITI.Simc_ITI.Lib
         {
             Building b = new Building( this, ID );
             _building = b;
+        }
+
+        public Building MyBuilding
+        {
+            get { return _building; }
+        }
+
+        public Road MyRoad
+        {
+            get { return _road; }
         }
     }
 }

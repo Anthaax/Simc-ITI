@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ITI.Simc_ITI.Lib;
 
 namespace ITI.Simc_ITI
 {
@@ -12,6 +13,7 @@ namespace ITI.Simc_ITI
         private Map map;
         private int x, y, width, height, line, column;
         Bitmap bmpPicture = new Bitmap("C:/dev/Textures/RV2.bmp");
+        Infrastructure _infrastructure;
         public Box(int x, int y, int width, int height, Map map, int line, int column)
         {
             this.x = x;
@@ -36,5 +38,20 @@ namespace ITI.Simc_ITI
             g.DrawImage(bmpPicture, this.Area);
             g.DrawRectangle(Pens.White, this.Area);
         }
+
+        public void CreateInfrastructure( int ID )
+        {
+            Infrastructure inf = new Infrastructure( ID );
+            _infrastructure = inf;
+        }
+
+        public Infrastructure MyInfrasructure
+        {
+            get { return _infrastructure; }
+        }
+
+        
+
+
     }
 }

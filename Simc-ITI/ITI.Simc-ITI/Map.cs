@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ITI.Simc_ITI;
 using System.Diagnostics;
+using ITI.Simc_ITI.Lib;
 
 namespace ITI.Simc_ITI
 {
@@ -106,6 +107,11 @@ namespace ITI.Simc_ITI
         public void Update()
         {
 
+        }
+
+        public Box [,] Boxes
+        {
+            get { return _boxes; }
         }
     }
 }

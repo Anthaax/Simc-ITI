@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ITI.Simc_ITI.Lib
 {
-    class Public
+    public class Public
     {
         Ecole _ecole;
         private Building building;
@@ -21,6 +21,11 @@ namespace ITI.Simc_ITI.Lib
         {
             Ecole e = new Ecole( this );
             _ecole = e;
+        }
+
+        public Ecole MySchool
+        {
+            get { return _ecole;}
         }
     }
 }

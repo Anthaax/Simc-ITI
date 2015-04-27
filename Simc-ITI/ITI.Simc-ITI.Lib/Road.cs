@@ -5,14 +5,13 @@ using System.Text;
 
 namespace ITI.Simc_ITI.Lib
 {
-    class Road
+    public class Road
     {
         VRoad _vroad;
         Infrastructure _infrastructure;
 
-        internal Road( Infrastructure infrastructure)
+        public Road( Infrastructure infrastructure)
         {
-            // TODO: Complete member initialization
             _infrastructure = infrastructure;
             CreateVRoad( this );
         }
@@ -21,6 +20,11 @@ namespace ITI.Simc_ITI.Lib
         {
             VRoad vr = new VRoad(this);
             _vroad = vr;
+        }
+
+        public VRoad MyVRoad
+        {
+             get { return _vroad; }
         }
     }
 }

@@ -5,14 +5,14 @@ using System.Text;
 
 namespace ITI.Simc_ITI.Lib
 {
-    class Building
+    public class Building
     {
         Public _public;
         Private _private;
         Infrastructure _infrastructure;
         
 
-        internal Building( Infrastructure infrastructure, int ID )
+        public Building( Infrastructure infrastructure, int ID )
         {
             _infrastructure = infrastructure;
             if(ID == 1)
@@ -27,7 +27,7 @@ namespace ITI.Simc_ITI.Lib
 
         private void CreatePrivate( Building building, int ID )
         {
-            Private p = new Private( this);
+            Private p = new Private( this, ID);
             _private = p;
         }
 
@@ -35,6 +35,16 @@ namespace ITI.Simc_ITI.Lib
         {
             Public p = new Public( this );
             _public = p;
+        }
+
+        public Public IsPublic
+        {
+            get { return _public;  }
+        }
+
+        public Private IsPrivate
+        {
+            get { return _private; }
         }
     }
 }
