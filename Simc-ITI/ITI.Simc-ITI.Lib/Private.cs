@@ -8,13 +8,19 @@ namespace ITI.Simc_ITI.Lib
     class Private
     {
         Habitation _habitation;
-        private Building building;
-        private int ID;
+        Building _building;
 
-        public Private( Building building)
+        public Private( Building building, int ID)
         {
             // TODO: Complete member initialization
-            this.building = building;
+            _building = building;
+            CreateHouse( this );
+        }
+
+        private void CreateHouse( Private p )
+        {
+            Habitation h = new Habitation(this);
+            _habitation = h;
         }
     }
 }

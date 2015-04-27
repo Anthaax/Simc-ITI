@@ -12,7 +12,7 @@ namespace ITI.Simc_ITI.Lib
         Infrastructure _infrastructure;
         
 
-        public Building( Infrastructure infrastructure, int ID )
+        internal Building( Infrastructure infrastructure, int ID )
         {
             _infrastructure = infrastructure;
             if(ID == 1)

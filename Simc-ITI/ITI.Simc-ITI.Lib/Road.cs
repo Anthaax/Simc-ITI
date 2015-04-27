@@ -8,13 +8,19 @@ namespace ITI.Simc_ITI.Lib
     class Road
     {
         VRoad _vroad;
-        private Infrastructure infrastructure;
-        private int ID;
+        Infrastructure _infrastructure;
 
-        public Road( Infrastructure infrastructure)
+        internal Road( Infrastructure infrastructure)
         {
             // TODO: Complete member initialization
-            this.infrastructure = infrastructure;
+            _infrastructure = infrastructure;
+            CreateVRoad( this );
+        }
+
+        private void CreateVRoad( Road road )
+        {
+            VRoad vr = new VRoad(this);
+            _vroad = vr;
         }
     }
 }
