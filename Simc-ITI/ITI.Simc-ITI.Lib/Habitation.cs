@@ -5,19 +5,34 @@ using System.Text;
 
 namespace ITI.Simc_ITI.Lib
 {
-    class Habitation
+    public class Habitation
     {
         Private _private;
         int _revenu;
-        int _price = 200;
         int _people;
 
         public Habitation( Private p )
         {
-            // TODO: Complete member initialization
             _private = p;
             _people = 3;
             _revenu = _people * 1000;
+        }
+
+        public int People
+        {
+            get { return _people; }
+            internal set
+            {
+                _people = value;
+                int rev = value * 1000;
+                Revenu = rev;
+            }
+        }
+
+        public int Revenu
+        {
+            get { return _revenu; }
+            private set { _revenu = value; }
         }
 
     }

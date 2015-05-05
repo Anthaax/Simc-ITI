@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ITI.Simc_ITI;
 using System.Diagnostics;
-using ITI.Simc_ITI.Lib;
 
 namespace ITI.Simc_ITI
 {
@@ -16,6 +15,8 @@ namespace ITI.Simc_ITI
         readonly int _boxCount;
         readonly int _boxWidth;
         readonly int _mapWidth;
+        Money.Lib.Money m = new Money.Lib.Money();
+
 
         public Map(int boxCount, int boxWidth)
         {
@@ -112,6 +113,16 @@ namespace ITI.Simc_ITI
         public Box [,] Boxes
         {
             get { return _boxes; }
+        }
+
+        public bool CanBuild (int Price)
+        {
+            return m.CanBuid(Price);
+        }
+
+        public int MyMoney()
+        {
+            return m.MyMoney;
         }
     }
 }

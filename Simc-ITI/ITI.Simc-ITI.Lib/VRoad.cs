@@ -8,19 +8,14 @@ namespace ITI.Simc_ITI.Lib
     public class VRoad
     {
         Road _road;
-        int _price;
         bool _IsElectric;
         bool _IsWater;
-        int _pricePerMonth;
 
-        public VRoad( Road road )
+        public VRoad( Road road, bool IsWater, bool IsElectric, string name )
         {
-            // TODO: Complete member initialization
             _road = road;
-            _IsElectric = true;
-            _IsWater = true;
-            _price = 25;
-            _pricePerMonth = 5;
+            _IsElectric = IsElectric;
+            _IsWater = IsWater;
         }
 
         public bool Electricity
@@ -29,6 +24,11 @@ namespace ITI.Simc_ITI.Lib
             set { _IsElectric = value; }
         }
 
+        public bool Water
+        {
+            get { return _IsWater; }
+            set { _IsWater = value; }
+        }
          
     }
 }

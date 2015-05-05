@@ -18,12 +18,19 @@ namespace ITI.Simc_ITI.Test
             Map m = new Map( 10, 10 );
             Box [,] box;
             box = m.Boxes;
-            box[0, 0].CreateInfrastructure( 0 );
-            box[0, 1].CreateInfrastructure( 1 );
-            box[0, 2].CreateInfrastructure( 2 );
-            bool isOk = box[0, 0].MyInfrasructure.MyRoad.MyVRoad.Electricity;
-            box[0,1].MyInfrasructure.MyBuilding.IsPublic.MySchool.
-            Assert.That( isOk, Is.EqualTo(true) );
+            int _money = m.MyMoney();
+            Assert.That( _money, Is.EqualTo( 5000 ) );
+            box[0, 0].CreateInfrastructure( 50, 0, 5, true, true, true, true,"VR");
+            box[0, 1].CreateInfrastructure( 500, 3, 50, true, true, true, false,"Ecole" );
+            box[0, 2].CreateInfrastructure( 500, 0, 0, true, true, true, false,"Habitation" );
+            _money = m.MyMoney();
+            Assert.That( _money, Is.EqualTo( 3950 ) );
+            bool _isOk = box[0, 0].MyInfrasructure.MyRoad.MyVRoad.Electricity;
+            int _areaEffect = box[0, 1].MyInfrasructure.MyBuilding.IsPublic.MySchool.AreaEffect;
+            int _people = box[0, 2].MyInfrasructure.MyBuilding.IsPrivate.MyHabitation.People;
+            Assert.That( _isOk, Is.EqualTo(true) );
+            Assert.That( _areaEffect, Is.EqualTo( 3 ) );
+            Assert.That( _people, Is.EqualTo( 3 ) );
         }
     }
 }

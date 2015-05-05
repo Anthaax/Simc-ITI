@@ -81,9 +81,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ITI.Simc-ITI.Lib\ITI.Simc-ITI.Lib.csproj">
+    <ProjectReference Include="..\ITI.Simc-ITI.Lib\ITI.Simc-ITI.Build.Lib.csproj">
       <Project>{47c283e8-0c78-4092-ae5c-057993c3abe6}</Project>
-      <Name>ITI.Simc-ITI.Lib</Name>
+      <Name>ITI.Simc-ITI.Build.Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITI.Simc-ITI.Money.Lib\ITI.Simc-ITI.Money.Lib.csproj">
+      <Project>{b028c0cc-16b5-4e89-935c-de0f836d2ad8}</Project>
+      <Name>ITI.Simc-ITI.Money.Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

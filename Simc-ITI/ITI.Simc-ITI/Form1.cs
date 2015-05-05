@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITI.Simc_ITI.Money.Lib;
 
 namespace ITI.Simc_ITI
 {

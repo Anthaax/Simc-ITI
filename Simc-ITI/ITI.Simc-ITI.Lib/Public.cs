@@ -8,13 +8,17 @@ namespace ITI.Simc_ITI.Lib
     public class Public
     {
         Ecole _ecole;
-        private Building building;
+        private Building _building;
+        int _pricePerMounth;
 
-        public Public( Building building )
+        public Public( Building building, int AreaEffect, int PricePerMounth, string name)
         {
-            // TODO: Complete member initialization
-            this.building = building;
-            CreateEcole(this);
+            _building = building;
+            _pricePerMounth = PricePerMounth;
+            if( AreaEffect != 0 )
+            {
+                if (name == "Ecole") CreateEcole( this );
+            }
         }
 
         private void CreateEcole( Public p )
@@ -26,6 +30,12 @@ namespace ITI.Simc_ITI.Lib
         public Ecole MySchool
         {
             get { return _ecole;}
+        }
+
+        public int PricePerMounth
+        {
+            get { return _pricePerMounth; }
+            set { _pricePerMounth = value; }
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ITI.Simc_ITI.Money.Lib;
 
 namespace ITI.Simc_ITI.Lib
 {
@@ -10,28 +11,31 @@ namespace ITI.Simc_ITI.Lib
     {
         Building _building;
         Road _road;
-        
-        public Infrastructure(int ID)
+        int _price;
+
+        public Infrastructure(int Price, int areaEffect, int pricePermounth, bool IsWater, bool IsElectric, bool RoadNear, bool road, string name)
         {
-            if( ID == 0)
+            _price = Price;
+            if( RoadNear == true && road != true )
             {
-                CreateRoad( this ); 
+                
+                CreateBuilding( this, areaEffect, pricePermounth, name );
             }
             else
             {
-                CreateBuilding( this, ID );
+                CreateRoad( this, IsWater, IsElectric, pricePermounth, name );
             }
         }
 
-        private void CreateRoad( Infrastructure infrastructure)
+        private void CreateRoad( Infrastructure infrastructure, bool IsWater, bool IsElectric, int PricePerMounth, string name)
         {
-            Road r = new Road(this);
+            Road r = new Road(this, IsWater, IsElectric, PricePerMounth, name);
             _road = r;
         }
 
-        private void CreateBuilding( Infrastructure infrastructure, int ID )
+        private void CreateBuilding( Infrastructure infrastructure, int AreaEffect, int PricePerMounth, string name)
         {
-            Building b = new Building( this, ID );
+            Building b = new Building( this, AreaEffect, PricePerMounth, name );
             _building = b;
         }
 
@@ -43,6 +47,11 @@ namespace ITI.Simc_ITI.Lib
         public Road MyRoad
         {
             get { return _road; }
+        }
+
+        public int MyMoney
+        {
+            get { return _price; }
         }
     }
 }
