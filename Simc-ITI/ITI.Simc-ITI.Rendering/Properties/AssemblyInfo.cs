@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ITI.Simc-ITI.Rendering")]
+[assembly: AssemblyTitle( "ITI.Simc-ITI.Rendering" )]
 [assembly: AssemblyDescription( "" )]
 [assembly: AssemblyConfiguration( "" )]
 [assembly: AssemblyCompany( "" )]
 [assembly: AssemblyProduct( "ITI.Simc-ITI.Rendering" )]
-[assembly: AssemblyCopyright( "Copyright ©  2014" )]
+[assembly: AssemblyCopyright( "Copyright ©  2015" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible( false )]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid( "044a1cff-77d8-43b4-920e-0711ba547fd4" )]
+[assembly: Guid( "0d327615-f33f-4ca0-b9b7-e300ab5fac78" )]
 
 // Version information for an assembly consists of the following four values:
 //

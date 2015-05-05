@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ITI.Map2D
+namespace ITI.Simc_ITI.Rendering
 {
-    public class ViewPortControl : Control
+    public partial class ViewPortControl : Control
     {
         Map _map;
         ViewPort _viewPort;
@@ -19,11 +19,11 @@ namespace ITI.Map2D
             DoubleBuffered = true;
         }
 
-        public void SetMap(Map m, int minDisplayWidth)
+        public void SetMap( Map m, int minDisplayWidth )
         {
             if( _map != null )
             {
-                Debug.Assert(_viewPort != null && _viewPort.Map == _map);
+                Debug.Assert( _viewPort != null && _viewPort.Map == _map );
                 _viewPort.AreaChanged -= _viewPort_AreaChanged;
                 _map = null;
                 _viewPort = null;
@@ -31,9 +31,9 @@ namespace ITI.Map2D
             if( m != null )
             {
                 _map = m;
-                _viewPort = new ViewPort(m, minDisplayWidth);
+                _viewPort = new ViewPort( m, minDisplayWidth );
                 _viewPort.AreaChanged += _viewPort_AreaChanged;
-                _viewPort.SetClientSize(ClientSize);
+                _viewPort.SetClientSize( ClientSize );
             }
             Invalidate();
         }
@@ -59,7 +59,7 @@ namespace ITI.Map2D
 
         public void ScrollTo( int x, int y )
         {
-            if (_viewPort != null) _viewPort.MoveTo(x, y);
+            if( _viewPort != null ) _viewPort.MoveTo( x, y );
         }
 
         protected override void OnPaint( PaintEventArgs e )

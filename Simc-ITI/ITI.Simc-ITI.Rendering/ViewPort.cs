@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ITI.Map2D
+namespace ITI.Simc_ITI.Rendering
 {
     public class ViewPort
     {

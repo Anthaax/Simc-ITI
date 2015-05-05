@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ITI.Map2D.Rendering
+namespace ITI.Simc_ITI.Rendering
 {
     public partial class ViewPortDemoControl : UserControl
     {
