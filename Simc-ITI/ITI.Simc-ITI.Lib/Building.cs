@@ -10,30 +10,29 @@ namespace ITI.Simc_ITI.Lib
         Public _public;
         Private _private;
         Infrastructure _infrastructure;
-        
 
-        public Building( Infrastructure infrastructure, int ID )
+        public Building( Infrastructure infrastructure, int AreaEffect, int PricePerMounth, string name )
         {
             _infrastructure = infrastructure;
-            if(ID == 1)
+            if( PricePerMounth != 0)
             {
-                CreatePublic( this, ID );
+                CreatePublic( this, AreaEffect, PricePerMounth, name );
             }
             else
             {
-                CreatePrivate( this, ID );
+                CreatePrivate( this, name );
             }
         }
 
-        private void CreatePrivate( Building building, int ID )
+        private void CreatePrivate( Building building, string name )
         {
-            Private p = new Private( this, ID);
+            Private p = new Private( this, name);
             _private = p;
         }
 
-        private void CreatePublic( Building building, int ID )
+        private void CreatePublic( Building building, int AreaEffect, int PricePerMounth, string name  )
         {
-            Public p = new Public( this );
+            Public p = new Public( this, AreaEffect, PricePerMounth, name );
             _public = p;
         }
 

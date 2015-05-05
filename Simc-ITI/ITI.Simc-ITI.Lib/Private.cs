@@ -5,16 +5,16 @@ using System.Text;
 
 namespace ITI.Simc_ITI.Lib
 {
-    class Private
+    public class Private
     {
         Habitation _habitation;
         Building _building;
 
-        public Private( Building building, int ID)
+        public Private( Building building, string name)
         {
-            // TODO: Complete member initialization
             _building = building;
-            CreateHouse( this );
+            if(name == "Habitation") CreateHouse( this );
+            
         }
 
         private void CreateHouse( Private p )
