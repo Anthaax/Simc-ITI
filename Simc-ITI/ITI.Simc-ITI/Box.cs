@@ -10,34 +10,44 @@ namespace ITI.Simc_ITI
 {
     public class Box
     {
-        private Map map;
-        private int x, y, width, height, line, column;
-        Bitmap bmpPicture = new Bitmap("C:/dev/Textures/RV2.bmp");
+        private Graphics g, screeng;
+        readonly Map _map;
+        Bitmap bmpPicture = new Bitmap("C:/dev/Textures/college.bmp");
+        readonly int _line;
+        readonly int _column;
         Infrastructure _infrastructure;
-        Box [,] near;
-        public Box(int x, int y, int width, int height, Map map, int line, int column)
+        public Box(Map map, int line, int column)
         {
-            this.x = x;
-            this.y = y;
-            this.width = width;
-            this.height = height;
-            this.map = map;
-            this.column = column;
-            this.line = line;
+            _map = map;
+            _line = line;
+            _column = column;
         }
 
         public Rectangle Area
         {
             get
             {
-                return new Rectangle(this.x, this.y, this.width, this.height);
+                int sz = _map.BoxWidth;
+                return new Rectangle(_column, _line, sz, sz);
             }
         }
 
-        public void Draw(Graphics g)
+        static Pen p = new Pen(Color.DarkGreen, 1.0f);
+
+        public virtual void Draw(Graphics g, Rectangle rectSource, float scaleFactor)
         {
+            Rectangle r = new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth);
             g.DrawImage(bmpPicture, this.Area);
-            g.DrawRectangle(Pens.White, this.Area);
+            g.DrawRectangle(Pens.DarkGreen, this.Area);
+            r.Inflate(-_map.BoxWidth / 12, -_map.BoxWidth / 12);
+        }
+
+        private void T_loop(object sender, EventArgs e)
+        {
+            g.DrawImage(bmpPicture, new Point(0, 0));
+            screeng.Clear(Color.White);
+
+            //_map.Draw(screeng);
         }
 
         public void CreateInfrastructure( int Price, int areaEffect, int pricePermounth, bool IsWater, bool IsElectric, bool RoadNear, bool road, string name )
@@ -52,7 +62,7 @@ namespace ITI.Simc_ITI
 
         private bool CanBuildInfrastructure( int Price )
         {
-            return map.CanBuild( Price );
+            return _map.CanBuild( Price );
         }
 
         public Infrastructure MyInfrasructure
@@ -65,14 +75,5 @@ namespace ITI.Simc_ITI
             if( Box.MyInfrasructure.MyRoad == null ) return false;
             return true;
         }
-
-        public void NearBoxes()
-        {
-            map.
-        }
-
-        
-
-
     }
 }

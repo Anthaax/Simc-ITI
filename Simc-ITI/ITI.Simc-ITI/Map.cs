@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ITI.Simc_ITI;
+using ITI.Simc_ITI.Money.Lib;
 using System.Diagnostics;
 
 namespace ITI.Simc_ITI
@@ -15,25 +15,21 @@ namespace ITI.Simc_ITI
         readonly int _boxCount;
         readonly int _boxWidth;
         readonly int _mapWidth;
-        Money.Lib.Money m = new Money.Lib.Money();
+        readonly MyMoney m;
 
-
-        public Map(int boxCount, int boxWidth)
+        public Map(int boxWidthInMeter, int boxCount)
         {
             _boxes = new Box[boxCount, boxCount];
-
-            for (int i = 0; i < boxCount; i++)
+            for (int i = 0; i < boxCount; ++i)
             {
-                for (int j = 0; j < boxCount; j++)
+                for (int j = 0; j < boxCount; ++j)
                 {
-                    _boxes[i, j] = new Box(i * boxWidth, j * boxWidth, boxWidth, boxWidth, this, i, j);
+                    _boxes[i, j] = new Box(this, i, j);
                 }
-
-                _boxCount = boxCount;
-                _boxWidth = boxWidth;
-                _mapWidth = _boxCount * _boxWidth;
             }
-
+            _boxCount = boxCount;
+            _boxWidth = boxWidthInMeter * 100;
+            _mapWidth = _boxCount * _boxWidth;
         }
 
         public int BoxCount
@@ -65,11 +61,15 @@ namespace ITI.Simc_ITI
             get { return new Rectangle(0, 0, _boxWidth * _boxCount, _boxWidth * _boxCount); }
         }
 
-        public void Draw(Graphics g)
+        public Box this[int line, int column]
         {
-            foreach (Box b in _boxes)
+            get
             {
-                b.Draw(g);
+                if (line < 0 || line >= _boxCount || column < 0 || column >= _boxCount)
+                {
+                    return null;
+                }
+                return _boxes[line, column];
             }
         }
 
@@ -105,9 +105,12 @@ namespace ITI.Simc_ITI
             }
         }
 
-        public void Update()
+        public void Draw(Graphics g)
         {
-
+            foreach (Box b in _boxes)
+            {
+                b.Draw(g, this.Area, 0);
+            }
         }
 
         public Box [,] Boxes
@@ -122,7 +125,7 @@ namespace ITI.Simc_ITI
 
         public int MyMoney()
         {
-            return m.MyMoney;
+            return m.ActualMoney;
         }
     }
 }

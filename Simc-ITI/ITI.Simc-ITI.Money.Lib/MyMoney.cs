@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI.Money.Lib
 {
-    public class Money
+    public class MyMoney
     {
         int _myMoney;
-        public Money()
+        public MyMoney()
         {
             _myMoney = 5000;
         }
 
-        public int MyMoney
+        public int ActualMoney
         {
             get { return _myMoney; }
             set { _myMoney = value;}
@@ -22,7 +22,7 @@ namespace ITI.Simc_ITI.Money.Lib
 
         public bool CanBuid(int price)
         {
-            int M = MyMoney;
+            int M = ActualMoney;
             if( M + 1 >= price )
             {
                 BuyBuilding( price);
@@ -34,7 +34,7 @@ namespace ITI.Simc_ITI.Money.Lib
         private void BuyBuilding( int price )
         {
             int newMoney = _myMoney - price;
-            MyMoney = newMoney;
+            ActualMoney = newMoney;
         }
     }
 }

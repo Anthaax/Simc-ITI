@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F1BABCA6-8BBE-442E-BBB0-D6A9B116D08F}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{4BB2BAC8-E9B5-4CD0-B4B8-69DBDD198F91}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ITI.Simc_ITI</RootNamespace>
-    <AssemblyName>ITI.Simc-ITI</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>ITI.Map2D.Rendering</RootNamespace>
+    <AssemblyName>ITI.Map2D.Rendering</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,9 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,10 +45,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Box.cs" />
-    <Compile Include="BoxRenderInfo.cs" />
-    <Compile Include="Map.cs" />
+    <Compile Include="ControlExtension.cs" />
+    <Compile Include="DemoWindow2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DemoWindow2.Designer.cs">
+      <DependentUpon>DemoWindow2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewPort.cs" />
+    <Compile Include="ViewPortControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewPortDemoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewPortDemoControl.Designer.cs">
+      <DependentUpon>ViewPortDemoControl.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DemoWindow2.resx">
+      <DependentUpon>DemoWindow2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -60,6 +76,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ViewPortDemoControl.resx">
+      <DependentUpon>ViewPortDemoControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,13 +93,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ITI.Simc-ITI.Lib\ITI.Simc-ITI.Build.Lib.csproj">
-      <Project>{47c283e8-0c78-4092-ae5c-057993c3abe6}</Project>
-      <Name>ITI.Simc-ITI.Build.Lib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ITI.Simc-ITI.Money.Lib\ITI.Simc-ITI.Money.Lib.csproj">
-      <Project>{b028c0cc-16b5-4e89-935c-de0f836d2ad8}</Project>
-      <Name>ITI.Simc-ITI.Money.Lib</Name>
+    <ProjectReference Include="..\ITI.Map2D.Model\ITI.Map2D.Model.csproj">
+      <Project>{8411cda9-3840-4a86-8f4e-a573f29b4258}</Project>
+      <Name>ITI.Map2D.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
