@@ -15,7 +15,7 @@ namespace ITI.Simc_ITI
         readonly int _boxCount;
         readonly int _boxWidth;
         readonly int _mapWidth;
-        readonly MyMoney m;
+        readonly public  MyMoney m = new MyMoney();
 
         public Map(int boxWidthInMeter, int boxCount)
         {

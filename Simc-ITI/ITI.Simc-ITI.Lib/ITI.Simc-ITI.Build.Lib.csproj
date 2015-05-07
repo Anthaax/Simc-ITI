@@ -40,8 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Building.cs" />
+    <Compile Include="CRoad.cs" />
     <Compile Include="Ecole.cs" />
     <Compile Include="Habitation.cs" />
+    <Compile Include="HRoad.cs" />
     <Compile Include="Infrastructure.cs" />
     <Compile Include="Private.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

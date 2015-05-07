@@ -66,6 +66,9 @@
     <Compile Include="ViewPortDemoControl.Designer.cs">
       <DependentUpon>ViewPortDemoControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DemoWindow2.resx">
+      <DependentUpon>DemoWindow2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

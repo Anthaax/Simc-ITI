@@ -17,10 +17,22 @@ namespace ITI.Simc_ITI.Rendering
 
         public DemoWindow2()
         {
-            _map = new Map( 100, 100 );
+            _map = new Map( 100, 25 );
             InitializeComponent();
             _mainViewPortControl.SetMap( _map, 5 * 100 );
+            MonArgent.Text += _map.MyMoney().ToString();
+        }
 
-        }  
+        private void buton_Grass_Click( object sender, EventArgs e )
+        {
+            _map.Boxes[0, 0].CreateInfrastructure( 50, 0, 5, true, true, true, true, "RC" );
+            _mainViewPortControl.SetMap( _map, 5 * 100 );
+            MonArgent.Text = _map.MyMoney().ToString();
+        }
+  
+        private void label_MonArgent_text( object sender, EventArgs e)
+        {
+            MonArgent.Text = _map.MyMoney().ToString();
+        }
     }
 }

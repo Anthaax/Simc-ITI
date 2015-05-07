@@ -13,11 +13,19 @@ namespace ITI.Simc_ITI.Money.Lib
         {
             _myMoney = 5000;
         }
-
+        public event EventHandler ActualMoneyChanged;
         public int ActualMoney
         {
             get { return _myMoney; }
-            set { _myMoney = value;}
+            set 
+            {
+                if( _myMoney != value )
+                {
+                    _myMoney = value;
+                    var h = ActualMoneyChanged;
+                    if( h != null ) h( this, EventArgs.Empty );
+                }
+            }
         }
 
         public bool CanBuid(int price)

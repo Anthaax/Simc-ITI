@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,12 +17,19 @@ namespace ITI.Simc_ITI.Test
         public void CreateTheGoodBuilding()
         {
             Map m = new Map( 10, 10 );
-            Box [,] box;
+            Box[,] box;
             box = m.Boxes;
+            Bitmap bmp;
+            Bitmap BmpTest = new Bitmap( "C:/dev/Textures/RV2.bmp" );
             int _money = m.MyMoney();
             Assert.That( _money, Is.EqualTo( 5000 ) );
-            box[0, 0].CreateInfrastructure( 50, 0, 5, true, true, true, true,"VR");
+            box[0, 0].CreateInfrastructure( 50, 0, 5, true, true, true, true,"RV");
+            bmp = box[0, 0].BitmapTexture;
+            Assert.That( bmp.GetPixel( 0, 1 ), Is.EqualTo( BmpTest.GetPixel( 0, 1 ) ) );
             box[0, 1].CreateInfrastructure( 500, 3, 50, true, true, true, false,"Ecole" );
+            Bitmap BmpTest2 = new Bitmap( "C:/dev/Textures/College.bmp" );
+            bmp = box[0, 1].BitmapTexture;
+            Assert.That( bmp.GetPixel( 0, 2 ), Is.EqualTo( BmpTest2.GetPixel( 0, 2 ) ) );
             box[0, 2].CreateInfrastructure( 500, 0, 0, true, true, true, false,"Habitation" );
             _money = m.MyMoney();
             Assert.That( _money, Is.EqualTo( 3950 ) );

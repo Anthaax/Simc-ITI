@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI.Lib
 {
-    public class VRoad
+    public class HRoad
     {
         Road _road;
         bool _IsElectric;
         bool _IsWater;
 
-        public VRoad( Road road, bool IsWater, bool IsElectric, string name )
+        public HRoad( Road road, bool IsWater, bool IsElectric, string name )
         {
             _road = road;
             _IsElectric = IsElectric;
