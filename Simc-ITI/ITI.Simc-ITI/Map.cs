@@ -86,7 +86,7 @@ namespace ITI.Simc_ITI
                 for (int j = left; j <= right; ++j)
                 {
                     Box b = _boxes[i, j];
-                    Debug.Assert(b.Area.IntersectsWith(r));
+                    //Debug.Assert(b.Area.IntersectsWith(r));
                     Rectangle rIntersect = r;
                     rIntersect.Intersect(b.Area);
                     rIntersect.Offset(-b.Area.Left, -b.Area.Top);

@@ -57,9 +57,6 @@
     <Compile Include="ViewPortControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ViewPortControl.Designer.cs">
-      <DependentUpon>ViewPortControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewPortDemoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

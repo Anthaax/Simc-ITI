@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ITI.Simc_ITI.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ITI.Simc_ITI.Rendering
 {
-    public partial class ViewPortControl : Control
+    public class ViewPortControl : Control
     {
         Map _map;
         ViewPort _viewPort;
@@ -36,6 +37,11 @@ namespace ITI.Simc_ITI.Rendering
                 _viewPort.SetClientSize( ClientSize );
             }
             Invalidate();
+        }
+
+        public void Zoom( double scalefactor )
+        {
+            _viewPort.SetActualZoomFactor( scalefactor );
         }
 
         void _viewPort_AreaChanged( object sender, EventArgs e )
