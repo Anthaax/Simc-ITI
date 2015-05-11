@@ -16,6 +16,7 @@ namespace ITI.Simc_ITI
         readonly int _line;
         readonly int _column;
         Infrastructure _infrastructure;
+        IInfrastructure Infrastructure;
         public Box(Map map, int line, int column)
         {
             _map = map;
@@ -67,7 +68,7 @@ namespace ITI.Simc_ITI
 
         private bool CanBuildInfrastructure( int Price )
         {
-            return _map.CanBuild( Price );
+            return _map.Money.CanBuid(Price);
         }
 
         public Infrastructure MyInfrasructure

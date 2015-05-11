@@ -21,7 +21,7 @@ namespace ITI.Simc_ITI.Test
             box = m.Boxes;
             Bitmap bmp;
             Bitmap BmpTest = new Bitmap( "C:/dev/Textures/RV2.bmp" );
-            int _money = m.MyMoney();
+            int _money = m.Money.ActualMoney;
             Assert.That( _money, Is.EqualTo( 5000 ) );
             box[0, 0].CreateInfrastructure( 50, 0, 5, true, true, true, true,"RV");
             bmp = box[0, 0].BitmapTexture;
@@ -31,7 +31,7 @@ namespace ITI.Simc_ITI.Test
             bmp = box[0, 1].BitmapTexture;
             Assert.That( bmp.GetPixel( 0, 2 ), Is.EqualTo( BmpTest2.GetPixel( 0, 2 ) ) );
             box[0, 2].CreateInfrastructure( 500, 0, 0, true, true, true, false,"Habitation" );
-            _money = m.MyMoney();
+            _money = m.Money.ActualMoney;
             Assert.That( _money, Is.EqualTo( 3950 ) );
             bool _isOk = box[0, 0].MyInfrasructure.MyRoad.MyVRoad.Electricity;
             int _areaEffect = box[0, 1].MyInfrasructure.MyBuilding.IsPublic.MySchool.AreaEffect;

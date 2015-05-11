@@ -15,7 +15,7 @@ namespace ITI.Simc_ITI
         readonly int _boxCount;
         readonly int _boxWidth;
         readonly int _mapWidth;
-        readonly public  MyMoney m = new MyMoney();
+        readonly  MyMoney _myMoney;
 
         public Map(int boxWidthInMeter, int boxCount)
         {
@@ -30,6 +30,12 @@ namespace ITI.Simc_ITI
             _boxCount = boxCount;
             _boxWidth = boxWidthInMeter * 100;
             _mapWidth = _boxCount * _boxWidth;
+            _myMoney = new MyMoney();
+        }
+
+        public MyMoney Money
+        {
+            get { return _myMoney; }
         }
 
         public int BoxCount
@@ -116,16 +122,6 @@ namespace ITI.Simc_ITI
         public Box [,] Boxes
         {
             get { return _boxes; }
-        }
-
-        public bool CanBuild (int Price)
-        {
-            return m.CanBuid(Price);
-        }
-
-        public int MyMoney()
-        {
-            return m.ActualMoney;
         }
     }
 }

@@ -90,6 +90,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ITI.Simc-ITI.Money.Lib\ITI.Simc-ITI.Money.Lib.csproj">
+      <Project>{b028c0cc-16b5-4e89-935c-de0f836d2ad8}</Project>
+      <Name>ITI.Simc-ITI.Money.Lib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ITI.Simc-ITI\ITI.Simc-ITI.csproj">
       <Project>{f1babca6-8bbe-442e-bbb0-d6a9b116d08f}</Project>
       <Name>ITI.Simc-ITI</Name>

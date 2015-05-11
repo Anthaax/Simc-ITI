@@ -30,10 +30,10 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
             this.MonArgent = new System.Windows.Forms.Label();
             this.MyMoney = new System.Windows.Forms.Label();
             this.buton_Grass = new System.Windows.Forms.Button();
-            this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -80,13 +80,23 @@
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
+            // _mainViewPortControl
+            // 
+            this._mainViewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._mainViewPortControl.Location = new System.Drawing.Point(0, 0);
+            this._mainViewPortControl.Margin = new System.Windows.Forms.Padding(4);
+            this._mainViewPortControl.Name = "_mainViewPortControl";
+            this._mainViewPortControl.Size = new System.Drawing.Size(1184, 369);
+            this._mainViewPortControl.TabIndex = 0;
+            // 
             // MonArgent
             // 
             this.MonArgent.AutoSize = true;
             this.MonArgent.Location = new System.Drawing.Point(935, 10);
             this.MonArgent.Name = "MonArgent";
-            this.MonArgent.Size = new System.Drawing.Size(0, 17);
+            this.MonArgent.Size = new System.Drawing.Size(40, 17);
             this.MonArgent.TabIndex = 2;
+            this.MonArgent.Text = "5000";
             // 
             // MyMoney
             // 
@@ -107,15 +117,6 @@
             this.buton_Grass.Text = "Grass";
             this.buton_Grass.UseVisualStyleBackColor = true;
             this.buton_Grass.Click += new System.EventHandler(this.buton_Grass_Click);
-            // 
-            // _mainViewPortControl
-            // 
-            this._mainViewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._mainViewPortControl.Location = new System.Drawing.Point(0, 0);
-            this._mainViewPortControl.Margin = new System.Windows.Forms.Padding(4);
-            this._mainViewPortControl.Name = "_mainViewPortControl";
-            this._mainViewPortControl.Size = new System.Drawing.Size(1184, 369);
-            this._mainViewPortControl.TabIndex = 0;
             // 
             // DemoWindow2
             // 
