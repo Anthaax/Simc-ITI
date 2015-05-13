@@ -7,17 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITI.Simc_ITI.Build;
 
 namespace ITI.Simc_ITI.Rendering
 {
     public partial class DemoWindow2 : Form
     {
         Map _map;
+        InfrastructureManager _infManager;
         double scalefactor = 1.0;
 
         public DemoWindow2()
         {
             _map = new Map( 100,100 );
+            _infManager = new InfrastructureManager();
             InitializeComponent();
             _mainViewPortControl.SetMap( _map, 5 * 100 );
             _map.Money.ActualMoneyChanged += label_MonArgent_text;
@@ -25,8 +28,8 @@ namespace ITI.Simc_ITI.Rendering
 
         private void buton_Grass_Click( object sender, EventArgs e )
         {
-            _map.Boxes[25, 25].CreateInfrastructure( 50, 0, 5, true, true, true, true, "RC" );
-            _mainViewPortControl.SetMap( _map, 5 * 100 );
+            _infManager.Find( "Road" ).CreateInfrastructure( _map.Boxes[25, 25] );
+            _mainViewPortControl.Invalidate();
         }
   
         private void label_MonArgent_text( object sender, EventArgs e)

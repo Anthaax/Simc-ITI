@@ -3,55 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using ITI.Simc_ITI.Money.Lib;
+using ITI.Simc_ITI;
 
-namespace ITI.Simc_ITI.Lib
+namespace ITI.Simc_ITI.Build
 {
-    public class Infrastructure
+    public abstract class Infrastructure : IInfrastructureForBox
     {
-        Building _building;
-        Road _road;
-        int _price;
+        Box _box;
 
-        public Infrastructure(int Price, int areaEffect, int pricePermounth, bool IsWater, bool IsElectric, bool RoadNear, bool road, string name)
+        protected Infrastructure(Box b)
         {
-            _price = Price;
-            if( RoadNear == true && road != true )
-            {
-                
-                CreateBuilding( this, areaEffect, pricePermounth, name );
-            }
-            else
-            {
-                CreateRoad( this, IsWater, IsElectric, pricePermounth, name );
-            }
+            _box = b;
+            b.Infrasructure = this;
         }
-
-        private void CreateRoad( Infrastructure infrastructure, bool IsWater, bool IsElectric, int PricePerMounth, string name)
+        public Box Box
         {
-            Road r = new Road(this, IsWater, IsElectric, PricePerMounth, name);
-            _road = r;
+            get { return _box; }
         }
-
-        private void CreateBuilding( Infrastructure infrastructure, int AreaEffect, int PricePerMounth, string name)
-        {
-            Building b = new Building( this, AreaEffect, PricePerMounth, name );
-            _building = b;
-        }
-
-        public Building MyBuilding
-        {
-            get { return _building; }
-        }
-
-        public Road MyRoad
-        {
-            get { return _road; }
-        }
-
-        public int MyMoney
-        {
-            get { return _price; }
-        }
+        public abstract void Draw( Graphics g, Rectangle rectSource, float scaleFactor );
     }
 }

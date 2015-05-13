@@ -2,47 +2,61 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
-namespace ITI.Simc_ITI.Lib
+namespace ITI.Simc_ITI.Build
 {
-    public class Road
+    public class RoadType : InfrastructureType
     {
-        VRoad _vroad;
-        HRoad _hroad;
-        CRoad _croad;
-        Infrastructure _infrastructure;
-        int _pricePerMounth;
-
-        public Road( Infrastructure infrastructure, bool IsWater, bool IsElectric, int PricePerMounth, string name )
+        public RoadType()
+            : base( "Road", 5, "C:/dev/Textures/RV.bmp" )
         {
-            _infrastructure = infrastructure;
-            _pricePerMounth = PricePerMounth;
-            if( name == "RV" ) CreateVRoad( this, IsWater, IsElectric, name );
-            else if( name == "RH" ) CreateHRoad( this, IsWater, IsElectric, name );
-            else if( name == "RC" ) CreateCRoad( this, IsWater, IsElectric, name );
         }
 
-        private void CreateCRoad( Road road, bool IsWater, bool IsElectric, string name )
+        public override Infrastructure CreateInfrastructure( Box location )
         {
-            CRoad cr = new CRoad( this, IsWater, IsElectric, name );
-            _croad = cr;
+            if( location.Infrasructure == null )
+            {
+                location.Map.Money.ActualMoney -= this.BuildingCost;
+                return new Road( location, this );
+            }
+            return null;
+        }
+    }
+
+    public class Road : Infrastructure
+    {
+        bool _water;
+        bool _electricity;
+        Bitmap _bmp;
+        RoadType _info;
+        Box _box;
+
+        public Road( Box b, RoadType Info )
+            : base( b )
+        {
+            _info = Info;
+            _box = b;
+            _box.Infrasructure = this;
+            _bmp = new Bitmap( Info.TexturePath );
         }
 
-        private void CreateHRoad( Road road, bool IsWater, bool IsElectric, string name )
+        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-            HRoad hr = new HRoad( this, IsWater, IsElectric, name );
-            _hroad = hr;
+            Rectangle r = new Rectangle( 0, 0, _box.Map.BoxWidth, _box.Map.BoxWidth );
+            g.DrawImage( _bmp, _box.Area );
+            g.DrawRectangle( Pens.DarkGreen, _box.Area );
+            r.Inflate( -_box.Map.BoxWidth / 12, -_box.Map.BoxWidth / 12 );
         }
-
-        private void CreateVRoad( Road road, bool IsWater, bool IsElectric, string name )
+        public bool Water
         {
-            VRoad vr = new VRoad(this, IsWater, IsElectric, name);
-            _vroad = vr;
+            get { return _water; }
+            set { _water = value; }
         }
-
-        public VRoad MyVRoad
+        public bool Electricity
         {
-             get { return _vroad; }
+            get { return _electricity; }
+            set { _electricity = value; }
         }
     }
 }
