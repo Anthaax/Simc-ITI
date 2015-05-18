@@ -20,11 +20,11 @@ namespace ITI.Simc_ITI
         public Map(int boxWidthInMeter, int boxCount)
         {
             _boxes = new Box[boxCount, boxCount];
-            for (int i = 0; i < boxCount; ++i)
+            for (int j = 0; j < boxCount; ++j)
             {
-                for (int j = 0; j < boxCount; ++j)
+                for (int i = 0; i < boxCount; ++i)
                 {
-                    _boxes[i, j] = new Box(this, i, j);
+                    _boxes[i, j] = new Box(this, j, i);
                 }
             }
             _boxCount = boxCount;
@@ -87,18 +87,18 @@ namespace ITI.Simc_ITI
             int bottom = (r.Bottom - 1) / _boxWidth;
             int right = (r.Right - 1) / _boxWidth;
             int offsetX = 0, offsetY = 0;
-            for (int i = top; i <= bottom; ++i)
+            for (int j = top; j <= bottom; ++j)
             {
-                for (int j = left; j <= right; ++j)
+                for (int i = left; i <= right; ++i)
                 {
                     Box b = _boxes[i, j];
-                    //Debug.Assert(b.Area.IntersectsWith(r));
+                    Debug.Assert(b.Area.IntersectsWith(r));
                     Rectangle rIntersect = r;
                     rIntersect.Intersect(b.Area);
                     rIntersect.Offset(-b.Area.Left, -b.Area.Top);
-                    if (j == left)
+                    if (i == left)
                     {
-                        if (i == top)
+                        if (j == top)
                         {
                             offsetY = -rIntersect.Y;
                         }

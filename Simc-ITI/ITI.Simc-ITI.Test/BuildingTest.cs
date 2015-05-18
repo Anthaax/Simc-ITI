@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using ITI.Simc_ITI;
-using ITI.Simc_ITI.Lib;
+using ITI.Simc_ITI.Build;
 
 namespace ITI.Simc_ITI.Test
 {
@@ -17,28 +17,15 @@ namespace ITI.Simc_ITI.Test
         public void CreateTheGoodBuilding()
         {
             Map m = new Map( 10, 10 );
-            Box[,] box;
-            box = m.Boxes;
-            Bitmap bmp;
-            Bitmap BmpTest = new Bitmap( "C:/dev/Textures/RV2.bmp" );
-            int _money = m.Money.ActualMoney;
-            Assert.That( _money, Is.EqualTo( 5000 ) );
-            box[0, 0].CreateInfrastructure( 50, 0, 5, true, true, true, true,"RV");
-            bmp = box[0, 0].BitmapTexture;
-            Assert.That( bmp.GetPixel( 0, 1 ), Is.EqualTo( BmpTest.GetPixel( 0, 1 ) ) );
-            box[0, 1].CreateInfrastructure( 500, 3, 50, true, true, true, false,"Ecole" );
-            Bitmap BmpTest2 = new Bitmap( "C:/dev/Textures/College.bmp" );
-            bmp = box[0, 1].BitmapTexture;
-            Assert.That( bmp.GetPixel( 0, 2 ), Is.EqualTo( BmpTest2.GetPixel( 0, 2 ) ) );
-            box[0, 2].CreateInfrastructure( 500, 0, 0, true, true, true, false,"Habitation" );
-            _money = m.Money.ActualMoney;
-            Assert.That( _money, Is.EqualTo( 3950 ) );
-            bool _isOk = box[0, 0].MyInfrasructure.MyRoad.MyVRoad.Electricity;
-            int _areaEffect = box[0, 1].MyInfrasructure.MyBuilding.IsPublic.MySchool.AreaEffect;
-            int _people = box[0, 2].MyInfrasructure.MyBuilding.IsPrivate.MyHabitation.People;
-            Assert.That( _isOk, Is.EqualTo(true) );
-            Assert.That( _areaEffect, Is.EqualTo( 3 ) );
-            Assert.That( _people, Is.EqualTo( 3 ) );
+            InfrastructureManager i = new InfrastructureManager();
+            Assert.That( m.Boxes[0, 0].Infrasructure, Is.EqualTo( null ) );
+            Assert.That( m.Money.ActualMoney, Is.EqualTo( 5000 ) );
+            Assert.That( i.Find( "Road" ).BuildingCost, Is.EqualTo( 5 ) );
+            Assert.That( i.Find( "Ecole" ).TexturePath, Is.EqualTo( "C:/dev/Textures/College.bmp" ) );
+            i.Find( "Road" ).CreateInfrastructure( m.Boxes[0, 0] );
+            Assert.That( m.Money.ActualMoney, Is.EqualTo(4995) );
+            Assert.Null( m.Boxes[0, 0].Infrasructure.GetType() );
+            
         }
     }
 }

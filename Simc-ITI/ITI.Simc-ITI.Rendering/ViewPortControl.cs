@@ -44,6 +44,11 @@ namespace ITI.Simc_ITI.Rendering
             _viewPort.SetActualZoomFactor( scalefactor );
         }
 
+        public void KeyMove(int x, int y)
+        {
+            ScrollTo(x, y);
+        }
+
         void _viewPort_AreaChanged( object sender, EventArgs e )
         {
             Invalidate();

@@ -44,8 +44,8 @@ namespace ITI.Simc_ITI.Build
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
             Rectangle r = new Rectangle( 0, 0, _box.Map.BoxWidth, _box.Map.BoxWidth );
-            g.DrawImage( _bmp, _box.Area );
-            g.DrawRectangle( Pens.DarkGreen, _box.Area );
+            g.DrawImage( _bmp, r );
+            g.DrawRectangle( Pens.DarkGreen, r );
             r.Inflate( -_box.Map.BoxWidth / 12, -_box.Map.BoxWidth / 12 );
         }
         public bool Water

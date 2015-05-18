@@ -91,8 +91,10 @@
             // 
             // MonArgent
             // 
+            this.MonArgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MonArgent.AutoSize = true;
-            this.MonArgent.Location = new System.Drawing.Point(935, 10);
+            this.MonArgent.Location = new System.Drawing.Point(1207, 10);
             this.MonArgent.Name = "MonArgent";
             this.MonArgent.Size = new System.Drawing.Size(40, 17);
             this.MonArgent.TabIndex = 2;
@@ -100,12 +102,14 @@
             // 
             // MyMoney
             // 
+            this.MyMoney.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MyMoney.AutoSize = true;
-            this.MyMoney.Location = new System.Drawing.Point(849, 14);
+            this.MyMoney.Location = new System.Drawing.Point(1121, 10);
             this.MyMoney.Name = "MyMoney";
-            this.MyMoney.Size = new System.Drawing.Size(80, 17);
+            this.MyMoney.Size = new System.Drawing.Size(88, 17);
             this.MyMoney.TabIndex = 1;
-            this.MyMoney.Text = "Mon argent";
+            this.MyMoney.Text = "Mon argent :";
             // 
             // buton_Grass
             // 
@@ -114,7 +118,7 @@
             this.buton_Grass.Name = "buton_Grass";
             this.buton_Grass.Size = new System.Drawing.Size(61, 28);
             this.buton_Grass.TabIndex = 0;
-            this.buton_Grass.Text = "Grass";
+            this.buton_Grass.Text = "Road";
             this.buton_Grass.UseVisualStyleBackColor = true;
             this.buton_Grass.Click += new System.EventHandler(this.buton_Grass_Click);
             // 
@@ -127,7 +131,7 @@
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DemoWindow2";
-            this.Text = "DemoWindow2";
+            this.Text = "Simc\'ITI";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DemoWindow2_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

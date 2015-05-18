@@ -27,7 +27,7 @@ namespace ITI.Simc_ITI
             get
             {
                 int sz = _map.BoxWidth;
-                return new Rectangle( _column, _line, sz, sz );
+                return new Rectangle( _column*sz, _line*sz, sz, sz );
             }
         }
 
@@ -38,25 +38,10 @@ namespace ITI.Simc_ITI
             if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor );
             else
             {
-                Rectangle r = new Rectangle( 0, 0, _map.BoxWidth, _map.BoxWidth );
-                g.DrawImage( bmpPicture, this.Area );
-                g.DrawRectangle( Pens.DarkGreen, this.Area );
+                g.DrawImage( bmpPicture, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
+                g.DrawRectangle( Pens.DarkGreen, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
             }
         }
-
-        private void T_loop( object sender, EventArgs e )
-        {
-            g.DrawImage( bmpPicture, new Point( 0, 0 ) );
-            screeng.Clear( Color.White );
-
-            _map.Draw( screeng );
-        }
-
-        private bool CanBuildInfrastructure( int Price )
-        {
-            return _map.Money.CanBuid( Price );
-        }
-
         public IInfrastructureForBox Infrasructure
         {
             get { return Infrastructure; }
@@ -66,6 +51,6 @@ namespace ITI.Simc_ITI
         public Map Map
         {
             get { return _map; }
-        }
+        }  
     }
 }
