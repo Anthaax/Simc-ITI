@@ -18,6 +18,8 @@ namespace ITI.Simc_ITI.Rendering
         double scalefactor;
         int x;
         int y;
+        int _xBox;
+        int _yBox;
 
         public DemoWindow2()
         {
@@ -32,8 +34,9 @@ namespace ITI.Simc_ITI.Rendering
 
         private void buton_Grass_Click( object sender, EventArgs e )
         {
-            _infManager.Find( "Road" ).CreateInfrastructure( _map.Boxes[25, 25] );
+            _infManager.Find( "Road" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
             _mainViewPortControl.Invalidate();
+            Build_Road.Visible = false;
         }
   
         private void label_MonArgent_text( object sender, EventArgs e)
@@ -86,10 +89,14 @@ namespace ITI.Simc_ITI.Rendering
             int _boxInPixel = (int)Math.Round( _map.BoxWidth * _mainViewPortControl.ViewPort.ClientScaleFactor);
             int _mouseX = e.X;
             int _mouseY = e.Y;
-            int _xMap = (_mainViewPortControl.ViewPort.Area.X / _map.BoxWidth) + _mouseX / _boxInPixel ;
-            int _yMap = (_mainViewPortControl.ViewPort.Area.Y / _map.BoxWidth) + _mouseY / _boxInPixel ;
-            MessageBox.Show("Position de la souris : "+_mouseX+" , "+_mouseY+"\n"+"Position sur la map : "+_xMap+" , "+_yMap );
-
+            _xBox = (_mainViewPortControl.ViewPort.Area.X / _map.BoxWidth) + _mouseX / _boxInPixel ;
+            _yBox = (_mainViewPortControl.ViewPort.Area.Y / _map.BoxWidth) + _mouseY / _boxInPixel ;
+            if( _map.Boxes[_xBox, _yBox].Infrasructure == null)
+            {
+                Build_Road.Visible = true;               
+            }
+            Coordonnées.Visible = true;
+            Coordonnées.Text = "Coordonnées : " + _xBox + " , " + _yBox;
         }
     }
 }

@@ -56,18 +56,22 @@ namespace ITI.Simc_ITI.Build
         public int PricePerMounth
         {
             get { return _pricePerMounth; }
+            set { _pricePerMounth = value; }
         }
         public int AreaEffect
         {
             get { return _areaEffect; }
+            set { _areaEffect = value; }
         }
         public int MaxCapacity
         {
             get { return _maxCapacity; }
+            set { _maxCapacity = value; }
         }
         public int ActualCapacity
         {
             get { return _actualCapacity; }
+            set { _actualCapacity = value; }
         }
     }
 }

@@ -30,10 +30,11 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
             this.MonArgent = new System.Windows.Forms.Label();
             this.MyMoney = new System.Windows.Forms.Label();
-            this.buton_Grass = new System.Windows.Forms.Button();
+            this.Build_Road = new System.Windows.Forms.Button();
+            this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
+            this.Coordonnées = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,9 +58,10 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.Coordonnées);
+            this.splitContainer1.Panel2.Controls.Add(this.Build_Road);
             this.splitContainer1.Panel2.Controls.Add(this.MonArgent);
             this.splitContainer1.Panel2.Controls.Add(this.MyMoney);
-            this.splitContainer1.Panel2.Controls.Add(this.buton_Grass);
             this.splitContainer1.Size = new System.Drawing.Size(1259, 484);
             this.splitContainer1.SplitterDistance = 369;
             this.splitContainer1.SplitterWidth = 5;
@@ -79,15 +81,6 @@
             this.splitContainer2.SplitterDistance = 70;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
-            // 
-            // _mainViewPortControl
-            // 
-            this._mainViewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._mainViewPortControl.Location = new System.Drawing.Point(0, 0);
-            this._mainViewPortControl.Margin = new System.Windows.Forms.Padding(4);
-            this._mainViewPortControl.Name = "_mainViewPortControl";
-            this._mainViewPortControl.Size = new System.Drawing.Size(1184, 369);
-            this._mainViewPortControl.TabIndex = 0;
             // 
             // MonArgent
             // 
@@ -111,16 +104,35 @@
             this.MyMoney.TabIndex = 1;
             this.MyMoney.Text = "Mon argent :";
             // 
-            // buton_Grass
+            // Build_Road
             // 
-            this.buton_Grass.Location = new System.Drawing.Point(4, 4);
-            this.buton_Grass.Margin = new System.Windows.Forms.Padding(4);
-            this.buton_Grass.Name = "buton_Grass";
-            this.buton_Grass.Size = new System.Drawing.Size(61, 28);
-            this.buton_Grass.TabIndex = 0;
-            this.buton_Grass.Text = "Road";
-            this.buton_Grass.UseVisualStyleBackColor = true;
-            this.buton_Grass.Click += new System.EventHandler(this.buton_Grass_Click);
+            this.Build_Road.Location = new System.Drawing.Point(13, 10);
+            this.Build_Road.Name = "Build_Road";
+            this.Build_Road.Size = new System.Drawing.Size(75, 23);
+            this.Build_Road.TabIndex = 3;
+            this.Build_Road.Text = "Road";
+            this.Build_Road.UseVisualStyleBackColor = true;
+            this.Build_Road.Visible = false;
+            this.Build_Road.Click += new System.EventHandler(this.buton_Grass_Click);
+            // 
+            // _mainViewPortControl
+            // 
+            this._mainViewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._mainViewPortControl.Location = new System.Drawing.Point(0, 0);
+            this._mainViewPortControl.Margin = new System.Windows.Forms.Padding(4);
+            this._mainViewPortControl.Name = "_mainViewPortControl";
+            this._mainViewPortControl.Size = new System.Drawing.Size(1184, 369);
+            this._mainViewPortControl.TabIndex = 0;
+            // 
+            // Coordonnées
+            // 
+            this.Coordonnées.AutoSize = true;
+            this.Coordonnées.Location = new System.Drawing.Point(599, 10);
+            this.Coordonnées.Name = "Coordonnées";
+            this.Coordonnées.Size = new System.Drawing.Size(129, 17);
+            this.Coordonnées.TabIndex = 4;
+            this.Coordonnées.Text = "Coordonnées : 0, 0";
+            this.Coordonnées.Visible = false;
             // 
             // DemoWindow2
             // 
@@ -150,8 +162,9 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private ViewPortControl _mainViewPortControl;
-        private System.Windows.Forms.Button buton_Grass;
         private System.Windows.Forms.Label MonArgent;
         private System.Windows.Forms.Label MyMoney;
+        private System.Windows.Forms.Button Build_Road;
+        private System.Windows.Forms.Label Coordonnées;
     }
 }
