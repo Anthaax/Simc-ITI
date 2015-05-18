@@ -32,7 +32,7 @@ namespace ITI.Simc_ITI.Rendering
 
         private void buton_Grass_Click( object sender, EventArgs e )
         {
-            _infManager.Find( "Road" ).CreateInfrastructure( _map.Boxes[0, 1] );
+            _infManager.Find( "Road" ).CreateInfrastructure( _map.Boxes[25, 25] );
             _mainViewPortControl.Invalidate();
         }
   
@@ -83,10 +83,11 @@ namespace ITI.Simc_ITI.Rendering
 
         private void MouseClickEvent(object sender, MouseEventArgs e)
         {
+            int _boxInPixel = (int)Math.Round( _map.BoxWidth * _mainViewPortControl.ViewPort.ClientScaleFactor);
             int _mouseX = e.X;
             int _mouseY = e.Y;
-            double _xMap = _mainViewPortControl.ViewPort.Area.X + (_mouseX * _mainViewPortControl.ViewPort.Area.Width * _mainViewPortControl.ViewPort.ActualZoomFactor) / _map.MapWidth;
-            double _yMap = _mainViewPortControl.ViewPort.Area.Y + (_mouseY * _mainViewPortControl.ViewPort.Area.Width * _mainViewPortControl.ViewPort.ActualZoomFactor) / _map.MapWidth;
+            int _xMap = (_mainViewPortControl.ViewPort.Area.X / _map.BoxWidth) + _mouseX / _boxInPixel ;
+            int _yMap = (_mainViewPortControl.ViewPort.Area.Y / _map.BoxWidth) + _mouseY / _boxInPixel ;
             MessageBox.Show("Position de la souris : "+_mouseX+" , "+_mouseY+"\n"+"Position sur la map : "+_xMap+" , "+_yMap );
 
         }
