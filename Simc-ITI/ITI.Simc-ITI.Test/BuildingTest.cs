@@ -20,12 +20,13 @@ namespace ITI.Simc_ITI.Test
             InfrastructureManager i = new InfrastructureManager();
             Assert.That( m.Boxes[0, 0].Infrasructure, Is.EqualTo( null ) );
             Assert.That( m.Money.ActualMoney, Is.EqualTo( 5000 ) );
-            Assert.That( i.Find( "Road" ).BuildingCost, Is.EqualTo( 5 ) );
+            Assert.That( i.Find( "Route" ).BuildingCost, Is.EqualTo( 5 ) );
             Assert.That( i.Find( "Ecole" ).TexturePath, Is.EqualTo( "C:/dev/Textures/College.bmp" ) );
-            i.Find( "Road" ).CreateInfrastructure( m.Boxes[0, 0] );
+            i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 0] );
             Assert.That( m.Money.ActualMoney, Is.EqualTo(4995) );
-            Assert.Null( m.Boxes[0, 0].Infrasructure.GetType() );
-            
+            Assert.That( m.Boxes[0, 0].Infrasructure.GetType(), Is.Not.Null );
+            Assert.That( m.Boxes[0, 0].Infrasructure.Name(), Is.EqualTo( "Route" ) );
+            Assert.That( m.Boxes[0, 1].CheckTheNearBoxes(), Is.EqualTo( true ) );
         }
     }
 }

@@ -34,7 +34,7 @@ namespace ITI.Simc_ITI.Rendering
 
         private void buton_Grass_Click( object sender, EventArgs e )
         {
-            _infManager.Find( "Road" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
+            _infManager.Find( "Route" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
             _mainViewPortControl.Invalidate();
             Build_Road.Visible = false;
         }
@@ -93,10 +93,27 @@ namespace ITI.Simc_ITI.Rendering
             _yBox = (_mainViewPortControl.ViewPort.Area.Y / _map.BoxWidth) + _mouseY / _boxInPixel ;
             if( _map.Boxes[_xBox, _yBox].Infrasructure == null)
             {
-                Build_Road.Visible = true;               
+                if( _map.Boxes[_xBox, _yBox].CheckTheNearBoxes() == true ) School_Button.Visible = true;
+                else if( _map.Boxes[_xBox, _yBox].CheckTheNearBoxes() != true ) School_Button.Visible = false;
+                Build_Road.Visible = true;
+                Kind_Building.Visible = false;
+            }
+            else
+            {
+                Build_Road.Visible = false;
+                School_Button.Visible = false;
+                Kind_Building.Visible = true;
+                Kind_Building.Text = "Type du batiment : Une " + _map.Boxes[_xBox, _yBox].Infrasructure.Name() + ".";
             }
             Coordonnées.Visible = true;
             Coordonnées.Text = "Coordonnées : " + _xBox + " , " + _yBox;
+        }
+
+        private void School_Button_Click( object sender, EventArgs e )
+        {
+            _infManager.Find( "Ecole" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
+            _mainViewPortControl.Invalidate();
+            Build_Road.Visible = false;
         }
     }
 }

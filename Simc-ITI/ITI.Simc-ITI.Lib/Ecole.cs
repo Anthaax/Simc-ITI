@@ -29,10 +29,12 @@ namespace ITI.Simc_ITI.Build
 
     public class Ecole : Infrastructure
     {
-        int _areaEffect;
+        string _name;
+        int _areaEffect = 10;
         int _pricePerMounth;
         int _maxCapacity;
         int _actualCapacity;
+        int _effect = 5;
         Bitmap _bmp;
         EcoleType _info;
         Box _box;
@@ -44,14 +46,18 @@ namespace ITI.Simc_ITI.Build
             _box = b;
             _box.Infrasructure = this;
             _bmp = new Bitmap(Info.TexturePath);
+            _name = Info.Name;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
             Rectangle r = new Rectangle( 0, 0, _box.Map.BoxWidth, _box.Map.BoxWidth );
-            g.DrawImage( _bmp, _box.Area );
-            g.DrawRectangle( Pens.DarkGreen, _box.Area );
-            r.Inflate( -_box.Map.BoxWidth / 12, -_box.Map.BoxWidth / 12 );
+            g.DrawImage( _bmp, r );
+            g.DrawRectangle( Pens.DarkGreen, r );
+        }
+        public override string Name()
+        {
+            return _name;
         }
         public int PricePerMounth
         {
@@ -72,6 +78,10 @@ namespace ITI.Simc_ITI.Build
         {
             get { return _actualCapacity; }
             set { _actualCapacity = value; }
+        }
+        public void BuildingEffect()
+        {
+            _box.AppliedEffect( _areaEffect, _effect );
         }
     }
 }

@@ -51,6 +51,34 @@ namespace ITI.Simc_ITI
         public Map Map
         {
             get { return _map; }
-        }  
+        }
+  
+        public bool CheckTheNearBoxes()
+        {
+            bool _check = false;
+            for(int i = -1; i <= 1; i+=2)
+            {
+                if( _column + i < 0 || _map.Boxes[_column + i, _line].Infrasructure == null ) ;
+                else if( _map.Boxes[_column + i, _line].Infrasructure.Name() == "Route" )  _check = true;
+            }
+            for( int j = -1; j <= 1; j += 2 )
+            {
+                if( _line + j < 0 || _map.Boxes[_column, _line + j].Infrasructure == null ) ;
+                else if( _map.Boxes[_column, _line + j].Infrasructure.Name() == "Route" )  _check = true;
+            }
+            return _check;
+        }
+
+        public void AppliedEffect( int _areaEffect, int _effect )
+        {
+            for(int i = -_areaEffect; i <= _areaEffect; i++)
+            {
+                if( _column + i < 0 || i == 0 || _map.Boxes[_column + i, _line].Infrasructure == null ) ;
+                else
+                {
+                    _map.Boxes[_column + i, _line].Infrasructure.Happyness( _effect );
+                }
+            }
+        }
     }
 }

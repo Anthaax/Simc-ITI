@@ -10,5 +10,7 @@ namespace ITI.Simc_ITI
     public interface IInfrastructureForBox
     {
         void Draw( Graphics g, Rectangle rectSource, float scaleFactor );
+        string Name();
+        void Happyness(int effect);
     }
 }

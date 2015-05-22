@@ -23,5 +23,7 @@ namespace ITI.Simc_ITI.Build
             get { return _box; }
         }
         public abstract void Draw( Graphics g, Rectangle rectSource, float scaleFactor );
+        public abstract string Name();
+        public abstract void Happyness();
     }
 }

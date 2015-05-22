@@ -9,7 +9,7 @@ namespace ITI.Simc_ITI.Build
     public class RoadType : InfrastructureType
     {
         public RoadType()
-            : base( "Road", 5, "C:/dev/Textures/RV.bmp" )
+            : base( "Route", 5, "C:/dev/Textures/RV.bmp" )
         {
         }
 
@@ -26,6 +26,7 @@ namespace ITI.Simc_ITI.Build
 
     public class Road : Infrastructure
     {
+        string _name;
         bool _water;
         bool _electricity;
         Bitmap _bmp;
@@ -39,6 +40,7 @@ namespace ITI.Simc_ITI.Build
             _box = b;
             _box.Infrasructure = this;
             _bmp = new Bitmap( Info.TexturePath );
+            _name = Info.Name;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
@@ -46,7 +48,10 @@ namespace ITI.Simc_ITI.Build
             Rectangle r = new Rectangle( 0, 0, _box.Map.BoxWidth, _box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
-            r.Inflate( -_box.Map.BoxWidth / 12, -_box.Map.BoxWidth / 12 );
+        }
+        public override string Name()
+        {
+            return _name;
         }
         public bool Water
         {
