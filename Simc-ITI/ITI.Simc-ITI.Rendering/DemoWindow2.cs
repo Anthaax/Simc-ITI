@@ -91,6 +91,8 @@ namespace ITI.Simc_ITI.Rendering
             int _mouseY = e.Y;
             _xBox = (_mainViewPortControl.ViewPort.Area.X / _map.BoxWidth) + _mouseX / _boxInPixel ;
             _yBox = (_mainViewPortControl.ViewPort.Area.Y / _map.BoxWidth) + _mouseY / _boxInPixel ;
+            if( _xBox == 100 ) _xBox = 99;
+            else if( _yBox == 100 ) _yBox = 99;
             if( _map.Boxes[_xBox, _yBox].Infrasructure == null)
             {
                 if( _map.Boxes[_xBox, _yBox].CheckTheNearBoxes() == true ) School_Button.Visible = true;
