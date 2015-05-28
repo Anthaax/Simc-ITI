@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ecole.cs" />
+    <Compile Include="Habitation.cs" />
     <Compile Include="Infrastructure.cs" />
     <Compile Include="InfrastructureManager.cs" />
     <Compile Include="InfrastructureType.cs" />

@@ -53,7 +53,7 @@ namespace ITI.Simc_ITI
             get { return _map; }
         }
   
-        public bool CheckTheNearBoxes()
+        public bool CheckTheNearBoxesRoad()
         {
             bool _check = false;
             for(int i = -1; i <= 1; i+=2)
@@ -65,6 +65,22 @@ namespace ITI.Simc_ITI
             {
                 if( _line + j < 0 || _line + j > 99 || _map.Boxes[_column, _line + j].Infrasructure == null ) ;
                 else if( _map.Boxes[_column, _line + j].Infrasructure.Name() == "Route" )  _check = true;
+            }
+            return _check;
+        }
+
+        public bool CheckTheNearBoxesBuilding()
+        {
+            bool _check = false;
+            for( int i = -1; i <= 1; i += 2 )
+            {
+                if( _column + i < 0 || _column + i > 99 || _map.Boxes[_column + i, _line].Infrasructure == null ) ;
+                else if( _map.Boxes[_column + i, _line].Infrasructure.Name() != "Route" ) _check = true;
+            }
+            for( int j = -1; j <= 1; j += 2 )
+            {
+                if( _line + j < 0 || _line + j > 99 || _map.Boxes[_column, _line + j].Infrasructure == null ) ;
+                else if( _map.Boxes[_column, _line + j].Infrasructure.Name() != "Route" ) _check = true;
             }
             return _check;
         }

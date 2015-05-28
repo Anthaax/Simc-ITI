@@ -9,10 +9,15 @@ namespace ITI.Simc_ITI.Build
 {
     public class EcoleType : InfrastructureType
     {
-        
+        int _costPerMonth;
+        int _areaEffect;
+        int _maxCapacity;
         public EcoleType()
-            : base( "Ecole", 500, "C:/dev/Textures/College.bmp" )
+            : base( "Ecole",false, 500,"C:/dev/Textures/Ecole.bmp")
         {
+            _costPerMonth = 100;
+            _areaEffect = 10;
+            _maxCapacity = 200;
         }
 
         public override Infrastructure CreateInfrastructure( Box location )
@@ -24,14 +29,16 @@ namespace ITI.Simc_ITI.Build
             }
             return null;
         }
+        public int CostPerMonth { get { return _costPerMonth; } }
+        public int AreaEffect { get { return _areaEffect; } }
+        public int MaxCapacity { get { return _maxCapacity; } }
     }
 
 
     public class Ecole : Infrastructure
     {
-        string _name;
-        int _areaEffect = 10;
-        int _pricePerMounth;
+        int _areaEffect;
+        int _costPerMonth;
         int _maxCapacity;
         int _actualCapacity;
         int _effect = 5;
@@ -46,7 +53,8 @@ namespace ITI.Simc_ITI.Build
             _box = b;
             _box.Infrasructure = this;
             _bmp = new Bitmap(Info.TexturePath);
-            _name = Info.Name;
+            _areaEffect = Info.AreaEffect;
+            _costPerMonth = Info.CostPerMonth;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
@@ -57,12 +65,17 @@ namespace ITI.Simc_ITI.Build
         }
         public override string Name()
         {
-            return _name;
+            return _info.Name;
+        }
+        public override void Destroy()
+        {
+            _box.Infrasructure = null;
+            _box = null;
         }
         public int PricePerMounth
         {
-            get { return _pricePerMounth; }
-            set { _pricePerMounth = value; }
+            get { return _costPerMonth; }
+            set { _costPerMonth = value; }
         }
         public int AreaEffect
         {
@@ -83,5 +96,6 @@ namespace ITI.Simc_ITI.Build
         {
             _box.AppliedEffect( _areaEffect, _effect );
         }
+
     }
 }

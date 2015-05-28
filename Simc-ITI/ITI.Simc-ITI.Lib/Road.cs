@@ -9,7 +9,7 @@ namespace ITI.Simc_ITI.Build
     public class RoadType : InfrastructureType
     {
         public RoadType()
-            : base( "Route", 5, "C:/dev/Textures/RV.bmp" )
+            : base( "Route", false, 5, "C:/dev/Textures/RV.bmp" )
         {
         }
 
@@ -52,6 +52,11 @@ namespace ITI.Simc_ITI.Build
         public override string Name()
         {
             return _name;
+        }
+        public override void Destroy()
+        {
+            _box.Infrasructure = null;
+            _box = null;
         }
         public bool Water
         {

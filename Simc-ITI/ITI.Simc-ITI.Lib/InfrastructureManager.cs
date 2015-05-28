@@ -20,6 +20,7 @@ namespace ITI.Simc_ITI.Build
         {
             RegisterType( new EcoleType() );
             RegisterType( new RoadType() );
+            RegisterType( new HabitationType() );
         }
 
         void RegisterType( InfrastructureType t )

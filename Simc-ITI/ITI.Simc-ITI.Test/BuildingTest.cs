@@ -26,7 +26,7 @@ namespace ITI.Simc_ITI.Test
             Assert.That( m.Money.ActualMoney, Is.EqualTo(4995) );
             Assert.That( m.Boxes[0, 0].Infrasructure.GetType(), Is.Not.Null );
             Assert.That( m.Boxes[0, 0].Infrasructure.Name(), Is.EqualTo( "Route" ) );
-            Assert.That( m.Boxes[0, 1].CheckTheNearBoxes(), Is.EqualTo( true ) );
+            Assert.That( m.Boxes[0, 1].CheckTheNearBoxesRoad(), Is.EqualTo( true ) );
         }
     }
 }
