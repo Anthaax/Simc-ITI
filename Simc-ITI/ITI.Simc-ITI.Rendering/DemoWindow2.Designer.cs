@@ -31,13 +31,13 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
+            this.Button_Destroy = new System.Windows.Forms.Button();
             this.Kind_Building = new System.Windows.Forms.Label();
             this.School_Button = new System.Windows.Forms.Button();
             this.Coordonnées = new System.Windows.Forms.Label();
             this.Build_Road = new System.Windows.Forms.Button();
             this.MonArgent = new System.Windows.Forms.Label();
             this.MyMoney = new System.Windows.Forms.Label();
-            this.Button_Destroy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -96,6 +96,17 @@
             this._mainViewPortControl.Name = "_mainViewPortControl";
             this._mainViewPortControl.Size = new System.Drawing.Size(1184, 369);
             this._mainViewPortControl.TabIndex = 0;
+            // 
+            // Button_Destroy
+            // 
+            this.Button_Destroy.Location = new System.Drawing.Point(734, 5);
+            this.Button_Destroy.Name = "Button_Destroy";
+            this.Button_Destroy.Size = new System.Drawing.Size(75, 23);
+            this.Button_Destroy.TabIndex = 6;
+            this.Button_Destroy.Text = "Détruire";
+            this.Button_Destroy.UseVisualStyleBackColor = true;
+            this.Button_Destroy.Visible = false;
+            this.Button_Destroy.Click += new System.EventHandler(this.Button_Destroy_Click);
             // 
             // Kind_Building
             // 
@@ -160,17 +171,6 @@
             this.MyMoney.Size = new System.Drawing.Size(88, 17);
             this.MyMoney.TabIndex = 1;
             this.MyMoney.Text = "Mon argent :";
-            // 
-            // Button_Destroy
-            // 
-            this.Button_Destroy.Location = new System.Drawing.Point(735, 10);
-            this.Button_Destroy.Name = "Button_Destroy";
-            this.Button_Destroy.Size = new System.Drawing.Size(75, 23);
-            this.Button_Destroy.TabIndex = 6;
-            this.Button_Destroy.Text = "Détruire";
-            this.Button_Destroy.UseVisualStyleBackColor = true;
-            this.Button_Destroy.Visible = false;
-            this.Button_Destroy.Click += new System.EventHandler(this.Button_Destroy_Click);
             // 
             // DemoWindow2
             // 

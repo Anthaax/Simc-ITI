@@ -12,7 +12,6 @@ namespace ITI.Simc_ITI.Build
     public abstract class Infrastructure : IInfrastructureForBox
     {
         Box _box;
-
         protected Infrastructure(Box b)
         {
             _box = b;
@@ -25,5 +24,10 @@ namespace ITI.Simc_ITI.Build
         public abstract void Draw( Graphics g, Rectangle rectSource, float scaleFactor );
         public abstract string Name();
         public abstract void Destroy();
+        public abstract void HappynessEffect(int effect);
+        public abstract int Happyness();
+        public abstract bool Private();
+       
+
     }
 }

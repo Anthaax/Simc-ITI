@@ -58,6 +58,17 @@ namespace ITI.Simc_ITI.Build
             _box.Infrasructure = null;
             _box = null;
         }
+        public override void HappynessEffect( int effect )
+        {
+        }
+        public override bool Private()
+        {
+            return _info.IsPrivate;
+        }
+        public override int Happyness()
+        {
+            return 0;
+        }
         public bool Water
         {
             get { return _water; }

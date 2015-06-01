@@ -85,15 +85,32 @@ namespace ITI.Simc_ITI
             return _check;
         }
 
-        public void AppliedEffect( int _areaEffect, int _effect )
+        public void AppliedEffect( int areaEffect, int effect )
         {
-            for(int i = -_areaEffect; i <= _areaEffect; i++)
+            for(int i = -areaEffect; i <= areaEffect; i++)
             {
-                if( _column + i < 0 || i == 0 || _map.Boxes[_column + i, _line].Infrasructure == null ) ;
+                if( _column + i < 0 || _column + i > 99 || i == 0 || _map.Boxes[_column + i, _line].Infrasructure == null) ;
+                else if( _map.Boxes[_column + i, _line].Infrasructure.Private() == false ) ;
                 else
                 {
-                }
+                    _map.Boxes[_column + i, _line].Infrasructure.HappynessEffect( effect );
+                }   
             }
+            for(int j = -areaEffect; j <= areaEffect; j++)
+            {
+                if( _line + j < 0 || _line + j > 99 || j == 0 ||_map.Boxes[_column, _line + j].Infrasructure == null ) ;
+                else if( _map.Boxes[_column, _line + j].Infrasructure.Private() == false ) ;
+                else
+                {
+                    _map.Boxes[_column, _line + j].Infrasructure.HappynessEffect( effect );
+                }   
+            }
+        }
+        public int BuildingHappyness()
+        {
+            if( Infrasructure == null ) return 0;
+            else if( Infrasructure.Private() == true ) return Infrasructure.Happyness();
+            else return 0;
         }
     }
 }

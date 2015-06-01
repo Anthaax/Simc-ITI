@@ -13,7 +13,7 @@ namespace ITI.Simc_ITI.Build
         readonly int _buildingCost;
         readonly string _texturePath;
 
-        protected InfrastructureType( string name, bool isPrivate, int buildingCost, string path )
+        protected InfrastructureType( string name, bool isPrivate, int buildingCost, string path)
         {
             _name = name;
             _isPrivate = isPrivate;

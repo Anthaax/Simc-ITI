@@ -21,12 +21,25 @@ namespace ITI.Simc_ITI.Test
             Assert.That( m.Boxes[0, 0].Infrasructure, Is.EqualTo( null ) );
             Assert.That( m.Money.ActualMoney, Is.EqualTo( 5000 ) );
             Assert.That( i.Find( "Route" ).BuildingCost, Is.EqualTo( 5 ) );
-            Assert.That( i.Find( "Ecole" ).TexturePath, Is.EqualTo( "C:/dev/Textures/College.bmp" ) );
+            Assert.That( i.Find( "Ecole" ).TexturePath, Is.EqualTo( "C:/dev/Textures/Ecole.bmp" ) );
             i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 0] );
             Assert.That( m.Money.ActualMoney, Is.EqualTo(4995) );
             Assert.That( m.Boxes[0, 0].Infrasructure.GetType(), Is.Not.Null );
             Assert.That( m.Boxes[0, 0].Infrasructure.Name(), Is.EqualTo( "Route" ) );
             Assert.That( m.Boxes[0, 1].CheckTheNearBoxesRoad(), Is.EqualTo( true ) );
+        }
+        [Test]
+        public void HappynessChangedWhenPublicBuildingWasCreate()
+        {
+            Map m = new Map( 10, 20 );
+            InfrastructureManager i = new InfrastructureManager();
+            i.Find( "Route" ).CreateInfrastructure( m.Boxes[5, 4] );
+            i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[5, 5] );
+            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[5, 3] );
+           
+            Assert.That( m.Boxes[5, 5].BuildingHappyness(), Is.EqualTo( 55 ) );
+            
+           
         }
     }
 }

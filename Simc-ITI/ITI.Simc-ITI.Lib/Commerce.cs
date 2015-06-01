@@ -7,55 +7,44 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
-    public class EcoleType : InfrastructureType
+    public class CommerceType : InfrastructureType
     {
-        int _costPerMonth;
-        int _areaEffect;
-        int _maxCapacity;
-        public EcoleType()
-            : base( "Ecole",false, 500,"C:/dev/Textures/Ecole.bmp")
+        int _happyness;
+        int _turnover;
+        public CommerceType()
+            : base( "Commerce", true, 0, "C:/dev/Textures/Commerce.bmp" )
         {
-            _costPerMonth = 100;
-            _areaEffect = 10;
-            _maxCapacity = 200;
+            _happyness = 50;
+            _turnover = 5000;
         }
-
         public override Infrastructure CreateInfrastructure( Box location )
         {
             if( location.Infrasructure == null )
             {
                 location.Map.Money.ActualMoney -= this.BuildingCost;
-                return new Ecole( location, this );
+                return new Commerce( location, this );
             }
             return null;
         }
-        public int CostPerMonth { get { return _costPerMonth; } }
-        public int AreaEffect { get { return _areaEffect; } }
-        public int MaxCapacity { get { return _maxCapacity; } }
+        public int Happyness { get { return _happyness; } }
     }
-
-
-    public class Ecole : Infrastructure
+    public class Commerce : Infrastructure
     {
-        int _areaEffect;
-        int _costPerMonth;
+        int _hapyness;
         int _maxCapacity;
         int _actualCapacity;
-        int _effect = 5;
         Bitmap _bmp;
-        EcoleType _info;
+        CommerceType _info;
         Box _box;
 
-        public Ecole(Box b, EcoleType Info)
-            : base(b)
+        public Commerce( Box b, CommerceType Info )
+            : base( b )
         {
             _info = Info;
             _box = b;
             _box.Infrasructure = this;
-            _bmp = new Bitmap(Info.TexturePath);
-            _areaEffect = Info.AreaEffect;
-            _costPerMonth = Info.CostPerMonth;
-            BuildingEffect();
+            _bmp = new Bitmap( Info.TexturePath );
+            _hapyness = Info.Happyness;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
@@ -75,6 +64,7 @@ namespace ITI.Simc_ITI.Build
         }
         public override void HappynessEffect( int effect )
         {
+            _hapyness = _hapyness + effect;
         }
         public override bool Private()
         {
@@ -82,17 +72,7 @@ namespace ITI.Simc_ITI.Build
         }
         public override int Happyness()
         {
-            return 0;
-        }
-        public int PricePerMounth
-        {
-            get { return _costPerMonth; }
-            set { _costPerMonth = value; }
-        }
-        public int AreaEffect
-        {
-            get { return _areaEffect; }
-            set { _areaEffect = value; }
+            return _hapyness;
         }
         public int MaxCapacity
         {
@@ -104,10 +84,5 @@ namespace ITI.Simc_ITI.Build
             get { return _actualCapacity; }
             set { _actualCapacity = value; }
         }
-        private void BuildingEffect()
-        {
-            _box.AppliedEffect( _areaEffect, _effect );
-        }
-
     }
 }

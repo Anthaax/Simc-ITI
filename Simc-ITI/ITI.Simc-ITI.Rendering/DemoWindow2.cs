@@ -36,8 +36,7 @@ namespace ITI.Simc_ITI.Rendering
         {
             _infManager.Find( "Route" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
             _mainViewPortControl.Invalidate();
-            Build_Road.Visible = false;
-            Button_Destroy.Visible = false;
+            AllButtonInvisible();
         }
   
         private void label_MonArgent_text( object sender, EventArgs e)
@@ -100,9 +99,9 @@ namespace ITI.Simc_ITI.Rendering
             {
                 if( _map.Boxes[_xBox, _yBox].CheckTheNearBoxesRoad() == true ) School_Button.Visible = true;
                 else if( _map.Boxes[_xBox, _yBox].CheckTheNearBoxesRoad() != true ) School_Button.Visible = false;
+                AllButtonInvisible();
                 Build_Road.Visible = true;
                 Kind_Building.Visible = false;
-                Button_Destroy.Visible = false;
             }
             else
             {
@@ -120,17 +119,21 @@ namespace ITI.Simc_ITI.Rendering
         {
             _infManager.Find( "Ecole" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
             _mainViewPortControl.Invalidate();
-            Build_Road.Visible = false;
-            School_Button.Visible = false;
-            Button_Destroy.Visible = false;
+            AllButtonInvisible();
         }
 
         private void Button_Destroy_Click( object sender, EventArgs e )
         {
             _map.Money.ActualMoney += _infManager.Find( _map.Boxes[_xBox, _yBox].Infrasructure.Name() ).BuildingCost / 2;
             _map.Boxes[_xBox, _yBox].Infrasructure.Destroy();
-            Button_Destroy.Visible = false;
+            AllButtonInvisible();
             _mainViewPortControl.Invalidate();
+        }
+        private void AllButtonInvisible()
+        {
+            Button_Destroy.Visible = false;
+            School_Button.Visible = false;
+            Build_Road.Visible = true;
         }
     }
 }
