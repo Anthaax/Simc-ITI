@@ -27,8 +27,9 @@ namespace ITI.Simc_ITI.Build
             return null;
         }
         public int Happyness { get { return _happyness; } }
+        public int Turnover { get { return _turnover; } }
     }
-    public class Commerce : Infrastructure, IHappynessImpact
+    public class Commerce : Infrastructure, IHappyness
     {
         int _hapyness;
         int _maxCapacity;
@@ -60,13 +61,17 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnCreatedAround( Box b )
         {
-            throw new NotImplementedException();
+            IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
+            if( impact != null )
+            {
+                Happyness += impact.HappynessImppact;
+            }
         }
         public override void OnDestroyingAround( Box b )
         {
             throw new NotImplementedException();
         }
-        public int Happyness { get { return _hapyness; } }
+        public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int MaxCapacity
         {
             get { return _maxCapacity; }

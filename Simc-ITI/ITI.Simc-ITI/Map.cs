@@ -127,5 +127,10 @@ namespace ITI.Simc_ITI
         {
             get { return _boxes; }
         }
+
+        public IEnumerable<T> GetAllInfrastucture<T>()
+        {
+            return _boxes.Cast<Box>().Select( b => b.Infrasructure ).OfType<T>();
+        }
     }
 }

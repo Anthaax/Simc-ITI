@@ -11,11 +11,13 @@ namespace ITI.Simc_ITI.Build
     {
         int _costPerMonth;
         int _maxCapacity;
+        int _happynessImpactMax;
         public EcoleType()
             : base( "Ecole", 500, 10,"C:/dev/Textures/Ecole.bmp")
         {
             _costPerMonth = 100;
             _maxCapacity = 200;
+            _happynessImpactMax = 5;
         }
 
         protected override Infrastructure DoCreateInfrastructure( Box location )
@@ -24,14 +26,16 @@ namespace ITI.Simc_ITI.Build
         }
         public int CostPerMonth { get { return _costPerMonth; } }
         public int MaxCapacity { get { return _maxCapacity; } }
+        public int HappynessImpact { get { return _happynessImpactMax; } }
     }
 
 
-    public class Ecole : Infrastructure
+    public class Ecole : Infrastructure, IHappynessImpact
     {
         int _costPerMonth;
         int _maxCapacity;
         int _actualCapacity;
+        int _happynessImpact;
         Bitmap _bmp;
         EcoleType _info;
         Box _box;
@@ -44,6 +48,7 @@ namespace ITI.Simc_ITI.Build
             _box.Infrasructure = this;
             _bmp = new Bitmap( info.TexturePath );
             _costPerMonth = info.CostPerMonth;
+            _happynessImpact = info.HappynessImpact;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
@@ -59,12 +64,13 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnCreatedAround( Box b )
         {
-            throw new NotImplementedException();
+            
         }
         public override void OnDestroyingAround( Box b )
         {
-            throw new NotImplementedException();
+
         }
+        public int Happyness { get { return _happynessImpact; } }
         public int PricePerMounth
         {
             get { return _costPerMonth; }
