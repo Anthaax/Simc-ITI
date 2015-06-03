@@ -97,19 +97,16 @@ namespace ITI.Simc_ITI.Rendering
 
             if( _map.Boxes[_xBox, _yBox].Infrasructure == null)
             {
-                if( _map.Boxes[_xBox, _yBox].CheckTheNearBoxesRoad() == true ) School_Button.Visible = true;
-                else if( _map.Boxes[_xBox, _yBox].CheckTheNearBoxesRoad() != true ) School_Button.Visible = false;
                 AllButtonInvisible();
+                if( _infManager.Find("Habitation").CanCreated(_map.Boxes[_xBox, _yBox]) == true ) AllButtonVisible();
                 Build_Road.Visible = true;
-                Kind_Building.Visible = false;
             }
             else
             {
-                Build_Road.Visible = false;
-                School_Button.Visible = false;
+                AllButtonInvisible();
                 Kind_Building.Visible = true;
-                Kind_Building.Text = "Type du batiment : Une " + _map.Boxes[_xBox, _yBox].Infrasructure.Name() + ".";
-                if( _map.Boxes[_xBox, _yBox].CheckTheNearBoxesBuilding() == false )Button_Destroy.Visible = true;
+                Kind_Building.Text = "Type du batiment : Une " + _map.Boxes[_xBox, _yBox].Infrasructure.Type.Name + ".";
+                if( _infManager.Find( _map.Boxes[_xBox, _yBox].Infrasructure.Type.Name ).CanDestroy( _map.Boxes[_xBox, _yBox] ) == false ) Button_Destroy.Visible = true;
             }
             Coordonnées.Visible = true;
             Coordonnées.Text = "Coordonnées : " + _xBox + " , " + _yBox;
@@ -124,7 +121,7 @@ namespace ITI.Simc_ITI.Rendering
 
         private void Button_Destroy_Click( object sender, EventArgs e )
         {
-            _map.Money.ActualMoney += _infManager.Find( _map.Boxes[_xBox, _yBox].Infrasructure.Name() ).BuildingCost / 2;
+            _map.Money.ActualMoney += _map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
             _map.Boxes[_xBox, _yBox].Infrasructure.Destroy();
             AllButtonInvisible();
             _mainViewPortControl.Invalidate();
@@ -133,6 +130,11 @@ namespace ITI.Simc_ITI.Rendering
         {
             Button_Destroy.Visible = false;
             School_Button.Visible = false;
+            Build_Road.Visible = false;
+        }
+        private void AllButtonVisible()
+        {
+            School_Button.Visible = true;
             Build_Road.Visible = true;
         }
     }

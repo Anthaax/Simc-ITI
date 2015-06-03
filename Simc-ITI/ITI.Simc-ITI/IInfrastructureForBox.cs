@@ -9,11 +9,11 @@ namespace ITI.Simc_ITI
 {
     public interface IInfrastructureForBox
     {
+        IInfrastructureType Type { get; }
         void Draw( Graphics g, Rectangle rectSource, float scaleFactor );
-        string Name();
         void Destroy();
-        void HappynessEffect(int effect);
-        int Happyness();
-        bool Private();
+        void OnCreatedAround( Box b );
+        void OnDestroyingAround( Box b );
+        
     }
 }

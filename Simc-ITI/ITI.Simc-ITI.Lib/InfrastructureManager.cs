@@ -39,6 +39,5 @@ namespace ITI.Simc_ITI.Build
         {
             get { return _types.Values; }
         }
-
     }
 }

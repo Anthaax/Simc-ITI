@@ -13,24 +13,17 @@ namespace ITI.Simc_ITI.Build
         int _areaEffect;
         int _maxCapacity;
         public EcoleType()
-            : base( "Ecole",false, 500,"C:/dev/Textures/Ecole.bmp")
+            : base( "Ecole", 500, 10,"C:/dev/Textures/Ecole.bmp")
         {
             _costPerMonth = 100;
-            _areaEffect = 10;
             _maxCapacity = 200;
         }
 
-        public override Infrastructure CreateInfrastructure( Box location )
+        protected override Infrastructure DoCreateInfrastructure( Box location )
         {
-            if( location.Infrasructure == null )
-            {
-                location.Map.Money.ActualMoney -= this.BuildingCost;
-                return new Ecole( location, this );
-            }
-            return null;
+            return new Ecole( location, this );
         }
         public int CostPerMonth { get { return _costPerMonth; } }
-        public int AreaEffect { get { return _areaEffect; } }
         public int MaxCapacity { get { return _maxCapacity; } }
     }
 
@@ -46,16 +39,14 @@ namespace ITI.Simc_ITI.Build
         EcoleType _info;
         Box _box;
 
-        public Ecole(Box b, EcoleType Info)
-            : base(b)
+        public Ecole(Box b, EcoleType info)
+            : base(b, info)
         {
-            _info = Info;
+            _info = info;
             _box = b;
             _box.Infrasructure = this;
-            _bmp = new Bitmap(Info.TexturePath);
-            _areaEffect = Info.AreaEffect;
-            _costPerMonth = Info.CostPerMonth;
-            BuildingEffect();
+            _bmp = new Bitmap( info.TexturePath );
+            _costPerMonth = info.CostPerMonth;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
@@ -64,35 +55,23 @@ namespace ITI.Simc_ITI.Build
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
         }
-        public override string Name()
-        {
-            return _info.Name;
-        }
         public override void Destroy()
         {
             _box.Infrasructure = null;
             _box = null;
         }
-        public override void HappynessEffect( int effect )
+        public override void OnCreatedAround( Box b )
         {
+            throw new NotImplementedException();
         }
-        public override bool Private()
+        public override void OnDestroyingAround( Box b )
         {
-            return _info.IsPrivate;
-        }
-        public override int Happyness()
-        {
-            return 0;
+            throw new NotImplementedException();
         }
         public int PricePerMounth
         {
             get { return _costPerMonth; }
             set { _costPerMonth = value; }
-        }
-        public int AreaEffect
-        {
-            get { return _areaEffect; }
-            set { _areaEffect = value; }
         }
         public int MaxCapacity
         {
@@ -104,10 +83,5 @@ namespace ITI.Simc_ITI.Build
             get { return _actualCapacity; }
             set { _actualCapacity = value; }
         }
-        private void BuildingEffect()
-        {
-            _box.AppliedEffect( _areaEffect, _effect );
-        }
-
     }
 }

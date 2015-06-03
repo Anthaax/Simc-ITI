@@ -9,18 +9,12 @@ namespace ITI.Simc_ITI.Build
     public class RoadType : InfrastructureType
     {
         public RoadType()
-            : base( "Route", false, 5, "C:/dev/Textures/RV.bmp" )
+            : base( "Route", 5, 0, "C:/dev/Textures/RV.bmp" )
         {
         }
-
-        public override Infrastructure CreateInfrastructure( Box location )
+        protected override Infrastructure DoCreateInfrastructure( Box location )
         {
-            if( location.Infrasructure == null )
-            {
-                location.Map.Money.ActualMoney -= this.BuildingCost;
                 return new Road( location, this );
-            }
-            return null;
         }
     }
 
@@ -33,14 +27,14 @@ namespace ITI.Simc_ITI.Build
         RoadType _info;
         Box _box;
 
-        public Road( Box b, RoadType Info )
-            : base( b )
+        public Road( Box b, RoadType info )
+            : base( b , info)
         {
-            _info = Info;
+            _info = info;
             _box = b;
             _box.Infrasructure = this;
-            _bmp = new Bitmap( Info.TexturePath );
-            _name = Info.Name;
+            _bmp = new Bitmap( info.TexturePath );
+            _name = info.Name;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
@@ -49,25 +43,18 @@ namespace ITI.Simc_ITI.Build
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
         }
-        public override string Name()
-        {
-            return _name;
-        }
         public override void Destroy()
         {
             _box.Infrasructure = null;
             _box = null;
         }
-        public override void HappynessEffect( int effect )
+        public override void OnCreatedAround( Box b )
         {
+            throw new NotImplementedException();
         }
-        public override bool Private()
+        public override void OnDestroyingAround( Box b )
         {
-            return _info.IsPrivate;
-        }
-        public override int Happyness()
-        {
-            return 0;
+            throw new NotImplementedException();
         }
         public bool Water
         {

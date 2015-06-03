@@ -30,7 +30,6 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
             this.Button_Destroy = new System.Windows.Forms.Button();
             this.Kind_Building = new System.Windows.Forms.Label();
             this.School_Button = new System.Windows.Forms.Button();
@@ -38,6 +37,7 @@
             this.Build_Road = new System.Windows.Forms.Button();
             this.MonArgent = new System.Windows.Forms.Label();
             this.MyMoney = new System.Windows.Forms.Label();
+            this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -88,18 +88,9 @@
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
-            // _mainViewPortControl
-            // 
-            this._mainViewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._mainViewPortControl.Location = new System.Drawing.Point(0, 0);
-            this._mainViewPortControl.Margin = new System.Windows.Forms.Padding(4);
-            this._mainViewPortControl.Name = "_mainViewPortControl";
-            this._mainViewPortControl.Size = new System.Drawing.Size(1184, 369);
-            this._mainViewPortControl.TabIndex = 0;
-            // 
             // Button_Destroy
             // 
-            this.Button_Destroy.Location = new System.Drawing.Point(734, 5);
+            this.Button_Destroy.Location = new System.Drawing.Point(759, 3);
             this.Button_Destroy.Name = "Button_Destroy";
             this.Button_Destroy.Size = new System.Drawing.Size(75, 23);
             this.Button_Destroy.TabIndex = 6;
@@ -171,6 +162,15 @@
             this.MyMoney.Size = new System.Drawing.Size(88, 17);
             this.MyMoney.TabIndex = 1;
             this.MyMoney.Text = "Mon argent :";
+            // 
+            // _mainViewPortControl
+            // 
+            this._mainViewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._mainViewPortControl.Location = new System.Drawing.Point(0, 0);
+            this._mainViewPortControl.Margin = new System.Windows.Forms.Padding(4);
+            this._mainViewPortControl.Name = "_mainViewPortControl";
+            this._mainViewPortControl.Size = new System.Drawing.Size(1184, 369);
+            this._mainViewPortControl.TabIndex = 0;
             // 
             // DemoWindow2
             // 

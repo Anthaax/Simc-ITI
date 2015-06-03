@@ -11,9 +11,10 @@ namespace ITI.Simc_ITI
     {
         Graphics g, screeng;
         readonly Map _map;
-        Bitmap bmpPicture = new Bitmap( "C:/dev/Textures/Terre.bmp" );
+        static readonly Bitmap _defaultBmp = new Bitmap( "C:/dev/Textures/Terre.bmp" );
         readonly int _line;
         readonly int _column;
+
         IInfrastructureForBox Infrastructure;
         public Box( Map map, int line, int column )
         {
@@ -21,6 +22,16 @@ namespace ITI.Simc_ITI
             _line = line;
             _column = column;
         }
+
+        public int Line
+        {
+            get { return _line; }
+        }
+
+        public int Column
+        {
+            get { return _column; }
+        } 
 
         public Rectangle Area
         {
@@ -38,7 +49,7 @@ namespace ITI.Simc_ITI
             if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor );
             else
             {
-                g.DrawImage( bmpPicture, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
+                g.DrawImage( _defaultBmp, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
                 g.DrawRectangle( Pens.DarkGreen, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
             }
         }
@@ -52,65 +63,21 @@ namespace ITI.Simc_ITI
         {
             get { return _map; }
         }
-  
-        public bool CheckTheNearBoxesRoad()
+        public IEnumerable<Box> NearBoxes( int areaEffect )
         {
-            bool _check = false;
-            for(int i = -1; i <= 1; i+=2)
+            List<Box> _nearBoxes = new List<Box>();
+            for( int c = Math.Max( 0, Column - 1 ); c < Math.Min( Map.BoxCount, Column + 2 ); c++ )
             {
-                if( _column + i < 0 || _column + i > 99 || _map.Boxes[_column + i, _line].Infrasructure == null ) ;
-                else if( _map.Boxes[_column + i, _line].Infrasructure.Name() == "Route" )  _check = true;
-            }
-            for( int j = -1; j <= 1; j += 2 )
-            {
-                if( _line + j < 0 || _line + j > 99 || _map.Boxes[_column, _line + j].Infrasructure == null ) ;
-                else if( _map.Boxes[_column, _line + j].Infrasructure.Name() == "Route" )  _check = true;
-            }
-            return _check;
-        }
-
-        public bool CheckTheNearBoxesBuilding()
-        {
-            bool _check = false;
-            for( int i = -1; i <= 1; i += 2 )
-            {
-                if( _column + i < 0 || _column + i > 99 || _map.Boxes[_column + i, _line].Infrasructure == null ) ;
-                else if( _map.Boxes[_column + i, _line].Infrasructure.Name() != "Route" ) _check = true;
-            }
-            for( int j = -1; j <= 1; j += 2 )
-            {
-                if( _line + j < 0 || _line + j > 99 || _map.Boxes[_column, _line + j].Infrasructure == null ) ;
-                else if( _map.Boxes[_column, _line + j].Infrasructure.Name() != "Route" ) _check = true;
-            }
-            return _check;
-        }
-
-        public void AppliedEffect( int areaEffect, int effect )
-        {
-            for(int i = -areaEffect; i <= areaEffect; i++)
-            {
-                if( _column + i < 0 || _column + i > 99 || i == 0 || _map.Boxes[_column + i, _line].Infrasructure == null) ;
-                else if( _map.Boxes[_column + i, _line].Infrasructure.Private() == false ) ;
-                else
+                for( int l = Math.Max( 0, Line - 1 ); l < Math.Min( Map.BoxCount, Line + 2 ); l++ )
                 {
-                    _map.Boxes[_column + i, _line].Infrasructure.HappynessEffect( effect );
-                }   
+                    if( c != Column || l != Line )
+                    {
+                        Box aroundBox = Map.Boxes[c, l];
+                        _nearBoxes.Add( aroundBox );
+                    } 
+                }
             }
-            for(int j = -areaEffect; j <= areaEffect; j++)
-            {
-                if( _line + j < 0 || _line + j > 99 || j == 0 ||_map.Boxes[_column, _line + j].Infrasructure == null ) ;
-                else if( _map.Boxes[_column, _line + j].Infrasructure.Private() == false ) ;
-                else
-                {
-                    _map.Boxes[_column, _line + j].Infrasructure.HappynessEffect( effect );
-                }   
-            }
-        }
-        public int BuildingHappyness()
-        {
-            if( Infrasructure == null ) return 0;
-            else if( Infrasructure.Private() == true ) return Infrasructure.Happyness();
-            else return 0;
+            return _nearBoxes;
         }
     }
 }

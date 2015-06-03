@@ -12,12 +12,12 @@ namespace ITI.Simc_ITI.Build
         int _happyness;
         int _turnover;
         public CommerceType()
-            : base( "Commerce", true, 0, "C:/dev/Textures/Commerce.bmp" )
+            : base( "Commerce", 0, 5, "C:/dev/Textures/Commerce.bmp" )
         {
             _happyness = 50;
             _turnover = 5000;
         }
-        public override Infrastructure CreateInfrastructure( Box location )
+        protected override Infrastructure DoCreateInfrastructure( Box location )
         {
             if( location.Infrasructure == null )
             {
@@ -28,7 +28,7 @@ namespace ITI.Simc_ITI.Build
         }
         public int Happyness { get { return _happyness; } }
     }
-    public class Commerce : Infrastructure
+    public class Commerce : Infrastructure, IHappynessImpact
     {
         int _hapyness;
         int _maxCapacity;
@@ -37,14 +37,14 @@ namespace ITI.Simc_ITI.Build
         CommerceType _info;
         Box _box;
 
-        public Commerce( Box b, CommerceType Info )
-            : base( b )
+        public Commerce( Box b, CommerceType info )
+            : base( b, info)
         {
-            _info = Info;
+            _info = info;
             _box = b;
             _box.Infrasructure = this;
-            _bmp = new Bitmap( Info.TexturePath );
-            _hapyness = Info.Happyness;
+            _bmp = new Bitmap( info.TexturePath );
+            _hapyness = info.Happyness;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
@@ -53,27 +53,20 @@ namespace ITI.Simc_ITI.Build
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
         }
-        public override string Name()
-        {
-            return _info.Name;
-        }
         public override void Destroy()
         {
             _box.Infrasructure = null;
             _box = null;
         }
-        public override void HappynessEffect( int effect )
+        public override void OnCreatedAround( Box b )
         {
-            _hapyness = _hapyness + effect;
+            throw new NotImplementedException();
         }
-        public override bool Private()
+        public override void OnDestroyingAround( Box b )
         {
-            return _info.IsPrivate;
+            throw new NotImplementedException();
         }
-        public override int Happyness()
-        {
-            return _hapyness;
-        }
+        public int Happyness { get { return _hapyness; } }
         public int MaxCapacity
         {
             get { return _maxCapacity; }

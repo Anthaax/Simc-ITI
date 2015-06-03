@@ -50,6 +50,7 @@
     <Compile Include="Box.cs" />
     <Compile Include="BoxRenderInfo.cs" />
     <Compile Include="IInfrastructureForBox.cs" />
+    <Compile Include="IInfrastructureType.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Textures.cs" />

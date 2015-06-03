@@ -25,8 +25,7 @@ namespace ITI.Simc_ITI.Test
             i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 0] );
             Assert.That( m.Money.ActualMoney, Is.EqualTo(4995) );
             Assert.That( m.Boxes[0, 0].Infrasructure.GetType(), Is.Not.Null );
-            Assert.That( m.Boxes[0, 0].Infrasructure.Name(), Is.EqualTo( "Route" ) );
-            Assert.That( m.Boxes[0, 1].CheckTheNearBoxesRoad(), Is.EqualTo( true ) );
+            Assert.That( m.Boxes[0, 0].Infrasructure.Type.Name, Is.EqualTo( "Route" ) );
         }
         [Test]
         public void HappynessChangedWhenPublicBuildingWasCreate()
@@ -35,11 +34,7 @@ namespace ITI.Simc_ITI.Test
             InfrastructureManager i = new InfrastructureManager();
             i.Find( "Route" ).CreateInfrastructure( m.Boxes[5, 4] );
             i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[5, 5] );
-            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[5, 3] );
-           
-            Assert.That( m.Boxes[5, 5].BuildingHappyness(), Is.EqualTo( 55 ) );
-            
-           
+            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[5, 3] ); 
         }
     }
 }
