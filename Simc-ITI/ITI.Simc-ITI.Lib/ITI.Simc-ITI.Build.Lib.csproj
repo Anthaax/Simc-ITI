@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commerce.cs" />
+    <Compile Include="CustomisationBuilding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomisationBuilding.Designer.cs">
+      <DependentUpon>CustomisationBuilding.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ecole.cs" />
+    <Compile Include="Habitation.cs" />
+    <Compile Include="IHappynessImpact.cs" />
     <Compile Include="Infrastructure.cs" />
     <Compile Include="InfrastructureManager.cs" />
     <Compile Include="InfrastructureType.cs" />
@@ -56,6 +66,11 @@
       <Project>{f1babca6-8bbe-442e-bbb0-d6a9b116d08f}</Project>
       <Name>ITI.Simc-ITI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomisationBuilding.resx">
+      <DependentUpon>CustomisationBuilding.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

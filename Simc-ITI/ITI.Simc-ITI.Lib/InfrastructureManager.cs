@@ -20,6 +20,8 @@ namespace ITI.Simc_ITI.Build
         {
             RegisterType( new EcoleType() );
             RegisterType( new RoadType() );
+            RegisterType( new HabitationType() );
+            RegisterType( new CommerceType() );
         }
 
         void RegisterType( InfrastructureType t )
@@ -37,6 +39,5 @@ namespace ITI.Simc_ITI.Build
         {
             get { return _types.Values; }
         }
-
     }
 }

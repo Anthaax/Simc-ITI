@@ -30,11 +30,14 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.Button_Destroy = new System.Windows.Forms.Button();
+            this.Kind_Building = new System.Windows.Forms.Label();
+            this.School_Button = new System.Windows.Forms.Button();
+            this.Coordonnées = new System.Windows.Forms.Label();
+            this.Build_Road = new System.Windows.Forms.Button();
             this.MonArgent = new System.Windows.Forms.Label();
             this.MyMoney = new System.Windows.Forms.Label();
-            this.Build_Road = new System.Windows.Forms.Button();
             this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
-            this.Coordonnées = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -58,6 +61,9 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.Button_Destroy);
+            this.splitContainer1.Panel2.Controls.Add(this.Kind_Building);
+            this.splitContainer1.Panel2.Controls.Add(this.School_Button);
             this.splitContainer1.Panel2.Controls.Add(this.Coordonnées);
             this.splitContainer1.Panel2.Controls.Add(this.Build_Road);
             this.splitContainer1.Panel2.Controls.Add(this.MonArgent);
@@ -82,6 +88,59 @@
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
+            // Button_Destroy
+            // 
+            this.Button_Destroy.Location = new System.Drawing.Point(759, 3);
+            this.Button_Destroy.Name = "Button_Destroy";
+            this.Button_Destroy.Size = new System.Drawing.Size(75, 23);
+            this.Button_Destroy.TabIndex = 6;
+            this.Button_Destroy.Text = "Détruire";
+            this.Button_Destroy.UseVisualStyleBackColor = true;
+            this.Button_Destroy.Visible = false;
+            this.Button_Destroy.Click += new System.EventHandler(this.Button_Destroy_Click);
+            // 
+            // Kind_Building
+            // 
+            this.Kind_Building.AutoSize = true;
+            this.Kind_Building.Location = new System.Drawing.Point(599, 27);
+            this.Kind_Building.Name = "Kind_Building";
+            this.Kind_Building.Size = new System.Drawing.Size(48, 17);
+            this.Kind_Building.TabIndex = 5;
+            this.Kind_Building.Text = "Type :";
+            this.Kind_Building.Visible = false;
+            // 
+            // School_Button
+            // 
+            this.School_Button.Location = new System.Drawing.Point(13, 40);
+            this.School_Button.Name = "School_Button";
+            this.School_Button.Size = new System.Drawing.Size(75, 23);
+            this.School_Button.TabIndex = 5;
+            this.School_Button.Text = "Ecole";
+            this.School_Button.UseVisualStyleBackColor = true;
+            this.School_Button.Visible = false;
+            this.School_Button.Click += new System.EventHandler(this.School_Button_Click);
+            // 
+            // Coordonnées
+            // 
+            this.Coordonnées.AutoSize = true;
+            this.Coordonnées.Location = new System.Drawing.Point(599, 10);
+            this.Coordonnées.Name = "Coordonnées";
+            this.Coordonnées.Size = new System.Drawing.Size(129, 17);
+            this.Coordonnées.TabIndex = 4;
+            this.Coordonnées.Text = "Coordonnées : 0, 0";
+            this.Coordonnées.Visible = false;
+            // 
+            // Build_Road
+            // 
+            this.Build_Road.Location = new System.Drawing.Point(13, 10);
+            this.Build_Road.Name = "Build_Road";
+            this.Build_Road.Size = new System.Drawing.Size(75, 23);
+            this.Build_Road.TabIndex = 3;
+            this.Build_Road.Text = "Route";
+            this.Build_Road.UseVisualStyleBackColor = true;
+            this.Build_Road.Visible = false;
+            this.Build_Road.Click += new System.EventHandler(this.buton_Grass_Click);
+            // 
             // MonArgent
             // 
             this.MonArgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -98,22 +157,11 @@
             this.MyMoney.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MyMoney.AutoSize = true;
-            this.MyMoney.Location = new System.Drawing.Point(1121, 10);
+            this.MyMoney.Location = new System.Drawing.Point(1113, 10);
             this.MyMoney.Name = "MyMoney";
             this.MyMoney.Size = new System.Drawing.Size(88, 17);
             this.MyMoney.TabIndex = 1;
             this.MyMoney.Text = "Mon argent :";
-            // 
-            // Build_Road
-            // 
-            this.Build_Road.Location = new System.Drawing.Point(13, 10);
-            this.Build_Road.Name = "Build_Road";
-            this.Build_Road.Size = new System.Drawing.Size(75, 23);
-            this.Build_Road.TabIndex = 3;
-            this.Build_Road.Text = "Road";
-            this.Build_Road.UseVisualStyleBackColor = true;
-            this.Build_Road.Visible = false;
-            this.Build_Road.Click += new System.EventHandler(this.buton_Grass_Click);
             // 
             // _mainViewPortControl
             // 
@@ -123,16 +171,6 @@
             this._mainViewPortControl.Name = "_mainViewPortControl";
             this._mainViewPortControl.Size = new System.Drawing.Size(1184, 369);
             this._mainViewPortControl.TabIndex = 0;
-            // 
-            // Coordonnées
-            // 
-            this.Coordonnées.AutoSize = true;
-            this.Coordonnées.Location = new System.Drawing.Point(599, 10);
-            this.Coordonnées.Name = "Coordonnées";
-            this.Coordonnées.Size = new System.Drawing.Size(129, 17);
-            this.Coordonnées.TabIndex = 4;
-            this.Coordonnées.Text = "Coordonnées : 0, 0";
-            this.Coordonnées.Visible = false;
             // 
             // DemoWindow2
             // 
@@ -144,6 +182,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DemoWindow2";
             this.Text = "Simc\'ITI";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DemoWindow2_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -166,5 +205,8 @@
         private System.Windows.Forms.Label MyMoney;
         private System.Windows.Forms.Button Build_Road;
         private System.Windows.Forms.Label Coordonnées;
+        private System.Windows.Forms.Label Kind_Building;
+        private System.Windows.Forms.Button School_Button;
+        private System.Windows.Forms.Button Button_Destroy;
     }
 }

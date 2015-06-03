@@ -11,9 +11,10 @@ namespace ITI.Simc_ITI
     {
         Graphics g, screeng;
         readonly Map _map;
-        Bitmap bmpPicture = new Bitmap( "C:/dev/Textures/Terre.bmp" );
+        static readonly Bitmap _defaultBmp = new Bitmap( "C:/dev/Textures/Terre.bmp" );
         readonly int _line;
         readonly int _column;
+
         IInfrastructureForBox Infrastructure;
         public Box( Map map, int line, int column )
         {
@@ -21,6 +22,16 @@ namespace ITI.Simc_ITI
             _line = line;
             _column = column;
         }
+
+        public int Line
+        {
+            get { return _line; }
+        }
+
+        public int Column
+        {
+            get { return _column; }
+        } 
 
         public Rectangle Area
         {
@@ -38,7 +49,7 @@ namespace ITI.Simc_ITI
             if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor );
             else
             {
-                g.DrawImage( bmpPicture, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
+                g.DrawImage( _defaultBmp, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
                 g.DrawRectangle( Pens.DarkGreen, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
             }
         }
@@ -51,6 +62,22 @@ namespace ITI.Simc_ITI
         public Map Map
         {
             get { return _map; }
-        }  
+        }
+        public IEnumerable<Box> NearBoxes( int areaEffect )
+        {
+            List<Box> _nearBoxes = new List<Box>();
+            for( int c = Math.Max( 0, Column - 1 ); c < Math.Min( Map.BoxCount, Column + 2 ); c++ )
+            {
+                for( int l = Math.Max( 0, Line - 1 ); l < Math.Min( Map.BoxCount, Line + 2 ); l++ )
+                {
+                    if( c != Column || l != Line )
+                    {
+                        Box aroundBox = Map.Boxes[c, l];
+                        _nearBoxes.Add( aroundBox );
+                    } 
+                }
+            }
+            return _nearBoxes;
+        }
     }
 }

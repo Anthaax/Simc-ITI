@@ -34,9 +34,9 @@ namespace ITI.Simc_ITI.Rendering
 
         private void buton_Grass_Click( object sender, EventArgs e )
         {
-            _infManager.Find( "Road" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
+            _infManager.Find( "Route" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
             _mainViewPortControl.Invalidate();
-            Build_Road.Visible = false;
+            AllButtonInvisible();
         }
   
         private void label_MonArgent_text( object sender, EventArgs e)
@@ -91,12 +91,52 @@ namespace ITI.Simc_ITI.Rendering
             int _mouseY = e.Y;
             _xBox = (_mainViewPortControl.ViewPort.Area.X / _map.BoxWidth) + _mouseX / _boxInPixel ;
             _yBox = (_mainViewPortControl.ViewPort.Area.Y / _map.BoxWidth) + _mouseY / _boxInPixel ;
+
+            if( _xBox == 100 ) _xBox = 99;
+            else if( _yBox == 100 ) _yBox = 99;
+
             if( _map.Boxes[_xBox, _yBox].Infrasructure == null)
             {
-                Build_Road.Visible = true;               
+                AllButtonInvisible();
+                if( _infManager.Find("Habitation").CanCreated(_map.Boxes[_xBox, _yBox]) == true ) AllButtonVisible();
+                Build_Road.Visible = true;
+            }
+            else
+            {
+                AllButtonInvisible();
+                Kind_Building.Visible = true;
+                Kind_Building.Text = "Type du batiment : Une " + _map.Boxes[_xBox, _yBox].Infrasructure.Type.Name + ".";
+                if( _infManager.Find( _map.Boxes[_xBox, _yBox].Infrasructure.Type.Name ).CanDestroy( _map.Boxes[_xBox, _yBox] ) == false ) Button_Destroy.Visible = true;
             }
             Coordonnées.Visible = true;
             Coordonnées.Text = "Coordonnées : " + _xBox + " , " + _yBox;
+        }
+
+        private void School_Button_Click( object sender, EventArgs e )
+        {
+            _infManager.Find( "Ecole" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
+            _mainViewPortControl.Invalidate();
+            AllButtonInvisible();
+        }
+
+        private void Button_Destroy_Click( object sender, EventArgs e )
+        {
+            _map.Money.ActualMoney += _map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
+            _map.Boxes[_xBox, _yBox].Infrasructure.Destroy();
+            AllButtonInvisible();
+            _mainViewPortControl.Invalidate();
+        }
+        private void AllButtonInvisible()
+        {
+            Button_Destroy.Visible = false;
+            School_Button.Visible = false;
+            Build_Road.Visible = false;
+            Kind_Building.Visible = false;
+        }
+        private void AllButtonVisible()
+        {
+            School_Button.Visible = true;
+            Build_Road.Visible = true;
         }
     }
 }

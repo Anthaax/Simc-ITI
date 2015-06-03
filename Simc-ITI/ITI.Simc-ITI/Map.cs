@@ -38,6 +38,10 @@ namespace ITI.Simc_ITI
             get { return _myMoney; }
         }
 
+        /// <summary>
+        /// Gets the number of boxes horizontally or vertically.
+        /// This is the square root of the total number of boxes.
+        /// </summary>
         public int BoxCount
         {
             get { return _boxCount; }

@@ -2,39 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
-    public class RoadType : InfrastructureType
+    public class HabitationType : InfrastructureType
     {
-        public RoadType()
-            : base( "Route", 5, 0, "C:/dev/Textures/RV.bmp" )
+        int _happyness;
+        public HabitationType()
+            : base( "Habitation", 0, 0, "C:/dev/Textures/Habitation.bmp" )
         {
+            _happyness = 50;
         }
         protected override Infrastructure DoCreateInfrastructure( Box location )
         {
-                return new Road( location, this );
+                return new Habitation( location, this );
         }
+        public int Happyness { get { return _happyness; } }
     }
-
-    public class Road : Infrastructure
+    public class Habitation : Infrastructure, IHappynessImpact
     {
-        string _name;
-        bool _water;
-        bool _electricity;
+        int _hapyness;
+        int _maxCapacity;
+        int _actualCapacity;
         Bitmap _bmp;
-        RoadType _info;
+        HabitationType _info;
         Box _box;
 
-        public Road( Box b, RoadType info )
-            : base( b , info)
+        public Habitation(Box b, HabitationType info)
+            : base(b, info)
         {
             _info = info;
             _box = b;
             _box.Infrasructure = this;
-            _bmp = new Bitmap( info.TexturePath );
-            _name = info.Name;
+            _bmp = new Bitmap(info.TexturePath);
+            _hapyness = info.Happyness;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
@@ -56,15 +59,16 @@ namespace ITI.Simc_ITI.Build
         {
             throw new NotImplementedException();
         }
-        public bool Water
+        public int Happyness { get { return _hapyness; } }
+        public int MaxCapacity
         {
-            get { return _water; }
-            set { _water = value; }
+            get { return _maxCapacity; }
+            set { _maxCapacity = value; }
         }
-        public bool Electricity
+        public int ActualCapacity
         {
-            get { return _electricity; }
-            set { _electricity = value; }
+            get { return _actualCapacity; }
+            set { _actualCapacity = value; }
         }
     }
 }

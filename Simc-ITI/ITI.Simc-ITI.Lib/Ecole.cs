@@ -9,59 +9,66 @@ namespace ITI.Simc_ITI.Build
 {
     public class EcoleType : InfrastructureType
     {
-        
+        int _costPerMonth;
+        int _maxCapacity;
         public EcoleType()
-            : base( "Ecole", 500, "C:/dev/Textures/College.bmp" )
+            : base( "Ecole", 500, 10,"C:/dev/Textures/Ecole.bmp")
         {
+            _costPerMonth = 100;
+            _maxCapacity = 200;
         }
 
-        public override Infrastructure CreateInfrastructure( Box location )
+        protected override Infrastructure DoCreateInfrastructure( Box location )
         {
-            if( location.Infrasructure == null )
-            {
-                location.Map.Money.ActualMoney -= this.BuildingCost;
-                return new Ecole( location, this );
-            }
-            return null;
+            return new Ecole( location, this );
         }
+        public int CostPerMonth { get { return _costPerMonth; } }
+        public int MaxCapacity { get { return _maxCapacity; } }
     }
 
 
     public class Ecole : Infrastructure
     {
-        int _areaEffect;
-        int _pricePerMounth;
+        int _costPerMonth;
         int _maxCapacity;
         int _actualCapacity;
         Bitmap _bmp;
         EcoleType _info;
         Box _box;
 
-        public Ecole(Box b, EcoleType Info)
-            : base(b)
+        public Ecole(Box b, EcoleType info)
+            : base(b, info)
         {
-            _info = Info;
+            _info = info;
             _box = b;
             _box.Infrasructure = this;
-            _bmp = new Bitmap(Info.TexturePath);
+            _bmp = new Bitmap( info.TexturePath );
+            _costPerMonth = info.CostPerMonth;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
             Rectangle r = new Rectangle( 0, 0, _box.Map.BoxWidth, _box.Map.BoxWidth );
-            g.DrawImage( _bmp, _box.Area );
-            g.DrawRectangle( Pens.DarkGreen, _box.Area );
-            r.Inflate( -_box.Map.BoxWidth / 12, -_box.Map.BoxWidth / 12 );
+            g.DrawImage( _bmp, r );
+            g.DrawRectangle( Pens.DarkGreen, r );
+        }
+        public override void Destroy()
+        {
+            _box.Infrasructure = null;
+            _box = null;
+        }
+        public override void OnCreatedAround( Box b )
+        {
+            throw new NotImplementedException();
+        }
+        public override void OnDestroyingAround( Box b )
+        {
+            throw new NotImplementedException();
         }
         public int PricePerMounth
         {
-            get { return _pricePerMounth; }
-            set { _pricePerMounth = value; }
-        }
-        public int AreaEffect
-        {
-            get { return _areaEffect; }
-            set { _areaEffect = value; }
+            get { return _costPerMonth; }
+            set { _costPerMonth = value; }
         }
         public int MaxCapacity
         {
