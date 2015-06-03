@@ -28,29 +28,29 @@ namespace ITI.Simc_ITI.Build
 
         public bool CanCreated( Box b )
         {
-            bool _check = false;
-            IEnumerable<Box> _nearBoxes = b.NearBoxes( 1 );
-            foreach( var box in _nearBoxes )
+            bool check = false;
+            IEnumerable<Box> nearBoxes = b.NearBoxes( 1 );
+            foreach( var box in nearBoxes )
             {
                 if( box.Infrasructure != null )
                 {
-                    if( box.Infrasructure.Type.Name == "Route" ) _check = true;
+                    if( box.Infrasructure.Type.Name == "Route" ) check = true;
                 }
             }
-            return _check;
+            return check;
         }
         public bool CanDestroy(Box b)
         {
-            bool _check = false;
-            IEnumerable<Box> _nearBoxes = b.NearBoxes( 1 );
-            foreach( var box in _nearBoxes )
+            bool check = false;
+            IEnumerable<Box> nearBoxes = b.NearBoxes( 1 );
+            foreach( var box in nearBoxes )
             {
                 if( box.Infrasructure != null )
                 {
-                    if( box.Infrasructure.Type.Name != "Route" ) _check = true;
+                    if( box.Infrasructure.Type.Name != "Route" ) check = true;
                 }
             }
-            return _check;
+            return check;
         }
         public Infrastructure CreateInfrastructure( Box b )
         {

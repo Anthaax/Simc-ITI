@@ -10,7 +10,6 @@ namespace ITI.Simc_ITI.Build
     public class EcoleType : InfrastructureType
     {
         int _costPerMonth;
-        int _areaEffect;
         int _maxCapacity;
         public EcoleType()
             : base( "Ecole", 500, 10,"C:/dev/Textures/Ecole.bmp")
@@ -30,11 +29,9 @@ namespace ITI.Simc_ITI.Build
 
     public class Ecole : Infrastructure
     {
-        int _areaEffect;
         int _costPerMonth;
         int _maxCapacity;
         int _actualCapacity;
-        int _effect = 5;
         Bitmap _bmp;
         EcoleType _info;
         Box _box;

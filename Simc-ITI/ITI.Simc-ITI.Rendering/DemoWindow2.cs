@@ -131,6 +131,7 @@ namespace ITI.Simc_ITI.Rendering
             Button_Destroy.Visible = false;
             School_Button.Visible = false;
             Build_Road.Visible = false;
+            Kind_Building.Visible = false;
         }
         private void AllButtonVisible()
         {
