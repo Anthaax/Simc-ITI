@@ -50,11 +50,9 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnCreatedAround( Box b )
         {
-            throw new NotImplementedException();
         }
         public override void OnDestroyingAround( Box b )
         {
-            throw new NotImplementedException();
         }
         public bool Water
         {

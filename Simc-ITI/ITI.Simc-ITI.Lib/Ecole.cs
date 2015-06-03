@@ -70,7 +70,7 @@ namespace ITI.Simc_ITI.Build
         {
 
         }
-        public int Happyness { get { return _happynessImpact; } }
+        public int HappynessImpact { get { return _happynessImpact; } }
         public int PricePerMounth
         {
             get { return _costPerMonth; }

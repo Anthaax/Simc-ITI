@@ -56,7 +56,7 @@ namespace ITI.Simc_ITI.Build
             IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
             if( impact != null )
             {
-                Happyness += impact.HappynessImppact;
+                Happyness += impact.HappynessImpact;
             }
         }
         public override void OnDestroyingAround( Box b )

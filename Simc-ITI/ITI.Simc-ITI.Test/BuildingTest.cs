@@ -30,11 +30,26 @@ namespace ITI.Simc_ITI.Test
         [Test]
         public void HappynessChangedWhenPublicBuildingWasCreate()
         {
-            Map m = new Map( 10, 20 );
+            Map m = new Map( 10, 10 );
             InfrastructureManager i = new InfrastructureManager();
-            i.Find( "Route" ).CreateInfrastructure( m.Boxes[5, 4] );
-            i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[5, 5] );
-            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[5, 3] ); 
+            i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 4] );
+            bool canCreateHabitation = i.Find( "Habitation" ).CanCreated( m.Boxes[0, 5] );
+            bool canCreateEcole = i.Find( "Ecole" ).CanCreated( m.Boxes[0, 3] );
+            Assert.That( canCreateEcole, Is.EqualTo( true ) );
+            Assert.That( canCreateHabitation, Is.EqualTo( true ) );
+            i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[0, 5] );
+            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[0, 3] );
+            Habitation happy = m.GetAllInfrastucture<Habitation>() as Habitation;
+            Assert.That( happy.Happyness, Is.EqualTo( 55 ) );
+        }
+        [Test]
+        public void UpdateGame()
+        {
+            Map m = new Map( 10, 10 );
+            InfrastructureManager i = new InfrastructureManager();
+            i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 5] );
+            i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[0, 4] );
+            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[0, 6] );
         }
     }
 }

@@ -57,18 +57,12 @@ namespace ITI.Simc_ITI.Build
             if( b.Infrasructure != null ) throw new InvalidOperationException( "The box alreay has an Infrastructure." );
             b.Map.Money.ActualMoney -= BuildingCost;
             Infrastructure infra = DoCreateInfrastructure( b );
-            for( int c = Math.Max( 0, b.Column - infra.AreaEffect ); c < Math.Min( b.Map.BoxCount, b.Column + infra.AreaEffect ); c++ )
+            IEnumerable<Box> nearBoxes = b.NearBoxes( infra.Type.AreaEffect );
+            foreach( var box in nearBoxes )
             {
-                for( int l = Math.Max( 0, b.Line - infra.AreaEffect ); l < Math.Min( b.Map.BoxCount, b.Line + infra.AreaEffect ); l++ )
+                if( box.Infrasructure != null )
                 {
-                    if( c != b.Column || l != b.Line )
-                    {
-                        Box aroundBox = b.Map.Boxes[c, l];
-                        if( aroundBox.Infrasructure != null )
-                        {
-                            aroundBox.Infrasructure.OnCreatedAround( b );
-                        }
-                    }
+                    if( box.Infrasructure != null ) box.Infrasructure.OnCreatedAround( b );
                 }
             }
             return infra;
