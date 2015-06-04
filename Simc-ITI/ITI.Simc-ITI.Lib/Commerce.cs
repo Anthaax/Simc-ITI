@@ -53,11 +53,7 @@ namespace ITI.Simc_ITI.Build
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
         }
-        public override void Destroy()
-        {
-            _box.Infrasructure = null;
-            _box = null;
-        }
+
         public override void OnCreatedAround( Box b )
         {
             IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
@@ -68,7 +64,11 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnDestroyingAround( Box b )
         {
-            throw new NotImplementedException();
+            IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
+            if( impact != null )
+            {
+                Happyness -= impact.HappynessImpact;
+            }
         }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }

@@ -30,6 +30,9 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
+            this.HabitationBuild = new System.Windows.Forms.Button();
+            this.HumeurLabel = new System.Windows.Forms.Label();
             this.Button_Destroy = new System.Windows.Forms.Button();
             this.Kind_Building = new System.Windows.Forms.Label();
             this.School_Button = new System.Windows.Forms.Button();
@@ -37,7 +40,6 @@
             this.Build_Road = new System.Windows.Forms.Button();
             this.MonArgent = new System.Windows.Forms.Label();
             this.MyMoney = new System.Windows.Forms.Label();
-            this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -61,6 +63,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.HabitationBuild);
+            this.splitContainer1.Panel2.Controls.Add(this.HumeurLabel);
             this.splitContainer1.Panel2.Controls.Add(this.Button_Destroy);
             this.splitContainer1.Panel2.Controls.Add(this.Kind_Building);
             this.splitContainer1.Panel2.Controls.Add(this.School_Button);
@@ -88,6 +92,34 @@
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
+            // _mainViewPortControl
+            // 
+            this._mainViewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._mainViewPortControl.Location = new System.Drawing.Point(0, 0);
+            this._mainViewPortControl.Margin = new System.Windows.Forms.Padding(4);
+            this._mainViewPortControl.Name = "_mainViewPortControl";
+            this._mainViewPortControl.Size = new System.Drawing.Size(1184, 369);
+            this._mainViewPortControl.TabIndex = 0;
+            // 
+            // HabitationBuild
+            // 
+            this.HabitationBuild.Location = new System.Drawing.Point(13, 69);
+            this.HabitationBuild.Name = "HabitationBuild";
+            this.HabitationBuild.Size = new System.Drawing.Size(90, 23);
+            this.HabitationBuild.TabIndex = 8;
+            this.HabitationBuild.Text = "Habitation";
+            this.HabitationBuild.UseVisualStyleBackColor = true;
+            this.HabitationBuild.Click += new System.EventHandler(this.CreateHabitation);
+            // 
+            // HumeurLabel
+            // 
+            this.HumeurLabel.AutoSize = true;
+            this.HumeurLabel.Location = new System.Drawing.Point(1116, 40);
+            this.HumeurLabel.Name = "HumeurLabel";
+            this.HumeurLabel.Size = new System.Drawing.Size(66, 17);
+            this.HumeurLabel.TabIndex = 7;
+            this.HumeurLabel.Text = "Humeur :";
+            // 
             // Button_Destroy
             // 
             this.Button_Destroy.Location = new System.Drawing.Point(759, 3);
@@ -113,7 +145,7 @@
             // 
             this.School_Button.Location = new System.Drawing.Point(13, 40);
             this.School_Button.Name = "School_Button";
-            this.School_Button.Size = new System.Drawing.Size(75, 23);
+            this.School_Button.Size = new System.Drawing.Size(90, 23);
             this.School_Button.TabIndex = 5;
             this.School_Button.Text = "Ecole";
             this.School_Button.UseVisualStyleBackColor = true;
@@ -134,7 +166,7 @@
             // 
             this.Build_Road.Location = new System.Drawing.Point(13, 10);
             this.Build_Road.Name = "Build_Road";
-            this.Build_Road.Size = new System.Drawing.Size(75, 23);
+            this.Build_Road.Size = new System.Drawing.Size(90, 23);
             this.Build_Road.TabIndex = 3;
             this.Build_Road.Text = "Route";
             this.Build_Road.UseVisualStyleBackColor = true;
@@ -162,15 +194,6 @@
             this.MyMoney.Size = new System.Drawing.Size(88, 17);
             this.MyMoney.TabIndex = 1;
             this.MyMoney.Text = "Mon argent :";
-            // 
-            // _mainViewPortControl
-            // 
-            this._mainViewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._mainViewPortControl.Location = new System.Drawing.Point(0, 0);
-            this._mainViewPortControl.Margin = new System.Windows.Forms.Padding(4);
-            this._mainViewPortControl.Name = "_mainViewPortControl";
-            this._mainViewPortControl.Size = new System.Drawing.Size(1184, 369);
-            this._mainViewPortControl.TabIndex = 0;
             // 
             // DemoWindow2
             // 
@@ -208,5 +231,7 @@
         private System.Windows.Forms.Label Kind_Building;
         private System.Windows.Forms.Button School_Button;
         private System.Windows.Forms.Button Button_Destroy;
+        private System.Windows.Forms.Label HumeurLabel;
+        private System.Windows.Forms.Button HabitationBuild;
     }
 }

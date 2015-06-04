@@ -38,6 +38,7 @@ namespace ITI.Simc_ITI.Build
             _box.Infrasructure = this;
             _bmp = new Bitmap(info.TexturePath);
             _hapyness = info.Happyness;
+            CheckAllNearBoxes();
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
@@ -45,11 +46,6 @@ namespace ITI.Simc_ITI.Build
             Rectangle r = new Rectangle( 0, 0, _box.Map.BoxWidth, _box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
-        }
-        public override void Destroy()
-        {
-            _box.Infrasructure = null;
-            _box = null;
         }
         public override void OnCreatedAround( Box b )
         {
@@ -61,10 +57,24 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnDestroyingAround( Box b )
         {
-            throw new NotImplementedException();
+            IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
+            if( impact != null )
+            {
+                Happyness -= impact.HappynessImpact;
+            }
         }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
-        
+        public void CheckAllNearBoxes()
+        {
+            IEnumerable<Box> nearBox = _box.NearBoxes( 10 );
+            foreach( var box in nearBox)
+            {
+                if( box.Infrasructure != null )
+                {
+                    OnCreatedAround( box );
+                }
+            }
+        }
     }
 }

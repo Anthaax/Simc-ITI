@@ -7,6 +7,6 @@ namespace ITI.Simc_ITI.Build
 {
     public interface ITaxation
     {
-        public int Taxation { get; set; }
+        int Taxation { get; set; }
     }
 }

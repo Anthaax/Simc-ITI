@@ -62,7 +62,7 @@ namespace ITI.Simc_ITI.Build
             {
                 if( box.Infrasructure != null )
                 {
-                    if( box.Infrasructure != null ) box.Infrasructure.OnCreatedAround( b );
+                    box.Infrasructure.OnCreatedAround( b );
                 }
             }
             return infra;

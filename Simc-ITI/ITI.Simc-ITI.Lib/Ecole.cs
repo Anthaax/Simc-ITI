@@ -57,11 +57,6 @@ namespace ITI.Simc_ITI.Build
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
         }
-        public override void Destroy()
-        {
-            _box.Infrasructure = null;
-            _box = null;
-        }
         public override void OnCreatedAround( Box b )
         {
             

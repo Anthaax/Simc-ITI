@@ -39,7 +39,7 @@ namespace ITI.Simc_ITI.Test
             Assert.That( canCreateHabitation, Is.EqualTo( true ) );
             i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[0, 5] );
             i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[0, 3] );
-            Habitation happy = m.GetAllInfrastucture<Habitation>() as Habitation;
+            IHappyness happy = m.GetAllInfrastucture<IHappyness>().Single();
             Assert.That( happy.Happyness, Is.EqualTo( 55 ) );
         }
         [Test]
@@ -50,6 +50,7 @@ namespace ITI.Simc_ITI.Test
             i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 5] );
             i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[0, 4] );
             i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[0, 6] );
+            
         }
     }
 }

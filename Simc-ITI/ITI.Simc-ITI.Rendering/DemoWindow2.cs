@@ -30,11 +30,21 @@ namespace ITI.Simc_ITI.Rendering
             _map.Money.ActualMoneyChanged += label_MonArgent_text;
             scalefactor = _mainViewPortControl.ViewPort.ActualZoomFactor;
             _mainViewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
+            AllButtonInvisible();
         }
 
         private void buton_Grass_Click( object sender, EventArgs e )
         {
             _infManager.Find( "Route" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
+            HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%"; 
+            _mainViewPortControl.Invalidate();
+            AllButtonInvisible();
+        }
+
+        void CreateHabitation(object sender , EventArgs e )
+        {
+            _infManager.Find( "Habitation" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
+            HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%";
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
         }
@@ -115,6 +125,7 @@ namespace ITI.Simc_ITI.Rendering
         private void School_Button_Click( object sender, EventArgs e )
         {
             _infManager.Find( "Ecole" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
+            HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%"; 
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
         }
@@ -122,7 +133,9 @@ namespace ITI.Simc_ITI.Rendering
         private void Button_Destroy_Click( object sender, EventArgs e )
         {
             _map.Money.ActualMoney += _map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
+
             _map.Boxes[_xBox, _yBox].Infrasructure.Destroy();
+            HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%"; 
             AllButtonInvisible();
             _mainViewPortControl.Invalidate();
         }
@@ -132,11 +145,25 @@ namespace ITI.Simc_ITI.Rendering
             School_Button.Visible = false;
             Build_Road.Visible = false;
             Kind_Building.Visible = false;
+            HabitationBuild.Visible = false;
         }
         private void AllButtonVisible()
         {
             School_Button.Visible = true;
             Build_Road.Visible = true;
+            HabitationBuild.Visible = true;
+        }
+        private int AverageHappyness()
+        {
+            int totalHappyness = 0;
+            IEnumerable<IHappyness> happy = _map.GetAllInfrastucture<IHappyness>();
+            if( happy.FirstOrDefault() == null ) return 50;
+            foreach( var happyness in happy)
+            {
+                totalHappyness += happyness.Happyness;
+            }
+            totalHappyness = totalHappyness / happy.Count<IHappyness>();
+            return totalHappyness;
         }
     }
 }

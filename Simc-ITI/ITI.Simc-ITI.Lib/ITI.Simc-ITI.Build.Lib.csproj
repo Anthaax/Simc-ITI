@@ -55,6 +55,7 @@
     <Compile Include="InfrastructureManager.cs" />
     <Compile Include="InfrastructureType.cs" />
     <Compile Include="IHappyness.cs" />
+    <Compile Include="ITaxation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Road.cs" />
   </ItemGroup>
