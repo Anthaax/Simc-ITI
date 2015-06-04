@@ -21,11 +21,11 @@ namespace ITI.Simc_ITI.Build
         }
         public int Happyness { get { return _happyness; } }
     }
-    public class Habitation : Infrastructure, IHappyness
+    public class Habitation : Infrastructure, IHappyness, ITaxation
     {
         int _hapyness;
-        int _maxCapacity;
-        int _actualCapacity;
+        int _salary;
+        int _taxation;
         Bitmap _bmp;
         HabitationType _info;
         Box _box;
@@ -64,15 +64,7 @@ namespace ITI.Simc_ITI.Build
             throw new NotImplementedException();
         }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
-        public int MaxCapacity
-        {
-            get { return _maxCapacity; }
-            set { _maxCapacity = value; }
-        }
-        public int ActualCapacity
-        {
-            get { return _actualCapacity; }
-            set { _actualCapacity = value; }
-        }
+        public int Taxation { get { return _taxation; } set { _taxation = value; } }
+        
     }
 }

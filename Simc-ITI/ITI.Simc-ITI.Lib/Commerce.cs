@@ -29,14 +29,13 @@ namespace ITI.Simc_ITI.Build
         public int Happyness { get { return _happyness; } }
         public int Turnover { get { return _turnover; } }
     }
-    public class Commerce : Infrastructure, IHappyness
+    public class Commerce : Infrastructure, IHappyness, ITaxation
     {
         int _hapyness;
-        int _maxCapacity;
-        int _actualCapacity;
         Bitmap _bmp;
         CommerceType _info;
         Box _box;
+        int _taxation;
 
         public Commerce( Box b, CommerceType info )
             : base( b, info)
@@ -72,15 +71,6 @@ namespace ITI.Simc_ITI.Build
             throw new NotImplementedException();
         }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
-        public int MaxCapacity
-        {
-            get { return _maxCapacity; }
-            set { _maxCapacity = value; }
-        }
-        public int ActualCapacity
-        {
-            get { return _actualCapacity; }
-            set { _actualCapacity = value; }
-        }
+        public int Taxation { get { return _taxation; } set { _taxation = value; } }
     }
 }
