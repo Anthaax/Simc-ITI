@@ -58,6 +58,7 @@
     <Compile Include="ITaxation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Road.cs" />
+    <Compile Include="RoadOrientation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ITI.Simc-ITI.Money.Lib\ITI.Simc-ITI.Money.Lib.csproj">

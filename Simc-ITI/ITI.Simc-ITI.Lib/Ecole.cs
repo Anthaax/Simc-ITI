@@ -20,7 +20,7 @@ namespace ITI.Simc_ITI.Build
             _happynessImpactMax = 5;
         }
 
-        protected override Infrastructure DoCreateInfrastructure( Box location )
+        protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {
             return new Ecole( location, this );
         }
@@ -37,15 +37,10 @@ namespace ITI.Simc_ITI.Build
         int _actualCapacity;
         int _happynessImpact;
         Bitmap _bmp;
-        EcoleType _info;
-        Box _box;
 
         public Ecole(Box b, EcoleType info)
             : base(b, info)
         {
-            _info = info;
-            _box = b;
-            _box.Infrasructure = this;
             _bmp = new Bitmap( info.TexturePath );
             _costPerMonth = info.CostPerMonth;
             _happynessImpact = info.HappynessImpact;
@@ -53,9 +48,13 @@ namespace ITI.Simc_ITI.Build
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-            Rectangle r = new Rectangle( 0, 0, _box.Map.BoxWidth, _box.Map.BoxWidth );
+            Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
+        }
+        public override void OnDestroy()
+        {
+            _bmp.Dispose();
         }
         public override void OnCreatedAround( Box b )
         {

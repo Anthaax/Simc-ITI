@@ -15,7 +15,7 @@ namespace ITI.Simc_ITI.Build
         {
             _happyness = 50;
         }
-        protected override Infrastructure DoCreateInfrastructure( Box location )
+        protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {
                 return new Habitation( location, this );
         }
@@ -27,15 +27,11 @@ namespace ITI.Simc_ITI.Build
         int _salary;
         int _taxation;
         Bitmap _bmp;
-        HabitationType _info;
-        Box _box;
+
 
         public Habitation(Box b, HabitationType info)
             : base(b, info)
         {
-            _info = info;
-            _box = b;
-            _box.Infrasructure = this;
             _bmp = new Bitmap(info.TexturePath);
             _hapyness = info.Happyness;
             CheckAllNearBoxes();
@@ -43,9 +39,13 @@ namespace ITI.Simc_ITI.Build
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-            Rectangle r = new Rectangle( 0, 0, _box.Map.BoxWidth, _box.Map.BoxWidth );
+            Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
+        }
+        public override void OnDestroy()
+        {
+            _bmp.Dispose();
         }
         public override void OnCreatedAround( Box b )
         {
@@ -67,7 +67,7 @@ namespace ITI.Simc_ITI.Build
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
         public void CheckAllNearBoxes()
         {
-            IEnumerable<Box> nearBox = _box.NearBoxes( 10 );
+            IEnumerable<Box> nearBox = Box.NearBoxes( 10 );
             foreach( var box in nearBox)
             {
                 if( box.Infrasructure != null )

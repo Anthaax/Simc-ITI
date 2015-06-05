@@ -14,7 +14,6 @@ namespace ITI.Simc_ITI
         static readonly Bitmap _defaultBmp = new Bitmap( "C:/dev/Textures/Terre.bmp" );
         readonly int _line;
         readonly int _column;
-
         IInfrastructureForBox Infrastructure;
         public Box( Map map, int line, int column )
         {

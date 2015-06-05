@@ -23,11 +23,16 @@ namespace ITI.Simc_ITI.Rendering
 
         public DemoWindow2()
         {
-            _map = new Map( 100,100 );
+            _map = new Map( 100, 100 );
             _infManager = new InfrastructureManager();
             InitializeComponent();
             _mainViewPortControl.SetMap( _map, 5 * 100 );
             _map.Money.ActualMoneyChanged += label_MonArgent_text;
+            IEnumerable<InfrastructureType> types = _infManager.AllTypes;
+            foreach( var building in types )
+            {
+                building.BuildingHasBeenCreated += Invalidate;
+            }
             scalefactor = _mainViewPortControl.ViewPort.ActualZoomFactor;
             _mainViewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
             AllButtonInvisible();
@@ -35,15 +40,14 @@ namespace ITI.Simc_ITI.Rendering
 
         private void buton_Grass_Click( object sender, EventArgs e )
         {
-            _infManager.Find( "Route" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
-            HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%"; 
-            _mainViewPortControl.Invalidate();
+            CustomisationBuilding RoadCustom = new CustomisationBuilding( _map.Boxes[_xBox, _yBox], _infManager );
+            RoadCustom.Show();
             AllButtonInvisible();
         }
 
         void CreateHabitation(object sender , EventArgs e )
         {
-            _infManager.Find( "Habitation" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
+            _infManager.Find( "Habitation" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox], 0 );
             HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%";
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
@@ -124,7 +128,7 @@ namespace ITI.Simc_ITI.Rendering
 
         private void School_Button_Click( object sender, EventArgs e )
         {
-            _infManager.Find( "Ecole" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
+            _infManager.Find( "Ecole" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox], 0 );
             HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%"; 
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
@@ -164,6 +168,10 @@ namespace ITI.Simc_ITI.Rendering
             }
             totalHappyness = totalHappyness / happy.Count<IHappyness>();
             return totalHappyness;
+        }
+        private void Invalidate( object sender, EventArgs e )
+        {
+            _mainViewPortControl.Invalidate();
         }
     }
 }

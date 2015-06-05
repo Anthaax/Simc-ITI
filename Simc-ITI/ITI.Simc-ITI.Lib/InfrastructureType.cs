@@ -52,11 +52,12 @@ namespace ITI.Simc_ITI.Build
             }
             return check;
         }
-        public Infrastructure CreateInfrastructure( Box b )
+        public event EventHandler BuildingHasBeenCreated;
+        public Infrastructure CreateInfrastructure( Box b, object creationConfig )
         {
             if( b.Infrasructure != null ) throw new InvalidOperationException( "The box alreay has an Infrastructure." );
             b.Map.Money.ActualMoney -= BuildingCost;
-            Infrastructure infra = DoCreateInfrastructure( b );
+            Infrastructure infra = DoCreateInfrastructure( b, creationConfig);
             IEnumerable<Box> nearBoxes = b.NearBoxes( infra.Type.AreaEffect );
             foreach( var box in nearBoxes )
             {
@@ -65,9 +66,11 @@ namespace ITI.Simc_ITI.Build
                     box.Infrasructure.OnCreatedAround( b );
                 }
             }
+            var h = BuildingHasBeenCreated;
+            if( h != null ) h( this, EventArgs.Empty );
             return infra;
         }
 
-        protected abstract Infrastructure DoCreateInfrastructure( Box location );
+        protected abstract Infrastructure DoCreateInfrastructure( Box location, object creatoionConfig );
     }
 }

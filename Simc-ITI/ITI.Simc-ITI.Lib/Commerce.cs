@@ -17,7 +17,7 @@ namespace ITI.Simc_ITI.Build
             _happyness = 50;
             _turnover = 5000;
         }
-        protected override Infrastructure DoCreateInfrastructure( Box location )
+        protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {
             if( location.Infrasructure == null )
             {
@@ -33,27 +33,25 @@ namespace ITI.Simc_ITI.Build
     {
         int _hapyness;
         Bitmap _bmp;
-        CommerceType _info;
-        Box _box;
         int _taxation;
 
         public Commerce( Box b, CommerceType info )
             : base( b, info)
         {
-            _info = info;
-            _box = b;
-            _box.Infrasructure = this;
             _bmp = new Bitmap( info.TexturePath );
             _hapyness = info.Happyness;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-            Rectangle r = new Rectangle( 0, 0, _box.Map.BoxWidth, _box.Map.BoxWidth );
+            Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
         }
-
+        public override void OnDestroy()
+        {
+            _bmp.Dispose();
+        }
         public override void OnCreatedAround( Box b )
         {
             IHappynessImpact impact = b.Infrasructure as IHappynessImpact;

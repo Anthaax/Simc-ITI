@@ -22,7 +22,7 @@ namespace ITI.Simc_ITI.Test
             Assert.That( m.Money.ActualMoney, Is.EqualTo( 5000 ) );
             Assert.That( i.Find( "Route" ).BuildingCost, Is.EqualTo( 5 ) );
             Assert.That( i.Find( "Ecole" ).TexturePath, Is.EqualTo( "C:/dev/Textures/Ecole.bmp" ) );
-            i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 0] );
+            i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 0], 2 );
             Assert.That( m.Money.ActualMoney, Is.EqualTo(4995) );
             Assert.That( m.Boxes[0, 0].Infrasructure.GetType(), Is.Not.Null );
             Assert.That( m.Boxes[0, 0].Infrasructure.Type.Name, Is.EqualTo( "Route" ) );
@@ -32,13 +32,13 @@ namespace ITI.Simc_ITI.Test
         {
             Map m = new Map( 10, 10 );
             InfrastructureManager i = new InfrastructureManager();
-            i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 4] );
+            i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 4], 1 );
             bool canCreateHabitation = i.Find( "Habitation" ).CanCreated( m.Boxes[0, 5] );
             bool canCreateEcole = i.Find( "Ecole" ).CanCreated( m.Boxes[0, 3] );
             Assert.That( canCreateEcole, Is.EqualTo( true ) );
             Assert.That( canCreateHabitation, Is.EqualTo( true ) );
-            i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[0, 5] );
-            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[0, 3] );
+            i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[0, 5],0 );
+            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[0, 3],0 );
             IHappyness happy = m.GetAllInfrastucture<IHappyness>().Single();
             Assert.That( happy.Happyness, Is.EqualTo( 55 ) );
         }
@@ -47,9 +47,9 @@ namespace ITI.Simc_ITI.Test
         {
             Map m = new Map( 10, 10 );
             InfrastructureManager i = new InfrastructureManager();
-            i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 5] );
-            i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[0, 4] );
-            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[0, 6] );
+            i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 5],1);
+            i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[0, 4],0 );
+            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[0, 6],0 );
             
         }
     }

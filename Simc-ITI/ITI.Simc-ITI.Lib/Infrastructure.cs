@@ -31,6 +31,7 @@ namespace ITI.Simc_ITI.Build
         public int AreaEffect { get; protected set; }
         public void Destroy()
         {
+            OnDestroy();
             IEnumerable<Box> nearBox =  _box.NearBoxes( _box.Infrasructure.Type.AreaEffect );
             foreach( var box in nearBox)
             {
@@ -42,6 +43,6 @@ namespace ITI.Simc_ITI.Build
             _box.Infrasructure = null;
             _box = null;
         }
-
+        public abstract void OnDestroy();
     }
 }
