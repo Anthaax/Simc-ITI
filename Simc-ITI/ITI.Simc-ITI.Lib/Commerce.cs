@@ -12,7 +12,7 @@ namespace ITI.Simc_ITI.Build
         int _happyness;
         int _turnover;
         public CommerceType()
-            : base( "Commerce", 0, 5, "C:/dev/Textures/Commerce.bmp" )
+            : base( "Commerce", 0, 5 )
         {
             _happyness = 50;
             _turnover = 5000;
@@ -38,7 +38,7 @@ namespace ITI.Simc_ITI.Build
         public Commerce( Box b, CommerceType info )
             : base( b, info)
         {
-            _bmp = new Bitmap( info.TexturePath );
+            _bmp = new Bitmap( "C:/dev/Textures/Commerce.bmp" );
             _hapyness = info.Happyness;
         }
 

@@ -11,20 +11,17 @@ namespace ITI.Simc_ITI.Build
         readonly string _name;
         readonly int _areaEffect;
         readonly int _buildingCost;
-        readonly string _texturePath;
 
-        protected InfrastructureType( string name, int buildingCost, int areaEffect, string path)
+        protected InfrastructureType( string name, int buildingCost, int areaEffect)
         {
             _name = name;
             _buildingCost = buildingCost;
-            _texturePath = path;
             _areaEffect = areaEffect;
         }
 
         public string Name { get { return _name; } }
         public int AreaEffect { get { return _areaEffect; } }
         public int BuildingCost { get { return _buildingCost; } }
-        public string TexturePath { get { return _texturePath; } }
 
         public bool CanCreated( Box b )
         {

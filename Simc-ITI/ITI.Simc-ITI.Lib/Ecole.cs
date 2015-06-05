@@ -13,7 +13,7 @@ namespace ITI.Simc_ITI.Build
         int _maxCapacity;
         int _happynessImpactMax;
         public EcoleType()
-            : base( "Ecole", 500, 10,"C:/dev/Textures/Ecole.bmp")
+            : base( "Ecole", 500, 10)
         {
             _costPerMonth = 100;
             _maxCapacity = 200;
@@ -41,7 +41,7 @@ namespace ITI.Simc_ITI.Build
         public Ecole(Box b, EcoleType info)
             : base(b, info)
         {
-            _bmp = new Bitmap( info.TexturePath );
+            _bmp = new Bitmap( "C:/dev/Textures/Ecole.bmp" );
             _costPerMonth = info.CostPerMonth;
             _happynessImpact = info.HappynessImpact;
         }

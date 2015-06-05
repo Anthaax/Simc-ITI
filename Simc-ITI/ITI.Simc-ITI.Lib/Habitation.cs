@@ -11,7 +11,7 @@ namespace ITI.Simc_ITI.Build
     {
         int _happyness;
         public HabitationType()
-            : base( "Habitation", 0, 0, "C:/dev/Textures/Habitation.bmp" )
+            : base( "Habitation", 0, 0)
         {
             _happyness = 50;
         }
@@ -32,7 +32,7 @@ namespace ITI.Simc_ITI.Build
         public Habitation(Box b, HabitationType info)
             : base(b, info)
         {
-            _bmp = new Bitmap(info.TexturePath);
+            _bmp = new Bitmap( "C:/dev/Textures/Habitation.bmp" );
             _hapyness = info.Happyness;
             CheckAllNearBoxes();
         }

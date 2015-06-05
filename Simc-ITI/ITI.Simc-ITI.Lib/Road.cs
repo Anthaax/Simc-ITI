@@ -13,7 +13,7 @@ namespace ITI.Simc_ITI.Build
     public class RoadType : InfrastructureType
     {
         public RoadType()
-            : base( "Route", 5, 0, "C:/dev/Textures/RV.bmp" )
+            : base( "Route", 5, 0 )
         {
         }
         protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
