@@ -33,7 +33,9 @@ namespace ITI.Simc_ITI.Build
     {
         int _hapyness;
         Bitmap _bmp;
-        int _taxation;
+        int _taxation = 10;
+        int _salary = 5000;
+
 
         public Commerce( Box b, CommerceType info )
             : base( b, info)
@@ -70,5 +72,6 @@ namespace ITI.Simc_ITI.Build
         }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
+        public int Salary { get { return _salary; } }
     }
 }

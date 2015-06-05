@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ITI.Simc_ITI.Build;
+using ITI.Simc_ITI.Money.Lib;
 
 namespace ITI.Simc_ITI.Rendering
 {
@@ -15,6 +16,8 @@ namespace ITI.Simc_ITI.Rendering
     {
         Map _map;
         InfrastructureManager _infManager;
+        MoneyGestion _mg;
+        Timer t;
         double scalefactor;
         int x;
         int y;
@@ -25,6 +28,7 @@ namespace ITI.Simc_ITI.Rendering
         {
             _map = new Map( 100, 100 );
             _infManager = new InfrastructureManager();
+            _mg = new MoneyGestion();
             InitializeComponent();
             _mainViewPortControl.SetMap( _map, 5 * 100 );
             _map.Money.ActualMoneyChanged += label_MonArgent_text;
@@ -36,6 +40,23 @@ namespace ITI.Simc_ITI.Rendering
             scalefactor = _mainViewPortControl.ViewPort.ActualZoomFactor;
             _mainViewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
             AllButtonInvisible();
+        }
+        private void InitiallizeTimer()
+        {
+            t = new Timer();
+            t.Interval = 30000;
+            t.Enabled = true;
+            t.Tick += UpdateGame;
+            t.Start();
+        }
+
+        private void UpdateGame( object sender, EventArgs e )
+        {
+            IEnumerable<IInfrastructureForBox> infra = _map.GetAllInfrastucture<IInfrastructureForBox>();
+            foreach( var infrastructure in infra)
+            {
+                infrastructure.Update();
+            }
         }
 
         private void buton_Grass_Click( object sender, EventArgs e )
@@ -142,6 +163,15 @@ namespace ITI.Simc_ITI.Rendering
             HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%"; 
             AllButtonInvisible();
             _mainViewPortControl.Invalidate();
+        }
+        private void OpenMoneyGestion( object sender, EventArgs e )
+        {
+            TaxationModification Taxes = new TaxationModification(_mg);
+            Taxes.Show();
+        }
+        private void TaxationWasChanged( object sender, EventArgs e )
+        {
+            throw new NotImplementedException();
         }
         private void AllButtonInvisible()
         {

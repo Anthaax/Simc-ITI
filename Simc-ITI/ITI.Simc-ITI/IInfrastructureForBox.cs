@@ -14,6 +14,7 @@ namespace ITI.Simc_ITI
         void Destroy();
         void OnCreatedAround( Box b );
         void OnDestroyingAround( Box b );
+        void Update();
         
     }
 }

@@ -5,9 +5,8 @@ using System.Text;
 
 namespace ITI.Simc_ITI.Build
 {
-    public interface ITaxation
+    public interface IPublic
     {
-        int Taxation { get; set; }
-        int Salary { get; }
+        int CostPerMount { get; set; }
     }
 }

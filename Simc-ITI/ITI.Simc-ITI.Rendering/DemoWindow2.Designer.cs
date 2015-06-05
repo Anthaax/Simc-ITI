@@ -40,6 +40,7 @@
             this.Build_Road = new System.Windows.Forms.Button();
             this.MonArgent = new System.Windows.Forms.Label();
             this.MyMoney = new System.Windows.Forms.Label();
+            this.MoneyGestionOpen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -63,6 +64,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.MoneyGestionOpen);
             this.splitContainer1.Panel2.Controls.Add(this.HabitationBuild);
             this.splitContainer1.Panel2.Controls.Add(this.HumeurLabel);
             this.splitContainer1.Panel2.Controls.Add(this.Button_Destroy);
@@ -195,6 +197,15 @@
             this.MyMoney.TabIndex = 1;
             this.MyMoney.Text = "Mon argent :";
             // 
+            // MoneyGestionOpen
+            // 
+            this.MoneyGestionOpen.Location = new System.Drawing.Point(1119, 69);
+            this.MoneyGestionOpen.Name = "MoneyGestionOpen";
+            this.MoneyGestionOpen.Size = new System.Drawing.Size(128, 23);
+            this.MoneyGestionOpen.TabIndex = 9;
+            this.MoneyGestionOpen.Text = "Gerer L\'argent";
+            this.MoneyGestionOpen.UseVisualStyleBackColor = true;
+            // 
             // DemoWindow2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -233,5 +244,6 @@
         private System.Windows.Forms.Button Button_Destroy;
         private System.Windows.Forms.Label HumeurLabel;
         private System.Windows.Forms.Button HabitationBuild;
+        private System.Windows.Forms.Button MoneyGestionOpen;
     }
 }

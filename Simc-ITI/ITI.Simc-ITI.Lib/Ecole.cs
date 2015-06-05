@@ -30,7 +30,7 @@ namespace ITI.Simc_ITI.Build
     }
 
 
-    public class Ecole : Infrastructure, IHappynessImpact
+    public class Ecole : Infrastructure, IHappynessImpact, IPublic
     {
         int _costPerMonth;
         int _maxCapacity;
@@ -65,11 +65,7 @@ namespace ITI.Simc_ITI.Build
 
         }
         public int HappynessImpact { get { return _happynessImpact; } }
-        public int PricePerMounth
-        {
-            get { return _costPerMonth; }
-            set { _costPerMonth = value; }
-        }
+        public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public int MaxCapacity
         {
             get { return _maxCapacity; }
