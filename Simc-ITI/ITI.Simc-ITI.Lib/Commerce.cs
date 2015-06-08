@@ -34,7 +34,7 @@ namespace ITI.Simc_ITI.Build
         int _hapyness;
         Bitmap _bmp;
         int _taxation = 10;
-        int _salary = 5000;
+        int _salary = 30000;
 
 
         public Commerce( Box b, CommerceType info )

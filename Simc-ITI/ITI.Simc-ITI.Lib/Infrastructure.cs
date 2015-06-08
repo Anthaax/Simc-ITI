@@ -46,10 +46,10 @@ namespace ITI.Simc_ITI.Build
         public void Update()
         {
             IPublic publicBuilding = this as IPublic;
-            if ( publicBuilding == null) Box.Map.Money.ActualMoney -= publicBuilding.CostPerMount / 30;
+            if ( publicBuilding != null) Box.Map.Money.ActualMoney -= publicBuilding.CostPerMount / 30;
 
             ITaxation privateBuilding = this as ITaxation;
-            if ( publicBuilding == null ) Box.Map.Money.ActualMoney += privateBuilding.Taxation*privateBuilding.Taxation/100/ 30;
+            if ( privateBuilding != null ) Box.Map.Money.ActualMoney = Box.Map.Money.ActualMoney+privateBuilding.Salary*privateBuilding.Taxation/100/ 30;
         }
         public abstract void OnDestroy();
     }

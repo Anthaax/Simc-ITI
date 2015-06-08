@@ -24,7 +24,7 @@ namespace ITI.Simc_ITI.Build
     public class Habitation : Infrastructure, IHappyness, ITaxation
     {
         int _hapyness;
-        int _salary = 5000;
+        int _salary = 30000;
         int _taxation = 10;
         Bitmap _bmp;
 

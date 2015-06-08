@@ -35,6 +35,9 @@
             this.CommerceLabel = new System.Windows.Forms.Label();
             this.UsineLabel = new System.Windows.Forms.Label();
             this.CloseButton = new System.Windows.Forms.Button();
+            this.HabitationPorcent = new System.Windows.Forms.Label();
+            this.CommercePorcent = new System.Windows.Forms.Label();
+            this.UsinePercent = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.HabitationTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CommerceTrackBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsineTrackBar)).BeginInit();
@@ -48,6 +51,7 @@
             this.HabitationTrackBar.Size = new System.Drawing.Size(937, 56);
             this.HabitationTrackBar.TabIndex = 0;
             this.HabitationTrackBar.Value = 10;
+            this.HabitationTrackBar.Scroll += new System.EventHandler(this.HabitationTrackBarScroll);
             // 
             // CommerceTrackBar
             // 
@@ -57,6 +61,7 @@
             this.CommerceTrackBar.Size = new System.Drawing.Size(937, 56);
             this.CommerceTrackBar.TabIndex = 1;
             this.CommerceTrackBar.Value = 10;
+            this.CommerceTrackBar.Scroll += new System.EventHandler(this.CommerceTrackBarScroll);
             // 
             // UsineTrackBar
             // 
@@ -66,6 +71,7 @@
             this.UsineTrackBar.Size = new System.Drawing.Size(937, 56);
             this.UsineTrackBar.TabIndex = 1;
             this.UsineTrackBar.Value = 10;
+            this.UsineTrackBar.Scroll += new System.EventHandler(this.UsineTrackBarScroll);
             // 
             // HabitationLabel
             // 
@@ -102,12 +108,43 @@
             this.CloseButton.TabIndex = 6;
             this.CloseButton.Text = "Terminé";
             this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
+            // 
+            // HabitationPorcent
+            // 
+            this.HabitationPorcent.AutoSize = true;
+            this.HabitationPorcent.Location = new System.Drawing.Point(17, 114);
+            this.HabitationPorcent.Name = "HabitationPorcent";
+            this.HabitationPorcent.Size = new System.Drawing.Size(28, 17);
+            this.HabitationPorcent.TabIndex = 7;
+            this.HabitationPorcent.Text = "1%";
+            // 
+            // CommercePorcent
+            // 
+            this.CommercePorcent.AutoSize = true;
+            this.CommercePorcent.Location = new System.Drawing.Point(17, 249);
+            this.CommercePorcent.Name = "CommercePorcent";
+            this.CommercePorcent.Size = new System.Drawing.Size(46, 17);
+            this.CommercePorcent.TabIndex = 8;
+            this.CommercePorcent.Text = "label2";
+            // 
+            // UsinePercent
+            // 
+            this.UsinePercent.AutoSize = true;
+            this.UsinePercent.Location = new System.Drawing.Point(17, 380);
+            this.UsinePercent.Name = "UsinePercent";
+            this.UsinePercent.Size = new System.Drawing.Size(46, 17);
+            this.UsinePercent.TabIndex = 9;
+            this.UsinePercent.Text = "label3";
             // 
             // TaxationModification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1118, 458);
+            this.Controls.Add(this.UsinePercent);
+            this.Controls.Add(this.CommercePorcent);
+            this.Controls.Add(this.HabitationPorcent);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.UsineLabel);
             this.Controls.Add(this.CommerceLabel);
@@ -134,5 +171,8 @@
         private System.Windows.Forms.Label CommerceLabel;
         private System.Windows.Forms.Label UsineLabel;
         private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.Label HabitationPorcent;
+        private System.Windows.Forms.Label CommercePorcent;
+        private System.Windows.Forms.Label UsinePercent;
     }
 }

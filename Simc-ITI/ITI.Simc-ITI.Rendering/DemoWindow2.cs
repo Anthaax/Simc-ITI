@@ -35,10 +35,12 @@ namespace ITI.Simc_ITI.Rendering
             IEnumerable<InfrastructureType> types = _infManager.AllTypes;
             foreach( var building in types )
             {
-                building.BuildingHasBeenCreated += Invalidate;
+                building.BuildingHasBeenCreated += AfterBuildAInfrastructure;
             }
             scalefactor = _mainViewPortControl.ViewPort.ActualZoomFactor;
             _mainViewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
+            _mg.TaxationAsChanged += TaxationWasChanged;
+            InitiallizeTimer();
             AllButtonInvisible();
         }
         private void InitiallizeTimer()
@@ -171,7 +173,16 @@ namespace ITI.Simc_ITI.Rendering
         }
         private void TaxationWasChanged( object sender, EventArgs e )
         {
-            throw new NotImplementedException();
+            IEnumerable<Habitation> habitation = _map.GetAllInfrastucture<Habitation>();
+            foreach( var hab in habitation )
+            {
+                hab.Taxation = _mg.HabitationTaxation;
+            }
+            IEnumerable<Commerce> commerce = _map.GetAllInfrastucture<Commerce>();
+            foreach( var co in commerce )
+            {
+                co.Taxation = _mg.CommerceTaxation;
+            }
         }
         private void AllButtonInvisible()
         {
@@ -199,9 +210,19 @@ namespace ITI.Simc_ITI.Rendering
             totalHappyness = totalHappyness / happy.Count<IHappyness>();
             return totalHappyness;
         }
-        private void Invalidate( object sender, EventArgs e )
+        private void AfterBuildAInfrastructure( object sender, EventArgs e )
         {
+            Habitation taxe = _map.Boxes[_xBox, _yBox].Infrasructure as Habitation;
+            if( taxe != null ) taxe.Taxation = _mg.HabitationTaxation;
+            Commerce ctaxe = _map.Boxes[_xBox, _yBox].Infrasructure as Commerce;
+            if( ctaxe != null ) ctaxe.Taxation = _mg.CommerceTaxation;
             _mainViewPortControl.Invalidate();
+        }
+
+        private void MoneyGestionOpen_Click( object sender, EventArgs e )
+        {
+            TaxationModification tx = new TaxationModification(_mg);
+            tx.Show();
         }
     }
 }

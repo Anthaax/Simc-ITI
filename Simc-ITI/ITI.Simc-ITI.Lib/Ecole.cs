@@ -15,7 +15,7 @@ namespace ITI.Simc_ITI.Build
         public EcoleType()
             : base( "Ecole", 500, 10)
         {
-            _costPerMonth = 100;
+            _costPerMonth = 300;
             _maxCapacity = 200;
             _happynessImpactMax = 5;
         }

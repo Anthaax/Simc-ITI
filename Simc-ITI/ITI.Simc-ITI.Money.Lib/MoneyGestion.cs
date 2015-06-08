@@ -17,8 +17,45 @@ namespace ITI.Simc_ITI.Money.Lib
             _commerceTaxation = 10;
             _usineTaxation = 10;
         }
-        public int HabitationTaxation { get { return _habitationTaxation; } set { _habitationTaxation = value; } }
-        public int CommerceTaxation { get { return _commerceTaxation; } set { _commerceTaxation = value; } }
-        public int UsineTaxation { get { return _usineTaxation; } set { _usineTaxation = value; } }
+        public event EventHandler TaxationAsChanged;
+        public int HabitationTaxation
+        {
+            get { return _habitationTaxation; }
+            set
+            {
+                if( _habitationTaxation != value )
+                {
+                    _habitationTaxation = value;
+                    var h = TaxationAsChanged;
+                    if( h != null ) h( this, EventArgs.Empty );
+                }
+            }
+        }
+        public int CommerceTaxation
+        {
+            get { return _commerceTaxation; }
+            set
+            {
+                if( _commerceTaxation != value )
+                {
+                    _commerceTaxation = value;
+                    var h = TaxationAsChanged;
+                    if( h != null ) h( this, EventArgs.Empty );
+                }
+            }
+        }
+        public int UsineTaxation
+        {
+            get { return _usineTaxation; }
+            set
+            {
+                if( _usineTaxation != value )
+                {
+                    _usineTaxation = value;
+                    var h = TaxationAsChanged;
+                    if( h != null ) h( this, EventArgs.Empty );
+                }
+            }
+        }
     }
 }

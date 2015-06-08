@@ -31,6 +31,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
+            this.MoneyGestionOpen = new System.Windows.Forms.Button();
             this.HabitationBuild = new System.Windows.Forms.Button();
             this.HumeurLabel = new System.Windows.Forms.Label();
             this.Button_Destroy = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.Build_Road = new System.Windows.Forms.Button();
             this.MonArgent = new System.Windows.Forms.Label();
             this.MyMoney = new System.Windows.Forms.Label();
-            this.MoneyGestionOpen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -102,6 +102,16 @@
             this._mainViewPortControl.Name = "_mainViewPortControl";
             this._mainViewPortControl.Size = new System.Drawing.Size(1184, 369);
             this._mainViewPortControl.TabIndex = 0;
+            // 
+            // MoneyGestionOpen
+            // 
+            this.MoneyGestionOpen.Location = new System.Drawing.Point(1119, 69);
+            this.MoneyGestionOpen.Name = "MoneyGestionOpen";
+            this.MoneyGestionOpen.Size = new System.Drawing.Size(128, 23);
+            this.MoneyGestionOpen.TabIndex = 9;
+            this.MoneyGestionOpen.Text = "Gerer L\'argent";
+            this.MoneyGestionOpen.UseVisualStyleBackColor = true;
+            this.MoneyGestionOpen.Click += new System.EventHandler(this.MoneyGestionOpen_Click);
             // 
             // HabitationBuild
             // 
@@ -196,15 +206,6 @@
             this.MyMoney.Size = new System.Drawing.Size(88, 17);
             this.MyMoney.TabIndex = 1;
             this.MyMoney.Text = "Mon argent :";
-            // 
-            // MoneyGestionOpen
-            // 
-            this.MoneyGestionOpen.Location = new System.Drawing.Point(1119, 69);
-            this.MoneyGestionOpen.Name = "MoneyGestionOpen";
-            this.MoneyGestionOpen.Size = new System.Drawing.Size(128, 23);
-            this.MoneyGestionOpen.TabIndex = 9;
-            this.MoneyGestionOpen.Text = "Gerer L\'argent";
-            this.MoneyGestionOpen.UseVisualStyleBackColor = true;
             // 
             // DemoWindow2
             // 
