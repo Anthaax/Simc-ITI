@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI.Build
 {
-    public interface IHappynessImpact
+    public interface IPublic
     {
-        int HappynessImpact { get; }
+        int CostPerMount { get; set; }
     }
 }

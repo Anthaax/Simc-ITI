@@ -24,12 +24,33 @@ namespace ITI.Simc_ITI.Build
             get { return _box; }
         }
         public abstract void Draw( Graphics g, Rectangle rectSource, float scaleFactor );
-        public abstract void Destroy();
         IInfrastructureType IInfrastructureForBox.Type { get { return _info; } }
         public InfrastructureType Type { get { return _info; } }
         public abstract void OnCreatedAround( Box b );
         public abstract void OnDestroyingAround( Box b );
         public int AreaEffect { get; protected set; }
+        public void Destroy()
+        {
+            OnDestroy();
+            IEnumerable<Box> nearBox =  _box.NearBoxes( _box.Infrasructure.Type.AreaEffect );
+            foreach( var box in nearBox)
+            {
+                if( box.Infrasructure != null )
+                {
+                    box.Infrasructure.OnDestroyingAround( _box );
+                }
+            }
+            _box.Infrasructure = null;
+            _box = null;
+        }
+        public void Update()
+        {
+            IPublic publicBuilding = this as IPublic;
+            if ( publicBuilding != null) Box.Map.Money.ActualMoney -= publicBuilding.CostPerMount / 30;
 
+            ITaxation privateBuilding = this as ITaxation;
+            if ( privateBuilding != null ) Box.Map.Money.ActualMoney = Box.Map.Money.ActualMoney+privateBuilding.Salary*privateBuilding.Taxation/100/ 30;
+        }
+        public abstract void OnDestroy();
     }
 }

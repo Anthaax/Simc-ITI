@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ITI.Simc_ITI.Build;
+using ITI.Simc_ITI.Money.Lib;
 
 namespace ITI.Simc_ITI.Rendering
 {
@@ -15,6 +16,8 @@ namespace ITI.Simc_ITI.Rendering
     {
         Map _map;
         InfrastructureManager _infManager;
+        MoneyGestion _mg;
+        Timer t;
         double scalefactor;
         int x;
         int y;
@@ -23,18 +26,52 @@ namespace ITI.Simc_ITI.Rendering
 
         public DemoWindow2()
         {
-            _map = new Map( 100,100 );
+            _map = new Map( 100, 100 );
             _infManager = new InfrastructureManager();
+            _mg = new MoneyGestion();
             InitializeComponent();
             _mainViewPortControl.SetMap( _map, 5 * 100 );
             _map.Money.ActualMoneyChanged += label_MonArgent_text;
+            IEnumerable<InfrastructureType> types = _infManager.AllTypes;
+            foreach( var building in types )
+            {
+                building.BuildingHasBeenCreated += AfterBuildAInfrastructure;
+            }
             scalefactor = _mainViewPortControl.ViewPort.ActualZoomFactor;
             _mainViewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
+            _mg.TaxationAsChanged += TaxationWasChanged;
+            InitiallizeTimer();
+            AllButtonInvisible();
+        }
+        private void InitiallizeTimer()
+        {
+            t = new Timer();
+            t.Interval = 30000;
+            t.Enabled = true;
+            t.Tick += UpdateGame;
+            t.Start();
+        }
+
+        private void UpdateGame( object sender, EventArgs e )
+        {
+            IEnumerable<IInfrastructureForBox> infra = _map.GetAllInfrastucture<IInfrastructureForBox>();
+            foreach( var infrastructure in infra)
+            {
+                infrastructure.Update();
+            }
         }
 
         private void buton_Grass_Click( object sender, EventArgs e )
         {
-            _infManager.Find( "Route" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
+            CustomisationBuilding RoadCustom = new CustomisationBuilding( _map.Boxes[_xBox, _yBox], _infManager );
+            RoadCustom.Show();
+            AllButtonInvisible();
+        }
+
+        void CreateHabitation(object sender , EventArgs e )
+        {
+            _infManager.Find( "Habitation" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox], 0 );
+            HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%";
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
         }
@@ -114,7 +151,8 @@ namespace ITI.Simc_ITI.Rendering
 
         private void School_Button_Click( object sender, EventArgs e )
         {
-            _infManager.Find( "Ecole" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox] );
+            _infManager.Find( "Ecole" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox], 0 );
+            HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%"; 
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
         }
@@ -122,9 +160,29 @@ namespace ITI.Simc_ITI.Rendering
         private void Button_Destroy_Click( object sender, EventArgs e )
         {
             _map.Money.ActualMoney += _map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
+
             _map.Boxes[_xBox, _yBox].Infrasructure.Destroy();
+            HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%"; 
             AllButtonInvisible();
             _mainViewPortControl.Invalidate();
+        }
+        private void OpenMoneyGestion( object sender, EventArgs e )
+        {
+            TaxationModification Taxes = new TaxationModification(_mg);
+            Taxes.Show();
+        }
+        private void TaxationWasChanged( object sender, EventArgs e )
+        {
+            IEnumerable<Habitation> habitation = _map.GetAllInfrastucture<Habitation>();
+            foreach( var hab in habitation )
+            {
+                hab.Taxation = _mg.HabitationTaxation;
+            }
+            IEnumerable<Commerce> commerce = _map.GetAllInfrastucture<Commerce>();
+            foreach( var co in commerce )
+            {
+                co.Taxation = _mg.CommerceTaxation;
+            }
         }
         private void AllButtonInvisible()
         {
@@ -132,11 +190,39 @@ namespace ITI.Simc_ITI.Rendering
             School_Button.Visible = false;
             Build_Road.Visible = false;
             Kind_Building.Visible = false;
+            HabitationBuild.Visible = false;
         }
         private void AllButtonVisible()
         {
             School_Button.Visible = true;
             Build_Road.Visible = true;
+            HabitationBuild.Visible = true;
+        }
+        private int AverageHappyness()
+        {
+            int totalHappyness = 0;
+            IEnumerable<IHappyness> happy = _map.GetAllInfrastucture<IHappyness>();
+            if( happy.FirstOrDefault() == null ) return 50;
+            foreach( var happyness in happy)
+            {
+                totalHappyness += happyness.Happyness;
+            }
+            totalHappyness = totalHappyness / happy.Count<IHappyness>();
+            return totalHappyness;
+        }
+        private void AfterBuildAInfrastructure( object sender, EventArgs e )
+        {
+            Habitation taxe = _map.Boxes[_xBox, _yBox].Infrasructure as Habitation;
+            if( taxe != null ) taxe.Taxation = _mg.HabitationTaxation;
+            Commerce ctaxe = _map.Boxes[_xBox, _yBox].Infrasructure as Commerce;
+            if( ctaxe != null ) ctaxe.Taxation = _mg.CommerceTaxation;
+            _mainViewPortControl.Invalidate();
+        }
+
+        private void MoneyGestionOpen_Click( object sender, EventArgs e )
+        {
+            TaxationModification tx = new TaxationModification(_mg);
+            tx.Show();
         }
     }
 }

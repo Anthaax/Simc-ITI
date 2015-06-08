@@ -14,7 +14,6 @@ namespace ITI.Simc_ITI
         static readonly Bitmap _defaultBmp = new Bitmap( "C:/dev/Textures/Terre.bmp" );
         readonly int _line;
         readonly int _column;
-
         IInfrastructureForBox Infrastructure;
         public Box( Map map, int line, int column )
         {
@@ -66,9 +65,9 @@ namespace ITI.Simc_ITI
         public IEnumerable<Box> NearBoxes( int areaEffect )
         {
             List<Box> _nearBoxes = new List<Box>();
-            for( int c = Math.Max( 0, Column - 1 ); c < Math.Min( Map.BoxCount, Column + 2 ); c++ )
+            for( int c = Math.Max( 0, Column - areaEffect ); c <= Math.Min( Map.BoxCount - 1, Column + areaEffect ); c++ ) 
             {
-                for( int l = Math.Max( 0, Line - 1 ); l < Math.Min( Map.BoxCount, Line + 2 ); l++ )
+                for( int l = Math.Max( 0, Line - areaEffect ); l <= Math.Min( Map.BoxCount - 1, Line + areaEffect ); l++ )
                 {
                     if( c != Column || l != Line )
                     {

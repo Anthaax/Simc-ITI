@@ -6,15 +6,23 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
+    public class RoadCreationConfig
+    {
+        public RoadOrientation Orientation { get; set; }
+    }
     public class RoadType : InfrastructureType
     {
         public RoadType()
-            : base( "Route", 5, 0, "C:/dev/Textures/RV.bmp" )
+            : base( "Route", 5, 0 )
         {
         }
-        protected override Infrastructure DoCreateInfrastructure( Box location )
+        protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {
-                return new Road( location, this );
+            RoadCreationConfig cfg = creationConfig as RoadCreationConfig;
+            if( cfg == null ) throw new ArgumentException( "Must be a RoadCreationConfig object.", "creationConfig" );
+
+
+            return new Road( location, this, cfg.Orientation );
         }
     }
 
@@ -24,37 +32,29 @@ namespace ITI.Simc_ITI.Build
         bool _water;
         bool _electricity;
         Bitmap _bmp;
-        RoadType _info;
-        Box _box;
 
-        public Road( Box b, RoadType info )
-            : base( b , info)
+        public Road( Box b, RoadType info, RoadOrientation o )
+            : base( b, info )
         {
-            _info = info;
-            _box = b;
-            _box.Infrasructure = this;
-            _bmp = new Bitmap( info.TexturePath );
+            _bmp = new Bitmap( "C:/dev/textures/" + o + ".bmp" );
             _name = info.Name;
         }
-
+        public new RoadType Type { get { return (RoadType)base.Type; } }
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-            Rectangle r = new Rectangle( 0, 0, _box.Map.BoxWidth, _box.Map.BoxWidth );
+            Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
         }
-        public override void Destroy()
+        public override void OnDestroy()
         {
-            _box.Infrasructure = null;
-            _box = null;
+            _bmp.Dispose();
         }
         public override void OnCreatedAround( Box b )
         {
-            throw new NotImplementedException();
         }
         public override void OnDestroyingAround( Box b )
         {
-            throw new NotImplementedException();
         }
         public bool Water
         {

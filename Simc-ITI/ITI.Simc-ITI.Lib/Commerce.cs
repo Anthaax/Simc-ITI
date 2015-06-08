@@ -12,12 +12,12 @@ namespace ITI.Simc_ITI.Build
         int _happyness;
         int _turnover;
         public CommerceType()
-            : base( "Commerce", 0, 5, "C:/dev/Textures/Commerce.bmp" )
+            : base( "Commerce", 0, 5 )
         {
             _happyness = 50;
             _turnover = 5000;
         }
-        protected override Infrastructure DoCreateInfrastructure( Box location )
+        protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {
             if( location.Infrasructure == null )
             {
@@ -27,55 +27,51 @@ namespace ITI.Simc_ITI.Build
             return null;
         }
         public int Happyness { get { return _happyness; } }
+        public int Turnover { get { return _turnover; } }
     }
-    public class Commerce : Infrastructure, IHappynessImpact
+    public class Commerce : Infrastructure, IHappyness, ITaxation
     {
         int _hapyness;
-        int _maxCapacity;
-        int _actualCapacity;
         Bitmap _bmp;
-        CommerceType _info;
-        Box _box;
+        int _taxation = 10;
+        int _salary = 30000;
+
 
         public Commerce( Box b, CommerceType info )
             : base( b, info)
         {
-            _info = info;
-            _box = b;
-            _box.Infrasructure = this;
-            _bmp = new Bitmap( info.TexturePath );
+            _bmp = new Bitmap( "C:/dev/Textures/Commerce.bmp" );
             _hapyness = info.Happyness;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-            Rectangle r = new Rectangle( 0, 0, _box.Map.BoxWidth, _box.Map.BoxWidth );
+            Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
         }
-        public override void Destroy()
+        public override void OnDestroy()
         {
-            _box.Infrasructure = null;
-            _box = null;
+            _bmp.Dispose();
         }
         public override void OnCreatedAround( Box b )
         {
-            throw new NotImplementedException();
+            IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
+            if( impact != null )
+            {
+                Happyness += impact.HappynessImpact;
+            }
         }
         public override void OnDestroyingAround( Box b )
         {
-            throw new NotImplementedException();
+            IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
+            if( impact != null )
+            {
+                Happyness -= impact.HappynessImpact;
+            }
         }
-        public int Happyness { get { return _hapyness; } }
-        public int MaxCapacity
-        {
-            get { return _maxCapacity; }
-            set { _maxCapacity = value; }
-        }
-        public int ActualCapacity
-        {
-            get { return _actualCapacity; }
-            set { _actualCapacity = value; }
-        }
+        public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
+        public int Taxation { get { return _taxation; } set { _taxation = value; } }
+        public int Salary { get { return _salary; } }
     }
 }

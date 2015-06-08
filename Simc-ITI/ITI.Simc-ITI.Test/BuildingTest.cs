@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using ITI.Simc_ITI;
 using ITI.Simc_ITI.Build;
+using ITI.Simc_ITI.Money.Lib;
 
 namespace ITI.Simc_ITI.Test
 {
@@ -20,21 +21,41 @@ namespace ITI.Simc_ITI.Test
             InfrastructureManager i = new InfrastructureManager();
             Assert.That( m.Boxes[0, 0].Infrasructure, Is.EqualTo( null ) );
             Assert.That( m.Money.ActualMoney, Is.EqualTo( 5000 ) );
-            Assert.That( i.Find( "Route" ).BuildingCost, Is.EqualTo( 5 ) );
-            Assert.That( i.Find( "Ecole" ).TexturePath, Is.EqualTo( "C:/dev/Textures/Ecole.bmp" ) );
-            i.Find( "Route" ).CreateInfrastructure( m.Boxes[0, 0] );
-            Assert.That( m.Money.ActualMoney, Is.EqualTo(4995) );
+            Assert.That( i.Find( "Ecole" ).BuildingCost, Is.EqualTo( 500 ) );
+            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[0, 0], 1);
+            Assert.That( m.Money.ActualMoney, Is.EqualTo(4500) );
             Assert.That( m.Boxes[0, 0].Infrasructure.GetType(), Is.Not.Null );
-            Assert.That( m.Boxes[0, 0].Infrasructure.Type.Name, Is.EqualTo( "Route" ) );
+            Assert.That( m.Boxes[0, 0].Infrasructure.Type.Name, Is.EqualTo( "Ecole" ) );
         }
         [Test]
         public void HappynessChangedWhenPublicBuildingWasCreate()
         {
-            Map m = new Map( 10, 20 );
+            Map m = new Map( 10, 10 );
             InfrastructureManager i = new InfrastructureManager();
-            i.Find( "Route" ).CreateInfrastructure( m.Boxes[5, 4] );
-            i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[5, 5] );
-            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[5, 3] ); 
+            i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[0, 5],0 );
+            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[0, 3],0 );
+            IHappyness happy = m.GetAllInfrastucture<IHappyness>().Single();
+            Assert.That( happy.Happyness, Is.EqualTo( 55 ) );
+        }
+        [Test]
+        public void HabitationHaveTheTaxationWithUpdate()
+        {
+            Map m = new Map( 10, 10 );
+            InfrastructureManager i = new InfrastructureManager();
+            MoneyGestion mg = new MoneyGestion();                       
+            i.Find( "Habitation" ).CreateInfrastructure( m.Boxes[0, 4],0 );
+            i.Find( "Ecole" ).CreateInfrastructure( m.Boxes[0, 5], 0 );
+            Habitation taxe = m.Boxes[0, 4].Infrasructure as Habitation;
+            if( taxe != null ) taxe.Taxation = mg.HabitationTaxation;
+            Assert.That( taxe.Taxation, Is.EqualTo( 10 ) );
+            m.Boxes[0, 4].Infrasructure.Update();
+            Assert.That( m.Money.ActualMoney, Is.EqualTo( 4600 ) );
+            m.Boxes[0, 5].Infrasructure.Update();
+            Assert.That( m.Money.ActualMoney, Is.EqualTo( 4590 ) );
+            mg.HabitationTaxation = 15;
+            if( taxe != null ) taxe.Taxation = mg.HabitationTaxation;
+            Assert.That( taxe.Taxation, Is.EqualTo( 15 ) );
+
         }
     }
 }

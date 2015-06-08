@@ -11,64 +11,71 @@ namespace ITI.Simc_ITI.Build
     {
         int _happyness;
         public HabitationType()
-            : base( "Habitation", 0, 0, "C:/dev/Textures/Habitation.bmp" )
+            : base( "Habitation", 0, 0)
         {
             _happyness = 50;
         }
-        protected override Infrastructure DoCreateInfrastructure( Box location )
+        protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {
                 return new Habitation( location, this );
         }
         public int Happyness { get { return _happyness; } }
     }
-    public class Habitation : Infrastructure, IHappynessImpact
+    public class Habitation : Infrastructure, IHappyness, ITaxation
     {
         int _hapyness;
-        int _maxCapacity;
-        int _actualCapacity;
+        int _salary = 30000;
+        int _taxation = 10;
         Bitmap _bmp;
-        HabitationType _info;
-        Box _box;
+
 
         public Habitation(Box b, HabitationType info)
             : base(b, info)
         {
-            _info = info;
-            _box = b;
-            _box.Infrasructure = this;
-            _bmp = new Bitmap(info.TexturePath);
+            _bmp = new Bitmap( "C:/dev/Textures/Habitation.bmp" );
             _hapyness = info.Happyness;
+            CheckAllNearBoxes();
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-            Rectangle r = new Rectangle( 0, 0, _box.Map.BoxWidth, _box.Map.BoxWidth );
+            Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
             g.DrawRectangle( Pens.DarkGreen, r );
         }
-        public override void Destroy()
+        public override void OnDestroy()
         {
-            _box.Infrasructure = null;
-            _box = null;
+            _bmp.Dispose();
         }
         public override void OnCreatedAround( Box b )
         {
-            throw new NotImplementedException();
+            IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
+            if( impact != null )
+            {
+                Happyness += impact.HappynessImpact;
+            }
         }
         public override void OnDestroyingAround( Box b )
         {
-            throw new NotImplementedException();
+            IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
+            if( impact != null )
+            {
+                Happyness -= impact.HappynessImpact;
+            }
         }
-        public int Happyness { get { return _hapyness; } }
-        public int MaxCapacity
+        public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
+        public int Taxation { get { return _taxation; } set { _taxation = value; } }
+        public int Salary { get { return _salary; } }
+        public void CheckAllNearBoxes()
         {
-            get { return _maxCapacity; }
-            set { _maxCapacity = value; }
-        }
-        public int ActualCapacity
-        {
-            get { return _actualCapacity; }
-            set { _actualCapacity = value; }
+            IEnumerable<Box> nearBox = Box.NearBoxes( 10 );
+            foreach( var box in nearBox)
+            {
+                if( box.Infrasructure != null )
+                {
+                    OnCreatedAround( box );
+                }
+            }
         }
     }
 }
