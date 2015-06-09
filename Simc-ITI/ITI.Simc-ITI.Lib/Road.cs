@@ -34,7 +34,7 @@ namespace ITI.Simc_ITI.Build
         public Road( Box b, RoadType info, RoadOrientation o )
             : base( b, info )
         {
-            _bmp = new Bitmap( "C:/dev/textures/" + o + ".bmp" );
+            _bmp = b.Map.Texture.Get(o + ".bmp");
             _name = info.Name;
         }
         public new RoadType Type { get { return (RoadType)base.Type; } }

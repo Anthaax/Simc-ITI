@@ -42,7 +42,7 @@ namespace ITI.Simc_ITI.Build
         public Ecole(Box b, EcoleType info)
             : base(b, info)
         {
-            _bmp = new Bitmap( "C:/dev/Textures/Ecole.bmp" );
+            _bmp = b.Map.Texture.Get("Ecole.bmp");
             _costPerMonth = info.CostPerMonth;
             _happynessImpact = info.HappynessImpact;
             CheckAllNearBoxes();

@@ -64,8 +64,8 @@ namespace ITI.Simc_ITI.Rendering
             IEnumerable<InfrastructureType> types = _infManager.AllTypes;
             foreach( var building in types )
             {
-                building.BuildingHasBeenCreated += ( s, e ) => AfterBuildAInfrastructure();
-                building.BuildingHasBeenCreated += (s, e) => AverageHappyness();
+                   building.BuildingHasBeenCreated += ( s, e) => AfterBuildAInfrastructure();
+                building.BuildingHasBeenCreated += ( s, e) => AverageHappyness();
             }
         }
 
@@ -230,6 +230,48 @@ namespace ITI.Simc_ITI.Rendering
         {
             TaxationModification tx = new TaxationModification(_mg);
             tx.Show();
+        }
+
+        private void pause_button_Click(object sender, EventArgs e)
+        {
+            if (t.Enabled != false)
+            {
+                t.Enabled = false;
+                pause_button.Text = "Play";
+            }
+            else
+            {
+                t.Enabled = true;
+                pause_button.Text = "Pause";
+            }
+        }
+
+        private void fastforward_button_Click(object sender, EventArgs e)
+        {
+            if (t.Interval == 30000)
+            {
+                t.Interval = t.Interval / 2;
+                fastforward_button.Text = "annuler";
+            }
+            else if(t.Interval < 30000)
+            {
+                t.Interval = 30000;
+                fastforward_button.Text = ">>";
+            }
+        }
+
+        private void rewind_button_Click(object sender, EventArgs e)
+        {
+            if (t.Interval == 30000)
+            {
+                t.Interval = t.Interval * 2;
+                rewind_button.Text = "annuler";
+            }
+            else if (t.Interval > 30000)
+            {
+                t.Interval = 30000;
+                rewind_button.Text = "<<";
+            }
         }
     }
 }

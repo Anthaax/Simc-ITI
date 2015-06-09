@@ -11,7 +11,6 @@ namespace ITI.Simc_ITI
     {
         Graphics g, screeng;
         readonly Map _map;
-        static readonly Bitmap _defaultBmp = new Bitmap( "C:/dev/Textures/Terre.bmp" );
         readonly int _line;
         readonly int _column;
         IInfrastructureForBox Infrastructure;
@@ -48,7 +47,7 @@ namespace ITI.Simc_ITI
             if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor );
             else
             {
-                g.DrawImage( _defaultBmp, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
+                g.DrawImage( Map.Texture.Get("Terre.bmp"), new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
                 g.DrawRectangle( Pens.DarkGreen, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
             }
         }
