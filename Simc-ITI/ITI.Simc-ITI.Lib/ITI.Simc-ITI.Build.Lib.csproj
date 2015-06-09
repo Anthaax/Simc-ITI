@@ -49,8 +49,11 @@
       <DependentUpon>CustomisationBuilding.cs</DependentUpon>
     </Compile>
     <Compile Include="Ecole.cs" />
+    <Compile Include="CentraleElectrique.cs" />
     <Compile Include="Habitation.cs" />
+    <Compile Include="IEclectricity.cs" />
     <Compile Include="IHappynessImpact.cs" />
+    <Compile Include="IHealth.cs" />
     <Compile Include="Infrastructure.cs" />
     <Compile Include="InfrastructureManager.cs" />
     <Compile Include="InfrastructureType.cs" />
