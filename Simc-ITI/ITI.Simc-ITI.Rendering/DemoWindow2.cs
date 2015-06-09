@@ -35,7 +35,7 @@ namespace ITI.Simc_ITI.Rendering
             InitiallizeTimer();
             AllButtonInvisible();
             InitializeAllEvents();
-            ActiveUpdateAfterCreateBuildingEvent();
+            BuildingEvent();
         }
         private void InitiallizeTimer()
         {
@@ -59,15 +59,16 @@ namespace ITI.Simc_ITI.Rendering
             Build_Road.Visible = true;
             HabitationBuild.Visible = true;
         }
-        private void ActiveUpdateAfterCreateBuildingEvent()
+        private void BuildingEvent()
         {
             IEnumerable<InfrastructureType> types = _infManager.AllTypes;
             foreach( var building in types )
             {
-                building.BuildingHasBeenCreated += AfterBuildAInfrastructure;
-                building.BuildingHasBeenCreated += AverageHappyness;
+                building.BuildingHasBeenCreated += ( s, e ) => AfterBuildAInfrastructure();
+                building.BuildingHasBeenCreated += (s, e) => AverageHappyness();
             }
         }
+
         private void InitializeAllEvents()
         {
             _map.Money.ActualMoneyChanged += label_MonArgent_text;
@@ -178,8 +179,8 @@ namespace ITI.Simc_ITI.Rendering
         private void Button_Destroy_Click( object sender, EventArgs e )
         {
             _map.Money.ActualMoney += _map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
-
             _map.Boxes[_xBox, _yBox].Infrasructure.Destroy();
+            AverageHappyness();
             AllButtonInvisible();
             _mainViewPortControl.Invalidate();
         }
@@ -201,7 +202,7 @@ namespace ITI.Simc_ITI.Rendering
                 co.Taxation = _mg.CommerceTaxation;
             }
         }
-        private void AverageHappyness(object sender, EventArgs e)
+        private void AverageHappyness()
         {
             int totalHappyness = 0;
             IEnumerable<IHappyness> happy = _map.GetAllInfrastucture<IHappyness>();
@@ -216,7 +217,7 @@ namespace ITI.Simc_ITI.Rendering
                 HumeurLabel.Text = "Humeur : " + totalHappyness + "%";
             }
         }
-        private void AfterBuildAInfrastructure( object sender, EventArgs e )
+        private void AfterBuildAInfrastructure()
         {
             Habitation taxe = _map.Boxes[_xBox, _yBox].Infrasructure as Habitation;
             if( taxe != null ) taxe.Taxation = _mg.HabitationTaxation;

@@ -29,6 +29,8 @@ namespace ITI.Simc_ITI.Build
         public abstract void OnCreatedAround( Box b );
         public abstract void OnDestroyingAround( Box b );
         public int AreaEffect { get; protected set; }
+
+        public event EventHandler BuildingHasBeenDestoyed;
         public void Destroy()
         {
             OnDestroy();
@@ -40,6 +42,8 @@ namespace ITI.Simc_ITI.Build
                     box.Infrasructure.OnDestroyingAround( _box );
                 }
             }
+            var h = BuildingHasBeenDestoyed;
+            if( h != null ) h( this, EventArgs.Empty );
             _box.Infrasructure = null;
             _box = null;
         }

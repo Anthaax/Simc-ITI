@@ -64,7 +64,17 @@ namespace ITI.Simc_ITI.Build
         {
 
         }
-        public int HappynessImpact { get { return _happynessImpact; } }
+        public int HappynessImpact( Box b )
+        {
+            int happyness;
+            int cDistance = Math.Abs( Box.Column - b.Column );
+            int lDistance = Math.Abs( Box.Line - b.Line );
+
+            if( cDistance < 5 && lDistance < 5 ) happyness = 5;
+            else if( cDistance < 10 && lDistance < 10 ) happyness = 2;
+            else happyness = 1;
+            return happyness;
+        }
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public int MaxCapacity
         {

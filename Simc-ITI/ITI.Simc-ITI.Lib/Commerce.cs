@@ -29,7 +29,7 @@ namespace ITI.Simc_ITI.Build
         public int Happyness { get { return _happyness; } }
         public int Turnover { get { return _turnover; } }
     }
-    public class Commerce : Infrastructure, IHappyness, ITaxation
+    public class Commerce : Infrastructure, IHappyness, ITaxation, IHappynessImpact
     {
         int _hapyness;
         Bitmap _bmp;
@@ -59,7 +59,7 @@ namespace ITI.Simc_ITI.Build
             IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
             if( impact != null )
             {
-                Happyness += impact.HappynessImpact;
+                Happyness = Happyness + impact.HappynessImpact( Box );
             }
         }
         public override void OnDestroyingAround( Box b )
@@ -67,11 +67,21 @@ namespace ITI.Simc_ITI.Build
             IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
             if( impact != null )
             {
-                Happyness -= impact.HappynessImpact;
+                Happyness = Happyness - impact.HappynessImpact( Box );
             }
         }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
         public int Salary { get { return _salary; } }
+        public int HappynessImpact(Box b)
+        {
+            int happyness;
+            int cDistance = Math.Abs( Box.Column - b.Column );
+            int lDistance = Math.Abs( Box.Line - b.Line );
+
+            if( cDistance == 1 && lDistance == 1 ) happyness = -1;
+            else happyness = 2;
+            return happyness;
+        }
     }
 }

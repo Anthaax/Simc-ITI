@@ -8,6 +8,6 @@ namespace ITI.Simc_ITI.Build
 {
     public interface IHappynessImpact
     {
-        int HappynessImpact { get; }
+        int HappynessImpact(Box b);
     }
 }

@@ -52,7 +52,7 @@ namespace ITI.Simc_ITI.Build
             IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
             if( impact != null )
             {
-                Happyness += impact.HappynessImpact;
+                Happyness = Happyness + impact.HappynessImpact( Box );
             }
         }
         public override void OnDestroyingAround( Box b )
@@ -60,7 +60,7 @@ namespace ITI.Simc_ITI.Build
             IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
             if( impact != null )
             {
-                Happyness -= impact.HappynessImpact;
+                Happyness = Happyness - impact.HappynessImpact( Box );
             }
         }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
@@ -73,7 +73,11 @@ namespace ITI.Simc_ITI.Build
             {
                 if( box.Infrasructure != null )
                 {
-                    OnCreatedAround( box );
+                    if( box.Line - box.Infrasructure.Type.AreaEffect <= Box.Line || box.Line + box.Infrasructure.Type.AreaEffect >= Box.Line || box.Column - box.Infrasructure.Type.AreaEffect <= Box.Column || box.Column + box.Infrasructure.Type.AreaEffect >= Box.Column )
+                    {
+                        OnCreatedAround( box );
+                    }
+                    
                 }
             }
         }
