@@ -15,10 +15,12 @@ namespace ITI.Simc_ITI
         readonly int _boxCount;
         readonly int _boxWidth;
         readonly int _mapWidth;
-        readonly  MyMoney _myMoney;
+        readonly MyMoney _myMoney;
+        readonly BitmapCache _texture;
 
         public Map(int boxWidthInMeter, int boxCount)
         {
+            _texture = new BitmapCache();
             _boxes = new Box[boxCount, boxCount];
             for (int j = 0; j < boxCount; ++j)
             {
@@ -132,5 +134,8 @@ namespace ITI.Simc_ITI
         {
             return _boxes.Cast<Box>().Select( b => b.Infrasructure ).OfType<T>();
         }
+
+        public BitmapCache Texture
+        { get { return _texture; } }
     }
 }
