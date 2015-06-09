@@ -155,7 +155,7 @@ namespace ITI.Simc_ITI.Rendering
             if( _map.Boxes[_xBox, _yBox].Infrasructure == null)
             {
                 AllButtonInvisible();
-                if( _infManager.Find("Habitation").CanCreated(_map.Boxes[_xBox, _yBox]) == true ) AllButtonVisible();
+                if( _infManager.Find("Habitation").CanCreatedNormal(_map.Boxes[_xBox, _yBox]) == true ) AllButtonVisible();
                 Build_Road.Visible = true;
             }
             else

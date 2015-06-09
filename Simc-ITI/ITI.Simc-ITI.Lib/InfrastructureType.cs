@@ -23,7 +23,7 @@ namespace ITI.Simc_ITI.Build
         public int AreaEffect { get { return _areaEffect; } }
         public int BuildingCost { get { return _buildingCost; } }
 
-        public bool CanCreated( Box b )
+        public bool CanCreatedNormal( Box b )
         {
             bool check = false;
             IEnumerable<Box> nearBoxes = b.NearBoxes( 1 );
@@ -32,6 +32,14 @@ namespace ITI.Simc_ITI.Build
                 if( box.Infrasructure != null )
                 {
                     if( box.Infrasructure.Type.Name == "Route" ) check = true;
+                }
+            }
+            IEnumerable<Box> nearCentral = b.NearBoxes( b.Infrasructure.Type.AreaEffect );
+            foreach( var box in nearCentral )
+            {
+                if( box.Infrasructure != null )
+                {
+                    if( box.Infrasructure.Type.Name == "CentraleElectrique" ) check = true;
                 }
             }
             return check;

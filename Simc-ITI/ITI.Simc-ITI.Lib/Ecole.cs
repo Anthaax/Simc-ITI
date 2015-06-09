@@ -30,12 +30,13 @@ namespace ITI.Simc_ITI.Build
     }
 
 
-    public class Ecole : Infrastructure, IHappynessImpact, IPublic
+    public class Ecole : Infrastructure, IHappynessImpact, IHealth, IPublic
     {
         int _costPerMonth;
         int _maxCapacity;
         int _actualCapacity;
         int _happynessImpact;
+        bool _health = true;
         Bitmap _bmp;
 
         public Ecole(Box b, EcoleType info)
@@ -44,6 +45,7 @@ namespace ITI.Simc_ITI.Build
             _bmp = new Bitmap( "C:/dev/Textures/Ecole.bmp" );
             _costPerMonth = info.CostPerMonth;
             _happynessImpact = info.HappynessImpact;
+            CheckAllNearBoxes();
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
@@ -58,24 +60,41 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnCreatedAround( Box b )
         {
-            
+            IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
+            if( impact != null )
+            {
+                if( impact.HappynessImpact( Box ) < 0 ) _health = false;
+                else _health = true;
+            }
         }
         public override void OnDestroyingAround( Box b )
         {
-
+            IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
+            if( impact != null )
+            {
+                _health = true;
+            }
+            CheckAllNearBoxes();
         }
         public int HappynessImpact( Box b )
         {
             int happyness;
             int cDistance = Math.Abs( Box.Column - b.Column );
             int lDistance = Math.Abs( Box.Line - b.Line );
-
-            if( cDistance < 5 && lDistance < 5 ) happyness = 5;
-            else if( cDistance < 10 && lDistance < 10 ) happyness = 2;
-            else happyness = 1;
+            if( _health == true ) 
+            {
+                if( cDistance < 5 && lDistance < 5 ) happyness = 5;
+                else if( cDistance < 10 && lDistance < 10 ) happyness = 2;
+                else happyness = 1;
+            }
+            else
+            {
+                happyness = 0;
+            }
             return happyness;
         }
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
+        public bool Health { get { return _health; } set { _health = value; } }
         public int MaxCapacity
         {
             get { return _maxCapacity; }
@@ -85,6 +104,20 @@ namespace ITI.Simc_ITI.Build
         {
             get { return _actualCapacity; }
             set { _actualCapacity = value; }
+        }
+        public void CheckAllNearBoxes()
+        {
+            IEnumerable<Box> nearBox = Box.NearBoxes( Box.Map.BoxCount );
+            foreach( var box in nearBox )
+            {
+                if( box.Infrasructure != null )
+                {
+                    if( box.Line - box.Infrasructure.Type.AreaEffect <= Box.Line || box.Line + box.Infrasructure.Type.AreaEffect >= Box.Line || box.Column - box.Infrasructure.Type.AreaEffect <= Box.Column || box.Column + box.Infrasructure.Type.AreaEffect >= Box.Column )
+                    {
+                        OnCreatedAround( box );
+                    }
+                }
+            }
         }
     }
 }

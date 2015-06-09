@@ -29,8 +29,6 @@ namespace ITI.Simc_ITI.Build
     public class Road : Infrastructure
     {
         string _name;
-        bool _water;
-        bool _electricity;
         Bitmap _bmp;
 
         public Road( Box b, RoadType info, RoadOrientation o )
@@ -52,19 +50,10 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnCreatedAround( Box b )
         {
+
         }
         public override void OnDestroyingAround( Box b )
         {
-        }
-        public bool Water
-        {
-            get { return _water; }
-            set { _water = value; }
-        }
-        public bool Electricity
-        {
-            get { return _electricity; }
-            set { _electricity = value; }
         }
     }
 }

@@ -68,7 +68,7 @@ namespace ITI.Simc_ITI.Build
         public int Salary { get { return _salary; } }
         public void CheckAllNearBoxes()
         {
-            IEnumerable<Box> nearBox = Box.NearBoxes( 10 );
+            IEnumerable<Box> nearBox = Box.NearBoxes( Box.Map.BoxCount );
             foreach( var box in nearBox)
             {
                 if( box.Infrasructure != null )
@@ -77,7 +77,6 @@ namespace ITI.Simc_ITI.Build
                     {
                         OnCreatedAround( box );
                     }
-                    
                 }
             }
         }
