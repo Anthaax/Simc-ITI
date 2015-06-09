@@ -31,17 +31,11 @@ namespace ITI.Simc_ITI.Rendering
             _mg = new MoneyGestion();
             InitializeComponent();
             _mainViewPortControl.SetMap( _map, 5 * 100 );
-            _map.Money.ActualMoneyChanged += label_MonArgent_text;
-            IEnumerable<InfrastructureType> types = _infManager.AllTypes;
-            foreach( var building in types )
-            {
-                building.BuildingHasBeenCreated += AfterBuildAInfrastructure;
-            }
             scalefactor = _mainViewPortControl.ViewPort.ActualZoomFactor;
-            _mainViewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
-            _mg.TaxationAsChanged += TaxationWasChanged;
             InitiallizeTimer();
             AllButtonInvisible();
+            InitializeAllEvents();
+            ActiveUpdateAfterCreateBuildingEvent();
         }
         private void InitiallizeTimer()
         {
@@ -51,7 +45,36 @@ namespace ITI.Simc_ITI.Rendering
             t.Tick += UpdateGame;
             t.Start();
         }
+        private void AllButtonInvisible()
+        {
+            Button_Destroy.Visible = false;
+            School_Button.Visible = false;
+            Build_Road.Visible = false;
+            Kind_Building.Visible = false;
+            HabitationBuild.Visible = false;
+        }
+        private void AllButtonVisible()
+        {
+            School_Button.Visible = true;
+            Build_Road.Visible = true;
+            HabitationBuild.Visible = true;
+        }
+        private void ActiveUpdateAfterCreateBuildingEvent()
+        {
+            IEnumerable<InfrastructureType> types = _infManager.AllTypes;
+            foreach( var building in types )
+            {
+                building.BuildingHasBeenCreated += ( s, e) => AfterBuildAInfrastructure();
+                building.BuildingHasBeenCreated += ( s, e) => AverageHappyness();
+            }
+        }
+        private void InitializeAllEvents()
+        {
+            _map.Money.ActualMoneyChanged += label_MonArgent_text;
+            _mainViewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
+            _mg.TaxationAsChanged += TaxationWasChanged;
 
+        }
         private void UpdateGame( object sender, EventArgs e )
         {
             IEnumerable<IInfrastructureForBox> infra = _map.GetAllInfrastucture<IInfrastructureForBox>();
@@ -71,7 +94,6 @@ namespace ITI.Simc_ITI.Rendering
         void CreateHabitation(object sender , EventArgs e )
         {
             _infManager.Find( "Habitation" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox], 0 );
-            HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%";
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
         }
@@ -115,23 +137,20 @@ namespace ITI.Simc_ITI.Rendering
                 case Keys.NumPad2:
                     y += 10000;
                     break;
-
-                //Keys.OemMinus
             }
             _mainViewPortControl.KeyMove(x, y);
         }
-
-        private void MouseClickEvent(object sender, MouseEventArgs e)
+        private void MousePosition(MouseEventArgs e)
         {
-            int _boxInPixel = (int)Math.Round( _map.BoxWidth * _mainViewPortControl.ViewPort.ClientScaleFactor);
+            int _boxInPixel = (int)Math.Round( _map.BoxWidth * _mainViewPortControl.ViewPort.ClientScaleFactor );
             int _mouseX = e.X;
             int _mouseY = e.Y;
-            _xBox = (_mainViewPortControl.ViewPort.Area.X / _map.BoxWidth) + _mouseX / _boxInPixel ;
-            _yBox = (_mainViewPortControl.ViewPort.Area.Y / _map.BoxWidth) + _mouseY / _boxInPixel ;
-
-            if( _xBox == 100 ) _xBox = 99;
-            else if( _yBox == 100 ) _yBox = 99;
-
+            _xBox = Math.Min( (_mainViewPortControl.ViewPort.Area.X / _map.BoxWidth) + _mouseX / _boxInPixel, _map.BoxCount );
+            _yBox = Math.Min( (_mainViewPortControl.ViewPort.Area.Y / _map.BoxWidth) + _mouseY / _boxInPixel, _map.BoxCount );
+        }
+        private void MouseClickEvent(object sender, MouseEventArgs e)
+        {
+            MousePosition( e );
             if( _map.Boxes[_xBox, _yBox].Infrasructure == null)
             {
                 AllButtonInvisible();
@@ -152,7 +171,6 @@ namespace ITI.Simc_ITI.Rendering
         private void School_Button_Click( object sender, EventArgs e )
         {
             _infManager.Find( "Ecole" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox], 0 );
-            HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%"; 
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
         }
@@ -162,7 +180,6 @@ namespace ITI.Simc_ITI.Rendering
             _map.Money.ActualMoney += _map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
 
             _map.Boxes[_xBox, _yBox].Infrasructure.Destroy();
-            HumeurLabel.Text = "Humeur : " + AverageHappyness() + "%"; 
             AllButtonInvisible();
             _mainViewPortControl.Invalidate();
         }
@@ -184,35 +201,24 @@ namespace ITI.Simc_ITI.Rendering
                 co.Taxation = _mg.CommerceTaxation;
             }
         }
-        private void AllButtonInvisible()
-        {
-            Button_Destroy.Visible = false;
-            School_Button.Visible = false;
-            Build_Road.Visible = false;
-            Kind_Building.Visible = false;
-            HabitationBuild.Visible = false;
-        }
-        private void AllButtonVisible()
-        {
-            School_Button.Visible = true;
-            Build_Road.Visible = true;
-            HabitationBuild.Visible = true;
-            fastforward_button.Visible = true;
-            rewind_button.Visible = true;
-        }
-        private int AverageHappyness()
+
+       
+        private void AverageHappyness()
         {
             int totalHappyness = 0;
             IEnumerable<IHappyness> happy = _map.GetAllInfrastucture<IHappyness>();
-            if( happy.FirstOrDefault() == null ) return 50;
-            foreach( var happyness in happy)
+            if( happy.FirstOrDefault<IHappyness>() == null ) totalHappyness = 50;
+            else
             {
-                totalHappyness += happyness.Happyness;
+                foreach( var happyness in happy )
+                {
+                    totalHappyness += happyness.Happyness;
+                }
+                totalHappyness = totalHappyness / happy.Count<IHappyness>();
+                HumeurLabel.Text = "Humeur : " + totalHappyness + "%";
             }
-            totalHappyness = totalHappyness / happy.Count<IHappyness>();
-            return totalHappyness;
         }
-        private void AfterBuildAInfrastructure( object sender, EventArgs e )
+        private void AfterBuildAInfrastructure()
         {
             Habitation taxe = _map.Boxes[_xBox, _yBox].Infrasructure as Habitation;
             if( taxe != null ) taxe.Taxation = _mg.HabitationTaxation;
