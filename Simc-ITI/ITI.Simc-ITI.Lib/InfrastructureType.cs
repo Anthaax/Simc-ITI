@@ -66,7 +66,6 @@ namespace ITI.Simc_ITI.Build
         public Infrastructure CreateInfrastructure( Box b, object creationConfig )
         {
             if( b.Infrasructure != null ) throw new InvalidOperationException( "The box alreay has an Infrastructure." );
-            b.Map.Money.ActualMoney -= BuildingCost;
             Infrastructure infra = DoCreateInfrastructure( b, creationConfig);
             IEnumerable<Box> nearBoxes = b.NearBoxes( infra.Type.AreaEffect );
             foreach( var box in nearBoxes )

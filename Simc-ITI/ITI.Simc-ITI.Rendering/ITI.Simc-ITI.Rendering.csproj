@@ -44,12 +44,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\BottomPaneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\BottomPaneControl.Designer.cs">
+      <DependentUpon>BottomPaneControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlExtension.cs" />
     <Compile Include="DemoWindow2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DemoWindow2.Designer.cs">
       <DependentUpon>DemoWindow2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LeftPaneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LeftPaneControl.Designer.cs">
+      <DependentUpon>LeftPaneControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainGameControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MainGameControl.Designer.cs">
+      <DependentUpon>MainGameControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +83,12 @@
     </Compile>
     <EmbeddedResource Include="DemoWindow2.resx">
       <DependentUpon>DemoWindow2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LeftPaneControl.resx">
+      <DependentUpon>LeftPaneControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainGameControl.resx">
+      <DependentUpon>MainGameControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
