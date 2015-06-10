@@ -33,7 +33,6 @@
             this.Build_Road = new System.Windows.Forms.Button();
             this.HabitationBuild = new System.Windows.Forms.Button();
             this.School_Button = new System.Windows.Forms.Button();
-            this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
             this.fastforward_button = new System.Windows.Forms.Button();
             this.pause_button = new System.Windows.Forms.Button();
             this.rewind_button = new System.Windows.Forms.Button();
@@ -45,6 +44,7 @@
             this.MonArgent = new System.Windows.Forms.Label();
             this.MyMoney = new System.Windows.Forms.Label();
             this.Centrale_electrique = new System.Windows.Forms.Button();
+            this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -120,7 +120,7 @@
             // 
             // HabitationBuild
             // 
-            this.HabitationBuild.Location = new System.Drawing.Point(3, 95);
+            this.HabitationBuild.Location = new System.Drawing.Point(3, 304);
             this.HabitationBuild.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HabitationBuild.Name = "HabitationBuild";
             this.HabitationBuild.Size = new System.Drawing.Size(91, 23);
@@ -140,15 +140,6 @@
             this.School_Button.UseVisualStyleBackColor = true;
             this.School_Button.Visible = false;
             this.School_Button.Click += new System.EventHandler(this.School_Button_Click);
-            // 
-            // _mainViewPortControl
-            // 
-            this._mainViewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._mainViewPortControl.Location = new System.Drawing.Point(0, 0);
-            this._mainViewPortControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this._mainViewPortControl.Name = "_mainViewPortControl";
-            this._mainViewPortControl.Size = new System.Drawing.Size(1160, 368);
-            this._mainViewPortControl.TabIndex = 0;
             // 
             // fastforward_button
             // 
@@ -267,6 +258,16 @@
             this.Centrale_electrique.Text = "CentraleE";
             this.Centrale_electrique.UseVisualStyleBackColor = true;
             this.Centrale_electrique.Visible = false;
+            this.Centrale_electrique.Click += new System.EventHandler(this.Centrale_electrique_Click);
+            // 
+            // _mainViewPortControl
+            // 
+            this._mainViewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._mainViewPortControl.Location = new System.Drawing.Point(0, 0);
+            this._mainViewPortControl.Margin = new System.Windows.Forms.Padding(4);
+            this._mainViewPortControl.Name = "_mainViewPortControl";
+            this._mainViewPortControl.Size = new System.Drawing.Size(1160, 368);
+            this._mainViewPortControl.TabIndex = 0;
             // 
             // DemoWindow2
             // 

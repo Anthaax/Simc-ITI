@@ -13,7 +13,7 @@ namespace ITI.Simc_ITI.Build
         public CentraleElectriqueType()
             : base( "CentraleElectrique", 900, 13 )
         {
-            _costPerMonth = 200;
+            _costPerMonth = 300;
         }
         protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {
