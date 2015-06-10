@@ -155,7 +155,8 @@ namespace ITI.Simc_ITI.Rendering
             if( _map.Boxes[_xBox, _yBox].Infrasructure == null)
             {
                 AllButtonInvisible();
-                if( _infManager.Find("Habitation").CanCreatedNormal(_map.Boxes[_xBox, _yBox]) == true ) AllButtonVisible();
+                if( _infManager.Find( "CentraleElectrique" ).CanCreatedNearRoad( _map.Boxes[_xBox, _yBox] ) ) Centrale_electrique.Visible = true;
+                if( CanCreate( "Habitation", _map.Boxes[_xBox, _yBox] ) ) AllButtonVisible();
                 Build_Road.Visible = true;
             }
             else
@@ -171,6 +172,7 @@ namespace ITI.Simc_ITI.Rendering
 
         private void School_Button_Click( object sender, EventArgs e )
         {
+            CanCreate( "Ecole", _map.Boxes[_xBox, _yBox] );
             _infManager.Find( "Ecole" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox], 0 );
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
@@ -272,6 +274,10 @@ namespace ITI.Simc_ITI.Rendering
                 t.Interval = 30000;
                 rewind_button.Text = "<<";
             }
+        }
+        private bool CanCreate(string building, Box b)
+        {
+            return _infManager.Find( building ).CanCreatedNearRoad( b ) && _infManager.Find( building ).CanCreated( b );
         }
     }
 }

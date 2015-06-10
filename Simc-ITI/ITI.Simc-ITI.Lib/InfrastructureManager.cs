@@ -22,6 +22,7 @@ namespace ITI.Simc_ITI.Build
             RegisterType( new RoadType() );
             RegisterType( new HabitationType() );
             RegisterType( new CommerceType() );
+            RegisterType( new CentraleElectriqueType() );
         }
 
         void RegisterType( InfrastructureType t )
