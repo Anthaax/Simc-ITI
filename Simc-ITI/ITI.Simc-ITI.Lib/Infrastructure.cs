@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using ITI.Simc_ITI.Money.Lib;
 using ITI.Simc_ITI;
 
 namespace ITI.Simc_ITI.Build
@@ -49,11 +48,7 @@ namespace ITI.Simc_ITI.Build
         }
         public void Update()
         {
-            IPublic publicBuilding = this as IPublic;
-            if ( publicBuilding != null) Box.Map.Money.ActualMoney -= publicBuilding.CostPerMount / 30;
-
-            ITaxation privateBuilding = this as ITaxation;
-            if ( privateBuilding != null ) Box.Map.Money.ActualMoney = Box.Map.Money.ActualMoney+privateBuilding.Salary*privateBuilding.Taxation/100/ 30;
+            
         }
         public abstract void OnDestroy();
     }

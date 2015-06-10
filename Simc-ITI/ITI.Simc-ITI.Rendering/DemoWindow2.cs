@@ -66,8 +66,9 @@ namespace ITI.Simc_ITI.Rendering
             IEnumerable<InfrastructureType> types = _infManager.AllTypes;
             foreach( var building in types )
             {
-                   building.BuildingHasBeenCreated += ( s, e) => AfterBuildAInfrastructure();
+                building.BuildingHasBeenCreated += ( s, e) => AfterBuildAInfrastructure();
                 building.BuildingHasBeenCreated += ( s, e) => AverageHappyness();
+                building.BuildingHasBeenCreated += ( s, e ) => PaidBuildingConstruction( building.BuildingCost );
             }
         }
 
@@ -83,7 +84,11 @@ namespace ITI.Simc_ITI.Rendering
             IEnumerable<IInfrastructureForBox> infra = _map.GetAllInfrastucture<IInfrastructureForBox>();
             foreach( var infrastructure in infra)
             {
-                infrastructure.Update();
+                IPublic publicBuilding = this as IPublic;
+                if( publicBuilding != null ) _money.ActualMoney -= publicBuilding.CostPerMount / 30;
+
+                ITaxation privateBuilding = this as ITaxation;
+                if( privateBuilding != null ) _money.ActualMoney = _money.ActualMoney + privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
             }
         }
 
@@ -280,6 +285,10 @@ namespace ITI.Simc_ITI.Rendering
             _infManager.Find( "CentraleElectrique" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox], 0 );
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
+        }
+        private void PaidBuildingConstruction(int cost)
+        {
+            _money.ActualMoney -= cost;
         }
     }
 }

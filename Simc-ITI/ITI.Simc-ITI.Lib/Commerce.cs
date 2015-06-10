@@ -21,7 +21,6 @@ namespace ITI.Simc_ITI.Build
         {
             if( location.Infrasructure == null )
             {
-                location.Map.Money.ActualMoney -= this.BuildingCost;
                 return new Commerce( location, this );
             }
             return null;

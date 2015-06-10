@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using ITI.Simc_ITI;
 using ITI.Simc_ITI.Build;
-using ITI.Simc_ITI.Money.Lib;
 
 namespace ITI.Simc_ITI.Test
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ITI.Simc_ITI.Money.Lib
+namespace ITI.Simc_ITI.Build
 {
     public class MoneyGestion
     {
