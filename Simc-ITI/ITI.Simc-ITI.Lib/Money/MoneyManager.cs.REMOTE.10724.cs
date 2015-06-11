@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI.Build
 {
-    public class MoneyManager
+    public class MyMoney
     {
-
-        int _myMoney = 0;
-        TaxationManager _taxe;
-        public MoneyManager()
+        int _myMoney;
+        int _price;
+        public MyMoney()
         {
-            ActualMoney = 2000;
-            _taxe = new TaxationManager();
+            _myMoney = 5000;
         }
         public event EventHandler ActualMoneyChanged;
         public int ActualMoney
@@ -30,6 +28,22 @@ namespace ITI.Simc_ITI.Build
                 }
             }
         }
-        public TaxationManager TaxationManager { get { return _taxe; } }
+
+        public bool CanBuid(int price)
+        {
+            int M = ActualMoney;
+            if( M + 1 >= price )
+            {
+                BuyBuilding( price);
+                return true;
+            }
+            return false;
+        }
+
+        private void BuyBuilding( int price )
+        {
+            int newMoney = _myMoney - price;
+            ActualMoney = newMoney;
+        }
     }
 }

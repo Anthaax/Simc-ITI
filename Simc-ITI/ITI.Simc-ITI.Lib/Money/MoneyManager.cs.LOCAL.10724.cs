@@ -8,7 +8,6 @@ namespace ITI.Simc_ITI.Build
 {
     public class MoneyManager
     {
-
         int _myMoney = 0;
         TaxationManager _taxe;
         public MoneyManager()

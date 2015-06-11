@@ -8,10 +8,15 @@ namespace ITI.Simc_ITI.Build
 {
     public class MoneyManager
     {
-
+<<<<<<< HEAD:Simc-ITI/ITI.Simc-ITI.Lib/Money/MoneyManager.cs
         int _myMoney = 0;
         TaxationManager _taxe;
         public MoneyManager()
+=======
+        int _myMoney;
+        int _price;
+        public MyMoney()
+>>>>>>> origin/Devellop:Simc-ITI/ITI.Simc-ITI.Lib/MyMoney.cs
         {
             ActualMoney = 2000;
             _taxe = new TaxationManager();

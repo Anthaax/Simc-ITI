@@ -45,6 +45,11 @@
             this.Coordonnées = new System.Windows.Forms.Label();
             this.MonArgent = new System.Windows.Forms.Label();
             this.MyMoney = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+=======
+            this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
+            this.LastCost = new System.Windows.Forms.Label();
+>>>>>>> origin/Devellop
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -59,7 +64,10 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+<<<<<<< HEAD
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
+=======
+>>>>>>> origin/Devellop
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -69,6 +77,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.LastCost);
             this.splitContainer1.Panel2.Controls.Add(this.fastforward_button);
             this.splitContainer1.Panel2.Controls.Add(this.pause_button);
             this.splitContainer1.Panel2.Controls.Add(this.rewind_button);
@@ -79,16 +88,18 @@
             this.splitContainer1.Panel2.Controls.Add(this.Coordonnées);
             this.splitContainer1.Panel2.Controls.Add(this.MonArgent);
             this.splitContainer1.Panel2.Controls.Add(this.MyMoney);
-            this.splitContainer1.Size = new System.Drawing.Size(1259, 484);
-            this.splitContainer1.SplitterDistance = 368;
-            this.splitContainer1.SplitterWidth = 5;
+            this.splitContainer1.Size = new System.Drawing.Size(944, 393);
+            this.splitContainer1.SplitterDistance = 298;
             this.splitContainer1.TabIndex = 0;
             // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+<<<<<<< HEAD
             this.splitContainer2.Margin = new System.Windows.Forms.Padding(4);
+=======
+>>>>>>> origin/Devellop
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -101,17 +112,23 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this._mainViewPortControl);
-            this.splitContainer2.Size = new System.Drawing.Size(1259, 368);
-            this.splitContainer2.SplitterDistance = 94;
-            this.splitContainer2.SplitterWidth = 5;
+            this.splitContainer2.Size = new System.Drawing.Size(944, 298);
+            this.splitContainer2.SplitterDistance = 70;
             this.splitContainer2.TabIndex = 0;
             // 
             // Centrale_electrique
             // 
+<<<<<<< HEAD
             this.Centrale_electrique.Location = new System.Drawing.Point(3, 41);
             this.Centrale_electrique.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Centrale_electrique.Name = "Centrale_electrique";
             this.Centrale_electrique.Size = new System.Drawing.Size(91, 23);
+=======
+            this.Centrale_electrique.Location = new System.Drawing.Point(2, 33);
+            this.Centrale_electrique.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Centrale_electrique.Name = "Centrale_electrique";
+            this.Centrale_electrique.Size = new System.Drawing.Size(68, 19);
+>>>>>>> origin/Devellop
             this.Centrale_electrique.TabIndex = 9;
             this.Centrale_electrique.Text = "CentraleE";
             this.Centrale_electrique.UseVisualStyleBackColor = true;
@@ -120,10 +137,10 @@
             // 
             // Build_Road
             // 
-            this.Build_Road.Location = new System.Drawing.Point(3, 14);
-            this.Build_Road.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Build_Road.Location = new System.Drawing.Point(2, 11);
+            this.Build_Road.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Build_Road.Name = "Build_Road";
-            this.Build_Road.Size = new System.Drawing.Size(91, 23);
+            this.Build_Road.Size = new System.Drawing.Size(68, 19);
             this.Build_Road.TabIndex = 3;
             this.Build_Road.Text = "Route";
             this.Build_Road.UseVisualStyleBackColor = true;
@@ -132,10 +149,10 @@
             // 
             // HabitationBuild
             // 
-            this.HabitationBuild.Location = new System.Drawing.Point(3, 304);
-            this.HabitationBuild.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.HabitationBuild.Location = new System.Drawing.Point(2, 247);
+            this.HabitationBuild.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.HabitationBuild.Name = "HabitationBuild";
-            this.HabitationBuild.Size = new System.Drawing.Size(91, 23);
+            this.HabitationBuild.Size = new System.Drawing.Size(68, 19);
             this.HabitationBuild.TabIndex = 8;
             this.HabitationBuild.Text = "Habitation";
             this.HabitationBuild.UseVisualStyleBackColor = true;
@@ -143,10 +160,10 @@
             // 
             // School_Button
             // 
-            this.School_Button.Location = new System.Drawing.Point(3, 68);
-            this.School_Button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.School_Button.Location = new System.Drawing.Point(2, 55);
+            this.School_Button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.School_Button.Name = "School_Button";
-            this.School_Button.Size = new System.Drawing.Size(91, 23);
+            this.School_Button.Size = new System.Drawing.Size(68, 19);
             this.School_Button.TabIndex = 5;
             this.School_Button.Text = "Ecole";
             this.School_Button.UseVisualStyleBackColor = true;
@@ -164,10 +181,14 @@
             // 
             // fastforward_button
             // 
+<<<<<<< HEAD
             this.fastforward_button.Location = new System.Drawing.Point(208, 10);
             this.fastforward_button.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.fastforward_button.Location = new System.Drawing.Point(156, 8);
+>>>>>>> origin/Devellop
             this.fastforward_button.Name = "fastforward_button";
-            this.fastforward_button.Size = new System.Drawing.Size(80, 28);
+            this.fastforward_button.Size = new System.Drawing.Size(60, 23);
             this.fastforward_button.TabIndex = 12;
             this.fastforward_button.Text = ">>";
             this.fastforward_button.UseVisualStyleBackColor = true;
@@ -175,10 +196,14 @@
             // 
             // pause_button
             // 
+<<<<<<< HEAD
             this.pause_button.Location = new System.Drawing.Point(100, 10);
             this.pause_button.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.pause_button.Location = new System.Drawing.Point(75, 8);
+>>>>>>> origin/Devellop
             this.pause_button.Name = "pause_button";
-            this.pause_button.Size = new System.Drawing.Size(100, 28);
+            this.pause_button.Size = new System.Drawing.Size(75, 23);
             this.pause_button.TabIndex = 11;
             this.pause_button.Text = "pause";
             this.pause_button.UseVisualStyleBackColor = true;
@@ -186,10 +211,14 @@
             // 
             // rewind_button
             // 
+<<<<<<< HEAD
             this.rewind_button.Location = new System.Drawing.Point(17, 10);
             this.rewind_button.Margin = new System.Windows.Forms.Padding(4);
+=======
+            this.rewind_button.Location = new System.Drawing.Point(13, 8);
+>>>>>>> origin/Devellop
             this.rewind_button.Name = "rewind_button";
-            this.rewind_button.Size = new System.Drawing.Size(76, 28);
+            this.rewind_button.Size = new System.Drawing.Size(57, 23);
             this.rewind_button.TabIndex = 10;
             this.rewind_button.Text = "<<";
             this.rewind_button.UseVisualStyleBackColor = true;
@@ -197,10 +226,10 @@
             // 
             // MoneyGestionOpen
             // 
-            this.MoneyGestionOpen.Location = new System.Drawing.Point(1119, 69);
-            this.MoneyGestionOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MoneyGestionOpen.Location = new System.Drawing.Point(777, 61);
+            this.MoneyGestionOpen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MoneyGestionOpen.Name = "MoneyGestionOpen";
-            this.MoneyGestionOpen.Size = new System.Drawing.Size(128, 23);
+            this.MoneyGestionOpen.Size = new System.Drawing.Size(96, 19);
             this.MoneyGestionOpen.TabIndex = 9;
             this.MoneyGestionOpen.Text = "Gerer L\'argent";
             this.MoneyGestionOpen.UseVisualStyleBackColor = true;
@@ -208,19 +237,20 @@
             // HumeurLabel
             // 
             this.HumeurLabel.AutoSize = true;
-            this.HumeurLabel.Location = new System.Drawing.Point(1116, 39);
+            this.HumeurLabel.Location = new System.Drawing.Point(788, 33);
+            this.HumeurLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.HumeurLabel.Name = "HumeurLabel";
-            this.HumeurLabel.Size = new System.Drawing.Size(66, 17);
+            this.HumeurLabel.Size = new System.Drawing.Size(50, 13);
             this.HumeurLabel.TabIndex = 7;
             this.HumeurLabel.Text = "Humeur :";
             this.HumeurLabel.Visible = false;
             // 
             // Button_Destroy
             // 
-            this.Button_Destroy.Location = new System.Drawing.Point(759, 2);
-            this.Button_Destroy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Button_Destroy.Location = new System.Drawing.Point(569, 2);
+            this.Button_Destroy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Button_Destroy.Name = "Button_Destroy";
-            this.Button_Destroy.Size = new System.Drawing.Size(75, 23);
+            this.Button_Destroy.Size = new System.Drawing.Size(56, 19);
             this.Button_Destroy.TabIndex = 6;
             this.Button_Destroy.Text = "Détruire";
             this.Button_Destroy.UseVisualStyleBackColor = true;
@@ -230,9 +260,10 @@
             // Kind_Building
             // 
             this.Kind_Building.AutoSize = true;
-            this.Kind_Building.Location = new System.Drawing.Point(599, 27);
+            this.Kind_Building.Location = new System.Drawing.Point(449, 22);
+            this.Kind_Building.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Kind_Building.Name = "Kind_Building";
-            this.Kind_Building.Size = new System.Drawing.Size(48, 17);
+            this.Kind_Building.Size = new System.Drawing.Size(37, 13);
             this.Kind_Building.TabIndex = 5;
             this.Kind_Building.Text = "Type :";
             this.Kind_Building.Visible = false;
@@ -240,9 +271,10 @@
             // Coordonnées
             // 
             this.Coordonnées.AutoSize = true;
-            this.Coordonnées.Location = new System.Drawing.Point(599, 10);
+            this.Coordonnées.Location = new System.Drawing.Point(449, 8);
+            this.Coordonnées.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Coordonnées.Name = "Coordonnées";
-            this.Coordonnées.Size = new System.Drawing.Size(129, 17);
+            this.Coordonnées.Size = new System.Drawing.Size(97, 13);
             this.Coordonnées.TabIndex = 4;
             this.Coordonnées.Text = "Coordonnées : 0, 0";
             this.Coordonnées.Visible = false;
@@ -252,9 +284,10 @@
             this.MonArgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MonArgent.AutoSize = true;
-            this.MonArgent.Location = new System.Drawing.Point(1207, 10);
+            this.MonArgent.Location = new System.Drawing.Point(842, 8);
+            this.MonArgent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MonArgent.Name = "MonArgent";
-            this.MonArgent.Size = new System.Drawing.Size(40, 17);
+            this.MonArgent.Size = new System.Drawing.Size(31, 13);
             this.MonArgent.TabIndex = 2;
             this.MonArgent.Text = "5000";
             // 
@@ -263,20 +296,43 @@
             this.MyMoney.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MyMoney.AutoSize = true;
-            this.MyMoney.Location = new System.Drawing.Point(1113, 10);
+            this.MyMoney.Location = new System.Drawing.Point(771, 8);
+            this.MyMoney.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.MyMoney.Name = "MyMoney";
-            this.MyMoney.Size = new System.Drawing.Size(88, 17);
+            this.MyMoney.Size = new System.Drawing.Size(67, 13);
             this.MyMoney.TabIndex = 1;
             this.MyMoney.Text = "Mon argent :";
             // 
+<<<<<<< HEAD
+=======
+            // _mainViewPortControl
+            // 
+            this._mainViewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._mainViewPortControl.Location = new System.Drawing.Point(0, 0);
+            this._mainViewPortControl.Name = "_mainViewPortControl";
+            this._mainViewPortControl.Size = new System.Drawing.Size(870, 298);
+            this._mainViewPortControl.TabIndex = 0;
+            // 
+            // LastCost
+            // 
+            this.LastCost.AutoSize = true;
+            this.LastCost.Location = new System.Drawing.Point(879, 8);
+            this.LastCost.Name = "LastCost";
+            this.LastCost.Size = new System.Drawing.Size(0, 13);
+            this.LastCost.TabIndex = 13;
+            // 
+>>>>>>> origin/Devellop
             // DemoWindow2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1259, 484);
+            this.ClientSize = new System.Drawing.Size(944, 393);
             this.Controls.Add(this.splitContainer1);
             this.KeyPreview = true;
+<<<<<<< HEAD
             this.Margin = new System.Windows.Forms.Padding(4);
+=======
+>>>>>>> origin/Devellop
             this.Name = "DemoWindow2";
             this.Text = "Simc\'ITI";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -313,5 +369,6 @@
         private System.Windows.Forms.Button pause_button;
         private System.Windows.Forms.Button rewind_button;
         private System.Windows.Forms.Button Centrale_electrique;
+        private System.Windows.Forms.Label LastCost;
     }
 }

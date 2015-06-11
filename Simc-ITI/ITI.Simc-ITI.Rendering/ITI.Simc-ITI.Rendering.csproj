@@ -84,6 +84,9 @@
     <EmbeddedResource Include="DemoWindow2.resx">
       <DependentUpon>DemoWindow2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\BottomPaneControl.resx">
+      <DependentUpon>BottomPaneControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\LeftPaneControl.resx">
       <DependentUpon>LeftPaneControl.cs</DependentUpon>
     </EmbeddedResource>

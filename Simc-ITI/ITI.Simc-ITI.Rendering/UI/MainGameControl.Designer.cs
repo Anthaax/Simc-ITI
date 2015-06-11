@@ -28,54 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.bottomPaneControl1 = new ITI.Simc_ITI.Rendering.BottomPaneControl();
             this.leftPaneControl1 = new ITI.Simc_ITI.Rendering.LeftPaneControl();
             this.viewPortControl1 = new ITI.Simc_ITI.Rendering.ViewPortControl();
+            this.bottomPaneControl1 = new ITI.Simc_ITI.Rendering.BottomPaneControl();
             this.SuspendLayout();
-            // 
-            // bottomPaneControl1
-            // 
-            this.bottomPaneControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.bottomPaneControl1.Location = new System.Drawing.Point(0, 401);
-            this.bottomPaneControl1.Name = "bottomPaneControl1";
-            this.bottomPaneControl1.Size = new System.Drawing.Size(1037, 122);
-            this.bottomPaneControl1.TabIndex = 0;
             // 
             // leftPaneControl1
             // 
+            this.leftPaneControl1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.leftPaneControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.leftPaneControl1.Location = new System.Drawing.Point(0, 0);
+            this.leftPaneControl1.Margin = new System.Windows.Forms.Padding(2);
             this.leftPaneControl1.Name = "leftPaneControl1";
-            this.leftPaneControl1.Size = new System.Drawing.Size(169, 401);
-            this.leftPaneControl1.TabIndex = 1;
+            this.leftPaneControl1.Size = new System.Drawing.Size(86, 425);
+            this.leftPaneControl1.TabIndex = 3;
             // 
             // viewPortControl1
             // 
             this.viewPortControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.viewPortControl1.Location = new System.Drawing.Point(169, 0);
+            this.viewPortControl1.Location = new System.Drawing.Point(0, 0);
+            this.viewPortControl1.Margin = new System.Windows.Forms.Padding(2);
             this.viewPortControl1.Name = "viewPortControl1";
-            this.viewPortControl1.Size = new System.Drawing.Size(868, 401);
+            this.viewPortControl1.Size = new System.Drawing.Size(778, 425);
             this.viewPortControl1.TabIndex = 2;
             this.viewPortControl1.Text = "viewPortControl1";
             // 
+            // bottomPaneControl1
+            // 
+            this.bottomPaneControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bottomPaneControl1.Location = new System.Drawing.Point(86, 330);
+            this.bottomPaneControl1.Name = "bottomPaneControl1";
+            this.bottomPaneControl1.Size = new System.Drawing.Size(692, 95);
+            this.bottomPaneControl1.TabIndex = 4;
+            // 
             // MainGameControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.viewPortControl1);
-            this.Controls.Add(this.leftPaneControl1);
             this.Controls.Add(this.bottomPaneControl1);
+            this.Controls.Add(this.leftPaneControl1);
+            this.Controls.Add(this.viewPortControl1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainGameControl";
-            this.Size = new System.Drawing.Size(1037, 523);
+            this.Size = new System.Drawing.Size(778, 425);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private BottomPaneControl bottomPaneControl1;
-        private LeftPaneControl leftPaneControl1;
         private ViewPortControl viewPortControl1;
+        private LeftPaneControl leftPaneControl1;
+        private BottomPaneControl bottomPaneControl1;
 
     }
 }
