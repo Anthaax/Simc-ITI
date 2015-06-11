@@ -53,7 +53,7 @@ namespace ITI.Simc_ITI.Build
         /// <returns>Null on error.</returns>
         public static LoadResult LoadGame( string path )
         {
-            return new LoadResult() new GameContext();
+            return new LoadResult( new GameContext(), null );
         }
 
         public bool IsGameOver
@@ -69,5 +69,9 @@ namespace ITI.Simc_ITI.Build
             var h = IsGameOverChanged;
             if( h != null ) h( this, EventArgs.Empty );
         }
+        public Map Map { get { return _map; } }
+        public InfrastructureManager InfrastructureManager { get { return _infraManager; } }
+        public MyMoney Money { get { return _money; } }
+        public MoneyGestion MoneyManager { get { return _moneygestion; } }
     }
 }

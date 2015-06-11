@@ -11,8 +11,8 @@ namespace ITI.Simc_ITI.Build
     {
         int _happyness;
         int _turnover;
-        public CommerceType()
-            : base( "Commerce", 0, 5 )
+        public CommerceType( GameContext ctx )
+            : base( ctx, "Commerce", 0, 5 )
         {
             _happyness = 50;
             _turnover = 5000;

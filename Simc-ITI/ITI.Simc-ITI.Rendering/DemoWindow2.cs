@@ -13,11 +13,8 @@ namespace ITI.Simc_ITI.Rendering
 {
     public partial class DemoWindow2 : Form
     {
-        Map _map;
-        InfrastructureManager _infManager;
-        MoneyGestion _mg;
-        Timer t;
-        MyMoney _money;
+        Timer _timer;
+        GameContext _game;
         double scalefactor;
         int x;
         int y;
@@ -26,12 +23,9 @@ namespace ITI.Simc_ITI.Rendering
 
         public DemoWindow2()
         {
-            _map = new Map( 100, 100 );
-            _infManager = new InfrastructureManager();
-            _mg = new MoneyGestion();
-            _money = new MyMoney();
+            _game = GameContext.CreateNewGame();
             InitializeComponent();
-            _mainViewPortControl.SetMap( _map, 5 * 100 );
+            _mainViewPortControl.SetMap( _game.Map , 5 * 100 );
             scalefactor = _mainViewPortControl.ViewPort.ActualZoomFactor;
             InitiallizeTimer();
             AllButtonInvisible();
@@ -40,11 +34,11 @@ namespace ITI.Simc_ITI.Rendering
         }
         private void InitiallizeTimer()
         {
-            t = new Timer();
-            t.Interval = 30000;
-            t.Enabled = true;
-            t.Tick += UpdateGame;
-            t.Start();
+            _timer = new Timer();
+            _timer.Interval = 30000;
+            _timer.Enabled = true;
+            _timer.Tick += UpdateGame;
+            _timer.Start();
         }
         private void AllButtonInvisible()
         {
@@ -63,7 +57,7 @@ namespace ITI.Simc_ITI.Rendering
         }
         private void BuildingEvent()
         {
-            IEnumerable<InfrastructureType> types = _infManager.AllTypes;
+            IEnumerable<InfrastructureType> types = _game.InfrastructureManager.AllTypes;
             foreach( var building in types )
             {
                 building.BuildingHasBeenCreated += ( s, e) => AfterBuildAInfrastructure();
@@ -74,41 +68,41 @@ namespace ITI.Simc_ITI.Rendering
 
         private void InitializeAllEvents()
         {
-            _money.ActualMoneyChanged += label_MonArgent_text;
+            _game.Money.ActualMoneyChanged += label_MonArgent_text;
             _mainViewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
-            _mg.TaxationAsChanged += TaxationWasChanged;
+            _game.MoneyManager.TaxationAsChanged += TaxationWasChanged;
 
         }
         private void UpdateGame( object sender, EventArgs e )
         {
-            IEnumerable<IInfrastructureForBox> infra = _map.GetAllInfrastucture<IInfrastructureForBox>();
+            IEnumerable<IInfrastructureForBox> infra = _game.Map.GetAllInfrastucture<IInfrastructureForBox>();
             foreach( var infrastructure in infra)
             {
                 IPublic publicBuilding = this as IPublic;
-                if( publicBuilding != null ) _money.ActualMoney -= publicBuilding.CostPerMount / 30;
+                if( publicBuilding != null ) _game.Money.ActualMoney -= publicBuilding.CostPerMount / 30;
 
                 ITaxation privateBuilding = this as ITaxation;
-                if( privateBuilding != null ) _money.ActualMoney = _money.ActualMoney + privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
+                if( privateBuilding != null ) _game.Money.ActualMoney = _game.Money.ActualMoney + privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
             }
         }
 
         private void buton_Grass_Click( object sender, EventArgs e )
         {
-            CustomisationBuilding RoadCustom = new CustomisationBuilding( _map.Boxes[_xBox, _yBox], _infManager );
+            CustomisationBuilding RoadCustom = new CustomisationBuilding( _game.Map.Boxes[_xBox, _yBox], _game.InfrastructureManager );
             RoadCustom.Show();
             AllButtonInvisible();
         }
 
         void CreateHabitation(object sender , EventArgs e )
         {
-            _infManager.Find( "Habitation" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox], 0 );
+            _game.InfrastructureManager.Find( "Habitation" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
         }
   
         private void label_MonArgent_text( object sender, EventArgs e)
         {
-            MonArgent.Text = _money.ActualMoney.ToString();
+            MonArgent.Text = _game.Money.ActualMoney.ToString();
         }
 
         private void DemoWindow2_KeyDown( object sender, KeyEventArgs e )
@@ -150,28 +144,28 @@ namespace ITI.Simc_ITI.Rendering
         }
         private void MousePosition(MouseEventArgs e)
         {
-            int _boxInPixel = (int)Math.Round( _map.BoxWidth * _mainViewPortControl.ViewPort.ClientScaleFactor );
+            int _boxInPixel = (int)Math.Round( _game.Map.BoxWidth * _mainViewPortControl.ViewPort.ClientScaleFactor );
             int _mouseX = e.X;
             int _mouseY = e.Y;
-            _xBox = Math.Min( (_mainViewPortControl.ViewPort.Area.X / _map.BoxWidth) + _mouseX / _boxInPixel, _map.BoxCount );
-            _yBox = Math.Min( (_mainViewPortControl.ViewPort.Area.Y / _map.BoxWidth) + _mouseY / _boxInPixel, _map.BoxCount );
+            _xBox = Math.Min( (_mainViewPortControl.ViewPort.Area.X / _game.Map.BoxWidth) + _mouseX / _boxInPixel, _game.Map.BoxCount );
+            _yBox = Math.Min( (_mainViewPortControl.ViewPort.Area.Y / _game.Map.BoxWidth) + _mouseY / _boxInPixel, _game.Map.BoxCount );
         }
         private void MouseClickEvent(object sender, MouseEventArgs e)
         {
             MousePosition( e );
-            if( _map.Boxes[_xBox, _yBox].Infrasructure == null)
+            if( _game.Map.Boxes[_xBox, _yBox].Infrasructure == null )
             {
                 AllButtonInvisible();
-                if( _infManager.Find( "CentraleElectrique" ).CanCreatedNearRoad( _map.Boxes[_xBox, _yBox] ) ) Centrale_electrique.Visible = true;
-                if( CanCreate( "Habitation", _map.Boxes[_xBox, _yBox] ) ) AllButtonVisible();
+                if( _game.InfrastructureManager.Find( "CentraleElectrique" ).CanCreatedNearRoad( _game.Map.Boxes[_xBox, _yBox] ) ) Centrale_electrique.Visible = true;
+                if( CanCreate( "Habitation", _game.Map.Boxes[_xBox, _yBox] ) ) AllButtonVisible();
                 Build_Road.Visible = true;
             }
             else
             {
                 AllButtonInvisible();
                 Kind_Building.Visible = true;
-                Kind_Building.Text = "Type du batiment : Une " + _map.Boxes[_xBox, _yBox].Infrasructure.Type.Name + ".";
-                if( _infManager.Find( _map.Boxes[_xBox, _yBox].Infrasructure.Type.Name ).CanDestroy( _map.Boxes[_xBox, _yBox] ) == false ) Button_Destroy.Visible = true;
+                Kind_Building.Text = "Type du batiment : Une " + _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.Name + ".";
+                if( _game.InfrastructureManager.Find( _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.Name ).CanDestroy( _game.Map.Boxes[_xBox, _yBox] ) == false ) Button_Destroy.Visible = true;
             }
             Coordonnées.Visible = true;
             Coordonnées.Text = "Coordonnées : " + _xBox + " , " + _yBox;
@@ -179,41 +173,41 @@ namespace ITI.Simc_ITI.Rendering
 
         private void School_Button_Click( object sender, EventArgs e )
         {
-            _infManager.Find( "Ecole" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox], 0 );
+            _game.InfrastructureManager.Find( "Ecole" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
         }
         
         private void Button_Destroy_Click( object sender, EventArgs e )
         {
-            _money.ActualMoney += _map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
-            _map.Boxes[_xBox, _yBox].Infrasructure.Destroy();
+            _game.Money.ActualMoney += _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
+            _game.Map.Boxes[_xBox, _yBox].Infrasructure.Destroy();
             AverageHappyness();
             AllButtonInvisible();
             _mainViewPortControl.Invalidate();
         }
         private void OpenMoneyGestion( object sender, EventArgs e )
         {
-            TaxationModification Taxes = new TaxationModification(_mg);
+            TaxationModification Taxes = new TaxationModification( _game.MoneyManager);
             Taxes.Show();
         }
         private void TaxationWasChanged( object sender, EventArgs e )
         {
-            IEnumerable<Habitation> habitation = _map.GetAllInfrastucture<Habitation>();
+            IEnumerable<Habitation> habitation = _game.Map.GetAllInfrastucture<Habitation>();
             foreach( var hab in habitation )
             {
-                hab.Taxation = _mg.HabitationTaxation;
+                hab.Taxation = _game.MoneyManager.HabitationTaxation;
             }
-            IEnumerable<Commerce> commerce = _map.GetAllInfrastucture<Commerce>();
+            IEnumerable<Commerce> commerce = _game.Map.GetAllInfrastucture<Commerce>();
             foreach( var co in commerce )
             {
-                co.Taxation = _mg.CommerceTaxation;
+                co.Taxation = _game.MoneyManager.CommerceTaxation;
             }
         }
         private void AverageHappyness()
         {
             int totalHappyness = 0;
-            IEnumerable<IHappyness> happy = _map.GetAllInfrastucture<IHappyness>();
+            IEnumerable<IHappyness> happy = _game.Map.GetAllInfrastucture<IHappyness>();
             if( happy.FirstOrDefault<IHappyness>() == null ) totalHappyness = 50;
             else
             {
@@ -227,68 +221,68 @@ namespace ITI.Simc_ITI.Rendering
         }
         private void AfterBuildAInfrastructure()
         {
-            Habitation taxe = _map.Boxes[_xBox, _yBox].Infrasructure as Habitation;
-            if( taxe != null ) taxe.Taxation = _mg.HabitationTaxation;
-            Commerce ctaxe = _map.Boxes[_xBox, _yBox].Infrasructure as Commerce;
-            if( ctaxe != null ) ctaxe.Taxation = _mg.CommerceTaxation;
+            Habitation taxe = _game.Map.Boxes[_xBox, _yBox].Infrasructure as Habitation;
+            if( taxe != null ) taxe.Taxation = _game.MoneyManager.HabitationTaxation;
+            Commerce ctaxe = _game.Map.Boxes[_xBox, _yBox].Infrasructure as Commerce;
+            if( ctaxe != null ) ctaxe.Taxation = _game.MoneyManager.CommerceTaxation;
             _mainViewPortControl.Invalidate();
         }
 
         private void pause_button_Click(object sender, EventArgs e)
         {
-            if (t.Enabled != false)
+            if (_timer.Enabled != false)
             {
-                t.Enabled = false;
+                _timer.Enabled = false;
                 pause_button.Text = "Play";
             }
             else
             {
-                t.Enabled = true;
+                _timer.Enabled = true;
                 pause_button.Text = "Pause";
             }
         }
 
         private void fastforward_button_Click(object sender, EventArgs e)
         {
-            if (t.Interval == 30000)
+            if (_timer.Interval == 30000)
             {
-                t.Interval = t.Interval / 2;
+                _timer.Interval = _timer.Interval / 2;
                 fastforward_button.Text = "annuler";
             }
-            else if(t.Interval < 30000)
+            else if(_timer.Interval < 30000)
             {
-                t.Interval = 30000;
+                _timer.Interval = 30000;
                 fastforward_button.Text = ">>";
             }
         }
 
         private void rewind_button_Click(object sender, EventArgs e)
         {
-            if (t.Interval == 30000)
+            if (_timer.Interval == 30000)
             {
-                t.Interval = t.Interval * 2;
+                _timer.Interval = _timer.Interval * 2;
                 rewind_button.Text = "annuler";
             }
-            else if (t.Interval > 30000)
+            else if (_timer.Interval > 30000)
             {
-                t.Interval = 30000;
+                _timer.Interval = 30000;
                 rewind_button.Text = "<<";
             }
         }
         private bool CanCreate(string building, Box b)
         {
-            return _infManager.Find( building ).CanCreatedNearRoad( b ) && _infManager.Find( building ).CanCreated( b );
+            return _game.InfrastructureManager.Find( building ).CanCreatedNearRoad( b ) && _game.InfrastructureManager.Find( building ).CanCreated( b );
         }
 
         private void Centrale_electrique_Click( object sender, EventArgs e )
         {
-            _infManager.Find( "CentraleElectrique" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox], 0 );
+            _game.InfrastructureManager.Find( "CentraleElectrique" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
         }
         private void PaidBuildingConstruction(int cost)
         {
-            _money.ActualMoney -= cost;
+            _game.Money.ActualMoney -= cost;
         }
     }
 }

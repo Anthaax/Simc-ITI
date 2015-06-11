@@ -8,15 +8,21 @@ namespace ITI.Simc_ITI.Build
 {
     public abstract class InfrastructureType : IInfrastructureType
     {
+        readonly GameContext _ctx;
         readonly string _name;
         readonly int _areaEffect;
         readonly int _buildingCost;
 
-        protected InfrastructureType( string name, int buildingCost, int areaEffect)
+        protected InfrastructureType( GameContext ctx, string name, int buildingCost, int areaEffect)
         {
             _name = name;
             _buildingCost = buildingCost;
             _areaEffect = areaEffect;
+        }
+
+        public GameContext GameContext
+        {
+            get { return _ctx; }
         }
 
         public string Name { get { return _name; } }

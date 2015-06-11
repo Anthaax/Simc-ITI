@@ -10,8 +10,8 @@ namespace ITI.Simc_ITI.Build
     public class CentraleElectriqueType : InfrastructureType
     {
         int _costPerMonth;
-        public CentraleElectriqueType()
-            : base( "CentraleElectrique", 900, 13 )
+        public CentraleElectriqueType( GameContext ctx )
+            : base( ctx, "CentraleElectrique", 900, 13 )
         {
             _costPerMonth = 300;
         }
