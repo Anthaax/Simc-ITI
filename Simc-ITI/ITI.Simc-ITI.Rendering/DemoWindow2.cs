@@ -105,6 +105,11 @@ namespace ITI.Simc_ITI.Rendering
             MonArgent.Text = _game.Money.ActualMoney.ToString();
         }
 
+        //private void label_LastCost_text(object sender, EventArgs e)
+        //{
+        //    LastCost.Text = ;
+        //}
+
         private void DemoWindow2_KeyDown( object sender, KeyEventArgs e )
         {
             switch( e.KeyCode )

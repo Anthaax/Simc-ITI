@@ -9,6 +9,7 @@ namespace ITI.Simc_ITI.Build
     public class MyMoney
     {
         int _myMoney;
+        int _price;
         public MyMoney()
         {
             _myMoney = 5000;

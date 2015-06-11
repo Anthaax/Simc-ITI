@@ -28,70 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cREERHABITATIONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1.SuspendLayout();
+            this.Build_Road = new System.Windows.Forms.Button();
+            this.Centrale_electrique = new System.Windows.Forms.Button();
+            this.School_Button = new System.Windows.Forms.Button();
+            this.HabitationBuild = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // Build_Road
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Build_Road.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(12, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(402, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Build_Road.Location = new System.Drawing.Point(2, 105);
+            this.Build_Road.Margin = new System.Windows.Forms.Padding(2);
+            this.Build_Road.Name = "Build_Road";
+            this.Build_Road.Size = new System.Drawing.Size(81, 19);
+            this.Build_Road.TabIndex = 4;
+            this.Build_Road.Text = "Route";
+            this.Build_Road.UseVisualStyleBackColor = true;
+            this.Build_Road.Visible = false;
             // 
-            // label1
+            // Centrale_electrique
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.Centrale_electrique.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 367);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.Centrale_electrique.Location = new System.Drawing.Point(2, 128);
+            this.Centrale_electrique.Margin = new System.Windows.Forms.Padding(2);
+            this.Centrale_electrique.Name = "Centrale_electrique";
+            this.Centrale_electrique.Size = new System.Drawing.Size(81, 19);
+            this.Centrale_electrique.TabIndex = 10;
+            this.Centrale_electrique.Text = "CentraleE";
+            this.Centrale_electrique.UseVisualStyleBackColor = true;
+            this.Centrale_electrique.Visible = false;
             // 
-            // contextMenuStrip1
+            // School_Button
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cREERHABITATIONToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(212, 56);
+            this.School_Button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.School_Button.Location = new System.Drawing.Point(2, 151);
+            this.School_Button.Margin = new System.Windows.Forms.Padding(2);
+            this.School_Button.Name = "School_Button";
+            this.School_Button.Size = new System.Drawing.Size(81, 19);
+            this.School_Button.TabIndex = 11;
+            this.School_Button.Text = "Ecole";
+            this.School_Button.UseVisualStyleBackColor = true;
+            this.School_Button.Visible = false;
             // 
-            // cREERHABITATIONToolStripMenuItem
+            // HabitationBuild
             // 
-            this.cREERHABITATIONToolStripMenuItem.Name = "cREERHABITATIONToolStripMenuItem";
-            this.cREERHABITATIONToolStripMenuItem.Size = new System.Drawing.Size(211, 24);
-            this.cREERHABITATIONToolStripMenuItem.Text = "CREER HABITATION";
+            this.HabitationBuild.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HabitationBuild.Location = new System.Drawing.Point(2, 174);
+            this.HabitationBuild.Margin = new System.Windows.Forms.Padding(2);
+            this.HabitationBuild.Name = "HabitationBuild";
+            this.HabitationBuild.Size = new System.Drawing.Size(81, 19);
+            this.HabitationBuild.TabIndex = 12;
+            this.HabitationBuild.Text = "Habitation";
+            this.HabitationBuild.UseVisualStyleBackColor = true;
+            this.HabitationBuild.Visible = false;
             // 
             // LeftPaneControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.HabitationBuild);
+            this.Controls.Add(this.School_Button);
+            this.Controls.Add(this.Centrale_electrique);
+            this.Controls.Add(this.Build_Road);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LeftPaneControl";
-            this.Size = new System.Drawing.Size(433, 396);
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(86, 322);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem cREERHABITATIONToolStripMenuItem;
+        private System.Windows.Forms.Button Build_Road;
+        private System.Windows.Forms.Button Centrale_electrique;
+        private System.Windows.Forms.Button School_Button;
+        private System.Windows.Forms.Button HabitationBuild;
     }
 }
