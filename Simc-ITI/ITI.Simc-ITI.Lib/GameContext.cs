@@ -11,16 +11,14 @@ namespace ITI.Simc_ITI.Build
     {
         readonly Map _map;
         readonly InfrastructureManager _infraManager;
-        readonly MyMoney _money;
-        readonly MoneyGestion _moneygestion;
+        readonly MoneyManager _moneyManager;
         bool _isGameOver;
 
         GameContext()
         {
             _map = new Map( 100, 100 );
             _infraManager = new InfrastructureManager( this );
-            _money = new MyMoney();
-            _moneygestion = new MoneyGestion();
+            _moneyManager = new MoneyManager();
         }
 
         public static GameContext CreateNewGame()
@@ -71,7 +69,6 @@ namespace ITI.Simc_ITI.Build
         }
         public Map Map { get { return _map; } }
         public InfrastructureManager InfrastructureManager { get { return _infraManager; } }
-        public MyMoney Money { get { return _money; } }
-        public MoneyGestion MoneyManager { get { return _moneygestion; } }
+        public MoneyManager MoneyManager { get { return _moneyManager; } }
     }
 }

@@ -12,29 +12,29 @@ namespace ITI.Simc_ITI.Build
 {
     public partial class TaxationModification : Form
     {
-        MoneyGestion _mg;
-        public TaxationModification( MoneyGestion mg )
+        TaxationManager _taxe;
+        public TaxationModification( TaxationManager taxe )
         {
             InitializeComponent();
-            _mg = mg;
-            HabitationTrackBar.Value = mg.HabitationTaxation;
-            CommerceTrackBar.Value = mg.CommerceTaxation;
-            UsineTrackBar.Value = mg.UsineTaxation;
+            _taxe = taxe;
+            HabitationTrackBar.Value = taxe.HabitationTaxation;
+            CommerceTrackBar.Value = taxe.CommerceTaxation;
+            UsineTrackBar.Value = taxe.UsineTaxation;
             AjustLabel();
         }
         public void HabitationTrackBarScroll( object sender, EventArgs e )
         {
-            _mg.HabitationTaxation = HabitationTrackBar.Value;
+            _taxe.HabitationTaxation = HabitationTrackBar.Value;
             AjustLabel();
         }
         public void CommerceTrackBarScroll( object sender, EventArgs e )
         {
-            _mg.CommerceTaxation = CommerceTrackBar.Value;
+            _taxe.CommerceTaxation = CommerceTrackBar.Value;
             AjustLabel();
         }
         public void UsineTrackBarScroll( object sender, EventArgs e )
         {
-            _mg.UsineTaxation = UsineTrackBar.Value;
+            _taxe.UsineTaxation = UsineTrackBar.Value;
             AjustLabel();
         }
         public void AjustLabel()

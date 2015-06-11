@@ -18,6 +18,7 @@ namespace ITI.Simc_ITI.Build
             _name = name;
             _buildingCost = buildingCost;
             _areaEffect = areaEffect;
+            _ctx = ctx;
         }
 
         public GameContext GameContext
@@ -73,6 +74,7 @@ namespace ITI.Simc_ITI.Build
         {
             if( b.Infrasructure != null ) throw new InvalidOperationException( "The box alreay has an Infrastructure." );
             Infrastructure infra = DoCreateInfrastructure( b, creationConfig);
+            _ctx.MoneyManager.ActualMoney -= infra.Type.BuildingCost;
             IEnumerable<Box> nearBoxes = b.NearBoxes( infra.Type.AreaEffect );
             foreach( var box in nearBoxes )
             {

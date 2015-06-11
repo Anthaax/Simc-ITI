@@ -27,6 +27,7 @@ namespace ITI.Simc_ITI.Rendering
             InitializeComponent();
             _mainViewPortControl.SetMap( _game.Map , 5 * 100 );
             scalefactor = _mainViewPortControl.ViewPort.ActualZoomFactor;
+            MonArgent.Text = _game.MoneyManager.ActualMoney.ToString();
             InitiallizeTimer();
             AllButtonInvisible();
             InitializeAllEvents();
@@ -54,6 +55,7 @@ namespace ITI.Simc_ITI.Rendering
             School_Button.Visible = true;
             Build_Road.Visible = true;
             HabitationBuild.Visible = true;
+            HumeurLabel.Visible = true;
         }
         private void BuildingEvent()
         {
@@ -62,15 +64,14 @@ namespace ITI.Simc_ITI.Rendering
             {
                 building.BuildingHasBeenCreated += ( s, e) => AfterBuildAInfrastructure();
                 building.BuildingHasBeenCreated += ( s, e) => AverageHappyness();
-                building.BuildingHasBeenCreated += ( s, e ) => PaidBuildingConstruction( building.BuildingCost );
             }
         }
 
         private void InitializeAllEvents()
         {
-            _game.Money.ActualMoneyChanged += label_MonArgent_text;
+            _game.MoneyManager.ActualMoneyChanged += label_MonArgent_text;
             _mainViewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
-            _game.MoneyManager.TaxationAsChanged += TaxationWasChanged;
+            _game.MoneyManager.TaxationManager.TaxationAsChanged += TaxationWasChanged;
 
         }
         private void UpdateGame( object sender, EventArgs e )
@@ -78,11 +79,7 @@ namespace ITI.Simc_ITI.Rendering
             IEnumerable<IInfrastructureForBox> infra = _game.Map.GetAllInfrastucture<IInfrastructureForBox>();
             foreach( var infrastructure in infra)
             {
-                IPublic publicBuilding = this as IPublic;
-                if( publicBuilding != null ) _game.Money.ActualMoney -= publicBuilding.CostPerMount / 30;
-
-                ITaxation privateBuilding = this as ITaxation;
-                if( privateBuilding != null ) _game.Money.ActualMoney = _game.Money.ActualMoney + privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
+                infrastructure.Update();
             }
         }
 
@@ -102,7 +99,7 @@ namespace ITI.Simc_ITI.Rendering
   
         private void label_MonArgent_text( object sender, EventArgs e)
         {
-            MonArgent.Text = _game.Money.ActualMoney.ToString();
+            MonArgent.Text = _game.MoneyManager.ActualMoney.ToString();
         }
 
         private void DemoWindow2_KeyDown( object sender, KeyEventArgs e )
@@ -180,7 +177,7 @@ namespace ITI.Simc_ITI.Rendering
         
         private void Button_Destroy_Click( object sender, EventArgs e )
         {
-            _game.Money.ActualMoney += _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
+            _game.MoneyManager.ActualMoney += _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
             _game.Map.Boxes[_xBox, _yBox].Infrasructure.Destroy();
             AverageHappyness();
             AllButtonInvisible();
@@ -188,7 +185,7 @@ namespace ITI.Simc_ITI.Rendering
         }
         private void OpenMoneyGestion( object sender, EventArgs e )
         {
-            TaxationModification Taxes = new TaxationModification( _game.MoneyManager);
+            TaxationModification Taxes = new TaxationModification( _game.MoneyManager.TaxationManager);
             Taxes.Show();
         }
         private void TaxationWasChanged( object sender, EventArgs e )
@@ -196,12 +193,12 @@ namespace ITI.Simc_ITI.Rendering
             IEnumerable<Habitation> habitation = _game.Map.GetAllInfrastucture<Habitation>();
             foreach( var hab in habitation )
             {
-                hab.Taxation = _game.MoneyManager.HabitationTaxation;
+                hab.Taxation = _game.MoneyManager.TaxationManager.HabitationTaxation;
             }
             IEnumerable<Commerce> commerce = _game.Map.GetAllInfrastucture<Commerce>();
             foreach( var co in commerce )
             {
-                co.Taxation = _game.MoneyManager.CommerceTaxation;
+                co.Taxation = _game.MoneyManager.TaxationManager.CommerceTaxation;
             }
         }
         private void AverageHappyness()
@@ -222,9 +219,9 @@ namespace ITI.Simc_ITI.Rendering
         private void AfterBuildAInfrastructure()
         {
             Habitation taxe = _game.Map.Boxes[_xBox, _yBox].Infrasructure as Habitation;
-            if( taxe != null ) taxe.Taxation = _game.MoneyManager.HabitationTaxation;
+            if( taxe != null ) taxe.Taxation = _game.MoneyManager.TaxationManager.HabitationTaxation;
             Commerce ctaxe = _game.Map.Boxes[_xBox, _yBox].Infrasructure as Commerce;
-            if( ctaxe != null ) ctaxe.Taxation = _game.MoneyManager.CommerceTaxation;
+            if( ctaxe != null ) ctaxe.Taxation = _game.MoneyManager.TaxationManager.CommerceTaxation;
             _mainViewPortControl.Invalidate();
         }
 
@@ -279,10 +276,6 @@ namespace ITI.Simc_ITI.Rendering
             _game.InfrastructureManager.Find( "CentraleElectrique" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
-        }
-        private void PaidBuildingConstruction(int cost)
-        {
-            _game.Money.ActualMoney -= cost;
         }
     }
 }

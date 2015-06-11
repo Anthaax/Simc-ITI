@@ -53,7 +53,11 @@ namespace ITI.Simc_ITI.Build
         }
         public void Update()
         {
-            
+            IPublic publicBuilding = this as IPublic;
+            if( publicBuilding != null ) _type.GameContext.MoneyManager.ActualMoney -= publicBuilding.CostPerMount / 30;
+
+            ITaxation privateBuilding = this as ITaxation;
+            if( privateBuilding != null ) _type.GameContext.MoneyManager.ActualMoney = _type.GameContext.MoneyManager.ActualMoney + privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
         }
         public abstract void OnDestroy();
     }

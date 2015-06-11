@@ -52,7 +52,6 @@
     <Compile Include="Infrastructures\CentraleElectrique.cs" />
     <Compile Include="GameContext.cs" />
     <Compile Include="Infrastructures\Habitation.cs" />
-    <Compile Include="IEclectricity.cs" />
     <Compile Include="IHappynessImpact.cs" />
     <Compile Include="IHealth.cs" />
     <Compile Include="Infrastructure.cs" />
@@ -61,11 +60,11 @@
     <Compile Include="IHappyness.cs" />
     <Compile Include="IPublic.cs" />
     <Compile Include="ITaxation.cs" />
-    <Compile Include="MoneyGestion.cs" />
-    <Compile Include="MyMoney.cs" />
+    <Compile Include="Money\MoneyManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructures\Road.cs" />
     <Compile Include="RoadOrientation.cs" />
+    <Compile Include="Money\TaxationManager.cs" />
     <Compile Include="TaxationModification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="InfrastructureDiagram.cd" />
+    <None Include="MoneyDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

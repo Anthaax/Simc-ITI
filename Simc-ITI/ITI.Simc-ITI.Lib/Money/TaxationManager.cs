@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI.Build
 {
-    public class MoneyGestion
+    public class TaxationManager
     {
         int _habitationTaxation;
         int _commerceTaxation;
         int _usineTaxation;
-        public MoneyGestion()
+        public TaxationManager()
         {
             _habitationTaxation = 10;
             _commerceTaxation = 10;

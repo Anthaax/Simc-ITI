@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ITI.Simc_ITI.Rendering.DemoWindow2">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="_mainViewPortControl" Hidden="true" />
+      <Field Name="_timer" Hidden="true" />
+      <Field Name="_xBox" Hidden="true" />
+      <Field Name="_yBox" Hidden="true" />
+      <Field Name="Build_Road" Hidden="true" />
+      <Field Name="Button_Destroy" Hidden="true" />
+      <Field Name="Centrale_electrique" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="Coordonnées" Hidden="true" />
+      <Field Name="fastforward_button" Hidden="true" />
+      <Field Name="HabitationBuild" Hidden="true" />
+      <Field Name="HumeurLabel" Hidden="true" />
+      <Field Name="Kind_Building" Hidden="true" />
+      <Field Name="MonArgent" Hidden="true" />
+      <Field Name="MoneyGestionOpen" Hidden="true" />
+      <Field Name="MyMoney" Hidden="true" />
+      <Field Name="pause_button" Hidden="true" />
+      <Field Name="rewind_button" Hidden="true" />
+      <Field Name="scalefactor" Hidden="true" />
+      <Field Name="School_Button" Hidden="true" />
+      <Field Name="splitContainer1" Hidden="true" />
+      <Field Name="splitContainer2" Hidden="true" />
+      <Field Name="x" Hidden="true" />
+      <Field Name="y" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AASMCARjWGAgUAEFJACAAAACAAABIYAABEPkACAKABU=</HashCode>
+      <FileName>DemoWindow2.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_game" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.GameContext">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="ITI.Simc_ITI.Build.GameContext.LoadResult" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <AssociationLine Name="InfrastructureManager" Type="ITI.Simc_ITI.Build.InfrastructureManager">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.093" Y="1.143" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Map" Type="ITI.Simc_ITI.Map">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="2.102" Y="0.093" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="MoneyManager" Type="ITI.Simc_ITI.Build.MoneyManager">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.485" Y="0.077" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="InfrastructureManager" />
+      <Property Name="Map" />
+      <Property Name="MoneyManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.InfrastructureManager" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ITI.Simc_ITI.Map" Collapsed="true">
+    <Position X="8.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.MoneyManager" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
