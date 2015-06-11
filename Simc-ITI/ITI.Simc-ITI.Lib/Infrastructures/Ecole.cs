@@ -12,8 +12,8 @@ namespace ITI.Simc_ITI.Build
         int _costPerMonth;
         int _maxCapacity;
         int _happynessImpactMax;
-        public EcoleType()
-            : base( "Ecole", 500, 10)
+        public EcoleType( GameContext ctx )
+            : base( ctx, "Ecole", 500, 10)
         {
             _costPerMonth = 300;
             _maxCapacity = 200;

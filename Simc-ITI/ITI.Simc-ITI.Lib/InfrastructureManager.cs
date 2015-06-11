@@ -8,21 +8,23 @@ namespace ITI.Simc_ITI.Build
 {
     public class InfrastructureManager
     {
+        readonly GameContext _ctx;
         readonly Dictionary<string, InfrastructureType> _types;
 
-        public InfrastructureManager()
+        internal InfrastructureManager( GameContext ctx )
         {
+            _ctx = ctx;
             _types = new Dictionary<string, InfrastructureType>();
             Initialize();
         }
 
         void Initialize()
         {
-            RegisterType( new EcoleType() );
-            RegisterType( new RoadType() );
-            RegisterType( new HabitationType() );
-            RegisterType( new CommerceType() );
-            RegisterType( new CentraleElectriqueType() );
+            RegisterType( new EcoleType( _ctx ) );
+            RegisterType( new RoadType( _ctx ) );
+            RegisterType( new HabitationType( _ctx ) );
+            RegisterType( new CommerceType( _ctx ) );
+            RegisterType( new CentraleElectriqueType( _ctx ) );
         }
 
         void RegisterType( InfrastructureType t )

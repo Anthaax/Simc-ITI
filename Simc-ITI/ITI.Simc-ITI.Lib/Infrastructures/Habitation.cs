@@ -10,8 +10,8 @@ namespace ITI.Simc_ITI.Build
     public class HabitationType : InfrastructureType
     {
         int _happyness;
-        public HabitationType()
-            : base( "Habitation", 0, 0)
+        public HabitationType( GameContext ctx )
+            : base( ctx, "Habitation", 0, 0)
         {
             _happyness = 50;
         }

@@ -10,8 +10,6 @@
       <Field Name="_boxes" Hidden="true" />
       <Field Name="_boxWidth" Hidden="true" />
       <Field Name="_mapWidth" Hidden="true" />
-      <Field Name="_myMoney" Hidden="true" />
-      <Field Name="_texture" Hidden="true" />
     </Members>
     <AssociationLine Name="Boxes" Type="ITI.Simc_ITI.Box">
       <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
@@ -19,7 +17,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AhAQAAAAAQAAAgAACAAAAAAAAAEiAAAIABIAAQASABQ=</HashCode>
+      <HashCode>AhAAAAAAAAAAAgAACEAAAAAAAAAiAAAIABAAAQASABQ=</HashCode>
       <FileName>Map.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -37,18 +35,10 @@
       <Field Name="p" Hidden="true" />
       <Field Name="screeng" Hidden="true" />
     </Members>
-    <AssociationLine Name="Infrasructure" Type="ITI.Simc_ITI.IInfrastructureForBox">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.352" Y="0.093" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAABAAAoAAAABBAAAAAAAAAAIJCEAAAQABABA=</HashCode>
       <FileName>Box.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Infrasructure" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="ITI.Simc_ITI.BitmapCache">
     <Position X="4.75" Y="3.75" Width="1.5" />
@@ -61,21 +51,6 @@
       <FileName>BitmapCache.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="ITI.Simc_ITI.IInfrastructureForBox">
-    <Position X="8.25" Y="2.5" Width="1.75" />
-    <AssociationLine Name="Type" Type="ITI.Simc_ITI.IInfrastructureType">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.152" Y="0.285" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <TypeIdentifier>
-      <HashCode>AAwAAAAIAAAAAgAAAAAAAAAAAABAAAAAAQAAAIAAAAA=</HashCode>
-      <FileName>IInfrastructureForBox.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Type" />
-    </ShowAsAssociation>
-  </Interface>
   <Interface Name="ITI.Simc_ITI.IInfrastructureType">
     <Position X="8.25" Y="0.5" Width="2" />
     <TypeIdentifier>

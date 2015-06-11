@@ -41,16 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commerce.cs" />
+    <Compile Include="Infrastructures\Commerce.cs" />
     <Compile Include="CustomisationBuilding.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CustomisationBuilding.Designer.cs">
       <DependentUpon>CustomisationBuilding.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ecole.cs" />
-    <Compile Include="CentraleElectrique.cs" />
-    <Compile Include="Habitation.cs" />
+    <Compile Include="Infrastructures\Ecole.cs" />
+    <Compile Include="Infrastructures\CentraleElectrique.cs" />
+    <Compile Include="GameContext.cs" />
+    <Compile Include="Infrastructures\Habitation.cs" />
     <Compile Include="IEclectricity.cs" />
     <Compile Include="IHappynessImpact.cs" />
     <Compile Include="IHealth.cs" />
@@ -63,7 +64,7 @@
     <Compile Include="MoneyGestion.cs" />
     <Compile Include="MyMoney.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Road.cs" />
+    <Compile Include="Infrastructures\Road.cs" />
     <Compile Include="RoadOrientation.cs" />
     <Compile Include="TaxationModification.cs">
       <SubType>Form</SubType>
@@ -82,6 +83,9 @@
     <EmbeddedResource Include="CustomisationBuilding.resx">
       <DependentUpon>CustomisationBuilding.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="InfrastructureDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
