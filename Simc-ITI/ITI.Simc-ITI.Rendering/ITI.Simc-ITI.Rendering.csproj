@@ -44,12 +44,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\BottomPaneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\BottomPaneControl.Designer.cs">
+      <DependentUpon>BottomPaneControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlExtension.cs" />
     <Compile Include="DemoWindow2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DemoWindow2.Designer.cs">
       <DependentUpon>DemoWindow2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LeftPaneControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\LeftPaneControl.Designer.cs">
+      <DependentUpon>LeftPaneControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainGameControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MainGameControl.Designer.cs">
+      <DependentUpon>MainGameControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +83,12 @@
     </Compile>
     <EmbeddedResource Include="DemoWindow2.resx">
       <DependentUpon>DemoWindow2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\LeftPaneControl.resx">
+      <DependentUpon>LeftPaneControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainGameControl.resx">
+      <DependentUpon>MainGameControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,11 +118,7 @@
       <Project>{47c283e8-0c78-4092-ae5c-057993c3abe6}</Project>
       <Name>ITI.Simc-ITI.Build.Lib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ITI.Simc-ITI.Money.Lib\ITI.Simc-ITI.Money.Lib.csproj">
-      <Project>{b028c0cc-16b5-4e89-935c-de0f836d2ad8}</Project>
-      <Name>ITI.Simc-ITI.Money.Lib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ITI.Simc-ITI\ITI.Simc-ITI.csproj">
+    <ProjectReference Include="..\ITI.Simc-ITI\ITI.Simc-ITI.Map.csproj">
       <Project>{f1babca6-8bbe-442e-bbb0-d6a9b116d08f}</Project>
       <Name>ITI.Simc-ITI</Name>
     </ProjectReference>

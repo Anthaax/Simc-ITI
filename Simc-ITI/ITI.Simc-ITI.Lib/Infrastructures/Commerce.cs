@@ -21,7 +21,6 @@ namespace ITI.Simc_ITI.Build
         {
             if( location.Infrasructure == null )
             {
-                location.Map.Money.ActualMoney -= this.BuildingCost;
                 return new Commerce( location, this );
             }
             return null;
@@ -40,7 +39,7 @@ namespace ITI.Simc_ITI.Build
         public Commerce( Box b, CommerceType info )
             : base( b, info)
         {
-            _bmp = b.Map.Texture.Get("Commerce.bmp");
+            _bmp = b.Map.BitmapCache.Get("Commerce.bmp");
             _hapyness = info.Happyness;
         }
 

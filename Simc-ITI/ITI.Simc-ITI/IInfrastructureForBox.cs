@@ -13,7 +13,7 @@ namespace ITI.Simc_ITI
         void Draw( Graphics g, Rectangle rectSource, float scaleFactor );
         void Destroy();
         void OnCreatedAround( Box b );
-        event EventHandler BuildingHasBeenDestoyed;
+        event EventHandler Destoyed;
         void OnDestroyingAround( Box b );
         void Update();
         

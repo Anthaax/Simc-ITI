@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ITI.Simc_ITI.Build;
-using ITI.Simc_ITI.Money.Lib;
 
 namespace ITI.Simc_ITI.Rendering
 {
@@ -18,6 +17,7 @@ namespace ITI.Simc_ITI.Rendering
         InfrastructureManager _infManager;
         MoneyGestion _mg;
         Timer t;
+        MyMoney _money;
         double scalefactor;
         int x;
         int y;
@@ -29,6 +29,7 @@ namespace ITI.Simc_ITI.Rendering
             _map = new Map( 100, 100 );
             _infManager = new InfrastructureManager();
             _mg = new MoneyGestion();
+            _money = new MyMoney();
             InitializeComponent();
             _mainViewPortControl.SetMap( _map, 5 * 100 );
             scalefactor = _mainViewPortControl.ViewPort.ActualZoomFactor;
@@ -52,6 +53,7 @@ namespace ITI.Simc_ITI.Rendering
             Build_Road.Visible = false;
             Kind_Building.Visible = false;
             HabitationBuild.Visible = false;
+            Centrale_electrique.Visible = false;
         }
         private void AllButtonVisible()
         {
@@ -64,14 +66,15 @@ namespace ITI.Simc_ITI.Rendering
             IEnumerable<InfrastructureType> types = _infManager.AllTypes;
             foreach( var building in types )
             {
-                   building.BuildingHasBeenCreated += ( s, e) => AfterBuildAInfrastructure();
+                building.BuildingHasBeenCreated += ( s, e) => AfterBuildAInfrastructure();
                 building.BuildingHasBeenCreated += ( s, e) => AverageHappyness();
+                building.BuildingHasBeenCreated += ( s, e ) => PaidBuildingConstruction( building.BuildingCost );
             }
         }
 
         private void InitializeAllEvents()
         {
-            _map.Money.ActualMoneyChanged += label_MonArgent_text;
+            _money.ActualMoneyChanged += label_MonArgent_text;
             _mainViewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
             _mg.TaxationAsChanged += TaxationWasChanged;
 
@@ -81,7 +84,11 @@ namespace ITI.Simc_ITI.Rendering
             IEnumerable<IInfrastructureForBox> infra = _map.GetAllInfrastucture<IInfrastructureForBox>();
             foreach( var infrastructure in infra)
             {
-                infrastructure.Update();
+                IPublic publicBuilding = this as IPublic;
+                if( publicBuilding != null ) _money.ActualMoney -= publicBuilding.CostPerMount / 30;
+
+                ITaxation privateBuilding = this as ITaxation;
+                if( privateBuilding != null ) _money.ActualMoney = _money.ActualMoney + privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
             }
         }
 
@@ -101,7 +108,7 @@ namespace ITI.Simc_ITI.Rendering
   
         private void label_MonArgent_text( object sender, EventArgs e)
         {
-            MonArgent.Text = _map.Money.ActualMoney.ToString();
+            MonArgent.Text = _money.ActualMoney.ToString();
         }
 
         private void DemoWindow2_KeyDown( object sender, KeyEventArgs e )
@@ -155,7 +162,8 @@ namespace ITI.Simc_ITI.Rendering
             if( _map.Boxes[_xBox, _yBox].Infrasructure == null)
             {
                 AllButtonInvisible();
-                if( _infManager.Find("Habitation").CanCreatedNormal(_map.Boxes[_xBox, _yBox]) == true ) AllButtonVisible();
+                if( _infManager.Find( "CentraleElectrique" ).CanCreatedNearRoad( _map.Boxes[_xBox, _yBox] ) ) Centrale_electrique.Visible = true;
+                if( CanCreate( "Habitation", _map.Boxes[_xBox, _yBox] ) ) AllButtonVisible();
                 Build_Road.Visible = true;
             }
             else
@@ -175,10 +183,10 @@ namespace ITI.Simc_ITI.Rendering
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
         }
-
+        
         private void Button_Destroy_Click( object sender, EventArgs e )
         {
-            _map.Money.ActualMoney += _map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
+            _money.ActualMoney += _map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
             _map.Boxes[_xBox, _yBox].Infrasructure.Destroy();
             AverageHappyness();
             AllButtonInvisible();
@@ -226,12 +234,6 @@ namespace ITI.Simc_ITI.Rendering
             _mainViewPortControl.Invalidate();
         }
 
-        private void MoneyGestionOpen_Click( object sender, EventArgs e )
-        {
-            TaxationModification tx = new TaxationModification(_mg);
-            tx.Show();
-        }
-
         private void pause_button_Click(object sender, EventArgs e)
         {
             if (t.Enabled != false)
@@ -272,6 +274,21 @@ namespace ITI.Simc_ITI.Rendering
                 t.Interval = 30000;
                 rewind_button.Text = "<<";
             }
+        }
+        private bool CanCreate(string building, Box b)
+        {
+            return _infManager.Find( building ).CanCreatedNearRoad( b ) && _infManager.Find( building ).CanCreated( b );
+        }
+
+        private void Centrale_electrique_Click( object sender, EventArgs e )
+        {
+            _infManager.Find( "CentraleElectrique" ).CreateInfrastructure( _map.Boxes[_xBox, _yBox], 0 );
+            _mainViewPortControl.Invalidate();
+            AllButtonInvisible();
+        }
+        private void PaidBuildingConstruction(int cost)
+        {
+            _money.ActualMoney -= cost;
         }
     }
 }

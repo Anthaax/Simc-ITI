@@ -12,8 +12,8 @@ namespace ITI.Simc_ITI.Build
     }
     public class RoadType : InfrastructureType
     {
-        public RoadType()
-            : base( "Route", 5, 0 )
+        public RoadType( GameContext ctx )
+            : base( ctx, "Route", 5, 0 )
         {
         }
         protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
@@ -34,7 +34,7 @@ namespace ITI.Simc_ITI.Build
         public Road( Box b, RoadType info, RoadOrientation o )
             : base( b, info )
         {
-            _bmp = b.Map.Texture.Get(o + ".bmp");
+            _bmp = b.Map.BitmapCache.Get(o + ".bmp");
             _name = info.Name;
         }
         public new RoadType Type { get { return (RoadType)base.Type; } }

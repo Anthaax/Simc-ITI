@@ -45,7 +45,7 @@ namespace ITI.Simc_ITI
             if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor );
             else
             {
-                g.DrawImage( Map.Texture.Get("Terre.bmp"), new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
+                g.DrawImage( Map.BitmapCache.Get("Terre.bmp"), new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
                 g.DrawRectangle( Pens.DarkGreen, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
             }
         }

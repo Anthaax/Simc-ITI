@@ -13,11 +13,15 @@ namespace ITI.Simc_ITI.Build
         public CentraleElectriqueType()
             : base( "CentraleElectrique", 900, 13 )
         {
-            _costPerMonth = 200;
+            _costPerMonth = 300;
+        }
+        protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
+        {
+            return new CentraleElectrique( location, this );
         }
         public int CostPerMonth { get { return _costPerMonth; } }
     }
-    public class CentraleElectrique : Infrastructure, IHappynessImpact, IPublic, IEclectricity
+    public class CentraleElectrique : Infrastructure, IHappynessImpact, IPublic
     {
         Bitmap _bmp;
         int _costPerMonth;
@@ -51,8 +55,8 @@ namespace ITI.Simc_ITI.Build
             int cDistance = Math.Abs( Box.Column - b.Column );
             int lDistance = Math.Abs( Box.Line - b.Line );
 
-            if( cDistance == 1 || lDistance == 1 ) happyness = -20;
-            else happyness = -15;
+            if( cDistance <= 2 || lDistance <= 2 ) happyness = -20;
+            else happyness = 0;
             return happyness;
         }
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
