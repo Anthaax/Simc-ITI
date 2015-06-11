@@ -40,8 +40,6 @@ namespace ITI.Simc_ITI
             }
         }
 
-        static Pen p = new Pen( Color.DarkGreen, 1.0f );
-
         public virtual void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
             if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor );
