@@ -183,7 +183,6 @@
             this.MoneyGestionOpen.TabIndex = 9;
             this.MoneyGestionOpen.Text = "Gerer L\'argent";
             this.MoneyGestionOpen.UseVisualStyleBackColor = true;
-            this.MoneyGestionOpen.Click += new System.EventHandler(this.MoneyGestionOpen_Click);
             // 
             // HumeurLabel
             // 
