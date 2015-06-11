@@ -12,8 +12,8 @@ namespace ITI.Simc_ITI.Build
     }
     public class RoadType : InfrastructureType
     {
-        public RoadType()
-            : base( "Route", 5, 0 )
+        public RoadType( GameContext ctx )
+            : base( ctx, "Route", 5, 0 )
         {
         }
         protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
