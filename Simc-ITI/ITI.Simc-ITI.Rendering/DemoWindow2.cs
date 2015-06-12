@@ -200,7 +200,7 @@ namespace ITI.Simc_ITI.Rendering
             {
                 hab.Taxation = _game.MoneyManager.TaxationManager.HabitationTaxation;
             }
-            IEnumerable<Commerce> commerce = _game.Map.GetAllInfrastucture<Commerce>();
+            IEnumerable<Retail> commerce = _game.Map.GetAllInfrastucture<Retail>();
             foreach( var co in commerce )
             {
                 co.Taxation = _game.MoneyManager.TaxationManager.CommerceTaxation;
@@ -225,7 +225,7 @@ namespace ITI.Simc_ITI.Rendering
         {
             Habitation taxe = _game.Map.Boxes[_xBox, _yBox].Infrasructure as Habitation;
             if( taxe != null ) taxe.Taxation = _game.MoneyManager.TaxationManager.HabitationTaxation;
-            Commerce ctaxe = _game.Map.Boxes[_xBox, _yBox].Infrasructure as Commerce;
+            Retail ctaxe = _game.Map.Boxes[_xBox, _yBox].Infrasructure as Retail;
             if( ctaxe != null ) ctaxe.Taxation = _game.MoneyManager.TaxationManager.CommerceTaxation;
             _mainViewPortControl.Invalidate();
         }
