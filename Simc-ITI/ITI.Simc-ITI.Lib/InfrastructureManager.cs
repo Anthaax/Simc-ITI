@@ -20,11 +20,11 @@ namespace ITI.Simc_ITI.Build
 
         void Initialize()
         {
-            RegisterType( new EcoleType( _ctx ) );
+            RegisterType( new SchoolType( _ctx ) );
             RegisterType( new RoadType( _ctx ) );
             RegisterType( new HabitationType( _ctx ) );
-            RegisterType( new CommerceType( _ctx ) );
-            RegisterType( new CentraleElectriqueType( _ctx ) );
+            RegisterType( new RetailType( _ctx ) );
+            RegisterType( new PowerStationType( _ctx ) );
         }
 
         void RegisterType( InfrastructureType t )

@@ -7,25 +7,25 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
-    public class CentraleElectriqueType : InfrastructureType
+    public class PowerStationType : InfrastructureType
     {
         int _costPerMonth;
-        public CentraleElectriqueType( GameContext ctx )
+        public PowerStationType( GameContext ctx )
             : base( ctx, "CentraleElectrique", 900, 13 )
         {
             _costPerMonth = 300;
         }
         protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {
-            return new CentraleElectrique( location, this );
+            return new PowerStation( location, this );
         }
         public int CostPerMonth { get { return _costPerMonth; } }
     }
-    public class CentraleElectrique : Infrastructure, IHappynessImpact, IPublic
+    public class PowerStation : Infrastructure, IHappynessImpact, IPublic
     {
         Bitmap _bmp;
         int _costPerMonth;
-        public CentraleElectrique( Box b, CentraleElectriqueType info )
+        public PowerStation( Box b, PowerStationType info )
             :base(b,info)
         {
             _bmp = new Bitmap( "C:/dev/Textures/Elec.bmp" );

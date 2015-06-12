@@ -7,12 +7,12 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
-    public class EcoleType : InfrastructureType
+    public class SchoolType : InfrastructureType
     {
         int _costPerMonth;
         int _maxCapacity;
         int _happynessImpactMax;
-        public EcoleType( GameContext ctx )
+        public SchoolType( GameContext ctx )
             : base( ctx, "Ecole", 500, 10)
         {
             _costPerMonth = 300;
@@ -22,7 +22,7 @@ namespace ITI.Simc_ITI.Build
 
         protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {
-            return new Ecole( location, this );
+            return new School( location, this );
         }
         public int CostPerMonth { get { return _costPerMonth; } }
         public int MaxCapacity { get { return _maxCapacity; } }
@@ -30,7 +30,7 @@ namespace ITI.Simc_ITI.Build
     }
 
 
-    public class Ecole : Infrastructure, IHappynessImpact, IHealth, IPublic
+    public class School : Infrastructure, IHappynessImpact, IHealth, IPublic
     {
         int _costPerMonth;
         int _maxCapacity;
@@ -39,7 +39,7 @@ namespace ITI.Simc_ITI.Build
         bool _health = true;
         Bitmap _bmp;
 
-        public Ecole(Box b, EcoleType info)
+        public School(Box b, SchoolType info)
             : base(b, info)
         {
             _bmp = b.Map.BitmapCache.Get("Ecole.bmp");

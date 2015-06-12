@@ -48,8 +48,8 @@
     <Compile Include="CustomisationBuilding.Designer.cs">
       <DependentUpon>CustomisationBuilding.cs</DependentUpon>
     </Compile>
-    <Compile Include="Infrastructures\Ecole.cs" />
-    <Compile Include="Infrastructures\CentraleElectrique.cs" />
+    <Compile Include="Infrastructures\School.cs" />
+    <Compile Include="Infrastructures\PowerStation.cs" />
     <Compile Include="GameContext.cs" />
     <Compile Include="Infrastructures\Habitation.cs" />
     <Compile Include="IHappynessImpact.cs" />

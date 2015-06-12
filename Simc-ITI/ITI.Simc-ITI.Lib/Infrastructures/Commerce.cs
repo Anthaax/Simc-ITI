@@ -7,11 +7,11 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
-    public class CommerceType : InfrastructureType
+    public class RetailType : InfrastructureType
     {
         int _happyness;
         int _turnover;
-        public CommerceType( GameContext ctx )
+        public RetailType( GameContext ctx )
             : base( ctx, "Commerce", 0, 5 )
         {
             _happyness = 50;
@@ -21,14 +21,14 @@ namespace ITI.Simc_ITI.Build
         {
             if( location.Infrasructure == null )
             {
-                return new Commerce( location, this );
+                return new Retail( location, this );
             }
             return null;
         }
         public int Happyness { get { return _happyness; } }
         public int Turnover { get { return _turnover; } }
     }
-    public class Commerce : Infrastructure, IHappyness, ITaxation, IHappynessImpact
+    public class Retail : Infrastructure, IHappyness, ITaxation, IHappynessImpact
     {
         int _hapyness;
         Bitmap _bmp;
@@ -36,7 +36,7 @@ namespace ITI.Simc_ITI.Build
         int _salary = 30000;
 
 
-        public Commerce( Box b, CommerceType info )
+        public Retail( Box b, RetailType info )
             : base( b, info)
         {
             _bmp = b.Map.BitmapCache.Get("Commerce.bmp");
