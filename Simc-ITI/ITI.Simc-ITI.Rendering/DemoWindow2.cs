@@ -154,7 +154,10 @@ namespace ITI.Simc_ITI.Rendering
         }
         private void MouseClickEvent(object sender, MouseEventArgs e)
         {
+            ChangePensColor();
             MousePosition( e );
+            _game.Map.Boxes[_xBox, _yBox].Pen = new Pen(Color.Red, 2.0f);
+            _mainViewPortControl.Invalidate();
             if( _game.Map.Boxes[_xBox, _yBox].Infrasructure == null )
             {
                 AllButtonInvisible();
@@ -281,6 +284,14 @@ namespace ITI.Simc_ITI.Rendering
             _game.InfrastructureManager.Find( "CentraleElectrique" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
+        }
+        private void ChangePensColor()
+        {
+            var allBox = _game.Map.Boxes;
+            foreach( var box in allBox )
+            {
+                box.Pen = new Pen(Color.DimGray, 1.0f);
+            }
         }
     }
 }

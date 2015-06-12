@@ -38,11 +38,12 @@ namespace ITI.Simc_ITI.Build
             _name = info.Name;
         }
         public new RoadType Type { get { return (RoadType)base.Type; } }
-        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
+
+        public override void Draw(Graphics g, Rectangle rectSource, float scaleFactor, Pen p)
         {
-            Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
-            g.DrawImage( _bmp, r );
-            g.DrawRectangle( Pens.DarkGreen, r );
+            Rectangle r = new Rectangle(0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth);
+            g.DrawImage(_bmp, r);
+            g.DrawRectangle(p, r);
         }
         public override void OnDestroy()
         {

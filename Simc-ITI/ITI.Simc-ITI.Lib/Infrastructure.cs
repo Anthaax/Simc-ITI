@@ -27,7 +27,7 @@ namespace ITI.Simc_ITI.Build
             get { return _type.GameContext; } 
         }
 
-        public abstract void Draw( Graphics g, Rectangle rectSource, float scaleFactor );
+        public abstract void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen p );
         IInfrastructureType IInfrastructureForBox.Type { get { return _type; } }
         public InfrastructureType Type { get { return _type; } }
         public abstract void OnCreatedAround( Box b );

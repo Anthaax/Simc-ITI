@@ -12,9 +12,6 @@ namespace ITI.Simc_ITI.Rendering
 {
     public partial class BottomPaneControl : UserControl
     {
-        public BottomPaneControl()
-        {
-            InitializeComponent();
-        }
+
     }
 }

@@ -43,11 +43,11 @@ namespace ITI.Simc_ITI.Build
             _hapyness = info.Happyness;
         }
 
-        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
+        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen p)
         {
             Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
-            g.DrawRectangle( Pens.DarkGreen, r );
+            g.DrawRectangle( p, r );
         }
         public override void OnDestroy()
         {
