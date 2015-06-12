@@ -29,7 +29,7 @@
       <Field Name="y" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AASMCARjWGAgUAEFJACAAAACAAABIYAABEPkACAKABU=</HashCode>
+      <HashCode>AASMCARjWGAgUAEFJCCAAAACAAABIYAABEPkACAKABU=</HashCode>
       <FileName>DemoWindow2.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -43,14 +43,14 @@
         <TypeIdentifier />
       </Class>
     </NestedTypes>
-    <AssociationLine Name="InfrastructureManager" Type="ITI.Simc_ITI.Build.InfrastructureManager">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.093" Y="1.143" />
-      </MemberNameLabel>
-    </AssociationLine>
     <AssociationLine Name="Map" Type="ITI.Simc_ITI.Map">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="2.102" Y="0.093" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="InfrastructureManager" Type="ITI.Simc_ITI.Build.InfrastructureManager">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.143" Y="0.093" />
       </MemberNameLabel>
     </AssociationLine>
     <AssociationLine Name="MoneyManager" Type="ITI.Simc_ITI.Build.MoneyManager">
@@ -60,8 +60,8 @@
     </AssociationLine>
     <TypeIdentifier />
     <ShowAsAssociation>
-      <Property Name="InfrastructureManager" />
       <Property Name="Map" />
+      <Property Name="InfrastructureManager" />
       <Property Name="MoneyManager" />
     </ShowAsAssociation>
   </Class>
@@ -74,7 +74,7 @@
     <TypeIdentifier />
   </Class>
   <Class Name="ITI.Simc_ITI.Build.MoneyManager" Collapsed="true">
-    <Position X="7.5" Y="0.5" Width="1.5" />
+    <Position X="8.25" Y="2" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />
