@@ -45,6 +45,8 @@
             this.Coordonnées = new System.Windows.Forms.Label();
             this.MonArgent = new System.Windows.Forms.Label();
             this.MyMoney = new System.Windows.Forms.Label();
+            this.Water_Central = new System.Windows.Forms.Button();
+            this.Commerce = new System.Windows.Forms.Button();
             this._mainViewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -60,7 +62,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -90,11 +92,12 @@
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.Water_Central);
             this.splitContainer2.Panel1.Controls.Add(this.Centrale_electrique);
             this.splitContainer2.Panel1.Controls.Add(this.Build_Road);
             this.splitContainer2.Panel1.Controls.Add(this.HabitationBuild);
@@ -115,7 +118,7 @@
             this.Centrale_electrique.Name = "Centrale_electrique";
             this.Centrale_electrique.Size = new System.Drawing.Size(91, 23);
             this.Centrale_electrique.TabIndex = 9;
-            this.Centrale_electrique.Text = "CentraleE";
+            this.Centrale_electrique.Text = "Electricité";
             this.Centrale_electrique.UseVisualStyleBackColor = true;
             this.Centrale_electrique.Visible = false;
             this.Centrale_electrique.Click += new System.EventHandler(this.Centrale_electrique_Click);
@@ -145,7 +148,7 @@
             // 
             // School_Button
             // 
-            this.School_Button.Location = new System.Drawing.Point(3, 68);
+            this.School_Button.Location = new System.Drawing.Point(3, 127);
             this.School_Button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.School_Button.Name = "School_Button";
             this.School_Button.Size = new System.Drawing.Size(91, 23);
@@ -167,7 +170,7 @@
             // fastforward_button
             // 
             this.fastforward_button.Location = new System.Drawing.Point(208, 10);
-            this.fastforward_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fastforward_button.Margin = new System.Windows.Forms.Padding(4);
             this.fastforward_button.Name = "fastforward_button";
             this.fastforward_button.Size = new System.Drawing.Size(80, 28);
             this.fastforward_button.TabIndex = 12;
@@ -178,7 +181,7 @@
             // pause_button
             // 
             this.pause_button.Location = new System.Drawing.Point(100, 10);
-            this.pause_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pause_button.Margin = new System.Windows.Forms.Padding(4);
             this.pause_button.Name = "pause_button";
             this.pause_button.Size = new System.Drawing.Size(100, 28);
             this.pause_button.TabIndex = 11;
@@ -189,7 +192,7 @@
             // rewind_button
             // 
             this.rewind_button.Location = new System.Drawing.Point(17, 10);
-            this.rewind_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rewind_button.Margin = new System.Windows.Forms.Padding(4);
             this.rewind_button.Name = "rewind_button";
             this.rewind_button.Size = new System.Drawing.Size(76, 28);
             this.rewind_button.TabIndex = 10;
@@ -271,6 +274,28 @@
             this.MyMoney.TabIndex = 1;
             this.MyMoney.Text = "Mon argent :";
             // 
+            // Water_Central
+            // 
+            this.Water_Central.Location = new System.Drawing.Point(3, 69);
+            this.Water_Central.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Water_Central.Name = "Water_Central";
+            this.Water_Central.Size = new System.Drawing.Size(91, 23);
+            this.Water_Central.TabIndex = 10;
+            this.Water_Central.Text = "Eau";
+            this.Water_Central.UseVisualStyleBackColor = true;
+            this.Water_Central.Click += new System.EventHandler(this.Water_Central_Click);
+            // 
+            // Commerce
+            // 
+            this.Commerce.Location = new System.Drawing.Point(3, 331);
+            this.Commerce.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Commerce.Name = "Commerce";
+            this.Commerce.Size = new System.Drawing.Size(91, 23);
+            this.Commerce.TabIndex = 11;
+            this.Commerce.Text = "Commerce";
+            this.Commerce.UseVisualStyleBackColor = true;
+            this.Commerce.Click += new System.EventHandler(this.Commerce_Click);
+            // 
             // _mainViewPortControl
             // 
             this._mainViewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -285,9 +310,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1259, 484);
+            this.Controls.Add(this.Commerce);
             this.Controls.Add(this.splitContainer1);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DemoWindow2";
             this.Text = "Simc\'ITI";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -325,5 +351,7 @@
         private System.Windows.Forms.Button rewind_button;
         private System.Windows.Forms.Button Centrale_electrique;
         private System.Windows.Forms.Label LastCost;
+        private System.Windows.Forms.Button Water_Central;
+        private System.Windows.Forms.Button Commerce;
     }
 }

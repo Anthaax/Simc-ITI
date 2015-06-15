@@ -49,13 +49,21 @@ namespace ITI.Simc_ITI.Rendering
             Kind_Building.Visible = false;
             HabitationBuild.Visible = false;
             Centrale_electrique.Visible = false;
+            Water_Central.Visible = false;
+            Commerce.Visible = false;
         }
-        private void AllButtonVisible()
+        private void BuildingConstructionVisible()
         {
             School_Button.Visible = true;
             Build_Road.Visible = true;
             HabitationBuild.Visible = true;
+            Commerce.Visible = true;
             HumeurLabel.Visible = true;
+        }
+        private void CentraleConstructionVisibile()
+        {
+            Centrale_electrique.Visible = true;
+            Water_Central.Visible = true;
         }
         private void BuildingEvent()
         {
@@ -158,8 +166,8 @@ namespace ITI.Simc_ITI.Rendering
             if( _game.Map.Boxes[_xBox, _yBox].Infrasructure == null )
             {
                 AllButtonInvisible();
-                if( _game.InfrastructureManager.Find( "CentraleElectrique" ).CanCreatedNearRoad( _game.Map.Boxes[_xBox, _yBox] ) ) Centrale_electrique.Visible = true;
-                if( CanCreate( "Habitation", _game.Map.Boxes[_xBox, _yBox] ) ) AllButtonVisible();
+                if( _game.InfrastructureManager.Find( "CentraleElectrique" ).CanCreatedNearRoad( _game.Map.Boxes[_xBox, _yBox] ) ) CentraleConstructionVisibile();
+                if( CanCreate( "Habitation", _game.Map.Boxes[_xBox, _yBox] ) ) BuildingConstructionVisible();
                 Build_Road.Visible = true;
             }
             else
@@ -279,6 +287,20 @@ namespace ITI.Simc_ITI.Rendering
         private void Centrale_electrique_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "CentraleElectrique" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
+            _mainViewPortControl.Invalidate();
+            AllButtonInvisible();
+        }
+
+        private void Water_Central_Click( object sender, EventArgs e )
+        {
+            _game.InfrastructureManager.Find( "CentraleHydrolique" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
+            _mainViewPortControl.Invalidate();
+            AllButtonInvisible();
+        }
+
+        private void Commerce_Click( object sender, EventArgs e )
+        {
+            _game.InfrastructureManager.Find( "Commerce" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
         }

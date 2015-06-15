@@ -46,12 +46,17 @@ namespace ITI.Simc_ITI.Build
         public bool CanCreated( Box b )
         {
             bool check = false;
+            int indicator = 0;
             IEnumerable<Box> nearCentral = b.NearBoxes( 13 );
             foreach( var box in nearCentral )
             {
                 if( box.Infrasructure != null )
                 {
-                    if( box.Infrasructure.Type.Name == "CentraleElectrique" ) check = true;
+                    if( box.Infrasructure.Type.Name == "CentraleElectrique" || box.Infrasructure.Type.Name == "CentraleHydrolique" )
+                    {
+                        if( indicator == 1 ) check = true;
+                        else indicator = 1;
+                    }
                 }
             }
             return check;

@@ -7,28 +7,28 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
-    public class PowerStationType : InfrastructureType
+    public class WaterCentralType : InfrastructureType
     {
         int _costPerMonth;
-        public PowerStationType( GameContext ctx )
-            : base( ctx, "CentraleElectrique", 900, 13 )
+        public WaterCentralType( GameContext ctx )
+            : base( ctx, "CentraleHydrolique", 900, 13 )
         {
             _costPerMonth = 600;
         }
         protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {
-            return new PowerStation( location, this );
+            return new WaterCentral( location, this );
         }
         public int CostPerMonth { get { return _costPerMonth; } }
     }
-    public class PowerStation : Infrastructure, IHappynessImpact, IPublic
+    public class WaterCentral : Infrastructure, IPublic, IHappynessImpact
     {
         Bitmap _bmp;
         int _costPerMonth;
-        public PowerStation( Box b, PowerStationType info )
+        public WaterCentral( Box b, WaterCentralType info )
             :base(b,info)
         {
-            _bmp = new Bitmap( "C:/dev/Textures/Elec.bmp" );
+            _bmp = new Bitmap( "C:/dev/Textures/Eau.bmp" );
             _costPerMonth = info.CostPerMonth;
         }
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )

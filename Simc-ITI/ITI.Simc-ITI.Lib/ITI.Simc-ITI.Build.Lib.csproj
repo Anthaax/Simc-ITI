@@ -48,6 +48,10 @@
     <Compile Include="CustomisationBuilding.Designer.cs">
       <DependentUpon>CustomisationBuilding.cs</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructures\Factory.cs" />
+    <Compile Include="Infrastructures\FireStation.cs" />
+    <Compile Include="Infrastructures\Hospital.cs" />
+    <Compile Include="Infrastructures\PoliceStation.cs" />
     <Compile Include="Infrastructures\School.cs" />
     <Compile Include="Infrastructures\PowerStation.cs" />
     <Compile Include="GameContext.cs" />
@@ -56,6 +60,7 @@
     <Compile Include="IHealth.cs" />
     <Compile Include="Infrastructure.cs" />
     <Compile Include="InfrastructureManager.cs" />
+    <Compile Include="Infrastructures\WaterCentral.cs" />
     <Compile Include="InfrastructureType.cs" />
     <Compile Include="IHappyness.cs" />
     <Compile Include="IPublic.cs" />
