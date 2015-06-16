@@ -18,8 +18,8 @@ namespace ITI.Simc_ITI.Rendering
         double scalefactor;
         int x;
         int y;
-        int _xBox;
-        int _yBox;
+        static int _xBox;
+        static int _yBox;
 
         public DemoWindow2()
         {

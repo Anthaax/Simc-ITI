@@ -12,9 +12,13 @@ namespace ITI.Simc_ITI.Rendering
 {
     public partial class LeftPaneControl : UserControl
     {
-        public LeftPaneControl()
+        ViewPortControl _mainViewportControl;
+        static int _xBox;
+        static int _yBox;
+        public LeftPaneControl(ViewPortControl v)
         {
             InitializeComponent();
+            _mainViewportControl = v;
         }
     }
 }
