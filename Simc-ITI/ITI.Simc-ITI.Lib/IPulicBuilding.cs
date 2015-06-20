@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ITI.Simc_ITI.Build
 {
-    public interface IPublic
+    public interface IPulicBuilding
     {
         int CostPerMount { get; set; }
     }

@@ -117,7 +117,7 @@ namespace ITI.Simc_ITI.Rendering
                 HumeurLabel.Text = "Humeur : " + totalHappyness + "%";
             }
         }
-        public void TaxationWasChanged( GameContext _game)
+        public void TaxationWasChanged()
         {
             IEnumerable<Habitation> habitation = _game.Map.GetAllInfrastucture<Habitation>();
             foreach( var hab in habitation )

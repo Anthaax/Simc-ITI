@@ -30,7 +30,7 @@ namespace ITI.Simc_ITI.Build
     }
 
 
-    public class School : Infrastructure, IHappynessImpact, IHealth, IPublic
+    public class School : Infrastructure, IHappynessImpact, IHealth, IPulicBuilding
     {
         int _costPerMonth;
         int _maxCapacity;
@@ -48,11 +48,11 @@ namespace ITI.Simc_ITI.Build
             CheckAllNearBoxes();
         }
 
-        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
+        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
         {
             Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
-            g.DrawRectangle( Pens.DarkGreen, r );
+            g.DrawRectangle( penColor, r );
         }
         public override void OnDestroy()
         {

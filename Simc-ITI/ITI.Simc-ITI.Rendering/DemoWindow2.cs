@@ -163,6 +163,7 @@ namespace ITI.Simc_ITI.Rendering
         private void MouseClickEvent(object sender, MouseEventArgs e)
         {
             MousePosition( e );
+            ColorSelectedBox();
             if( _game.Map.Boxes[_xBox, _yBox].Infrasructure == null )
             {
                 AllButtonInvisible();
@@ -303,6 +304,15 @@ namespace ITI.Simc_ITI.Rendering
             _game.InfrastructureManager.Find( "Commerce" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
+        }
+        private void ColorSelectedBox()
+        {
+            foreach( var box in _game.Map.Boxes)
+            {
+                box.PenColor = new Pen( Color.DimGray );
+            }
+            _game.Map.Boxes[_xBox, _yBox].PenColor = new Pen( Color.Red );
+            _mainViewPortControl.Invalidate();
         }
     }
 }

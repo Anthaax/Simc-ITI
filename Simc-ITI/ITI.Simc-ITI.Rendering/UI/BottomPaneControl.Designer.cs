@@ -42,7 +42,7 @@
             // rewind_button
             // 
             this.rewind_button.Location = new System.Drawing.Point(4, 85);
-            this.rewind_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rewind_button.Margin = new System.Windows.Forms.Padding(4);
             this.rewind_button.Name = "rewind_button";
             this.rewind_button.Size = new System.Drawing.Size(76, 28);
             this.rewind_button.TabIndex = 11;
@@ -53,7 +53,7 @@
             // pause_button
             // 
             this.pause_button.Location = new System.Drawing.Point(88, 85);
-            this.pause_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pause_button.Margin = new System.Windows.Forms.Padding(4);
             this.pause_button.Name = "pause_button";
             this.pause_button.Size = new System.Drawing.Size(100, 28);
             this.pause_button.TabIndex = 12;
@@ -64,7 +64,7 @@
             // fastforward_button
             // 
             this.fastforward_button.Location = new System.Drawing.Point(196, 85);
-            this.fastforward_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.fastforward_button.Margin = new System.Windows.Forms.Padding(4);
             this.fastforward_button.Name = "fastforward_button";
             this.fastforward_button.Size = new System.Drawing.Size(80, 28);
             this.fastforward_button.TabIndex = 13;
@@ -106,10 +106,10 @@
             // 
             // MyMoney
             // 
-            this.MyMoney.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MyMoney.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MyMoney.AutoSize = true;
-            this.MyMoney.Location = new System.Drawing.Point(637, 16);
+            this.MyMoney.Location = new System.Drawing.Point(696, 18);
             this.MyMoney.Name = "MyMoney";
             this.MyMoney.Size = new System.Drawing.Size(88, 17);
             this.MyMoney.TabIndex = 17;
@@ -117,8 +117,10 @@
             // 
             // HumeurLabel
             // 
+            this.HumeurLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.HumeurLabel.AutoSize = true;
-            this.HumeurLabel.Location = new System.Drawing.Point(660, 43);
+            this.HumeurLabel.Location = new System.Drawing.Point(696, 55);
             this.HumeurLabel.Name = "HumeurLabel";
             this.HumeurLabel.Size = new System.Drawing.Size(66, 17);
             this.HumeurLabel.TabIndex = 19;
@@ -126,7 +128,9 @@
             // 
             // MoneyGestionOpen
             // 
-            this.MoneyGestionOpen.Location = new System.Drawing.Point(645, 78);
+            this.MoneyGestionOpen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MoneyGestionOpen.Location = new System.Drawing.Point(699, 85);
             this.MoneyGestionOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MoneyGestionOpen.Name = "MoneyGestionOpen";
             this.MoneyGestionOpen.Size = new System.Drawing.Size(128, 23);
@@ -148,7 +152,7 @@
             this.Controls.Add(this.fastforward_button);
             this.Controls.Add(this.pause_button);
             this.Controls.Add(this.rewind_button);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BottomPaneControl";
             this.Size = new System.Drawing.Size(840, 117);
             this.ResumeLayout(false);

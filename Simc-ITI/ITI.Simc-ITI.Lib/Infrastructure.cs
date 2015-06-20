@@ -27,7 +27,7 @@ namespace ITI.Simc_ITI.Build
             get { return _type.GameContext; } 
         }
 
-        public abstract void Draw( Graphics g, Rectangle rectSource, float scaleFactor );
+        public abstract void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor );
         IInfrastructureType IInfrastructureForBox.Type { get { return _type; } }
         public InfrastructureType Type { get { return _type; } }
         public abstract void OnCreatedAround( Box b );
@@ -53,7 +53,7 @@ namespace ITI.Simc_ITI.Build
         }
         public void Update()
         {
-            IPublic publicBuilding = this as IPublic;
+            IPulicBuilding publicBuilding = this as IPulicBuilding;
             if( publicBuilding != null ) _type.GameContext.MoneyManager.ActualMoney -= publicBuilding.CostPerMount / 30;
 
             ITaxation privateBuilding = this as ITaxation;

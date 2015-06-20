@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI.Build
 {
-    class Hospital
+    public class Hospital
     {
+
     }
 }

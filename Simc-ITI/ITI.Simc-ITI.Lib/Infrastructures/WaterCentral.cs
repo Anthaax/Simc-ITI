@@ -21,7 +21,7 @@ namespace ITI.Simc_ITI.Build
         }
         public int CostPerMonth { get { return _costPerMonth; } }
     }
-    public class WaterCentral : Infrastructure, IPublic, IHappynessImpact
+    public class WaterCentral : Infrastructure, IPulicBuilding, IHappynessImpact
     {
         Bitmap _bmp;
         int _costPerMonth;
@@ -31,11 +31,11 @@ namespace ITI.Simc_ITI.Build
             _bmp = new Bitmap( "C:/dev/Textures/Eau.bmp" );
             _costPerMonth = info.CostPerMonth;
         }
-        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
+        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
         {
             Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
-            g.DrawRectangle( Pens.DarkGreen, r );
+            g.DrawRectangle( penColor, r );
         }
         public override void OnDestroy()
         {
@@ -55,7 +55,7 @@ namespace ITI.Simc_ITI.Build
             int cDistance = Math.Abs( Box.Column - b.Column );
             int lDistance = Math.Abs( Box.Line - b.Line );
 
-            if( cDistance <= 2 || lDistance <= 2 ) happyness = -10;
+            if( cDistance <= 2 && lDistance <= 2 ) happyness = -10;
             else happyness = 0;
             return happyness;
         }

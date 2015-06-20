@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITI.Simc_ITI.Build;
 
 namespace ITI.Simc_ITI.Rendering
 {
     public partial class MainGameControl : UserControl
     {
-        public MainGameControl()
+        GameContext _game;
+        public MainGameControl(GameContext game)
         {
             InitializeComponent();
+            _game = game;
         }
     }
 }
