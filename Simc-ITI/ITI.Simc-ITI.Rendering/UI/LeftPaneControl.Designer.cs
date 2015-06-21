@@ -32,7 +32,7 @@
             this.Centrale_electrique = new System.Windows.Forms.Button();
             this.School_Button = new System.Windows.Forms.Button();
             this.HabitationBuild = new System.Windows.Forms.Button();
-            this.WaterCentral = new System.Windows.Forms.Button();
+            this.Water_Central = new System.Windows.Forms.Button();
             this.Commerce = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -88,17 +88,17 @@
             this.HabitationBuild.UseVisualStyleBackColor = true;
             this.HabitationBuild.Visible = false;
             // 
-            // WaterCentral
+            // Water_Central
             // 
-            this.WaterCentral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.Water_Central.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WaterCentral.Location = new System.Drawing.Point(3, 56);
-            this.WaterCentral.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.WaterCentral.Name = "WaterCentral";
-            this.WaterCentral.Size = new System.Drawing.Size(109, 23);
-            this.WaterCentral.TabIndex = 13;
-            this.WaterCentral.Text = "Eau";
-            this.WaterCentral.UseVisualStyleBackColor = true;
+            this.Water_Central.Location = new System.Drawing.Point(3, 56);
+            this.Water_Central.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Water_Central.Name = "Water_Central";
+            this.Water_Central.Size = new System.Drawing.Size(109, 23);
+            this.Water_Central.TabIndex = 13;
+            this.Water_Central.Text = "Eau";
+            this.Water_Central.UseVisualStyleBackColor = true;
             // 
             // Commerce
             // 
@@ -118,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.Commerce);
-            this.Controls.Add(this.WaterCentral);
+            this.Controls.Add(this.Water_Central);
             this.Controls.Add(this.HabitationBuild);
             this.Controls.Add(this.School_Button);
             this.Controls.Add(this.Centrale_electrique);
@@ -136,7 +136,7 @@
         private System.Windows.Forms.Button Centrale_electrique;
         private System.Windows.Forms.Button School_Button;
         private System.Windows.Forms.Button HabitationBuild;
-        private System.Windows.Forms.Button WaterCentral;
+        private System.Windows.Forms.Button Water_Central;
         private System.Windows.Forms.Button Commerce;
     }
 }

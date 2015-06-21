@@ -26,6 +26,7 @@ namespace ITI.Simc_ITI.Build
         int _hapyness;
         int _salary = 7000;
         int _taxation = 10;
+        int _fireChance = 5;
         Bitmap _bmp;
 
 
@@ -54,6 +55,11 @@ namespace ITI.Simc_ITI.Build
             {
                 Happyness = Happyness + impact.HappynessImpact( Box );
             }
+            IFire fire = b.Infrasructure as IFire;
+            if( fire != null )
+            {
+                FireChance = FireChance - fire.FireChanceImpact( Box );
+            }
         }
         public override void OnDestroyingAround( Box b )
         {
@@ -62,10 +68,17 @@ namespace ITI.Simc_ITI.Build
             {
                 Happyness = Happyness - impact.HappynessImpact( Box );
             }
+            IFire fire = b.Infrasructure as IFire;
+            if( fire != null ) 
+            {
+                FireChance = FireChance + fire.FireChanceImpact( Box );
+            }
         }
+        public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
         public int Salary { get { return _salary; } }
+        
         public void CheckAllNearBoxes()
         {
             IEnumerable<Box> nearBox = Box.NearBoxes( Box.Map.BoxCount );

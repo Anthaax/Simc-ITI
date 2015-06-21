@@ -37,6 +37,8 @@ namespace ITI.Simc_ITI.Build
         int _actualCapacity;
         int _happynessImpact;
         bool _health = true;
+        int _fireChance = 5;
+        bool _onFire = false;
         Bitmap _bmp;
 
         public School(Box b, SchoolType info)
@@ -66,6 +68,11 @@ namespace ITI.Simc_ITI.Build
                 if( impact.HappynessImpact( Box ) < 0 ) _health = false;
                 else _health = true;
             }
+            IFire fire = b.Infrasructure as IFire;
+            if( fire != null )
+            {
+                FireChance = FireChance - fire.FireChanceImpact( Box );
+            }
         }
         public override void OnDestroyingAround( Box b )
         {
@@ -74,7 +81,11 @@ namespace ITI.Simc_ITI.Build
             {
                 _health = true;
             }
-            CheckAllNearBoxes();
+            IFire fire = b.Infrasructure as IFire;
+            if( fire != null )
+            {
+                FireChance = FireChance + fire.FireChanceImpact( Box );
+            }
         }
         public int HappynessImpact( Box b )
         {
@@ -95,16 +106,7 @@ namespace ITI.Simc_ITI.Build
         }
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public bool Health { get { return _health; } set { _health = value; } }
-        public int MaxCapacity
-        {
-            get { return _maxCapacity; }
-            set { _maxCapacity = value; }
-        }
-        public int ActualCapacity
-        {
-            get { return _actualCapacity; }
-            set { _actualCapacity = value; }
-        }
+        public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
         public void CheckAllNearBoxes()
         {
             IEnumerable<Box> nearBox = Box.NearBoxes( Box.Map.BoxCount );
