@@ -34,7 +34,7 @@ namespace ITI.Simc_ITI.Build
         Bitmap _bmp;
         int _taxation = 10;
         int _salary = 30000;
-
+        int _fireRisk = 3;
 
         public Retail( Box b, RetailType info )
             : base( b, info)
@@ -43,11 +43,11 @@ namespace ITI.Simc_ITI.Build
             _hapyness = info.Happyness;
         }
 
-        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen p)
+        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
         {
             Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
-            g.DrawRectangle( p, r );
+            g.DrawRectangle( penColor, r );
         }
         public override void OnDestroy()
         {

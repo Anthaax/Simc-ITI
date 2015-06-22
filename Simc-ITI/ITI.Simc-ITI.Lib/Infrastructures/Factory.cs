@@ -7,30 +7,35 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
-    public class PowerStationType : InfrastructureType
+    public class FactoryType : InfrastructureType
     {
-        int _costPerMonth;
-        public PowerStationType( GameContext ctx )
-            : base( ctx, "CentraleElectrique", 900, 13 )
+        int _happyness;
+        public FactoryType( GameContext ctx )
+            : base( ctx, "Habitation", 0, 5)
         {
-            _costPerMonth = 600;
+            _happyness = 50;
         }
         protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {
-            return new PowerStation( location, this );
+                return new Factory( location, this );
         }
-        public int CostPerMonth { get { return _costPerMonth; } }
+        public int Happyness { get { return _happyness; } }
     }
-    public class PowerStation : Infrastructure, IHappynessImpact, IPulicBuilding
+    public class Factory : Infrastructure, ITaxation, IHappynessImpact
     {
+        int _hapyness;
+        int _salary = 7000;
+        int _taxation = 10;
         Bitmap _bmp;
-        int _costPerMonth;
-        public PowerStation( Box b, PowerStationType info )
-            :base(b,info)
+
+
+        public Factory( Box b, FactoryType info )
+            : base( b, info )
         {
-            _bmp = new Bitmap( "C:/dev/Textures/Elec.bmp" );
-            _costPerMonth = info.CostPerMonth;
+            _bmp = b.Map.BitmapCache.Get( "Usine.bmp" );
+            _hapyness = info.Happyness;
         }
+
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
         {
             Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
@@ -56,9 +61,10 @@ namespace ITI.Simc_ITI.Build
             int lDistance = Math.Abs( Box.Line - b.Line );
 
             if( cDistance <= 2 && lDistance <= 2 ) happyness = -10;
-            else happyness = 0;
+            else happyness = -5;
             return happyness;
         }
-        public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
+        public int Taxation { get { return _taxation; } set { _taxation = value; } }
+        public int Salary { get { return _salary; } }
     }
 }

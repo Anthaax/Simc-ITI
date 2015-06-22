@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.leftPaneControl1 = new ITI.Simc_ITI.Rendering.LeftPaneControl();
+            this.leftPaneControl1 = new ITI.Simc_ITI.Rendering.LeftPaneControl(viewPortControl1);
             this.viewPortControl1 = new ITI.Simc_ITI.Rendering.ViewPortControl();
-            this.bottomPaneControl1 = new ITI.Simc_ITI.Rendering.BottomPaneControl();
+            this.bottomPaneControl1 = new ITI.Simc_ITI.Rendering.BottomPaneControl(viewPortControl1, _game);
             this.SuspendLayout();
             // 
             // leftPaneControl1
@@ -72,7 +72,6 @@
             this.Name = "MainGameControl";
             this.Size = new System.Drawing.Size(778, 425);
             this.ResumeLayout(false);
-
         }
 
         #endregion

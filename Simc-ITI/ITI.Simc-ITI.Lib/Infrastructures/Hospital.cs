@@ -7,37 +7,38 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
-    public class HabitationType : InfrastructureType
+    public class HospitalType : InfrastructureType
     {
-        int _happyness;
-        public HabitationType( GameContext ctx )
-            : base( ctx, "Habitation", 0, 0)
+        int _costPerMonth;
+        int _happynessImpactMax; 
+        public HospitalType(GameContext ctx)
+            :base(ctx,"Hopital", 500, 10)
         {
-            _happyness = 50;
+            _costPerMonth = 600;
+            _happynessImpactMax = 5;
         }
         protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {
-                return new Habitation( location, this );
+            return new Hospital( location, this );
         }
-        public int Happyness { get { return _happyness; } }
+        public int CostPerMonth { get { return _costPerMonth; } }
+        public int HappynessImpact { get { return _happynessImpactMax; } }
     }
-    public class Habitation : Infrastructure, IHappyness, ITaxation
+    public class Hospital : Infrastructure, IHappynessImpact, IHealth
     {
-        int _hapyness;
-        int _salary = 7000;
-        int _taxation = 10;
+        int _costPerMonth;
+        int _happynessImpact;
+        bool _health = true;
         int _fireChance = 5;
         Bitmap _bmp;
-
-
-        public Habitation(Box b, HabitationType info)
-            : base(b, info)
+        public Hospital(Box b, HospitalType info)
+            :base(b, info)
         {
-            _bmp = b.Map.BitmapCache.Get("Habitation.bmp");
-            _hapyness = info.Happyness;
+            _bmp = b.Map.BitmapCache.Get( "Hospital.bmp" );
+            _costPerMonth = info.CostPerMonth;
+            _happynessImpact = info.HappynessImpact;
             CheckAllNearBoxes();
         }
-
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
         {
             Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
@@ -53,7 +54,8 @@ namespace ITI.Simc_ITI.Build
             IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
             if( impact != null )
             {
-                Happyness = Happyness + impact.HappynessImpact( Box );
+                if( impact.HappynessImpact( Box ) < 0 ) _health = false;
+                else _health = true;
             }
             IFire fire = b.Infrasructure as IFire;
             if( fire != null )
@@ -66,23 +68,38 @@ namespace ITI.Simc_ITI.Build
             IHappynessImpact impact = b.Infrasructure as IHappynessImpact;
             if( impact != null )
             {
-                Happyness = Happyness - impact.HappynessImpact( Box );
+                _health = true;
             }
             IFire fire = b.Infrasructure as IFire;
-            if( fire != null ) 
+            if( fire != null )
             {
                 FireChance = FireChance + fire.FireChanceImpact( Box );
             }
         }
+        public int HappynessImpact( Box b )
+        {
+            int happyness;
+            int cDistance = Math.Abs( Box.Column - b.Column );
+            int lDistance = Math.Abs( Box.Line - b.Line );
+            if( _health == true )
+            {
+                if( cDistance < 5 && lDistance < 5 ) happyness = 10;
+                else if( cDistance < 10 && lDistance < 10 ) happyness = 5;
+                else happyness = 1;
+            }
+            else
+            {
+                happyness = 0;
+            }
+            return happyness;
+        }
+        public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
+        public bool Health { get { return _health; } set { _health = value; } }
         public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
-        public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
-        public int Taxation { get { return _taxation; } set { _taxation = value; } }
-        public int Salary { get { return _salary; } }
-        
         public void CheckAllNearBoxes()
         {
             IEnumerable<Box> nearBox = Box.NearBoxes( Box.Map.BoxCount );
-            foreach( var box in nearBox)
+            foreach( var box in nearBox )
             {
                 if( box.Infrasructure != null )
                 {

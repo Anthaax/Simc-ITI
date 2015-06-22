@@ -10,7 +10,7 @@ namespace ITI.Simc_ITI
     public class Box
     {
         Graphics g, screeng;
-        Pen p;
+        Pen _p = new Pen( Color.DimGray );
         readonly Map _map;
         readonly int _line;
         readonly int _column;
@@ -20,7 +20,6 @@ namespace ITI.Simc_ITI
             _map = map;
             _line = line;
             _column = column;
-            p = new Pen(Color.DimGray, 1.0f);
         }
 
         public int Line
@@ -41,20 +40,18 @@ namespace ITI.Simc_ITI
                 return new Rectangle( _column*sz, _line*sz, sz, sz );
             }
         }
-
-        public Pen Pen
+        public Pen PenColor
         {
-            get { return p; }
-            set { p = value; }
+            get { return _p; }
+            set { _p = value; }
         }
-
         public virtual void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-            if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor, p );
+            if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor, _p );
             else
             {
                 g.DrawImage( Map.BitmapCache.Get("Terre.bmp"), new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
-                g.DrawRectangle(p, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
+                g.DrawRectangle( _p, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
             }
         }
         public IInfrastructureForBox Infrasructure

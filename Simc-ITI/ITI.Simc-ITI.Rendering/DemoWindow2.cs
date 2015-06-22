@@ -18,8 +18,8 @@ namespace ITI.Simc_ITI.Rendering
         double scalefactor;
         int x;
         int y;
-        int _xBox;
-        int _yBox;
+        static int _xBox;
+        static int _yBox;
 
         public DemoWindow2()
         {
@@ -49,13 +49,21 @@ namespace ITI.Simc_ITI.Rendering
             Kind_Building.Visible = false;
             HabitationBuild.Visible = false;
             Centrale_electrique.Visible = false;
+            Water_Central.Visible = false;
+            Commerce.Visible = false;
         }
-        private void AllButtonVisible()
+        private void BuildingConstructionVisible()
         {
             School_Button.Visible = true;
             Build_Road.Visible = true;
             HabitationBuild.Visible = true;
+            Commerce.Visible = true;
             HumeurLabel.Visible = true;
+        }
+        private void CentraleConstructionVisibile()
+        {
+            Centrale_electrique.Visible = true;
+            Water_Central.Visible = true;
         }
         private void BuildingEvent()
         {
@@ -154,15 +162,13 @@ namespace ITI.Simc_ITI.Rendering
         }
         private void MouseClickEvent(object sender, MouseEventArgs e)
         {
-            ChangePensColor();
             MousePosition( e );
-            _game.Map.Boxes[_xBox, _yBox].Pen = new Pen(Color.Red, 2.0f);
-            _mainViewPortControl.Invalidate();
+            ColorSelectedBox();
             if( _game.Map.Boxes[_xBox, _yBox].Infrasructure == null )
             {
                 AllButtonInvisible();
-                if( _game.InfrastructureManager.Find( "CentraleElectrique" ).CanCreatedNearRoad( _game.Map.Boxes[_xBox, _yBox] ) ) Centrale_electrique.Visible = true;
-                if( CanCreate( "Habitation", _game.Map.Boxes[_xBox, _yBox] ) ) AllButtonVisible();
+                if( _game.InfrastructureManager.Find( "CentraleElectrique" ).CanCreatedNearRoad( _game.Map.Boxes[_xBox, _yBox] ) ) CentraleConstructionVisibile();
+                if( CanCreate( "Habitation", _game.Map.Boxes[_xBox, _yBox] ) ) BuildingConstructionVisible();
                 Build_Road.Visible = true;
             }
             else
@@ -285,13 +291,28 @@ namespace ITI.Simc_ITI.Rendering
             _mainViewPortControl.Invalidate();
             AllButtonInvisible();
         }
-        private void ChangePensColor()
+
+        private void Water_Central_Click( object sender, EventArgs e )
         {
-            var allBox = _game.Map.Boxes;
-            foreach( var box in allBox )
+            _game.InfrastructureManager.Find( "CentraleHydrolique" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
+            _mainViewPortControl.Invalidate();
+            AllButtonInvisible();
+        }
+
+        private void Commerce_Click( object sender, EventArgs e )
+        {
+            _game.InfrastructureManager.Find( "Commerce" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
+            _mainViewPortControl.Invalidate();
+            AllButtonInvisible();
+        }
+        private void ColorSelectedBox()
+        {
+            foreach( var box in _game.Map.Boxes)
             {
-                box.Pen = new Pen(Color.DimGray, 1.0f);
+                box.PenColor = new Pen( Color.DimGray );
             }
+            _game.Map.Boxes[_xBox, _yBox].PenColor = new Pen( Color.Red );
+            _mainViewPortControl.Invalidate();
         }
     }
 }

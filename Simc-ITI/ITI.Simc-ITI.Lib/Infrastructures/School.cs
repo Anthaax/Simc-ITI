@@ -15,7 +15,7 @@ namespace ITI.Simc_ITI.Build
         public SchoolType( GameContext ctx )
             : base( ctx, "Ecole", 500, 10)
         {
-            _costPerMonth = 300;
+            _costPerMonth = 600;
             _maxCapacity = 200;
             _happynessImpactMax = 5;
         }
@@ -30,13 +30,15 @@ namespace ITI.Simc_ITI.Build
     }
 
 
-    public class School : Infrastructure, IHappynessImpact, IHealth, IPublic
+    public class School : Infrastructure, IHappynessImpact, IHealth, IPulicBuilding
     {
         int _costPerMonth;
         int _maxCapacity;
         int _actualCapacity;
         int _happynessImpact;
         bool _health = true;
+        int _fireChance = 5;
+        bool _onFire = false;
         Bitmap _bmp;
 
         public School(Box b, SchoolType info)
@@ -48,11 +50,11 @@ namespace ITI.Simc_ITI.Build
             CheckAllNearBoxes();
         }
 
-        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen p )
+        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
         {
             Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
-            g.DrawRectangle( p, r );
+            g.DrawRectangle( penColor, r );
         }
         public override void OnDestroy()
         {
@@ -66,6 +68,11 @@ namespace ITI.Simc_ITI.Build
                 if( impact.HappynessImpact( Box ) < 0 ) _health = false;
                 else _health = true;
             }
+            IFire fire = b.Infrasructure as IFire;
+            if( fire != null )
+            {
+                FireChance = FireChance - fire.FireChanceImpact( Box );
+            }
         }
         public override void OnDestroyingAround( Box b )
         {
@@ -74,7 +81,11 @@ namespace ITI.Simc_ITI.Build
             {
                 _health = true;
             }
-            CheckAllNearBoxes();
+            IFire fire = b.Infrasructure as IFire;
+            if( fire != null )
+            {
+                FireChance = FireChance + fire.FireChanceImpact( Box );
+            }
         }
         public int HappynessImpact( Box b )
         {
@@ -95,16 +106,7 @@ namespace ITI.Simc_ITI.Build
         }
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public bool Health { get { return _health; } set { _health = value; } }
-        public int MaxCapacity
-        {
-            get { return _maxCapacity; }
-            set { _maxCapacity = value; }
-        }
-        public int ActualCapacity
-        {
-            get { return _actualCapacity; }
-            set { _actualCapacity = value; }
-        }
+        public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
         public void CheckAllNearBoxes()
         {
             IEnumerable<Box> nearBox = Box.NearBoxes( Box.Map.BoxCount );

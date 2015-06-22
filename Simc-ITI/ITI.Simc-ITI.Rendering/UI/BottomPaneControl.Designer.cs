@@ -35,45 +35,49 @@
             this.Kind_Building = new System.Windows.Forms.Label();
             this.Button_Destroy = new System.Windows.Forms.Button();
             this.MyMoney = new System.Windows.Forms.Label();
-            this.MonArgent = new System.Windows.Forms.Label();
             this.HumeurLabel = new System.Windows.Forms.Label();
             this.MoneyGestionOpen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // rewind_button
             // 
-            this.rewind_button.Location = new System.Drawing.Point(3, 69);
+            this.rewind_button.Location = new System.Drawing.Point(4, 85);
+            this.rewind_button.Margin = new System.Windows.Forms.Padding(4);
             this.rewind_button.Name = "rewind_button";
-            this.rewind_button.Size = new System.Drawing.Size(57, 23);
+            this.rewind_button.Size = new System.Drawing.Size(76, 28);
             this.rewind_button.TabIndex = 11;
             this.rewind_button.Text = "<<";
             this.rewind_button.UseVisualStyleBackColor = true;
+            this.rewind_button.Click += new System.EventHandler(this.rewind_button_Click);
             // 
             // pause_button
             // 
-            this.pause_button.Location = new System.Drawing.Point(66, 69);
+            this.pause_button.Location = new System.Drawing.Point(88, 85);
+            this.pause_button.Margin = new System.Windows.Forms.Padding(4);
             this.pause_button.Name = "pause_button";
-            this.pause_button.Size = new System.Drawing.Size(75, 23);
+            this.pause_button.Size = new System.Drawing.Size(100, 28);
             this.pause_button.TabIndex = 12;
             this.pause_button.Text = "pause";
             this.pause_button.UseVisualStyleBackColor = true;
+            this.pause_button.Click += new System.EventHandler(this.pause_button_Click);
             // 
             // fastforward_button
             // 
-            this.fastforward_button.Location = new System.Drawing.Point(147, 69);
+            this.fastforward_button.Location = new System.Drawing.Point(196, 85);
+            this.fastforward_button.Margin = new System.Windows.Forms.Padding(4);
             this.fastforward_button.Name = "fastforward_button";
-            this.fastforward_button.Size = new System.Drawing.Size(60, 23);
+            this.fastforward_button.Size = new System.Drawing.Size(80, 28);
             this.fastforward_button.TabIndex = 13;
             this.fastforward_button.Text = ">>";
             this.fastforward_button.UseVisualStyleBackColor = true;
+            this.fastforward_button.Click += new System.EventHandler(this.fastforward_button_Click);
             // 
             // Coordonnées
             // 
             this.Coordonnées.AutoSize = true;
-            this.Coordonnées.Location = new System.Drawing.Point(273, 13);
-            this.Coordonnées.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Coordonnées.Location = new System.Drawing.Point(364, 16);
             this.Coordonnées.Name = "Coordonnées";
-            this.Coordonnées.Size = new System.Drawing.Size(97, 13);
+            this.Coordonnées.Size = new System.Drawing.Size(129, 17);
             this.Coordonnées.TabIndex = 14;
             this.Coordonnées.Text = "Coordonnées : 0, 0";
             this.Coordonnées.Visible = false;
@@ -81,76 +85,66 @@
             // Kind_Building
             // 
             this.Kind_Building.AutoSize = true;
-            this.Kind_Building.Location = new System.Drawing.Point(273, 35);
-            this.Kind_Building.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Kind_Building.Location = new System.Drawing.Point(364, 43);
             this.Kind_Building.Name = "Kind_Building";
-            this.Kind_Building.Size = new System.Drawing.Size(37, 13);
+            this.Kind_Building.Size = new System.Drawing.Size(48, 17);
             this.Kind_Building.TabIndex = 15;
             this.Kind_Building.Text = "Type :";
             this.Kind_Building.Visible = false;
             // 
             // Button_Destroy
             // 
-            this.Button_Destroy.Location = new System.Drawing.Point(385, 10);
-            this.Button_Destroy.Margin = new System.Windows.Forms.Padding(2);
+            this.Button_Destroy.Location = new System.Drawing.Point(513, 12);
+            this.Button_Destroy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Button_Destroy.Name = "Button_Destroy";
-            this.Button_Destroy.Size = new System.Drawing.Size(56, 19);
+            this.Button_Destroy.Size = new System.Drawing.Size(75, 23);
             this.Button_Destroy.TabIndex = 16;
             this.Button_Destroy.Text = "Détruire";
             this.Button_Destroy.UseVisualStyleBackColor = true;
             this.Button_Destroy.Visible = false;
+            this.Button_Destroy.Click += new System.EventHandler(this.Button_Destroy_Click);
             // 
             // MyMoney
             // 
-            this.MyMoney.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MyMoney.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MyMoney.AutoSize = true;
-            this.MyMoney.Location = new System.Drawing.Point(478, 13);
-            this.MyMoney.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.MyMoney.Location = new System.Drawing.Point(696, 18);
             this.MyMoney.Name = "MyMoney";
-            this.MyMoney.Size = new System.Drawing.Size(67, 13);
+            this.MyMoney.Size = new System.Drawing.Size(88, 17);
             this.MyMoney.TabIndex = 17;
             this.MyMoney.Text = "Mon argent :";
             // 
-            // MonArgent
-            // 
-            this.MonArgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.MonArgent.AutoSize = true;
-            this.MonArgent.Location = new System.Drawing.Point(549, 13);
-            this.MonArgent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.MonArgent.Name = "MonArgent";
-            this.MonArgent.Size = new System.Drawing.Size(31, 13);
-            this.MonArgent.TabIndex = 18;
-            this.MonArgent.Text = "5000";
-            // 
             // HumeurLabel
             // 
+            this.HumeurLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.HumeurLabel.AutoSize = true;
-            this.HumeurLabel.Location = new System.Drawing.Point(495, 35);
-            this.HumeurLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.HumeurLabel.Location = new System.Drawing.Point(696, 55);
             this.HumeurLabel.Name = "HumeurLabel";
-            this.HumeurLabel.Size = new System.Drawing.Size(50, 13);
+            this.HumeurLabel.Size = new System.Drawing.Size(66, 17);
             this.HumeurLabel.TabIndex = 19;
             this.HumeurLabel.Text = "Humeur :";
             // 
             // MoneyGestionOpen
             // 
-            this.MoneyGestionOpen.Location = new System.Drawing.Point(484, 63);
-            this.MoneyGestionOpen.Margin = new System.Windows.Forms.Padding(2);
+            this.MoneyGestionOpen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MoneyGestionOpen.Location = new System.Drawing.Point(699, 85);
+            this.MoneyGestionOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MoneyGestionOpen.Name = "MoneyGestionOpen";
-            this.MoneyGestionOpen.Size = new System.Drawing.Size(96, 19);
+            this.MoneyGestionOpen.Size = new System.Drawing.Size(128, 23);
             this.MoneyGestionOpen.TabIndex = 20;
             this.MoneyGestionOpen.Text = "Gerer L\'argent";
             this.MoneyGestionOpen.UseVisualStyleBackColor = true;
+            this.MoneyGestionOpen.Click += new System.EventHandler(this.OpenMoneyGestion);
             // 
             // BottomPaneControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.MoneyGestionOpen);
             this.Controls.Add(this.HumeurLabel);
-            this.Controls.Add(this.MonArgent);
             this.Controls.Add(this.MyMoney);
             this.Controls.Add(this.Button_Destroy);
             this.Controls.Add(this.Kind_Building);
@@ -158,8 +152,9 @@
             this.Controls.Add(this.fastforward_button);
             this.Controls.Add(this.pause_button);
             this.Controls.Add(this.rewind_button);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BottomPaneControl";
-            this.Size = new System.Drawing.Size(630, 95);
+            this.Size = new System.Drawing.Size(840, 117);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,7 +169,6 @@
         private System.Windows.Forms.Label Kind_Building;
         private System.Windows.Forms.Button Button_Destroy;
         private System.Windows.Forms.Label MyMoney;
-        private System.Windows.Forms.Label MonArgent;
         private System.Windows.Forms.Label HumeurLabel;
         private System.Windows.Forms.Button MoneyGestionOpen;
     }

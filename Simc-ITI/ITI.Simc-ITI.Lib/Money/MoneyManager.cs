@@ -13,7 +13,7 @@ namespace ITI.Simc_ITI.Build
         TaxationManager _taxe;
         public MoneyManager()
         {
-            ActualMoney = 2000;
+            ActualMoney = 4000;
             _taxe = new TaxationManager();
         }
         public event EventHandler ActualMoneyChanged;
