@@ -7,17 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ITI.Simc_ITI.Build;
 
 namespace ITI.Simc_ITI.Rendering
 {
     public partial class LeftPaneControl : UserControl
     {
         ViewPortControl _mainViewportControl;
-        static int _xBox;
-        static int _yBox;
-        public LeftPaneControl(ViewPortControl v)
+        GameContext _game;
+        int _xBox;
+        int _yBox;
+        public LeftPaneControl()
         {
             InitializeComponent();
+            AllButtonInvisible();
+        }
+        public void SetGameandViewport(GameContext g, ViewPortControl v)
+        {
+            _game = g;
             _mainViewportControl = v;
         }
         private void AllButtonInvisible()
@@ -28,6 +35,37 @@ namespace ITI.Simc_ITI.Rendering
             Centrale_electrique.Visible = false;
             Water_Central.Visible = false;
             Commerce.Visible = false;
+        }
+        private void BuildingConstructionVisible()
+        {
+            School_Button.Visible = true;
+            Build_Road.Visible = true;
+            HabitationBuild.Visible = true;
+            Commerce.Visible = true;
+        }
+        private void CentraleConstructionVisibile()
+        {
+            Centrale_electrique.Visible = true;
+            Water_Central.Visible = true;
+        }
+        public void PositionOfTheMouse(int xbox, int ybox)
+        {
+            _xBox = xbox;
+            _yBox = ybox;
+            CanCreate();
+        }
+        private void BuildRoad( object sender, EventArgs e )
+        {
+            CustomisationBuilding RoadCustom = new CustomisationBuilding( _game.Map.Boxes[_xBox, _yBox], _game.InfrastructureManager );
+            RoadCustom.Show();
+            AllButtonInvisible();
+            _mainViewportControl.Invalidate();
+        }
+        void CreateHabitation( object sender, EventArgs e )
+        {
+            _game.InfrastructureManager.Find( "Habitation" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
+            _mainViewportControl.Invalidate();
+            AllButtonInvisible();
         }
         private void School_Button_Click( object sender, EventArgs e )
         {
@@ -54,6 +92,24 @@ namespace ITI.Simc_ITI.Rendering
             _game.InfrastructureManager.Find( "Commerce" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
+        }
+        public void CanCreate()
+        {
+            if( _game.Map.Boxes[_xBox, _yBox].Infrasructure == null )
+            {
+                AllButtonInvisible();
+                if( _game.InfrastructureManager.Find( "CentraleElectrique" ).CanCreatedNearRoad( _game.Map.Boxes[_xBox, _yBox] ) ) CentraleConstructionVisibile();
+                if( CanCreate( "Habitation", _game.Map.Boxes[_xBox, _yBox] ) ) BuildingConstructionVisible();
+                Build_Road.Visible = true;
+            }
+            else
+            {
+                AllButtonInvisible();
+            }
+        }
+        private bool CanCreate( string building, Box b )
+        {
+            return _game.InfrastructureManager.Find( building ).CanCreatedNearRoad( b ) && _game.InfrastructureManager.Find( building ).CanCreated( b );
         }
     }
 }

@@ -14,10 +14,13 @@ namespace ITI.Simc_ITI.Rendering
     public partial class MainGameControl : UserControl
     {
         GameContext _game;
-        public MainGameControl(GameContext game)
+        public MainGameControl()
         {
             InitializeComponent();
-            _game = game;
+        }
+        public void SetGame( GameContext g )
+        {
+            _game = g;
         }
     }
 }

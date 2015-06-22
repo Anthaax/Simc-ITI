@@ -16,7 +16,7 @@ namespace ITI.Simc_ITI.Rendering
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault( false );
-            Application.Run( new DemoWindow2() );
+            Application.Run( new Simc_ITI() );
         }
     }
 }

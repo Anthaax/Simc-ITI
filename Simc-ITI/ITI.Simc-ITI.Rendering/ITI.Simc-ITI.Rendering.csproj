@@ -44,6 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game.Designer.cs">
+      <DependentUpon>Game.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SimcITI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimcITI.Designer.cs">
+      <DependentUpon>SimcITI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\BottomPaneControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -51,12 +63,6 @@
       <DependentUpon>BottomPaneControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlExtension.cs" />
-    <Compile Include="DemoWindow2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DemoWindow2.Designer.cs">
-      <DependentUpon>DemoWindow2.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\LeftPaneControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -81,8 +87,8 @@
     <Compile Include="ViewPortDemoControl.Designer.cs">
       <DependentUpon>ViewPortDemoControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DemoWindow2.resx">
-      <DependentUpon>DemoWindow2.cs</DependentUpon>
+    <EmbeddedResource Include="Game.resx">
+      <DependentUpon>Game.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\BottomPaneControl.resx">
       <DependentUpon>BottomPaneControl.cs</DependentUpon>

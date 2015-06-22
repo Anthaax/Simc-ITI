@@ -8,6 +8,6 @@ namespace ITI.Simc_ITI.Build
 {
     public interface IFire
     {
-        public int FireChanceImpact( Box b );
+        int FireChanceImpact( Box b );
     }
 }
