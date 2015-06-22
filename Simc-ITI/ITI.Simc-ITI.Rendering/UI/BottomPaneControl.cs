@@ -16,12 +16,20 @@ namespace ITI.Simc_ITI.Rendering
         Timer _timer;
         GameContext _game;
         ViewPortControl _mainViewportControl;
-        static int _xBox;
-        static int _yBox;
-        public BottomPaneControl(ViewPortControl v, GameContext _game)
+        int _xBox;
+        int _yBox;
+        public BottomPaneControl()
         {
             InitializeComponent();
+        }
+        public void SetGameandViewport( GameContext g, ViewPortControl v )
+        {
+            _game = g;
             _mainViewportControl = v;
+            AllEvent();
+        }
+        public void AllEvent()
+        {
             MyMoney.Text = _game.MoneyManager.ActualMoney.ToString();
             _game.MoneyManager.ActualMoneyChanged += label_MonArgent_text;
         }
@@ -73,11 +81,13 @@ namespace ITI.Simc_ITI.Rendering
                 rewind_button.Text = "<<";
             }
         }
-        public void RenderingWithClickEvent()
+        public void RenderingWithClickEvent(int xbox, int ybox)
         {
+            _xBox = xbox;
+            _yBox = ybox;
+            AllTextOrButtonInvisible();
             if( _game.Map.Boxes[_xBox, _yBox].Infrasructure != null )
             {
-                AllTextOrButtonInvisible();
                 Kind_Building.Visible = true;
                 Kind_Building.Text = "Type du batiment : Une " + _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.Name + ".";
                 if( _game.InfrastructureManager.Find( _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.Name ).CanDestroy( _game.Map.Boxes[_xBox, _yBox] ) == false ) Button_Destroy.Visible = true;
@@ -102,7 +112,7 @@ namespace ITI.Simc_ITI.Rendering
             AllTextOrButtonInvisible();
             _mainViewportControl.Invalidate();
         }
-        private void AverageHappyness()
+        public void AverageHappyness()
         {
             int totalHappyness = 0;
             IEnumerable<IHappyness> happy = _game.Map.GetAllInfrastucture<IHappyness>();

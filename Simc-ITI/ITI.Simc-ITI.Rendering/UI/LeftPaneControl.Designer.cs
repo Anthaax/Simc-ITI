@@ -48,6 +48,7 @@
             this.Build_Road.Text = "Route";
             this.Build_Road.UseVisualStyleBackColor = true;
             this.Build_Road.Visible = false;
+            this.Build_Road.Click += new System.EventHandler(this.BuildRoad);
             // 
             // Centrale_electrique
             // 
@@ -61,6 +62,7 @@
             this.Centrale_electrique.Text = "CentraleE";
             this.Centrale_electrique.UseVisualStyleBackColor = true;
             this.Centrale_electrique.Visible = false;
+            this.Centrale_electrique.Click += new System.EventHandler(this.Centrale_electrique_Click);
             // 
             // School_Button
             // 
@@ -74,6 +76,7 @@
             this.School_Button.Text = "Ecole";
             this.School_Button.UseVisualStyleBackColor = true;
             this.School_Button.Visible = false;
+            this.School_Button.Click += new System.EventHandler(this.School_Button_Click);
             // 
             // HabitationBuild
             // 
@@ -87,6 +90,7 @@
             this.HabitationBuild.Text = "Habitation";
             this.HabitationBuild.UseVisualStyleBackColor = true;
             this.HabitationBuild.Visible = false;
+            this.HabitationBuild.Click += new System.EventHandler(this.CreateHabitation);
             // 
             // Water_Central
             // 
@@ -99,6 +103,8 @@
             this.Water_Central.TabIndex = 13;
             this.Water_Central.Text = "Eau";
             this.Water_Central.UseVisualStyleBackColor = true;
+            this.Water_Central.Visible = false;
+            this.Water_Central.Click += new System.EventHandler(this.Water_Central_Click);
             // 
             // Commerce
             // 
@@ -111,6 +117,8 @@
             this.Commerce.TabIndex = 14;
             this.Commerce.Text = "Commerce";
             this.Commerce.UseVisualStyleBackColor = true;
+            this.Commerce.Visible = false;
+            this.Commerce.Click += new System.EventHandler(this.Commerce_Click);
             // 
             // LeftPaneControl
             // 
