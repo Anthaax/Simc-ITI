@@ -30,7 +30,7 @@ namespace ITI.Simc_ITI.Rendering
         }
         public void AllEvent()
         {
-            MyMoney.Text = _game.MoneyManager.ActualMoney.ToString();
+            MyMoney.Text = " Mon Argent : " + _game.MoneyManager.ActualMoney.ToString();
             _game.MoneyManager.ActualMoneyChanged += label_MonArgent_text;
         }
         public void SetTimer(Timer t)
