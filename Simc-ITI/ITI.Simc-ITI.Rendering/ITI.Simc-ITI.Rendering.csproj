@@ -44,17 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game.cs">
+    <Compile Include="Simc_ITI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Game.Designer.cs">
-      <DependentUpon>Game.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SimcITI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SimcITI.Designer.cs">
-      <DependentUpon>SimcITI.cs</DependentUpon>
+    <Compile Include="Simc_ITI.Designer.cs">
+      <DependentUpon>Simc_ITI.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\BottomPaneControl.cs">
       <SubType>UserControl</SubType>
@@ -87,8 +81,8 @@
     <Compile Include="ViewPortDemoControl.Designer.cs">
       <DependentUpon>ViewPortDemoControl.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Game.resx">
-      <DependentUpon>Game.cs</DependentUpon>
+    <EmbeddedResource Include="Simc_ITI.resx">
+      <DependentUpon>Simc_ITI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\BottomPaneControl.resx">
       <DependentUpon>BottomPaneControl.cs</DependentUpon>
