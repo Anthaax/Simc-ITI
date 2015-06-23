@@ -90,7 +90,11 @@ namespace ITI.Simc_ITI.Rendering
             {
                 Kind_Building.Visible = true;
                 Kind_Building.Text = "Type du batiment : Une " + _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.Name + ".";
-                if( _game.InfrastructureManager.Find( _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.Name ).CanDestroy( _game.Map.Boxes[_xBox, _yBox] ) == false ) Button_Destroy.Visible = true;
+                if( _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.Name == "CentraleHydrolique" || _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.Name == "CentraleElectrique" )
+                {
+                    Button_Destroy.Visible = false;
+                }
+                else if( _game.InfrastructureManager.Find( _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.Name ).CanDestroy( _game.Map.Boxes[_xBox, _yBox] ) == true ) Button_Destroy.Visible = true;
             }
             Coordonnées.Visible = true;
             Coordonnées.Text = "Coordonnées : " + _xBox + " , " + _yBox;

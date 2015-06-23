@@ -21,12 +21,13 @@ namespace ITI.Simc_ITI.Build
         }
         public int Happyness { get { return _happyness; } }
     }
-    public class Habitation : Infrastructure, IHappyness, ITaxation
+    public class Habitation : Infrastructure, IHappyness, ITaxation, IBurn
     {
         int _hapyness;
         int _salary = 7000;
         int _taxation = 10;
         int _fireChance = 5;
+        bool _isBurning = false;
         Bitmap _bmp;
 
 
@@ -78,6 +79,7 @@ namespace ITI.Simc_ITI.Build
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
         public int Salary { get { return _salary; } }
+        public bool IsBurnig { get { return _isBurning; } set { _isBurning = value; } }
         
         public void CheckAllNearBoxes()
         {

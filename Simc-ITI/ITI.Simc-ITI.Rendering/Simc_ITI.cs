@@ -57,6 +57,7 @@ namespace ITI.Simc_ITI.Rendering
             {
                 infrastructure.Update();
             }
+            _viewPortControl.Invalidate();
         }
         private void MoveOnTheMap( object sender, KeyEventArgs e )
         {

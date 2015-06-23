@@ -67,9 +67,9 @@ namespace ITI.Simc_ITI.Build
             IEnumerable<Box> nearBoxes = b.NearBoxes( 1 );
             foreach( var box in nearBoxes )
             {
-                if( box.Infrasructure != null )
+                if( box.Infrasructure != null && check == false)
                 {
-                    if( box.Infrasructure.Type.Name != "Route" ) check = true;
+                    if( box.Infrasructure.Type.Name == "Route" ) check = true;
                 }
             }
             return check;
