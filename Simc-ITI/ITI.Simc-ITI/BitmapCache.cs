@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI
 {
+    [Serializable]
     public class BitmapCache
     {
         readonly Dictionary<string, Bitmap> _textures;

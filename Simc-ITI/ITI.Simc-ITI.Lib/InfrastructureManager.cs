@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI.Build
 {
+    [Serializable]
     public class InfrastructureManager
     {
         readonly GameContext _ctx;

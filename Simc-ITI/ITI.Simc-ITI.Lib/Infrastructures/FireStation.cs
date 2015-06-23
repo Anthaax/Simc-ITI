@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
+    [Serializable]
     public class FireStationType : InfrastructureType
     {
         int _costPerMonth;
@@ -21,7 +22,7 @@ namespace ITI.Simc_ITI.Build
             return new FireStation( location, this );
         }
     }
-        
+    [Serializable]
     public class FireStation : Infrastructure, IFire, IPulicBuilding
     {
         int _costPerMonth;

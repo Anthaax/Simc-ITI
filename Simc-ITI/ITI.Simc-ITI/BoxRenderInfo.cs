@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI
 {
+    [Serializable]
     public struct BoxRenderInfo
     {
         public readonly Box Box;

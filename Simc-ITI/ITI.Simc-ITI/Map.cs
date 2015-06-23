@@ -8,6 +8,7 @@ using System.Diagnostics;
 
 namespace ITI.Simc_ITI
 {
+    [Serializable]
     public class Map
     {
         readonly Box[,] _boxes;
