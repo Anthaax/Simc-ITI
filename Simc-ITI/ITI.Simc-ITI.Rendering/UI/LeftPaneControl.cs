@@ -35,6 +35,9 @@ namespace ITI.Simc_ITI.Rendering
             Centrale_electrique.Visible = false;
             Water_Central.Visible = false;
             Commerce.Visible = false;
+            Usine_Button.Visible = false;
+            fireStation_button.Visible = false;
+            Police.Visible = false;
         }
         private void BuildingConstructionVisible()
         {
@@ -42,6 +45,9 @@ namespace ITI.Simc_ITI.Rendering
             Build_Road.Visible = true;
             HabitationBuild.Visible = true;
             Commerce.Visible = true;
+            Usine_Button.Visible = true;
+            fireStation_button.Visible = true;
+            Police.Visible = true;
         }
         private void CentraleConstructionVisibile()
         {
@@ -87,9 +93,28 @@ namespace ITI.Simc_ITI.Rendering
             AllButtonInvisible();
         }
 
+        private void Police_Click(object sender, EventArgs e)
+        {
+            _game.InfrastructureManager.Find("PoliceStation").CreateInfrastructure(_game.Map.Boxes[_xBox, _yBox], 0);
+            _mainViewportControl.Invalidate();
+            AllButtonInvisible();
+        }
+
         private void Commerce_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Commerce" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
+            _mainViewportControl.Invalidate();
+            AllButtonInvisible();
+        }
+        private void Usine_Click( object sender, EventArgs e )
+        {
+            _game.InfrastructureManager.Find( "Usine" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
+            _mainViewportControl.Invalidate();
+            AllButtonInvisible();
+        }
+        private void FireStation_Click( object sender, EventArgs e )
+        {
+            _game.InfrastructureManager.Find( "Pompier" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }

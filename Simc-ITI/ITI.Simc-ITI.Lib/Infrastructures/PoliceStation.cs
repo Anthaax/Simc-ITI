@@ -24,13 +24,14 @@ namespace ITI.Simc_ITI.Build
     public class PoliceStation : Infrastructure, IHappynessImpact, IPulicBuilding
     {
         Bitmap _bmp;
-        int _costPerMonth;
+        int _costPerMonth; 
         bool _health = true;
         public PoliceStation(Box b, PoliceStationType info)
             : base(b, info)
         {
-            _bmp = new Bitmap("C:/dev/Textures/Police.bmp");
+            _bmp = b.Map.BitmapCache.Get("PoliceStation.bmp");
             _costPerMonth = info.CostPerMonth;
+            CheckAllNearBoxes();
         }
         public override void Draw(Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor)
         {
@@ -49,6 +50,20 @@ namespace ITI.Simc_ITI.Build
         public override void OnDestroyingAround(Box b)
         {
 
+        }
+        public void CheckAllNearBoxes()
+        {
+            IEnumerable<Box> nearBox = Box.NearBoxes(Box.Map.BoxCount);
+            foreach (var box in nearBox)
+            {
+                if (box.Infrasructure != null)
+                {
+                    if (box.Line - box.Infrasructure.Type.AreaEffect <= Box.Line || box.Line + box.Infrasructure.Type.AreaEffect >= Box.Line || box.Column - box.Infrasructure.Type.AreaEffect <= Box.Column || box.Column + box.Infrasructure.Type.AreaEffect >= Box.Column)
+                    {
+                        OnCreatedAround(box);
+                    }
+                }
+            }
         }
         public int HappynessImpact(Box b)
         {

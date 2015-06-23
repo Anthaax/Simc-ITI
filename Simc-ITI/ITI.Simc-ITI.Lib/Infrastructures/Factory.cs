@@ -11,7 +11,7 @@ namespace ITI.Simc_ITI.Build
     {
         int _happyness;
         public FactoryType( GameContext ctx )
-            : base( ctx, "Habitation", 0, 5)
+            : base( ctx, "Usine", 0, 5)
         {
             _happyness = 50;
         }
@@ -26,13 +26,14 @@ namespace ITI.Simc_ITI.Build
         int _hapyness;
         int _salary = 7000;
         int _taxation = 10;
+        int _fireChance = 5;
         Bitmap _bmp;
 
 
         public Factory( Box b, FactoryType info )
             : base( b, info )
         {
-            _bmp = b.Map.BitmapCache.Get( "Usine.bmp" );
+            _bmp = b.Map.BitmapCache.Get( "Usines.bmp" );
             _hapyness = info.Happyness;
         }
 
@@ -48,11 +49,19 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnCreatedAround( Box b )
         {
-
+            IFire fire = b.Infrasructure as IFire;
+            if( fire != null )
+            {
+                FireChance = FireChance - fire.FireChanceImpact( Box );
+            }
         }
         public override void OnDestroyingAround( Box b )
         {
-
+            IFire fire = b.Infrasructure as IFire;
+            if( fire != null )
+            {
+                FireChance = FireChance + fire.FireChanceImpact( Box );
+            }
         }
         public int HappynessImpact( Box b )
         {
@@ -66,5 +75,6 @@ namespace ITI.Simc_ITI.Build
         }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
         public int Salary { get { return _salary; } }
+        public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
     }
 }
