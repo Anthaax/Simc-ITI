@@ -37,6 +37,7 @@ namespace ITI.Simc_ITI.Rendering
             Commerce.Visible = false;
             Usine_Button.Visible = false;
             fireStation_button.Visible = false;
+            Police.Visible = false;
         }
         private void BuildingConstructionVisible()
         {
@@ -46,6 +47,7 @@ namespace ITI.Simc_ITI.Rendering
             Commerce.Visible = true;
             Usine_Button.Visible = true;
             fireStation_button.Visible = true;
+            Police.Visible = true;
         }
         private void CentraleConstructionVisibile()
         {
@@ -87,6 +89,13 @@ namespace ITI.Simc_ITI.Rendering
         private void Water_Central_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "CentraleHydrolique" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
+            _mainViewportControl.Invalidate();
+            AllButtonInvisible();
+        }
+
+        private void Police_Click(object sender, EventArgs e)
+        {
+            _game.InfrastructureManager.Find("PoliceStation").CreateInfrastructure(_game.Map.Boxes[_xBox, _yBox], 0);
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
