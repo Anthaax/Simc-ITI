@@ -27,6 +27,7 @@ namespace ITI.Simc_ITI.Build
         int _salary = 7000;
         int _taxation = 10;
         int _fireChance = 5;
+        int _stealChance = 5;
         Bitmap _bmp;
 
 
@@ -60,6 +61,11 @@ namespace ITI.Simc_ITI.Build
             {
                 FireChance = FireChance - fire.FireChanceImpact( Box );
             }
+            ISteal steal = b.Infrasructure as ISteal;
+            if(steal != null)
+            {
+                StealChance = StealChance - steal.StealChanceImpact( Box );
+            }
         }
         public override void OnDestroyingAround( Box b )
         {
@@ -73,7 +79,13 @@ namespace ITI.Simc_ITI.Build
             {
                 FireChance = FireChance + fire.FireChanceImpact( Box );
             }
+            ISteal steal = b.Infrasructure as ISteal;
+            if (steal != null)
+            {
+                StealChance = StealChance + steal.StealChanceImpact(Box);
+            }
         }
+        public int StealChance { get { return _stealChance; } set { _stealChance = value; } }
         public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }

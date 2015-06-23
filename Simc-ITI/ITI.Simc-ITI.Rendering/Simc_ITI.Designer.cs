@@ -33,16 +33,6 @@
             this._leftPaneControl = new ITI.Simc_ITI.Rendering.LeftPaneControl();
             this.SuspendLayout();
             // 
-<<<<<<< HEAD
-            // _bottomPaneControl
-            // 
-            this._bottomPaneControl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._bottomPaneControl.Location = new System.Drawing.Point(0, 245);
-            this._bottomPaneControl.Margin = new System.Windows.Forms.Padding(4);
-            this._bottomPaneControl.Name = "_bottomPaneControl";
-            this._bottomPaneControl.Size = new System.Drawing.Size(809, 117);
-            this._bottomPaneControl.TabIndex = 0;
-=======
             // _viewPortControl
             // 
             this._viewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -61,7 +51,6 @@
             this._bottomPaneControl.Name = "_bottomPaneControl";
             this._bottomPaneControl.Size = new System.Drawing.Size(1139, 117);
             this._bottomPaneControl.TabIndex = 1;
->>>>>>> 82e2684214379fd1af83ac7e1fa04477418c15fa
             // 
             // _leftPaneControl
             // 
@@ -70,31 +59,6 @@
             this._leftPaneControl.Location = new System.Drawing.Point(0, 0);
             this._leftPaneControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._leftPaneControl.Name = "_leftPaneControl";
-<<<<<<< HEAD
-            this._leftPaneControl.Size = new System.Drawing.Size(115, 245);
-            this._leftPaneControl.TabIndex = 1;
-            // 
-            // _viewPortControl
-            // 
-            this._viewPortControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._viewPortControl.Location = new System.Drawing.Point(115, 0);
-            this._viewPortControl.Name = "_viewPortControl";
-            this._viewPortControl.Size = new System.Drawing.Size(694, 245);
-            this._viewPortControl.TabIndex = 2;
-            this._viewPortControl.Text = "viewPortControl1";
-            // 
-            // Simc_ITI
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 362);
-            this.Controls.Add(this._viewPortControl);
-            this.Controls.Add(this._leftPaneControl);
-            this.Controls.Add(this._bottomPaneControl);
-            this.Name = "Simc_ITI";
-            this.Text = "Simc_ITI";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler( this.MoveOnTheMap );
-=======
             this._leftPaneControl.Size = new System.Drawing.Size(115, 261);
             this._leftPaneControl.TabIndex = 2;
             // 
@@ -108,22 +72,15 @@
             this.Text = "Simc\'ITI";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveOnTheMap);
->>>>>>> 82e2684214379fd1af83ac7e1fa04477418c15fa
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-<<<<<<< HEAD
-        private BottomPaneControl _bottomPaneControl;
-        private LeftPaneControl _leftPaneControl;
-        private ViewPortControl _viewPortControl;
-=======
         private ViewPortControl _viewPortControl;
         private BottomPaneControl _bottomPaneControl;
         private LeftPaneControl _leftPaneControl;
->>>>>>> 82e2684214379fd1af83ac7e1fa04477418c15fa
 
 
     }

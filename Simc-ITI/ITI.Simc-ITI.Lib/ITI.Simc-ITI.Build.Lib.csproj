@@ -65,6 +65,7 @@
     <Compile Include="IHappyness.cs" />
     <Compile Include="IFire.cs" />
     <Compile Include="IPulicBuilding.cs" />
+    <Compile Include="ISteal.cs" />
     <Compile Include="ITaxation.cs" />
     <Compile Include="Money\MoneyManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
