@@ -26,7 +26,9 @@ namespace ITI.Simc_ITI.Build
             RegisterType( new RetailType( _ctx ) );
             RegisterType( new PowerStationType( _ctx ) );
             RegisterType( new WaterCentralType( _ctx ) );
+            RegisterType( new FactoryType( _ctx ) );
             RegisterType( new HospitalType( _ctx ) );
+            RegisterType( new FireStationType( _ctx ) );
         }
 
         void RegisterType( InfrastructureType t )

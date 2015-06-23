@@ -34,13 +34,14 @@ namespace ITI.Simc_ITI.Build
         Bitmap _bmp;
         int _taxation = 10;
         int _salary = 30000;
-        int _fireRisk = 3;
+        int _fireRisk = 4;
 
         public Retail( Box b, RetailType info )
             : base( b, info)
         {
-            _bmp = b.Map.BitmapCache.Get("Commerce.bmp");
+            _bmp = b.Map.BitmapCache.Get("Commerces.bmp");
             _hapyness = info.Happyness;
+            CheckAllNearBoxes();
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )

@@ -28,7 +28,7 @@ namespace ITI.Simc_ITI.Build
         public WaterCentral( Box b, WaterCentralType info )
             :base(b,info)
         {
-            _bmp = new Bitmap( "C:/dev/Textures/Eau.bmp" );
+            _bmp = b.Map.BitmapCache.Get( "Eau.bmp" ); ;
             _costPerMonth = info.CostPerMonth;
         }
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )

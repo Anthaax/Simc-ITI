@@ -28,7 +28,7 @@ namespace ITI.Simc_ITI.Build
         public PowerStation( Box b, PowerStationType info )
             :base(b,info)
         {
-            _bmp = new Bitmap( "C:/dev/Textures/Elec.bmp" );
+            _bmp = b.Map.BitmapCache.Get( "Elec.bmp" );
             _costPerMonth = info.CostPerMonth;
         }
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )

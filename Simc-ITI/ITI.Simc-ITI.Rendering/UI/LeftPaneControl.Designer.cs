@@ -34,6 +34,8 @@
             this.HabitationBuild = new System.Windows.Forms.Button();
             this.Water_Central = new System.Windows.Forms.Button();
             this.Commerce = new System.Windows.Forms.Button();
+            this.Usine_Button = new System.Windows.Forms.Button();
+            this.fireStation_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Build_Road
@@ -120,11 +122,41 @@
             this.Commerce.Visible = false;
             this.Commerce.Click += new System.EventHandler(this.Commerce_Click);
             // 
+            // Usine_Button
+            // 
+            this.Usine_Button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Usine_Button.Location = new System.Drawing.Point(3, 367);
+            this.Usine_Button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Usine_Button.Name = "Usine_Button";
+            this.Usine_Button.Size = new System.Drawing.Size(109, 23);
+            this.Usine_Button.TabIndex = 15;
+            this.Usine_Button.Text = "Usine";
+            this.Usine_Button.UseVisualStyleBackColor = true;
+            this.Usine_Button.Visible = false;
+            this.Usine_Button.Click += new System.EventHandler(this.Usine_Click);
+            // 
+            // fireStation_button
+            // 
+            this.fireStation_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fireStation_button.Location = new System.Drawing.Point(3, 139);
+            this.fireStation_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.fireStation_button.Name = "fireStation_button";
+            this.fireStation_button.Size = new System.Drawing.Size(109, 23);
+            this.fireStation_button.TabIndex = 16;
+            this.fireStation_button.Text = "Pompier";
+            this.fireStation_button.UseVisualStyleBackColor = true;
+            this.fireStation_button.Visible = false;
+            this.fireStation_button.Click += new System.EventHandler(this.FireStation_Click);
+            // 
             // LeftPaneControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Controls.Add(this.fireStation_button);
+            this.Controls.Add(this.Usine_Button);
             this.Controls.Add(this.Commerce);
             this.Controls.Add(this.Water_Central);
             this.Controls.Add(this.HabitationBuild);
@@ -146,5 +178,7 @@
         private System.Windows.Forms.Button HabitationBuild;
         private System.Windows.Forms.Button Water_Central;
         private System.Windows.Forms.Button Commerce;
+        private System.Windows.Forms.Button Usine_Button;
+        private System.Windows.Forms.Button fireStation_button;
     }
 }

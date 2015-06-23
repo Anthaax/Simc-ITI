@@ -3,10 +3,77 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
-    class FireStation
+    public class FireStationType : InfrastructureType
     {
+        int _costPerMonth;
+        public FireStationType(GameContext ctx)
+            : base(ctx, "Pompier", 1000, 10)
+        {
+            _costPerMonth = 600;
+        }
+        public int CostPerMounth { get { return _costPerMonth; } set { _costPerMonth = value; } }
+        protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
+        {
+            return new FireStation( location, this );
+        }
+    }
+        
+    public class FireStation : Infrastructure, IFire, IPulicBuilding
+    {
+        int _costPerMonth;
+        Bitmap _bmp;
+        public FireStation(Box b, FireStationType info)
+            :base(b, info)
+        {
+            _bmp = b.Map.BitmapCache.Get( "Pompier.bmp" );
+            _costPerMonth = info.CostPerMounth;
+            CheckAllNearBoxes();
+        }
+        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
+        {
+            Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
+            g.DrawImage( _bmp, r );
+            g.DrawRectangle( penColor, r );
+        }
+        public override void OnDestroy()
+        {
+            _bmp.Dispose();
+        }
+        public override void OnCreatedAround( Box b )
+        {
+
+        }
+        public override void OnDestroyingAround( Box b )
+        {
+
+        }
+        public void CheckAllNearBoxes()
+        {
+            IEnumerable<Box> nearBox = Box.NearBoxes( Box.Map.BoxCount );
+            foreach( var box in nearBox )
+            {
+                if( box.Infrasructure != null )
+                {
+                    if( box.Line - box.Infrasructure.Type.AreaEffect <= Box.Line || box.Line + box.Infrasructure.Type.AreaEffect >= Box.Line || box.Column - box.Infrasructure.Type.AreaEffect <= Box.Column || box.Column + box.Infrasructure.Type.AreaEffect >= Box.Column )
+                    {
+                        OnCreatedAround( box );
+                    }
+                }
+            }
+        }
+        public int FireChanceImpact(Box b)
+        {
+            int _firerate;
+            int cDistance = Math.Abs( Box.Column - b.Column );
+            int lDistance = Math.Abs( Box.Line - b.Line );
+            if( cDistance < 5 && lDistance < 5 ) _firerate = 5;
+            else _firerate = 3;
+            return _firerate;
+        }
+        public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
     }
 }
