@@ -24,12 +24,13 @@ namespace ITI.Simc_ITI.Build
         public int CostPerMonth { get { return _costPerMonth; } }
         public int HappynessImpact { get { return _happynessImpactMax; } }
     }
-    public class Hospital : Infrastructure, IHappynessImpact, IHealth
+    public class Hospital : Infrastructure, IHappynessImpact, IHealth, IBurn
     {
         int _costPerMonth;
         int _happynessImpact;
         bool _health = true;
         int _fireChance = 5;
+        bool _isBurning = false;
         Bitmap _bmp;
         public Hospital(Box b, HospitalType info)
             :base(b, info)
@@ -96,6 +97,7 @@ namespace ITI.Simc_ITI.Build
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public bool Health { get { return _health; } set { _health = value; } }
         public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
+        public bool IsBurnig { get { return _isBurning; } set { _isBurning = value; } }
         public void CheckAllNearBoxes()
         {
             IEnumerable<Box> nearBox = Box.NearBoxes( Box.Map.BoxCount );

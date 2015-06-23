@@ -30,15 +30,13 @@ namespace ITI.Simc_ITI.Build
     }
 
 
-    public class School : Infrastructure, IHappynessImpact, IHealth, IPulicBuilding
+    public class School : Infrastructure, IHappynessImpact, IHealth, IPulicBuilding, IBurn
     {
         int _costPerMonth;
-        int _maxCapacity;
-        int _actualCapacity;
         int _happynessImpact;
         bool _health = true;
         int _fireChance = 5;
-        bool _onFire = false;
+        bool _isBurning = false;
         Bitmap _bmp;
 
         public School(Box b, SchoolType info)
@@ -107,6 +105,7 @@ namespace ITI.Simc_ITI.Build
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public bool Health { get { return _health; } set { _health = value; } }
         public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
+        public bool IsBurnig { get { return _isBurning; } set { _isBurning = value; } }
         public void CheckAllNearBoxes()
         {
             IEnumerable<Box> nearBox = Box.NearBoxes( Box.Map.BoxCount );

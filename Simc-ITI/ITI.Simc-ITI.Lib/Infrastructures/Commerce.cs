@@ -28,13 +28,14 @@ namespace ITI.Simc_ITI.Build
         public int Happyness { get { return _happyness; } }
         public int Turnover { get { return _turnover; } }
     }
-    public class Retail : Infrastructure, IHappyness, ITaxation, IHappynessImpact
+    public class Retail : Infrastructure, IHappyness, ITaxation, IHappynessImpact, IBurn
     {
         int _hapyness;
         Bitmap _bmp;
         int _taxation = 10;
         int _salary = 30000;
-        int _fireRisk = 4;
+        int _fireChance = 5;
+        bool _isBurning = false;
 
         public Retail( Box b, RetailType info )
             : base( b, info)
@@ -73,6 +74,8 @@ namespace ITI.Simc_ITI.Build
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
         public int Salary { get { return _salary; } }
+        public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
+        public bool IsBurnig { get { return _isBurning; } set { _isBurning = value; } }
         public int HappynessImpact(Box b)
         {
             int happyness;

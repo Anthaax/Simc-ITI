@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBurn.cs" />
     <Compile Include="Infrastructures\Commerce.cs" />
     <Compile Include="CustomisationBuilding.cs">
       <SubType>Form</SubType>
