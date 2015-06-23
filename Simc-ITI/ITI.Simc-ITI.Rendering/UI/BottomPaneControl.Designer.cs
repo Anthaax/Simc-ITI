@@ -74,6 +74,8 @@
             // 
             // Coordonnées
             // 
+            this.Coordonnées.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Coordonnées.AutoSize = true;
             this.Coordonnées.Location = new System.Drawing.Point(364, 16);
             this.Coordonnées.Name = "Coordonnées";
@@ -84,6 +86,8 @@
             // 
             // Kind_Building
             // 
+            this.Kind_Building.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Kind_Building.AutoSize = true;
             this.Kind_Building.Location = new System.Drawing.Point(364, 43);
             this.Kind_Building.Name = "Kind_Building";
@@ -94,6 +98,8 @@
             // 
             // Button_Destroy
             // 
+            this.Button_Destroy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Button_Destroy.Location = new System.Drawing.Point(513, 12);
             this.Button_Destroy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Button_Destroy.Name = "Button_Destroy";
@@ -109,7 +115,7 @@
             this.MyMoney.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MyMoney.AutoSize = true;
-            this.MyMoney.Location = new System.Drawing.Point(696, 18);
+            this.MyMoney.Location = new System.Drawing.Point(655, 12);
             this.MyMoney.Name = "MyMoney";
             this.MyMoney.Size = new System.Drawing.Size(88, 17);
             this.MyMoney.TabIndex = 17;
@@ -120,7 +126,7 @@
             this.HumeurLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HumeurLabel.AutoSize = true;
-            this.HumeurLabel.Location = new System.Drawing.Point(696, 55);
+            this.HumeurLabel.Location = new System.Drawing.Point(655, 43);
             this.HumeurLabel.Name = "HumeurLabel";
             this.HumeurLabel.Size = new System.Drawing.Size(66, 17);
             this.HumeurLabel.TabIndex = 19;
@@ -130,7 +136,7 @@
             // 
             this.MoneyGestionOpen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MoneyGestionOpen.Location = new System.Drawing.Point(699, 85);
+            this.MoneyGestionOpen.Location = new System.Drawing.Point(658, 85);
             this.MoneyGestionOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MoneyGestionOpen.Name = "MoneyGestionOpen";
             this.MoneyGestionOpen.Size = new System.Drawing.Size(128, 23);
