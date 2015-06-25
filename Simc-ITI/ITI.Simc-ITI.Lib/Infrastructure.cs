@@ -7,7 +7,8 @@ using System.Drawing;
 using ITI.Simc_ITI;
 
 namespace ITI.Simc_ITI.Build
-{
+{ 
+    [Serializable]
     public abstract class Infrastructure : IInfrastructureForBox
     {
         Box _box;
@@ -58,12 +59,16 @@ namespace ITI.Simc_ITI.Build
 
             ITaxation privateBuilding = this as ITaxation;
             if( privateBuilding != null ) _type.GameContext.MoneyManager.ActualMoney = _type.GameContext.MoneyManager.ActualMoney + privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
+            
             IBurn BurningBuilding = this as IBurn;
             if( BurningBuilding != null )
             {
-                if( BurningBuilding.IsBurnig == true ) this.Destroy();
                 Random r = new Random();
-                if( r.Next(100) <= BurningBuilding.FireChance ) BurningBuilding.IsBurnig = true;
+                if( BurningBuilding.IsBurnig == true ) this.Destroy();
+                else if( r.Next( 1 ) <= BurningBuilding.FireChance )
+                {
+                    BurningBuilding.IsBurnig = true;
+                }
             }
         }
         public abstract void OnDestroy();

@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
+    [Serializable]
     public class PoliceStationType : InfrastructureType
     {
         int _costPerMonth;
@@ -21,6 +22,7 @@ namespace ITI.Simc_ITI.Build
         }
         public int CostPerMonth { get { return _costPerMonth; } }
     }
+    [Serializable]
     public class PoliceStation : Infrastructure, IHappynessImpact, IPulicBuilding
     {
         Bitmap _bmp;

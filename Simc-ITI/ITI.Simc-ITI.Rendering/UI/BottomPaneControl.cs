@@ -41,6 +41,7 @@ namespace ITI.Simc_ITI.Rendering
         {
             Button_Destroy.Visible = false;
             Kind_Building.Visible = false;
+            Burn_button.Visible = false;
         }
         public void pause_button_Click( object sender, EventArgs e )
         {
@@ -95,6 +96,11 @@ namespace ITI.Simc_ITI.Rendering
                     Button_Destroy.Visible = false;
                 }
                 else if( _game.InfrastructureManager.Find( _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.Name ).CanDestroy( _game.Map.Boxes[_xBox, _yBox] ) == true ) Button_Destroy.Visible = true;
+                IBurn BurningBuilding = _game.Map.Boxes[_xBox, _yBox].Infrasructure as IBurn;
+                if( BurningBuilding != null )
+                {
+                    if( BurningBuilding.IsBurnig == true ) Burn_button.Visible = true;
+                }
             }
             Coordonnées.Visible = true;
             Coordonnées.Text = "Coordonnées : " + _xBox + " , " + _yBox;
@@ -115,6 +121,16 @@ namespace ITI.Simc_ITI.Rendering
             AverageHappyness();
             AllTextOrButtonInvisible();
             _mainViewportControl.Invalidate();
+        }
+        private void Burn_Off( object sender, EventArgs e )
+        {
+            IBurn BurningBuilding = _game.Map.Boxes[_xBox, _yBox].Infrasructure as IBurn;
+            if( BurningBuilding != null )
+            {
+                BurningBuilding.IsBurnig = false;
+            }
+            _mainViewportControl.Invalidate();
+            AllTextOrButtonInvisible();
         }
         public void AverageHappyness()
         {

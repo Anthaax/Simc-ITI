@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
+    [Serializable]
     public class HabitationType : InfrastructureType
     {
         int _happyness;
@@ -21,6 +22,7 @@ namespace ITI.Simc_ITI.Build
         }
         public int Happyness { get { return _happyness; } }
     }
+    [Serializable]
     public class Habitation : Infrastructure, IHappyness, ITaxation, IBurn
     {
         int _hapyness;
@@ -38,6 +40,7 @@ namespace ITI.Simc_ITI.Build
             _bmp = b.Map.BitmapCache.Get("Habitation.bmp");
             _hapyness = info.Happyness;
             CheckAllNearBoxes();
+            IsOnFire += ChangeBitMap;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
@@ -91,7 +94,18 @@ namespace ITI.Simc_ITI.Build
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
         public int Salary { get { return _salary; } }
-        public bool IsBurnig { get { return _isBurning; } set { _isBurning = value; } }
+        public event EventHandler IsOnFire;
+        public bool IsBurnig { get { return _isBurning; } 
+            set 
+            {
+                if( _isBurning != value )
+                {
+                    _isBurning = value;
+                    var h = IsOnFire;
+                    if( h != null ) h( this, EventArgs.Empty );
+                } 
+            } 
+        }
         
         public void CheckAllNearBoxes()
         {
@@ -106,6 +120,13 @@ namespace ITI.Simc_ITI.Build
                     }
                 }
             }
+        }
+        
+        public void ChangeBitMap( object sender, EventArgs e )
+        {
+            Bitmap _bmpT = Box.Map.BitmapCache.Get( "HabitationB.bmp" );
+           if(_bmp != _bmpT )  _bmp = Box.Map.BitmapCache.Get( "HabitationB.bmp" );
+           else _bmp = Box.Map.BitmapCache.Get( "Habitation.bmp" );
         }
     }
 }

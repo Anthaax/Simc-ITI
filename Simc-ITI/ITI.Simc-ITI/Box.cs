@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI
-{
+{ [Serializable]
     public class Box
     {
         Graphics g, screeng;

@@ -37,10 +37,12 @@
             this.MyMoney = new System.Windows.Forms.Label();
             this.HumeurLabel = new System.Windows.Forms.Label();
             this.MoneyGestionOpen = new System.Windows.Forms.Button();
+            this.Burn_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // rewind_button
             // 
+            this.rewind_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rewind_button.Location = new System.Drawing.Point(4, 85);
             this.rewind_button.Margin = new System.Windows.Forms.Padding(4);
             this.rewind_button.Name = "rewind_button";
@@ -52,6 +54,7 @@
             // 
             // pause_button
             // 
+            this.pause_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.pause_button.Location = new System.Drawing.Point(88, 85);
             this.pause_button.Margin = new System.Windows.Forms.Padding(4);
             this.pause_button.Name = "pause_button";
@@ -63,6 +66,7 @@
             // 
             // fastforward_button
             // 
+            this.fastforward_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.fastforward_button.Location = new System.Drawing.Point(196, 85);
             this.fastforward_button.Margin = new System.Windows.Forms.Padding(4);
             this.fastforward_button.Name = "fastforward_button";
@@ -98,8 +102,6 @@
             // 
             // Button_Destroy
             // 
-            this.Button_Destroy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Button_Destroy.Location = new System.Drawing.Point(513, 12);
             this.Button_Destroy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Button_Destroy.Name = "Button_Destroy";
@@ -145,10 +147,24 @@
             this.MoneyGestionOpen.UseVisualStyleBackColor = true;
             this.MoneyGestionOpen.Click += new System.EventHandler(this.OpenMoneyGestion);
             // 
+            // Burn_button
+            // 
+            this.Burn_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Burn_button.Location = new System.Drawing.Point(367, 88);
+            this.Burn_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Burn_button.Name = "Burn_button";
+            this.Burn_button.Size = new System.Drawing.Size(117, 23);
+            this.Burn_button.TabIndex = 21;
+            this.Burn_button.Text = "Eteindre le feu";
+            this.Burn_button.UseVisualStyleBackColor = true;
+            this.Burn_button.Visible = false;
+            this.Burn_button.Click += new System.EventHandler(this.Burn_Off);
+            // 
             // BottomPaneControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Burn_button);
             this.Controls.Add(this.MoneyGestionOpen);
             this.Controls.Add(this.HumeurLabel);
             this.Controls.Add(this.MyMoney);
@@ -177,5 +193,6 @@
         private System.Windows.Forms.Label MyMoney;
         private System.Windows.Forms.Label HumeurLabel;
         private System.Windows.Forms.Button MoneyGestionOpen;
+        private System.Windows.Forms.Button Burn_button;
     }
 }

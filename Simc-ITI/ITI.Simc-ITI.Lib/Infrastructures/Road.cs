@@ -10,6 +10,7 @@ namespace ITI.Simc_ITI.Build
     {
         public RoadOrientation Orientation { get; set; }
     }
+    [Serializable]
     public class RoadType : InfrastructureType
     {
         public RoadType( GameContext ctx )
@@ -25,7 +26,7 @@ namespace ITI.Simc_ITI.Build
             return new Road( location, this, cfg.Orientation );
         }
     }
-
+    [Serializable]
     public class Road : Infrastructure
     {
         string _name;

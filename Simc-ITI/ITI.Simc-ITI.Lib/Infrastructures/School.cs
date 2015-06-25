@@ -46,6 +46,7 @@ namespace ITI.Simc_ITI.Build
             _costPerMonth = info.CostPerMonth;
             _happynessImpact = info.HappynessImpact;
             CheckAllNearBoxes();
+            IsOnFire += ChangeBitMap;
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
@@ -105,7 +106,20 @@ namespace ITI.Simc_ITI.Build
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public bool Health { get { return _health; } set { _health = value; } }
         public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
-        public bool IsBurnig { get { return _isBurning; } set { _isBurning = value; } }
+        public event EventHandler IsOnFire;
+        public bool IsBurnig
+        {
+            get { return _isBurning; }
+            set
+            {
+                if( _isBurning != value )
+                {
+                    _isBurning = value;
+                    var h = IsOnFire;
+                    if( h != null ) h( this, EventArgs.Empty );
+                }
+            }
+        }
         public void CheckAllNearBoxes()
         {
             IEnumerable<Box> nearBox = Box.NearBoxes( Box.Map.BoxCount );
@@ -119,6 +133,12 @@ namespace ITI.Simc_ITI.Build
                     }
                 }
             }
+        }
+        public void ChangeBitMap( object sender, EventArgs e )
+        {
+            Bitmap _bmpT = Box.Map.BitmapCache.Get( "EcoleB.bmp" );
+            if( _bmp != _bmpT ) _bmp = Box.Map.BitmapCache.Get( "EcoleB.bmp" );
+            else _bmp = Box.Map.BitmapCache.Get( "Ecole.bmp" );
         }
     }
 }
