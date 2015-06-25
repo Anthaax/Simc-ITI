@@ -27,11 +27,8 @@ namespace ITI.Simc_ITI.Build
         int _salary = 7000;
         int _taxation = 10;
         int _fireChance = 5;
-<<<<<<< HEAD
         bool _isBurning = false;
-=======
         int _stealChance = 5;
->>>>>>> origin/Devellop
         Bitmap _bmp;
 
 
