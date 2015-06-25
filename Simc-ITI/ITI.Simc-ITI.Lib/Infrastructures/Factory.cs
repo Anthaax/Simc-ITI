@@ -80,7 +80,8 @@ namespace ITI.Simc_ITI.Build
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
         public int Salary { get { return _salary; } }
         public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
-        public event EventHandler IsOnFire;[NonSerialized]
+        [NonSerialized]
+        public event EventHandler IsOnFire;
         public bool IsBurnig
         {
             get { return _isBurning; }
