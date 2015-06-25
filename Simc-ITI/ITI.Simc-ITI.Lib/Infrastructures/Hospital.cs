@@ -100,6 +100,7 @@ namespace ITI.Simc_ITI.Build
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public bool Health { get { return _health; } set { _health = value; } }
         public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
+        [NonSerialized]
         public event EventHandler IsOnFire;
         public bool IsBurnig
         {

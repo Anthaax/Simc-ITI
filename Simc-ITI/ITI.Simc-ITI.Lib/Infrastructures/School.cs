@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
+    [Serializable]
     public class SchoolType : InfrastructureType
     {
         int _costPerMonth;
@@ -28,8 +29,7 @@ namespace ITI.Simc_ITI.Build
         public int MaxCapacity { get { return _maxCapacity; } }
         public int HappynessImpact { get { return _happynessImpactMax; } }
     }
-
-
+    [Serializable]
     public class School : Infrastructure, IHappynessImpact, IHealth, IPulicBuilding, IBurn
     {
         int _costPerMonth;
@@ -106,6 +106,7 @@ namespace ITI.Simc_ITI.Build
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public bool Health { get { return _health; } set { _health = value; } }
         public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
+        [NonSerialized]
         public event EventHandler IsOnFire;
         public bool IsBurnig
         {

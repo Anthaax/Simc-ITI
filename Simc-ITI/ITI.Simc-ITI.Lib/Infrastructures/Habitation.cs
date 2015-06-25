@@ -94,6 +94,7 @@ namespace ITI.Simc_ITI.Build
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
         public int Salary { get { return _salary; } }
+        [NonSerialized]
         public event EventHandler IsOnFire;
         public bool IsBurnig { get { return _isBurning; } 
             set 
