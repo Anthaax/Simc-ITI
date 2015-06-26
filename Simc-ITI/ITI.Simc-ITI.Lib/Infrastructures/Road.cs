@@ -30,13 +30,17 @@ namespace ITI.Simc_ITI.Build
     public class Road : Infrastructure
     {
         string _name;
+        [field: NonSerialized]
         Bitmap _bmp;
+        RoadOrientation _orientation;
 
         public Road( Box b, RoadType info, RoadOrientation o )
             : base( b, info )
         {
+            _orientation = o;
             _bmp = b.Map.BitmapCache.Get(o + ".bmp");
             _name = info.Name;
+
         }
         public new RoadType Type { get { return (RoadType)base.Type; } }
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
@@ -55,6 +59,10 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnDestroyingAround( Box b )
         {
+        }
+        public override void ChargeBitMap()
+        {
+            _bmp = Box.Map.BitmapCache.Get( _orientation +".bmp" );
         }
     }
 }

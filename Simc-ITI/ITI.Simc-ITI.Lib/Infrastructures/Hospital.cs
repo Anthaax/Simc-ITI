@@ -33,6 +33,7 @@ namespace ITI.Simc_ITI.Build
         bool _health = true;
         int _fireChance = 5;
         bool _isBurning = false;
+        [field: NonSerialized]
         Bitmap _bmp;
         public Hospital(Box b, HospitalType info)
             :base(b, info)
@@ -41,7 +42,8 @@ namespace ITI.Simc_ITI.Build
             _costPerMonth = info.CostPerMonth;
             _happynessImpact = info.HappynessImpact;
             CheckAllNearBoxes();
-            IsOnFire += ChangeBitMap;
+            IsOnFire += ( s, e ) => ChargeBitMap();
+
         }
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
         {
@@ -100,7 +102,7 @@ namespace ITI.Simc_ITI.Build
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public bool Health { get { return _health; } set { _health = value; } }
         public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
-        [NonSerialized]
+        [field: NonSerialized]
         public event EventHandler IsOnFire;
         public bool IsBurnig
         {
@@ -129,10 +131,9 @@ namespace ITI.Simc_ITI.Build
                 }
             }
         }
-        public void ChangeBitMap( object sender, EventArgs e )
+        public override void ChargeBitMap()
         {
-            Bitmap _bmpT = Box.Map.BitmapCache.Get( "HopitalB.bmp" );
-            if( _bmp != _bmpT ) _bmp = Box.Map.BitmapCache.Get( "HopitalB.bmp" );
+            if( _isBurning == true ) _bmp = Box.Map.BitmapCache.Get( "HopitalB.bmp" );
             else _bmp = Box.Map.BitmapCache.Get( "Hopital.bmp" );
         }
     }

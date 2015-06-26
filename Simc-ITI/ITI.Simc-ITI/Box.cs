@@ -9,7 +9,9 @@ namespace ITI.Simc_ITI
 { [Serializable]
     public class Box
     {
+        [field: NonSerialized]
         Graphics g, screeng;
+        [field: NonSerialized]
         Pen _p = new Pen( Color.DimGray );
         readonly Map _map;
         readonly int _line;

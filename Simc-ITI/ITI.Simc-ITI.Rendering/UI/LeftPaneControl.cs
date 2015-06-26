@@ -17,6 +17,9 @@ namespace ITI.Simc_ITI.Rendering
         GameContext _game;
         int _xBox;
         int _yBox;
+        double scalefactor;
+        int x;
+        int y;
         public LeftPaneControl()
         {
             InitializeComponent();
@@ -135,6 +138,43 @@ namespace ITI.Simc_ITI.Rendering
         private bool CanCreate( string building, Box b )
         {
             return _game.InfrastructureManager.Find( building ).CanCreatedNearRoad( b ) && _game.InfrastructureManager.Find( building ).CanCreated( b );
+        }
+        private void MoveOnTheMap( object sender, KeyEventArgs e )
+        {
+            switch( e.KeyCode )
+            {
+                case Keys.Add:
+                    if( scalefactor >= 0.1 )
+                    {
+                        scalefactor -= 0.1;
+                        _mainViewportControl.Zoom( scalefactor );
+                        x = _mainViewportControl.ViewPort.Area.X;
+                        y = _mainViewportControl.ViewPort.Area.Y;
+                    }
+                    break;
+                case Keys.Subtract:
+                    if( scalefactor < 1.0 )
+                    {
+                        scalefactor += 0.1;
+                        _mainViewportControl.Zoom( scalefactor );
+                        x = _mainViewportControl.ViewPort.Area.X;
+                        y = _mainViewportControl.ViewPort.Area.Y;
+                    }
+                    break;
+                case Keys.NumPad6:
+                    x += 10000;
+                    break;
+                case Keys.NumPad4:
+                    if( x > 0 ) x -= 10000;
+                    break;
+                case Keys.NumPad8:
+                    if( y > 0 ) y -= 10000;
+                    break;
+                case Keys.NumPad2:
+                    y += 10000;
+                    break;
+            }
+            _mainViewportControl.KeyMove( x, y );
         }
     }
 }

@@ -25,6 +25,7 @@ namespace ITI.Simc_ITI
 
         public Bitmap Get( string name )
         {
+            
             Bitmap image;
             if( !_textures.TryGetValue( name, out image ) )
             {

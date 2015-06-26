@@ -24,6 +24,10 @@ namespace ITI.Simc_ITI.Build
             _map = game.Map;
             _infraManager = game.InfrastructureManager;
             _moneyManager = game.MoneyManager;
+            foreach(var box in _map.Boxes )
+            {
+                if( box.Infrasructure != null ) box.Infrasructure.ChargeBitMap();
+            }
         }
         GameContext()
         {
@@ -67,6 +71,7 @@ namespace ITI.Simc_ITI.Build
                 LoadedGame = c;
                 ErrorMessage = error;
             }
+
         }
 
         /// <summary>
@@ -76,12 +81,12 @@ namespace ITI.Simc_ITI.Build
         /// <returns>Null on error.</returns>
         public static LoadResult LoadGame( string path )
         {
+            GameContext g;
             Stream fileStream = new FileStream( path, FileMode.Open, FileAccess.Read, FileShare.Read );
             try
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                GameContext g = (GameContext)formatter.Deserialize( fileStream );
-                new GameContext( g );
+                g = (GameContext)formatter.Deserialize( fileStream );
             }
             catch( SerializationException e )
             {
@@ -92,14 +97,14 @@ namespace ITI.Simc_ITI.Build
             {
                 fileStream.Close();
             }
-            return new LoadResult( new GameContext(), null );
+            return new LoadResult( new GameContext(g), null );
         }
 
         public bool IsGameOver
         {
             get { return _isGameOver; }
         }
-        [NonSerialized]
+        [field: NonSerialized]
         public event EventHandler IsGameOverChanged;
 
         internal void SetGameOver()

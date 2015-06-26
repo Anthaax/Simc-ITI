@@ -25,6 +25,7 @@ namespace ITI.Simc_ITI.Build
     [Serializable]
     public class PoliceStation : Infrastructure, IHappynessImpact, IPulicBuilding
     {
+        [field: NonSerialized]
         Bitmap _bmp;
         int _costPerMonth; 
         bool _health = true;
@@ -34,6 +35,7 @@ namespace ITI.Simc_ITI.Build
             _bmp = b.Map.BitmapCache.Get("PoliceStation.bmp");
             _costPerMonth = info.CostPerMonth;
             CheckAllNearBoxes();
+
         }
         public override void Draw(Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor)
         {
@@ -52,6 +54,10 @@ namespace ITI.Simc_ITI.Build
         public override void OnDestroyingAround(Box b)
         {
 
+        }
+        public override void ChargeBitMap()
+        {
+            _bmp = Box.Map.BitmapCache.Get( "PoliceStation.bmp" );
         }
         public void CheckAllNearBoxes()
         {

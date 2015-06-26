@@ -17,7 +17,7 @@ namespace ITI.Simc_ITI.Build
             ActualMoney = 4000;
             _taxe = new TaxationManager();
         }
-        [NonSerialized]
+        [field: NonSerialized]
         public event EventHandler ActualMoneyChanged;
         public int ActualMoney
         {
