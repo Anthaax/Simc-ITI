@@ -75,6 +75,7 @@ namespace ITI.Simc_ITI.Build
             }
             return check;
         }
+        [field: NonSerialized]
         public event EventHandler BuildingHasBeenCreated;
         public Infrastructure CreateInfrastructure( Box b, object creationConfig )
         {

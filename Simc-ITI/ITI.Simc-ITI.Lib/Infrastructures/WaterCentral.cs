@@ -25,6 +25,7 @@ namespace ITI.Simc_ITI.Build
     [Serializable]
     public class WaterCentral : Infrastructure, IPulicBuilding, IHappynessImpact
     {
+        [field: NonSerialized]
         Bitmap _bmp;
         int _costPerMonth;
         public WaterCentral( Box b, WaterCentralType info )
@@ -50,6 +51,10 @@ namespace ITI.Simc_ITI.Build
         public override void OnDestroyingAround( Box b )
         {
 
+        }
+        public override void ChargeBitMap()
+        {
+            _bmp = Box.Map.BitmapCache.Get( "Eau.bmp" );
         }
         public int HappynessImpact( Box b )
         {

@@ -18,6 +18,7 @@ namespace ITI.Simc_ITI.Build
             _commerceTaxation = 10;
             _usineTaxation = 10;
         }
+        [field: NonSerialized]
         public event EventHandler TaxationAsChanged;
         public int HabitationTaxation
         {

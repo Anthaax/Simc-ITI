@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
+    [Serializable]
     public class SchoolType : InfrastructureType
     {
         int _costPerMonth;
@@ -28,8 +29,7 @@ namespace ITI.Simc_ITI.Build
         public int MaxCapacity { get { return _maxCapacity; } }
         public int HappynessImpact { get { return _happynessImpactMax; } }
     }
-
-
+    [Serializable]
     public class School : Infrastructure, IHappynessImpact, IHealth, IPulicBuilding, IBurn
     {
         int _costPerMonth;
@@ -46,7 +46,7 @@ namespace ITI.Simc_ITI.Build
             _costPerMonth = info.CostPerMonth;
             _happynessImpact = info.HappynessImpact;
             CheckAllNearBoxes();
-            IsOnFire += ChangeBitMap;
+            IsOnFire += ( s, e ) => ChargeBitMap();
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
@@ -106,7 +106,10 @@ namespace ITI.Simc_ITI.Build
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public bool Health { get { return _health; } set { _health = value; } }
         public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
+
+        [field : NonSerialized]
         public event EventHandler IsOnFire;
+        
         public bool IsBurnig
         {
             get { return _isBurning; }
@@ -134,10 +137,9 @@ namespace ITI.Simc_ITI.Build
                 }
             }
         }
-        public void ChangeBitMap( object sender, EventArgs e )
+        public override void ChargeBitMap()
         {
-            Bitmap _bmpT = Box.Map.BitmapCache.Get( "EcoleB.bmp" );
-            if( _bmp != _bmpT ) _bmp = Box.Map.BitmapCache.Get( "EcoleB.bmp" );
+            if( _isBurning == true ) _bmp = Box.Map.BitmapCache.Get( "EcoleB.bmp" );
             else _bmp = Box.Map.BitmapCache.Get( "Ecole.bmp" );
         }
     }

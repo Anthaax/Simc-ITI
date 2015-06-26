@@ -16,6 +16,7 @@ namespace ITI.Simc_ITI
         event EventHandler Destoyed;
         void OnDestroyingAround( Box b );
         void Update();
+        void ChargeBitMap();
         
     }
 }

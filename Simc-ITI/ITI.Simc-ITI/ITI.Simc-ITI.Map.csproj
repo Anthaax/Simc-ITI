@@ -82,6 +82,7 @@
     <Content Include="Images\Commerces.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\CommercesB.bmp" />
     <Content Include="Images\CrossRoad.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -91,16 +92,17 @@
     <Content Include="Images\Ecole.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\EcoleB.bmp" />
     <Content Include="Images\Elec.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Habitation.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\HabitationB.bmp" />
     <Content Include="Images\Horizontal.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\Police.bmp" />
     <Content Include="Images\Pompier.bmp" />
     <Content Include="Images\TCrossDown.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -132,6 +134,7 @@
     <Content Include="Images\Usines.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\UsinesB.bmp" />
     <Content Include="Images\Vertical.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

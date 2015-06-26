@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace ITI.Simc_ITI.Build
 {
+    [Serializable]
     public class PowerStationType : InfrastructureType
     {
         int _costPerMonth;
@@ -21,8 +22,10 @@ namespace ITI.Simc_ITI.Build
         }
         public int CostPerMonth { get { return _costPerMonth; } }
     }
+    [Serializable]
     public class PowerStation : Infrastructure, IHappynessImpact, IPulicBuilding
     {
+        [field: NonSerialized]
         Bitmap _bmp;
         int _costPerMonth;
         public PowerStation( Box b, PowerStationType info )
@@ -30,6 +33,7 @@ namespace ITI.Simc_ITI.Build
         {
             _bmp = b.Map.BitmapCache.Get( "Elec.bmp" );
             _costPerMonth = info.CostPerMonth;
+
         }
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
         {
@@ -48,6 +52,10 @@ namespace ITI.Simc_ITI.Build
         public override void OnDestroyingAround( Box b )
         {
 
+        }
+        public override void ChargeBitMap()
+        {
+            _bmp = Box.Map.BitmapCache.Get( "Elec.bmp" );
         }
         public int HappynessImpact( Box b )
         {

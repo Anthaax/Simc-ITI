@@ -26,6 +26,7 @@ namespace ITI.Simc_ITI.Build
     public class FireStation : Infrastructure, IFire, IPulicBuilding
     {
         int _costPerMonth;
+        [field: NonSerialized]
         Bitmap _bmp;
         public FireStation(Box b, FireStationType info)
             :base(b, info)
@@ -76,5 +77,9 @@ namespace ITI.Simc_ITI.Build
             return _firerate;
         }
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
+        public override void ChargeBitMap()
+        {
+            _bmp = Box.Map.BitmapCache.Get( "Pompier.bmp" );
+        }
     }
 }

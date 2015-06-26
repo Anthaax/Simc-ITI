@@ -33,11 +33,13 @@ namespace ITI.Simc_ITI.Build
     public class Retail : Infrastructure, IHappyness, ITaxation, IHappynessImpact, IBurn
     {
         int _hapyness;
+        [field: NonSerialized]
         Bitmap _bmp;
         int _taxation = 10;
         int _salary = 30000;
         int _fireChance = 5;
         bool _isBurning = false;
+
 
         public Retail( Box b, RetailType info )
             : base( b, info)
@@ -45,7 +47,7 @@ namespace ITI.Simc_ITI.Build
             _bmp = b.Map.BitmapCache.Get("Commerces.bmp");
             _hapyness = info.Happyness;
             CheckAllNearBoxes();
-            IsOnFire += ChangeBitMap;            
+            IsOnFire += ( s, e ) => ChargeBitMap();           
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
@@ -78,6 +80,7 @@ namespace ITI.Simc_ITI.Build
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
         public int Salary { get { return _salary; } }
         public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
+        [field: NonSerialized]
         public event EventHandler IsOnFire;
         public bool IsBurnig
         {
@@ -116,10 +119,9 @@ namespace ITI.Simc_ITI.Build
                 }
             }
         }
-        public void ChangeBitMap( object sender, EventArgs e )
+        public override void ChargeBitMap()
         {
-            Bitmap _bmpT = Box.Map.BitmapCache.Get( "CommercesB.bmp" );
-            if( _bmp != _bmpT ) _bmp = Box.Map.BitmapCache.Get( "CommercesB.bmp" );
+            if( _isBurning == true ) _bmp = Box.Map.BitmapCache.Get( "CommercesB.bmp" );
             else _bmp = Box.Map.BitmapCache.Get( "Commerces.bmp" );
         }
     }

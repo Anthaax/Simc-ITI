@@ -34,7 +34,7 @@ namespace ITI.Simc_ITI.Build
         public abstract void OnCreatedAround( Box b );
         public abstract void OnDestroyingAround( Box b );
         public int AreaEffect { get; protected set; }
-
+        [field: NonSerialized]
         public event EventHandler Destoyed;
         public void Destroy()
         {
@@ -71,6 +71,7 @@ namespace ITI.Simc_ITI.Build
                 }
             }
         }
+        public abstract void ChargeBitMap();
         public abstract void OnDestroy();
     }
 }
