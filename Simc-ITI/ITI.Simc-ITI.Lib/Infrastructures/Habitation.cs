@@ -100,6 +100,7 @@ namespace ITI.Simc_ITI.Build
         public int Salary { get { return _salary; } }
         [field: NonSerialized]
         public event EventHandler IsOnFire;
+        [field: NonSerialized]
         public event EventHandler IsSteal;
         public bool IsStolen { get { return _isSteal; } }
         public bool IsBurnig { get { return _isBurning; } 
@@ -137,8 +138,9 @@ namespace ITI.Simc_ITI.Build
         
         public override void ChargeBitMap()
         {
-            if( _isBurning == true ) _bmp = Box.Map.BitmapCache.Get( "HabitationB.bmp" );
-           else _bmp = Box.Map.BitmapCache.Get( "Habitation.bmp" );
+            if (_isBurning == true) _bmp = Box.Map.BitmapCache.Get("HabitationB.bmp");
+            else if (_isSteal == true) _bmp = Box.Map.BitmapCache.Get("HabitationB.bmp");
+            else _bmp = Box.Map.BitmapCache.Get("Habitation.bmp");
         }
     }
 }
