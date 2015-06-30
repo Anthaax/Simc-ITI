@@ -1,4 +1,4 @@
-﻿namespace ITI.Simc_ITI.Rendering.UI
+﻿namespace ITI.Simc_ITI.Rendering
 {
     partial class MenuControl
     {
@@ -35,9 +35,12 @@
             // 
             // NewGame_button
             // 
-            this.NewGame_button.Location = new System.Drawing.Point(257, 98);
+            this.NewGame_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewGame_button.Location = new System.Drawing.Point(343, 121);
+            this.NewGame_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NewGame_button.Name = "NewGame_button";
-            this.NewGame_button.Size = new System.Drawing.Size(151, 23);
+            this.NewGame_button.Size = new System.Drawing.Size(201, 28);
             this.NewGame_button.TabIndex = 0;
             this.NewGame_button.Text = "Nouvelle Partie";
             this.NewGame_button.UseVisualStyleBackColor = true;
@@ -45,9 +48,12 @@
             // 
             // LoadGame_button
             // 
-            this.LoadGame_button.Location = new System.Drawing.Point(257, 161);
+            this.LoadGame_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoadGame_button.Location = new System.Drawing.Point(343, 198);
+            this.LoadGame_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LoadGame_button.Name = "LoadGame_button";
-            this.LoadGame_button.Size = new System.Drawing.Size(151, 23);
+            this.LoadGame_button.Size = new System.Drawing.Size(201, 28);
             this.LoadGame_button.TabIndex = 1;
             this.LoadGame_button.Text = "Charger une partie";
             this.LoadGame_button.UseVisualStyleBackColor = true;
@@ -55,9 +61,12 @@
             // 
             // DropGame_button
             // 
-            this.DropGame_button.Location = new System.Drawing.Point(257, 225);
+            this.DropGame_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DropGame_button.Location = new System.Drawing.Point(343, 277);
+            this.DropGame_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DropGame_button.Name = "DropGame_button";
-            this.DropGame_button.Size = new System.Drawing.Size(151, 23);
+            this.DropGame_button.Size = new System.Drawing.Size(201, 28);
             this.DropGame_button.TabIndex = 2;
             this.DropGame_button.Text = "Supprimer une sauvegarde";
             this.DropGame_button.UseVisualStyleBackColor = true;
@@ -65,13 +74,14 @@
             // 
             // MenuControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.DropGame_button);
             this.Controls.Add(this.LoadGame_button);
             this.Controls.Add(this.NewGame_button);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MenuControl";
-            this.Size = new System.Drawing.Size(692, 350);
+            this.Size = new System.Drawing.Size(923, 431);
             this.ResumeLayout(false);
 
         }
