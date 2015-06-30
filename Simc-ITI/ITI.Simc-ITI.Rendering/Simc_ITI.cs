@@ -22,8 +22,16 @@ namespace ITI.Simc_ITI.Rendering
         int _yBox;
         public Simc_ITI()
         {
-            _game = GameContext.CreateNewGame();
             InitializeComponent();
+            menuControl1.GameHasBeenCreated += ( s, e ) => InitializeGame();
+        }
+        private void InitializeGame()
+        {
+            _game = menuControl1.GameContext;
+            menuControl1.Visible = false;
+            _bottomPaneControl.Visible = true;
+            _leftPaneControl.Visible = true;
+            _viewPortControl.Visible = true;
             _bottomPaneControl.SetGameandViewport( _game, _viewPortControl );
             _leftPaneControl.SetGameandViewport( _game, _viewPortControl );
             _viewPortControl.SetMap( _game.Map, 5 * 100 );

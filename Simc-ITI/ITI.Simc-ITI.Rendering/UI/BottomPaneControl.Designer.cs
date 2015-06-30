@@ -38,6 +38,8 @@
             this.HumeurLabel = new System.Windows.Forms.Label();
             this.MoneyGestionOpen = new System.Windows.Forms.Button();
             this.Burn_button = new System.Windows.Forms.Button();
+            this.SaveGame = new System.Windows.Forms.Button();
+            this.SaveLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // rewind_button
@@ -78,8 +80,7 @@
             // 
             // Coordonnées
             // 
-            this.Coordonnées.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Coordonnées.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Coordonnées.AutoSize = true;
             this.Coordonnées.Location = new System.Drawing.Point(364, 16);
             this.Coordonnées.Name = "Coordonnées";
@@ -90,8 +91,7 @@
             // 
             // Kind_Building
             // 
-            this.Kind_Building.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Kind_Building.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Kind_Building.AutoSize = true;
             this.Kind_Building.Location = new System.Drawing.Point(364, 43);
             this.Kind_Building.Name = "Kind_Building";
@@ -149,7 +149,7 @@
             // 
             // Burn_button
             // 
-            this.Burn_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Burn_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Burn_button.Location = new System.Drawing.Point(367, 88);
             this.Burn_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Burn_button.Name = "Burn_button";
@@ -160,10 +160,32 @@
             this.Burn_button.Visible = false;
             this.Burn_button.Click += new System.EventHandler(this.Burn_Off);
             // 
+            // SaveGame
+            // 
+            this.SaveGame.Location = new System.Drawing.Point(4, 9);
+            this.SaveGame.Name = "SaveGame";
+            this.SaveGame.Size = new System.Drawing.Size(184, 26);
+            this.SaveGame.TabIndex = 22;
+            this.SaveGame.Text = "Sauvegarder la partie";
+            this.SaveGame.UseVisualStyleBackColor = true;
+            this.SaveGame.Click += new System.EventHandler(this.SaveTheGame);
+            // 
+            // SaveLabel
+            // 
+            this.SaveLabel.AutoSize = true;
+            this.SaveLabel.Location = new System.Drawing.Point(4, 43);
+            this.SaveLabel.Name = "SaveLabel";
+            this.SaveLabel.Size = new System.Drawing.Size(197, 17);
+            this.SaveLabel.TabIndex = 23;
+            this.SaveLabel.Text = "Votre partie à été sauvegardé";
+            this.SaveLabel.Visible = false;
+            // 
             // BottomPaneControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.SaveLabel);
+            this.Controls.Add(this.SaveGame);
             this.Controls.Add(this.Burn_button);
             this.Controls.Add(this.MoneyGestionOpen);
             this.Controls.Add(this.HumeurLabel);
@@ -194,5 +216,7 @@
         private System.Windows.Forms.Label HumeurLabel;
         private System.Windows.Forms.Button MoneyGestionOpen;
         private System.Windows.Forms.Button Burn_button;
+        private System.Windows.Forms.Button SaveGame;
+        private System.Windows.Forms.Label SaveLabel;
     }
 }

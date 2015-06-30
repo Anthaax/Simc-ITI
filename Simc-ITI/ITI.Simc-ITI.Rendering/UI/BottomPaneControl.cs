@@ -42,6 +42,7 @@ namespace ITI.Simc_ITI.Rendering
             Button_Destroy.Visible = false;
             Kind_Building.Visible = false;
             Burn_button.Visible = false;
+            SaveLabel.Visible = false;
         }
         public void pause_button_Click( object sender, EventArgs e )
         {
@@ -159,6 +160,12 @@ namespace ITI.Simc_ITI.Rendering
             {
                 co.Taxation = _game.MoneyManager.TaxationManager.CommerceTaxation;
             }
+        }
+        private void SaveTheGame( object sender, EventArgs e )
+        {
+            string path = @"D:\Documents\Simc_ITI Sauvergardes\Sav1.txt";
+            _game.Save( path );
+            SaveLabel.Visible = true;
         }
     }
 }

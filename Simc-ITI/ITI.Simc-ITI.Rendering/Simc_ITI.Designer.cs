@@ -28,10 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.menuControl1 = new ITI.Simc_ITI.Rendering.MenuControl();
             this._leftPaneControl = new ITI.Simc_ITI.Rendering.LeftPaneControl();
             this._bottomPaneControl = new ITI.Simc_ITI.Rendering.BottomPaneControl();
             this._viewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
             this.SuspendLayout();
+            // 
+            // menuControl1
+            // 
+            this.menuControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuControl1.Location = new System.Drawing.Point(115, 0);
+            this.menuControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.menuControl1.Name = "menuControl1";
+            this.menuControl1.Size = new System.Drawing.Size(1024, 252);
+            this.menuControl1.TabIndex = 3;
             // 
             // _leftPaneControl
             // 
@@ -40,18 +50,20 @@
             this._leftPaneControl.Location = new System.Drawing.Point(0, 0);
             this._leftPaneControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this._leftPaneControl.Name = "_leftPaneControl";
-            this._leftPaneControl.Size = new System.Drawing.Size(115, 261);
+            this._leftPaneControl.Size = new System.Drawing.Size(115, 252);
             this._leftPaneControl.TabIndex = 2;
+            this._leftPaneControl.Visible = false;
             this._leftPaneControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveOnTheMap);
             // 
             // _bottomPaneControl
             // 
             this._bottomPaneControl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this._bottomPaneControl.Location = new System.Drawing.Point(0, 261);
+            this._bottomPaneControl.Location = new System.Drawing.Point(0, 252);
             this._bottomPaneControl.Margin = new System.Windows.Forms.Padding(4);
             this._bottomPaneControl.Name = "_bottomPaneControl";
-            this._bottomPaneControl.Size = new System.Drawing.Size(1139, 117);
+            this._bottomPaneControl.Size = new System.Drawing.Size(1139, 126);
             this._bottomPaneControl.TabIndex = 1;
+            this._bottomPaneControl.Visible = false;
             this._bottomPaneControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveOnTheMap);
             // 
             // _viewPortControl
@@ -62,11 +74,13 @@
             this._viewPortControl.Size = new System.Drawing.Size(1139, 378);
             this._viewPortControl.TabIndex = 0;
             this._viewPortControl.Text = "viewPortControl1";
+            this._viewPortControl.Visible = false;
             this._viewPortControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveOnTheMap);
             // 
             // Simc_ITI
             // 
             this.ClientSize = new System.Drawing.Size(1139, 378);
+            this.Controls.Add(this.menuControl1);
             this.Controls.Add(this._leftPaneControl);
             this.Controls.Add(this._bottomPaneControl);
             this.Controls.Add(this._viewPortControl);
@@ -83,6 +97,7 @@
         private ViewPortControl _viewPortControl;
         private BottomPaneControl _bottomPaneControl;
         private LeftPaneControl _leftPaneControl;
+        private MenuControl menuControl1;
 
 
     }
