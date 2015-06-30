@@ -100,6 +100,7 @@ namespace ITI.Simc_ITI.Build
         public int Salary { get { return _salary; } }
         [field: NonSerialized]
         public event EventHandler IsOnFire;
+        [field: NonSerialized]
         public event EventHandler IsSteal;
         public bool IsStolen { get { return _isSteal; } }
         public bool IsBurnig { get { return _isBurning; } 
