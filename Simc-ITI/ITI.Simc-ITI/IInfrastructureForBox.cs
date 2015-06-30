@@ -15,7 +15,7 @@ namespace ITI.Simc_ITI
         void OnCreatedAround( Box b );
         event EventHandler Destoyed;
         void OnDestroyingAround( Box b );
-        void Update();
+        int Update();
         void ChargeBitMap();
         
     }

@@ -100,9 +100,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\HabitationB.bmp" />
+    <Content Include="Images\Hopital.bmp" />
+    <Content Include="Images\HopitalB.bmp" />
     <Content Include="Images\Horizontal.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Police.bmp" />
+    <Content Include="Images\PoliceB.bmp" />
     <Content Include="Images\Pompier.bmp" />
     <Content Include="Images\TCrossDown.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

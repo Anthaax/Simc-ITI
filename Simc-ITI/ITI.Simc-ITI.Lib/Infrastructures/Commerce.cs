@@ -37,7 +37,7 @@ namespace ITI.Simc_ITI.Build
         Bitmap _bmp;
         int _taxation = 10;
         int _salary = 30000;
-        int _fireChance = 5;
+        int _fireChance = 75;
         bool _isBurning = false;
 
 
@@ -58,7 +58,7 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnDestroy()
         {
-            _bmp.Dispose();
+            _bmp = null;
         }
         public override void OnCreatedAround( Box b )
         {

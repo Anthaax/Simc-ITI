@@ -11,6 +11,7 @@ namespace ITI.Simc_ITI.Build
     {
 
         int _myMoney = 0;
+        int _lastPourchase = 0;
         TaxationManager _taxe;
         public MoneyManager()
         {
@@ -31,6 +32,20 @@ namespace ITI.Simc_ITI.Build
                     if( h != null ) h( this, EventArgs.Empty );
                 }
             }
+        }
+        public event EventHandler LastPurchaseWasDone;
+        public int LastPurchase {
+            get { return _lastPourchase; } 
+            set 
+            {
+                if( _lastPourchase != value )
+                {
+                    _lastPourchase = value;
+                    var h = LastPurchaseWasDone;
+                    if( h != null ) h( this, EventArgs.Empty );
+                }
+                 
+            } 
         }
         public TaxationManager TaxationManager { get { return _taxe; } }
     }

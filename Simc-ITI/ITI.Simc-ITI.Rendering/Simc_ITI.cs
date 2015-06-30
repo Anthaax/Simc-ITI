@@ -43,7 +43,7 @@ namespace ITI.Simc_ITI.Rendering
         private void InitiallizeTimer()
         {
             _timer = new Timer();
-            _timer.Interval = 30000;
+            _timer.Interval = 10000;
             _timer.Enabled = true;
             _timer.Tick += UpdateGame;
             _timer.Start();
@@ -60,11 +60,13 @@ namespace ITI.Simc_ITI.Rendering
         }
         private void UpdateGame( object sender, EventArgs e )
         {
+            int update = 0;
             IEnumerable<IInfrastructureForBox> infra = _game.Map.GetAllInfrastucture<IInfrastructureForBox>();
             foreach( var infrastructure in infra )
             {
-                infrastructure.Update();
+                update += infrastructure.Update();
             }
+            _game.MoneyManager.LastPurchase = update;
             _viewPortControl.Invalidate();
         }
         private void MoveOnTheMap( object sender, KeyEventArgs e )

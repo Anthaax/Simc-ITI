@@ -43,7 +43,7 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnDestroy()
         {
-            _bmp.Dispose();
+            _bmp = null;
         }
         public override void OnCreatedAround( Box b )
         {
@@ -72,8 +72,8 @@ namespace ITI.Simc_ITI.Build
             int _firerate;
             int cDistance = Math.Abs( Box.Column - b.Column );
             int lDistance = Math.Abs( Box.Line - b.Line );
-            if( cDistance < 5 && lDistance < 5 ) _firerate = 5;
-            else _firerate = 3;
+            if( cDistance < 5 && lDistance < 5 ) _firerate = 70;
+            else _firerate = 60;
             return _firerate;
         }
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }

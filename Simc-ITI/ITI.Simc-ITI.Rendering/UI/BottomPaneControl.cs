@@ -32,6 +32,7 @@ namespace ITI.Simc_ITI.Rendering
         {
             MyMoney.Text = " Mon Argent : " + _game.MoneyManager.ActualMoney.ToString();
             _game.MoneyManager.ActualMoneyChanged += label_MonArgent_text;
+            _game.MoneyManager.LastPurchaseWasDone += ( s, e ) => LastPurchaseChange();
         }
         public void SetTimer(Timer t)
         {
@@ -127,6 +128,19 @@ namespace ITI.Simc_ITI.Rendering
         private void label_MonArgent_text( object sender, EventArgs e )
         {
             MyMoney.Text =" Mon Argent :" + _game.MoneyManager.ActualMoney.ToString();
+        }
+        private void LastPurchaseChange()
+        {
+            if( _game.MoneyManager.LastPurchase < 0 )
+            {
+                LastPurchase.Text = _game.MoneyManager.LastPurchase.ToString();
+                LastPurchase.ForeColor = Color.Red;
+            }
+            else
+            {
+                LastPurchase.Text = " + " + _game.MoneyManager.LastPurchase.ToString();
+                LastPurchase.ForeColor = Color.Green;
+            }
         }
         private void Button_Destroy_Click( object sender, EventArgs e )
         {

@@ -31,7 +31,7 @@ namespace ITI.Simc_ITI.Build
         int _costPerMonth;
         int _happynessImpact;
         bool _health = true;
-        int _fireChance = 5;
+        int _fireChance = 75;
         bool _isBurning = false;
         [field: NonSerialized]
         Bitmap _bmp;
@@ -53,7 +53,7 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnDestroy()
         {
-            _bmp.Dispose();
+            _bmp = null;
         }
         public override void OnCreatedAround( Box b )
         {

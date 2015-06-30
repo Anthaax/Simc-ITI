@@ -21,9 +21,19 @@ namespace ITI.Simc_ITI.Rendering
         public event EventHandler GameHasBeenCreated;
         private void NewGame_button_Click(object sender, EventArgs e)
         {
-            _game = GameContext.CreateNewGame();
-            var h = GameHasBeenCreated;
-            if( h != null ) h( this, EventArgs.Empty );
+            string path = @"D:\Documents\Simc_ITI Sauvergardes\NewGame.txt";
+            GameContext.LoadResult _load = GameContext.LoadGame( path );
+            if( _load.LoadedGame != null )
+            {
+                _game = _load.LoadedGame;
+                _game.MoneyManager.ActualMoney = 4000;
+;                foreach( var boxes in _game.Map.Boxes )
+                {
+                    boxes.PenColor = new Pen( Color.DimGray );
+                }
+            }
+            var j = GameHasBeenCreated;
+            if( j != null ) j( this, EventArgs.Empty );
         }
 
         private void LoadGame_button_Click(object sender, EventArgs e)

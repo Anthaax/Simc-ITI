@@ -31,7 +31,7 @@ namespace ITI.Simc_ITI.Build
         public PoliceStation(Box b, PoliceStationType info)
             : base(b, info)
         {
-            _bmp = b.Map.BitmapCache.Get("PoliceStation.bmp");
+            _bmp = b.Map.BitmapCache.Get("Police.bmp");
             _costPerMonth = info.CostPerMonth;
             CheckAllNearBoxes();
 
@@ -44,7 +44,7 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnDestroy()
         {
-            _bmp.Dispose();
+            _bmp = null;
         }
         public override void OnCreatedAround(Box b)
         {
@@ -56,7 +56,7 @@ namespace ITI.Simc_ITI.Build
         }
         public override void ChargeBitMap()
         {
-            _bmp = Box.Map.BitmapCache.Get( "PoliceStation.bmp" );
+            _bmp = Box.Map.BitmapCache.Get( "Police.bmp" );
         }
         public void CheckAllNearBoxes()
         {

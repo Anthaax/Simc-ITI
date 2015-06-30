@@ -43,7 +43,7 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnDestroy()
         {
-            _bmp.Dispose();
+            _bmp = null;
         }
         public override void OnCreatedAround( Box b )
         {
