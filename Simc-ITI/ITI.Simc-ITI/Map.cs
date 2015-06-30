@@ -4,21 +4,22 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ITI.Simc_ITI.Money.Lib;
 using System.Diagnostics;
 
 namespace ITI.Simc_ITI
 {
+    [Serializable]
     public class Map
     {
         readonly Box[,] _boxes;
         readonly int _boxCount;
         readonly int _boxWidth;
         readonly int _mapWidth;
-        readonly  MyMoney _myMoney;
+        readonly BitmapCache _bmpCache;
 
         public Map(int boxWidthInMeter, int boxCount)
         {
+            _bmpCache = new BitmapCache();
             _boxes = new Box[boxCount, boxCount];
             for (int j = 0; j < boxCount; ++j)
             {
@@ -30,12 +31,6 @@ namespace ITI.Simc_ITI
             _boxCount = boxCount;
             _boxWidth = boxWidthInMeter * 100;
             _mapWidth = _boxCount * _boxWidth;
-            _myMoney = new MyMoney();
-        }
-
-        public MyMoney Money
-        {
-            get { return _myMoney; }
         }
 
         /// <summary>
@@ -132,5 +127,8 @@ namespace ITI.Simc_ITI
         {
             return _boxes.Cast<Box>().Select( b => b.Infrasructure ).OfType<T>();
         }
+
+        public BitmapCache BitmapCache
+        { get { return _bmpCache; } }
     }
 }

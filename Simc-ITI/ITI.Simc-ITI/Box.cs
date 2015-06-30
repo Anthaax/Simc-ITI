@@ -6,12 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI
-{
+{ [Serializable]
     public class Box
     {
+        [field: NonSerialized]
         Graphics g, screeng;
+        [field: NonSerialized]
+        Pen _p = new Pen( Color.DimGray );
         readonly Map _map;
-        static readonly Bitmap _defaultBmp = new Bitmap( "C:/dev/Textures/Terre.bmp" );
         readonly int _line;
         readonly int _column;
         IInfrastructureForBox Infrastructure;
@@ -40,16 +42,18 @@ namespace ITI.Simc_ITI
                 return new Rectangle( _column*sz, _line*sz, sz, sz );
             }
         }
-
-        static Pen p = new Pen( Color.DarkGreen, 1.0f );
-
+        public Pen PenColor
+        {
+            get { return _p; }
+            set { _p = value; }
+        }
         public virtual void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-            if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor );
+            if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor, _p );
             else
             {
-                g.DrawImage( _defaultBmp, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
-                g.DrawRectangle( Pens.DarkGreen, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
+                g.DrawImage( Map.BitmapCache.Get("Terre.bmp"), new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
+                g.DrawRectangle( _p, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
             }
         }
         public IInfrastructureForBox Infrasructure

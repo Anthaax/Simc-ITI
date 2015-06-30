@@ -26,34 +26,59 @@ namespace ITI.Simc_ITI.Build
         {
             RoadCreationConfig cfg = new RoadCreationConfig();
 
-            if( v1.Checked )
+            if (v1.Checked)
             {
                 RoadOrientation type = (RoadOrientation)1;
                 cfg.Orientation = type;
             }
-            if( v2.Checked )
+            if (v2.Checked)
             {
                 RoadOrientation type = (RoadOrientation)2;
                 cfg.Orientation = type;
             }
-            if( v3.Checked )
+            if (v3.Checked)
             {
                 RoadOrientation type = (RoadOrientation)3;
                 cfg.Orientation = type;
             }
-            if( v4.Checked )
+            if (v4.Checked)
             {
                 RoadOrientation type = (RoadOrientation)4;
                 cfg.Orientation = type;
             }
-            if( v5.Checked )
+            if (v5.Checked)
             {
                 RoadOrientation type = (RoadOrientation)5;
                 cfg.Orientation = type;
             }
-            if( v6.Checked )
+            if (v6.Checked)
             {
                 RoadOrientation type = (RoadOrientation)6;
+                cfg.Orientation = type;
+            }
+            if (v7.Checked)
+            {
+                RoadOrientation type = (RoadOrientation)7;
+                cfg.Orientation = type;
+            }
+            if (v8.Checked)
+            {
+                RoadOrientation type = (RoadOrientation)8;
+                cfg.Orientation = type;
+            }
+            if (v9.Checked)
+            {
+                RoadOrientation type = (RoadOrientation)9;
+                cfg.Orientation = type;
+            }
+            if (v10.Checked)
+            {
+                RoadOrientation type = (RoadOrientation)10;
+                cfg.Orientation = type;
+            }
+            if (v11.Checked)
+            {
+                RoadOrientation type = (RoadOrientation)11;
                 cfg.Orientation = type;
             }
             this.Close();

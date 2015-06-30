@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI.Build
 {
-    public interface IHappynessImpact
+    public interface IFire
     {
-        int HappynessImpact(Box b);
+        int FireChanceImpact( Box b );
     }
 }

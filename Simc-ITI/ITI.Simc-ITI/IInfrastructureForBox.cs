@@ -10,11 +10,13 @@ namespace ITI.Simc_ITI
     public interface IInfrastructureForBox
     {
         IInfrastructureType Type { get; }
-        void Draw( Graphics g, Rectangle rectSource, float scaleFactor );
+        void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor );
         void Destroy();
         void OnCreatedAround( Box b );
+        event EventHandler Destoyed;
         void OnDestroyingAround( Box b );
-        void Update();
+        int Update();
+        void ChargeBitMap();
         
     }
 }
