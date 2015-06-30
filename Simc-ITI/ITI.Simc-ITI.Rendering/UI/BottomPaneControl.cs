@@ -88,7 +88,7 @@ namespace ITI.Simc_ITI.Rendering
             _xBox = xbox;
             _yBox = ybox;
             AllTextOrButtonInvisible();
-            if( _game.Map.Boxes[_xBox, _yBox].Infrasructure != null )
+            if( _game.Map.Boxes[_xBox, _yBox].Infrasructure != null)
             {
                 Kind_Building.Visible = true;
                 Kind_Building.Text = "Type du batiment : Une " + _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.Name + ".";
