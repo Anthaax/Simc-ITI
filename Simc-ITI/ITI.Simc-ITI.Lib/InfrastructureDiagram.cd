@@ -40,8 +40,8 @@
       <Property Name="AllTypes" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="ITI.Simc_ITI.Build.EcoleType">
-    <Position X="0.5" Y="4.75" Width="2" />
+  <Class Name="ITI.Simc_ITI.Build.SchoolType">
+    <Position X="0.5" Y="4.5" Width="2" />
     <Members>
       <Field Name="_costPerMonth" Hidden="true" />
       <Field Name="_happynessImpactMax" Hidden="true" />
@@ -52,29 +52,13 @@
         <Point X="4.625" Y="4.045" />
         <Point X="4.625" Y="4.375" />
         <Point X="1.583" Y="4.375" />
-        <Point X="1.583" Y="4.75" />
+        <Point X="1.583" Y="4.5" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAgAEEAAAAAIAAADA=</HashCode>
-      <FileName>Infrastructures\Ecole.cs</FileName>
+      <FileName>Infrastructures\School.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Class Name="ITI.Simc_ITI.Build.Ecole">
-    <Position X="13.5" Y="6" Width="2" />
-    <Members>
-      <Field Name="_actualCapacity" Hidden="true" />
-      <Field Name="_bmp" Hidden="true" />
-      <Field Name="_costPerMonth" Hidden="true" />
-      <Field Name="_happynessImpact" Hidden="true" />
-      <Field Name="_health" Hidden="true" />
-      <Field Name="_maxCapacity" Hidden="true" />
-    </Members>
-    <TypeIdentifier>
-      <HashCode>AAABSAgIAAEAAgIABAAAAAAAAAAAgAUAACAAAIAgAAA=</HashCode>
-      <FileName>Infrastructures\Ecole.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Orientation="Right" Position="0.1" />
   </Class>
   <Class Name="ITI.Simc_ITI.Build.Infrastructure">
     <Position X="6.5" Y="0.5" Width="2.25" />
@@ -100,37 +84,38 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="ITI.Simc_ITI.Build.CentraleElectriqueType">
-    <Position X="2.75" Y="4.75" Width="2" />
+  <Class Name="ITI.Simc_ITI.Build.PoliceStationType">
+    <Position X="5" Y="9.25" Width="2" />
     <Members>
       <Field Name="_costPerMonth" Hidden="true" />
     </Members>
-    <InheritanceLine Type="ITI.Simc_ITI.Build.InfrastructureType" FixedFromPoint="true">
+    <InheritanceLine Type="ITI.Simc_ITI.Build.InfrastructureType" ManuallyRouted="true" FixedFromPoint="true">
       <Path>
         <Point X="4.625" Y="4.045" />
-        <Point X="4.625" Y="4.375" />
-        <Point X="3.75" Y="4.375" />
-        <Point X="3.75" Y="4.75" />
+        <Point X="4.625" Y="4.372" />
+        <Point X="4.898" Y="4.372" />
+        <Point X="4.898" Y="10.188" />
+        <Point X="5" Y="10.188" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAEAAAAAAAAACA=</HashCode>
-      <FileName>Infrastructures\CentraleElectrique.cs</FileName>
+      <FileName>Infrastructures\PoliceStation.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ITI.Simc_ITI.Build.CentraleElectrique">
-    <Position X="10.25" Y="6" Width="2" />
+  <Class Name="ITI.Simc_ITI.Build.PowerStation">
+    <Position X="11" Y="6" Width="2" />
     <Members>
       <Field Name="_bmp" Hidden="true" />
       <Field Name="_costPerMonth" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAABAAAIAAAAAgIAAAAAAAAAAAAAAAUAACAAAIAAAAA=</HashCode>
-      <FileName>Infrastructures\CentraleElectrique.cs</FileName>
+      <HashCode>AAABAAAIAAAAAgIAAAAAAAAAAAAAAAUAICAAAIAAAAA=</HashCode>
+      <FileName>Infrastructures\PowerStation.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Right" Position="0.1" />
   </Class>
-  <Class Name="ITI.Simc_ITI.Build.CommerceType">
+  <Class Name="ITI.Simc_ITI.Build.RetailType">
     <Position X="5" Y="4.75" Width="2" />
     <Members>
       <Field Name="_happyness" Hidden="true" />
@@ -149,22 +134,24 @@
       <FileName>Infrastructures\Commerce.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="ITI.Simc_ITI.Build.Commerce">
-    <Position X="7.25" Y="6" Width="1.75" />
+  <Class Name="ITI.Simc_ITI.Build.Retail">
+    <Position X="8" Y="6" Width="1.75" />
     <Members>
       <Field Name="_bmp" Hidden="true" />
+      <Field Name="_fireChance" Hidden="true" />
       <Field Name="_hapyness" Hidden="true" />
+      <Field Name="_isBurning" Hidden="true" />
       <Field Name="_salary" Hidden="true" />
       <Field Name="_taxation" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAFQCAIIAAAAgAABAAAAEAAAAAAAAEAACAAAIQAAAA=</HashCode>
+      <HashCode>AAAFQCAIIAAEAgCAhAAAAEAAAAAAIAEAICAAAIQAAAA=</HashCode>
       <FileName>Infrastructures\Commerce.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Right" Position="0.144" />
   </Class>
   <Class Name="ITI.Simc_ITI.Build.HabitationType">
-    <Position X="4.75" Y="7.25" Width="2" />
+    <Position X="5" Y="7.25" Width="2" />
     <Members>
       <Field Name="_happyness" Hidden="true" />
     </Members>
@@ -174,8 +161,8 @@
         <Point X="4.625" Y="4.375" />
         <Point X="4.898" Y="4.375" />
         <Point X="4.898" Y="7.01" />
-        <Point X="5.875" Y="7.01" />
-        <Point X="5.875" Y="7.25" />
+        <Point X="6.125" Y="7.01" />
+        <Point X="6.125" Y="7.25" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -184,29 +171,31 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ITI.Simc_ITI.Build.Habitation">
-    <Position X="16.75" Y="6" Width="2" />
+    <Position X="17.75" Y="6" Width="2" />
     <Members>
       <Field Name="_bmp" Hidden="true" />
+      <Field Name="_fireChance" Hidden="true" />
       <Field Name="_hapyness" Hidden="true" />
+      <Field Name="_isBurning" Hidden="true" />
+      <Field Name="_isSteal" Hidden="true" />
       <Field Name="_salary" Hidden="true" />
+      <Field Name="_stealChance" Hidden="true" />
       <Field Name="_taxation" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAFQCAIIAAAAgAABAAAAEAAAAAAAAAAACAAAIQAAAA=</HashCode>
+      <HashCode>BBAFQKAIIAAEAgCAhAABAEAAAAAAIAAAICAAAIQAAAA=</HashCode>
       <FileName>Infrastructures\Habitation.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Right" Position="0.207" />
   </Class>
   <Class Name="ITI.Simc_ITI.Build.RoadType">
-    <Position X="2.25" Y="7.25" Width="2" />
-    <InheritanceLine Type="ITI.Simc_ITI.Build.InfrastructureType" FixedFromPoint="true">
+    <Position X="0.5" Y="7.25" Width="2" />
+    <InheritanceLine Type="ITI.Simc_ITI.Build.InfrastructureType" ManuallyRouted="true" FixedFromPoint="true">
       <Path>
         <Point X="4.625" Y="4.045" />
-        <Point X="4.625" Y="4.375" />
-        <Point X="2.7" Y="4.375" />
-        <Point X="2.7" Y="6.95" />
-        <Point X="3.25" Y="6.95" />
-        <Point X="3.25" Y="7.25" />
+        <Point X="4.625" Y="6.929" />
+        <Point X="1.5" Y="6.929" />
+        <Point X="1.5" Y="7.25" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -215,29 +204,184 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ITI.Simc_ITI.Build.Road">
-    <Position X="19.75" Y="6.25" Width="2" />
+    <Position X="20.75" Y="6" Width="2" />
     <Members>
       <Field Name="_bmp" Hidden="true" />
       <Field Name="_name" Hidden="true" />
+      <Field Name="_orientation" Hidden="true" />
     </Members>
-    <InheritanceLine Type="ITI.Simc_ITI.Build.Infrastructure" ManuallyRouted="true">
-      <Path>
-        <Point X="7.625" Y="4.238" />
-        <Point X="7.625" Y="5.66" />
-        <Point X="20.75" Y="5.66" />
-        <Point X="20.75" Y="6.25" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAABIAAIAAAAAgAAAAAAAAAAAAAAAAAAASAAAIAAAAA=</HashCode>
+      <HashCode>AAABIAAIAAAAIgAAAAAAAAAAAAAAAAAAISAAAIAAAAA=</HashCode>
       <FileName>Infrastructures\Road.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="ITI.Simc_ITI.Build.IPublic">
+  <Class Name="ITI.Simc_ITI.Build.FactoryType">
+    <Position X="2.75" Y="7.25" Width="2" />
+    <Members>
+      <Field Name="_happyness" Hidden="true" />
+    </Members>
+    <InheritanceLine Type="ITI.Simc_ITI.Build.InfrastructureType" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.625" Y="4.045" />
+        <Point X="4.625" Y="7.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAABAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructures\Factory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.Factory">
+    <Position X="14.25" Y="6" Width="2" />
+    <Members>
+      <Field Name="_bmp" Hidden="true" />
+      <Field Name="_fireChance" Hidden="true" />
+      <Field Name="_hapyness" Hidden="true" />
+      <Field Name="_isBurning" Hidden="true" />
+      <Field Name="_salary" Hidden="true" />
+      <Field Name="_taxation" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAFACAIIAAEAgCAgAAAAEAAAAAAIAEAICAAAIQAAAA=</HashCode>
+      <FileName>Infrastructures\Factory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Right" Position="0.1" />
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.FireStationType">
+    <Position X="0.5" Y="9" Width="2" />
+    <Members>
+      <Field Name="_costPerMonth" Hidden="true" />
+    </Members>
+    <InheritanceLine Type="ITI.Simc_ITI.Build.InfrastructureType" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="4.625" Y="4.045" />
+        <Point X="4.625" Y="4.148" />
+        <Point X="4.624" Y="4.148" />
+        <Point X="4.624" Y="4.356" />
+        <Point X="0.372" Y="4.356" />
+        <Point X="0.372" Y="8.808" />
+        <Point X="1.5" Y="8.808" />
+        <Point X="1.5" Y="9" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAEAAAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Infrastructures\FireStation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.FireStation">
+    <Position X="23.25" Y="6" Width="2" />
+    <Members>
+      <Field Name="_bmp" Hidden="true" />
+      <Field Name="_costPerMonth" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAJQAAIAAAAAgIAAAAAAAAAAAAAAAQAICAAAIAAAAA=</HashCode>
+      <FileName>Infrastructures\FireStation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Right" Position="0.1" />
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.HospitalType">
+    <Position X="2.75" Y="9.25" Width="2" />
+    <Members>
+      <Field Name="_costPerMonth" Hidden="true" />
+      <Field Name="_happynessImpactMax" Hidden="true" />
+    </Members>
+    <InheritanceLine Type="ITI.Simc_ITI.Build.InfrastructureType" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="4.625" Y="4.045" />
+        <Point X="4.625" Y="4.385" />
+        <Point X="4.898" Y="4.385" />
+        <Point X="4.898" Y="10.285" />
+        <Point X="4.75" Y="10.285" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAEEAAAAAAAAADA=</HashCode>
+      <FileName>Infrastructures\Hospital.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.Hospital">
+    <Position X="29.5" Y="6" Width="2" />
+    <Members>
+      <Field Name="_bmp" Hidden="true" />
+      <Field Name="_costPerMonth" Hidden="true" />
+      <Field Name="_fireChance" Hidden="true" />
+      <Field Name="_happynessImpact" Hidden="true" />
+      <Field Name="_health" Hidden="true" />
+      <Field Name="_isBurning" Hidden="true" />
+    </Members>
+    <InheritanceLine Type="ITI.Simc_ITI.Build.Infrastructure" ManuallyRouted="true">
+      <Path>
+        <Point X="7.625" Y="4.43" />
+        <Point X="7.625" Y="5.641" />
+        <Point X="30.5" Y="5.641" />
+        <Point X="30.5" Y="6" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAABSAgIAAEEAgKAgAAAAAAAAAAAIAUAICAAAIAAAAA=</HashCode>
+      <FileName>Infrastructures\Hospital.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Right" Position="0.1" />
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.PoliceStation">
+    <Position X="26.5" Y="6" Width="2" />
+    <Members>
+      <Field Name="_bmp" Hidden="true" />
+      <Field Name="_costPerMonth" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAABQAAIAAAAAgIAAAAAAAAAAAAAAAQAKCAAAIAAAAA=</HashCode>
+      <FileName>Infrastructures\PoliceStation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Right" Position="0.1" />
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.PowerStationType">
+    <Position X="2.5" Y="4.5" Width="2" />
+    <Members>
+      <Field Name="_costPerMonth" Hidden="true" />
+    </Members>
+    <InheritanceLine Type="ITI.Simc_ITI.Build.InfrastructureType" FixedFromPoint="true">
+      <Path>
+        <Point X="4.625" Y="4.045" />
+        <Point X="4.625" Y="4.356" />
+        <Point X="3.5" Y="4.356" />
+        <Point X="3.5" Y="4.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAEAAAAAAAAACA=</HashCode>
+      <FileName>Infrastructures\PowerStation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.WaterCentralType">
+    <Position X="0.5" Y="11.25" Width="2" />
+    <Members>
+      <Field Name="_costPerMonth" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAEAAAAAAAAACA=</HashCode>
+      <FileName>Infrastructures\WaterCentral.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.WaterCentral">
+    <Position X="33" Y="6" Width="2" />
+    <Members>
+      <Field Name="_bmp" Hidden="true" />
+      <Field Name="_costPerMonth" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAABAAAIAAAAAgIAAAAAAAAAAAAAAAUAICAAAIAAAAA=</HashCode>
+      <FileName>Infrastructures\WaterCentral.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Right" Position="0.131" />
+  </Class>
+  <Interface Name="ITI.Simc_ITI.Build.IPulicBuilding">
     <Position X="12.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
-      <FileName>IPublic.cs</FileName>
+      <FileName>IPulicBuilding.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="ITI.Simc_ITI.Build.IHappyness">
@@ -259,6 +403,34 @@
     <TypeIdentifier>
       <HashCode>AAAAACAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ITaxation.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ITI.Simc_ITI.Build.IBurn">
+    <Position X="16" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>IBurn.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ITI.Simc_ITI.Build.IFire">
+    <Position X="17.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IFire.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ITI.Simc_ITI.Build.IHealth">
+    <Position X="19.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IHealth.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ITI.Simc_ITI.Build.ISteal">
+    <Position X="21.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>ISteal.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
