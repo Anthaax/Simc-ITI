@@ -37,6 +37,7 @@
             this.Usine_Button = new System.Windows.Forms.Button();
             this.fireStation_button = new System.Windows.Forms.Button();
             this.Police = new System.Windows.Forms.Button();
+            this.HospitalButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Build_Road
@@ -57,7 +58,7 @@
             // 
             this.Centrale_electrique.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Centrale_electrique.Location = new System.Drawing.Point(3, 30);
+            this.Centrale_electrique.Location = new System.Drawing.Point(3, 45);
             this.Centrale_electrique.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Centrale_electrique.Name = "Centrale_electrique";
             this.Centrale_electrique.Size = new System.Drawing.Size(109, 23);
@@ -71,7 +72,7 @@
             // 
             this.School_Button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.School_Button.Location = new System.Drawing.Point(3, 112);
+            this.School_Button.Location = new System.Drawing.Point(3, 184);
             this.School_Button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.School_Button.Name = "School_Button";
             this.School_Button.Size = new System.Drawing.Size(109, 23);
@@ -85,7 +86,7 @@
             // 
             this.HabitationBuild.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.HabitationBuild.Location = new System.Drawing.Point(3, 313);
+            this.HabitationBuild.Location = new System.Drawing.Point(3, 427);
             this.HabitationBuild.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HabitationBuild.Name = "HabitationBuild";
             this.HabitationBuild.Size = new System.Drawing.Size(109, 23);
@@ -99,7 +100,7 @@
             // 
             this.Water_Central.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Water_Central.Location = new System.Drawing.Point(3, 57);
+            this.Water_Central.Location = new System.Drawing.Point(3, 97);
             this.Water_Central.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Water_Central.Name = "Water_Central";
             this.Water_Central.Size = new System.Drawing.Size(109, 23);
@@ -113,7 +114,7 @@
             // 
             this.Commerce.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Commerce.Location = new System.Drawing.Point(3, 340);
+            this.Commerce.Location = new System.Drawing.Point(3, 471);
             this.Commerce.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Commerce.Name = "Commerce";
             this.Commerce.Size = new System.Drawing.Size(109, 23);
@@ -127,24 +128,23 @@
             // 
             this.Usine_Button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Usine_Button.Location = new System.Drawing.Point(4, 452);
+            this.Usine_Button.Location = new System.Drawing.Point(3, 517);
             this.Usine_Button.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Usine_Button.Name = "Usine_Button";
-            this.Usine_Button.Size = new System.Drawing.Size(145, 28);
+            this.Usine_Button.Size = new System.Drawing.Size(109, 23);
             this.Usine_Button.TabIndex = 15;
             this.Usine_Button.Text = "Usine";
             this.Usine_Button.UseVisualStyleBackColor = true;
-            this.Usine_Button.Visible = false;
             this.Usine_Button.Click += new System.EventHandler(this.Usine_Click);
             // 
             // fireStation_button
             // 
             this.fireStation_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.fireStation_button.Location = new System.Drawing.Point(3, 174);
+            this.fireStation_button.Location = new System.Drawing.Point(3, 237);
             this.fireStation_button.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.fireStation_button.Name = "fireStation_button";
-            this.fireStation_button.Size = new System.Drawing.Size(109, 28);
+            this.fireStation_button.Size = new System.Drawing.Size(109, 23);
             this.fireStation_button.TabIndex = 16;
             this.fireStation_button.Text = "Pompier";
             this.fireStation_button.UseVisualStyleBackColor = true;
@@ -155,21 +155,36 @@
             // 
             this.Police.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Police.Location = new System.Drawing.Point(3, 207);
+            this.Police.Location = new System.Drawing.Point(3, 287);
             this.Police.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Police.Name = "Police";
-            this.Police.Size = new System.Drawing.Size(109, 28);
+            this.Police.Size = new System.Drawing.Size(109, 23);
             this.Police.TabIndex = 17;
             this.Police.Text = "Police";
             this.Police.UseVisualStyleBackColor = true;
             this.Police.Visible = false;
             this.Police.Click += new System.EventHandler(this.Police_Click);
             // 
+            // HospitalButton
+            // 
+            this.HospitalButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HospitalButton.Location = new System.Drawing.Point(3, 343);
+            this.HospitalButton.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.HospitalButton.Name = "HospitalButton";
+            this.HospitalButton.Size = new System.Drawing.Size(109, 23);
+            this.HospitalButton.TabIndex = 18;
+            this.HospitalButton.Text = "Hôpital";
+            this.HospitalButton.UseVisualStyleBackColor = true;
+            this.HospitalButton.Visible = false;
+            this.HospitalButton.Click += new System.EventHandler(this.Hospital_Click);
+            // 
             // LeftPaneControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Controls.Add(this.HospitalButton);
             this.Controls.Add(this.Police);
             this.Controls.Add(this.fireStation_button);
             this.Controls.Add(this.Usine_Button);
@@ -181,7 +196,7 @@
             this.Controls.Add(this.Build_Road);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "LeftPaneControl";
-            this.Size = new System.Drawing.Size(115, 396);
+            this.Size = new System.Drawing.Size(115, 555);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveOnTheMap);
             this.ResumeLayout(false);
 
@@ -198,5 +213,6 @@
         private System.Windows.Forms.Button Usine_Button;
         private System.Windows.Forms.Button fireStation_button;
         private System.Windows.Forms.Button Police;
+        private System.Windows.Forms.Button HospitalButton;
     }
 }

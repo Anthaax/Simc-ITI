@@ -38,7 +38,7 @@ namespace ITI.Simc_ITI.Build
         public Hospital(Box b, HospitalType info)
             :base(b, info)
         {
-            _bmp = b.Map.BitmapCache.Get( "Hospital.bmp" );
+            _bmp = b.Map.BitmapCache.Get( "Hopital.bmp" );
             _costPerMonth = info.CostPerMonth;
             _happynessImpact = info.HappynessImpact;
             CheckAllNearBoxes();

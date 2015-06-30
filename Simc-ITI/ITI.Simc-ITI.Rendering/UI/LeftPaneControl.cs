@@ -41,6 +41,7 @@ namespace ITI.Simc_ITI.Rendering
             Usine_Button.Visible = false;
             fireStation_button.Visible = false;
             Police.Visible = false;
+            HospitalButton.Visible = false;
         }
         private void BuildingConstructionVisible()
         {
@@ -51,6 +52,7 @@ namespace ITI.Simc_ITI.Rendering
             Usine_Button.Visible = true;
             fireStation_button.Visible = true;
             Police.Visible = true;
+            HospitalButton.Visible = true;
         }
         private void CentraleConstructionVisibile()
         {
@@ -118,6 +120,12 @@ namespace ITI.Simc_ITI.Rendering
         private void FireStation_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Pompier" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
+            _mainViewportControl.Invalidate();
+            AllButtonInvisible();
+        }
+        private void Hospital_Click( object sender, EventArgs e )
+        {
+            _game.InfrastructureManager.Find( "Hopital" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
