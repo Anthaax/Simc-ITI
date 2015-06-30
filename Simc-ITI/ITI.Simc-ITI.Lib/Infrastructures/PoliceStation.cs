@@ -23,12 +23,11 @@ namespace ITI.Simc_ITI.Build
         public int CostPerMonth { get { return _costPerMonth; } }
     }
     [Serializable]
-    public class PoliceStation : Infrastructure, IHappynessImpact, IPulicBuilding
+    public class PoliceStation : Infrastructure, IPulicBuilding
     {
         [field: NonSerialized]
         Bitmap _bmp;
         int _costPerMonth; 
-        bool _health = true;
         public PoliceStation(Box b, PoliceStationType info)
             : base(b, info)
         {
@@ -73,22 +72,14 @@ namespace ITI.Simc_ITI.Build
                 }
             }
         }
-        public int HappynessImpact(Box b)
+        public int StealChanceImpact(Box b)
         {
-            int happyness;
+            int _stealrate;
             int cDistance = Math.Abs(Box.Column - b.Column);
             int lDistance = Math.Abs(Box.Line - b.Line);
-            if (_health == true)
-            {
-                if (cDistance < 5 && lDistance < 5) happyness = 5;
-                else if (cDistance < 10 && lDistance < 10) happyness = 2;
-                else happyness = 1;
-            }
-            else
-            {
-                happyness = 0;
-            }
-            return happyness;
+            if (cDistance < 5 && lDistance < 5) _stealrate = 5;
+            else _stealrate = 3;
+            return _stealrate;
         }
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
     }

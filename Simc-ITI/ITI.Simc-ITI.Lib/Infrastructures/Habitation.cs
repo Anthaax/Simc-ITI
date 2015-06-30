@@ -31,6 +31,7 @@ namespace ITI.Simc_ITI.Build
         int _fireChance = 5;
         bool _isBurning = false;
         int _stealChance = 5;
+        bool _isSteal = false;
         [field: NonSerialized]
         Bitmap _bmp;
 
@@ -42,6 +43,7 @@ namespace ITI.Simc_ITI.Build
             _hapyness = info.Happyness;
             CheckAllNearBoxes();
             IsOnFire += ( s, e ) => ChargeBitMap();
+            IsSteal += (s, e) => ChargeBitMap();
 
         }
 
@@ -98,6 +100,8 @@ namespace ITI.Simc_ITI.Build
         public int Salary { get { return _salary; } }
         [field: NonSerialized]
         public event EventHandler IsOnFire;
+        public event EventHandler IsSteal;
+        public bool IsStolen { get { return _isSteal; } }
         public bool IsBurnig { get { return _isBurning; } 
             set 
             {
@@ -106,7 +110,13 @@ namespace ITI.Simc_ITI.Build
                     _isBurning = value;
                     var h = IsOnFire;
                     if( h != null ) h( this, EventArgs.Empty );
-                } 
+                }
+                else if( _isSteal != value )
+                {
+                    _isSteal = value;
+                    var h = IsSteal;
+                    if (h != null) h(this, EventArgs.Empty);
+                }
             } 
         }
         
