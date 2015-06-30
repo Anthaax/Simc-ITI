@@ -64,10 +64,10 @@ namespace ITI.Simc_ITI.Build
             if( BurningBuilding != null )
             {
                 Random r = new Random();
-                if( BurningBuilding.IsBurnig == true ) this.Destroy();
+                if( BurningBuilding.IsBurning == true ) this.Destroy();
                 else if( r.Next( 1 ) <= BurningBuilding.FireChance )
                 {
-                    BurningBuilding.IsBurnig = true;
+                    BurningBuilding.IsBurning = true;
                 }
             }
         }
