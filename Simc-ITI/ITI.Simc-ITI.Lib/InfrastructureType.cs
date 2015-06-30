@@ -53,10 +53,15 @@ namespace ITI.Simc_ITI.Build
             {
                 if( box.Infrasructure != null )
                 {
-                    if( box.Infrasructure.Type.Name == "CentraleElectrique" || box.Infrasructure.Type.Name == "CentraleHydrolique" )
+                    if( box.Infrasructure.Type.Name == "CentraleHydrolique" )
+                    {
+                        if( indicator == 2 ) check = true;
+                        else indicator = 1;
+                    }
+                    if( box.Infrasructure.Type.Name == "CentraleElectrique" )
                     {
                         if( indicator == 1 ) check = true;
-                        else indicator = 1;
+                        else indicator = 2;
                     }
                 }
             }

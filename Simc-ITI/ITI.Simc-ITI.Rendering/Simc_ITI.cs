@@ -111,6 +111,8 @@ namespace ITI.Simc_ITI.Rendering
             int _mouseY = e.Y;
             _xBox = Math.Min( (_viewPortControl.ViewPort.Area.X / _game.Map.BoxWidth) + _mouseX / _boxInPixel, _game.Map.BoxCount );
             _yBox = Math.Min( (_viewPortControl.ViewPort.Area.Y / _game.Map.BoxWidth) + _mouseY / _boxInPixel, _game.Map.BoxCount );
+            if( _xBox >= 100 ) _xBox = 99;
+            if( _yBox >= 100 ) _yBox = 99;
             _bottomPaneControl.RenderingWithClickEvent( _xBox, _yBox );
             _leftPaneControl.PositionOfTheMouse( _xBox, _yBox );
             ColorSelectedBox();

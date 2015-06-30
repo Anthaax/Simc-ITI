@@ -109,8 +109,7 @@ namespace ITI.Simc_ITI.Build
 
         [field : NonSerialized]
         public event EventHandler IsOnFire;
-        
-        public bool IsBurnig
+        public bool IsBurning
         {
             get { return _isBurning; }
             set

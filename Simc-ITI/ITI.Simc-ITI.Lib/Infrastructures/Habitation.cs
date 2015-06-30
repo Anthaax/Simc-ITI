@@ -103,7 +103,7 @@ namespace ITI.Simc_ITI.Build
         [field: NonSerialized]
         public event EventHandler IsSteal;
         public bool IsStolen { get { return _isSteal; } }
-        public bool IsBurnig { get { return _isBurning; } 
+        public bool IsBurning { get { return _isBurning; } 
             set 
             {
                 if( _isBurning != value )

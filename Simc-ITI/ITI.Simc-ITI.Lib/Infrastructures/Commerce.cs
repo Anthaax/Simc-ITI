@@ -82,7 +82,7 @@ namespace ITI.Simc_ITI.Build
         public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
         [field: NonSerialized]
         public event EventHandler IsOnFire;
-        public bool IsBurnig
+        public bool IsBurning
         {
             get { return _isBurning; }
             set

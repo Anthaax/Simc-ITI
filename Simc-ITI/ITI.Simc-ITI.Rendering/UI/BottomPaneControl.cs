@@ -88,7 +88,7 @@ namespace ITI.Simc_ITI.Rendering
             _xBox = xbox;
             _yBox = ybox;
             AllTextOrButtonInvisible();
-            if( _game.Map.Boxes[_xBox, _yBox].Infrasructure != null )
+            if( _game.Map.Boxes[_xBox, _yBox].Infrasructure != null)
             {
                 Kind_Building.Visible = true;
                 Kind_Building.Text = "Type du batiment : Une " + _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.Name + ".";
@@ -100,7 +100,20 @@ namespace ITI.Simc_ITI.Rendering
                 IBurn BurningBuilding = _game.Map.Boxes[_xBox, _yBox].Infrasructure as IBurn;
                 if( BurningBuilding != null )
                 {
-                    if( BurningBuilding.IsBurnig == true ) Burn_button.Visible = true;
+                    if( BurningBuilding.IsBurning == true )
+                    {
+                        IEnumerable<Box> nearBox = _game.Map.Boxes[_xBox, _yBox].NearBoxes( _game.InfrastructureManager.Find( "Pompier" ).AreaEffect );
+                        foreach( var box in nearBox )
+                        {
+                            if( box.Infrasructure != null )
+                            {
+                                if( box.Infrasructure.Type.Name == "Pompier" )
+                                {
+                                    Burn_button.Visible = true;
+                                }
+                            }
+                        }
+                    }
                 }
             }
             Coordonnées.Visible = true;
@@ -128,7 +141,7 @@ namespace ITI.Simc_ITI.Rendering
             IBurn BurningBuilding = _game.Map.Boxes[_xBox, _yBox].Infrasructure as IBurn;
             if( BurningBuilding != null )
             {
-                BurningBuilding.IsBurnig = false;
+                BurningBuilding.IsBurning = false;
             }
             _mainViewportControl.Invalidate();
             AllTextOrButtonInvisible();
