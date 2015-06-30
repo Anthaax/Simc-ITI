@@ -40,6 +40,7 @@
             this.Burn_button = new System.Windows.Forms.Button();
             this.SaveGame = new System.Windows.Forms.Button();
             this.SaveLabel = new System.Windows.Forms.Label();
+            this.LastPurchase = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // rewind_button
@@ -82,7 +83,7 @@
             // 
             this.Coordonnées.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Coordonnées.AutoSize = true;
-            this.Coordonnées.Location = new System.Drawing.Point(364, 16);
+            this.Coordonnées.Location = new System.Drawing.Point(744, 16);
             this.Coordonnées.Name = "Coordonnées";
             this.Coordonnées.Size = new System.Drawing.Size(129, 17);
             this.Coordonnées.TabIndex = 14;
@@ -93,7 +94,7 @@
             // 
             this.Kind_Building.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Kind_Building.AutoSize = true;
-            this.Kind_Building.Location = new System.Drawing.Point(364, 43);
+            this.Kind_Building.Location = new System.Drawing.Point(744, 43);
             this.Kind_Building.Name = "Kind_Building";
             this.Kind_Building.Size = new System.Drawing.Size(48, 17);
             this.Kind_Building.TabIndex = 15;
@@ -102,10 +103,11 @@
             // 
             // Button_Destroy
             // 
-            this.Button_Destroy.Location = new System.Drawing.Point(513, 12);
+            this.Button_Destroy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button_Destroy.Location = new System.Drawing.Point(882, 88);
             this.Button_Destroy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Button_Destroy.Name = "Button_Destroy";
-            this.Button_Destroy.Size = new System.Drawing.Size(75, 23);
+            this.Button_Destroy.Size = new System.Drawing.Size(115, 23);
             this.Button_Destroy.TabIndex = 16;
             this.Button_Destroy.Text = "Détruire";
             this.Button_Destroy.UseVisualStyleBackColor = true;
@@ -117,7 +119,7 @@
             this.MyMoney.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MyMoney.AutoSize = true;
-            this.MyMoney.Location = new System.Drawing.Point(655, 12);
+            this.MyMoney.Location = new System.Drawing.Point(1050, 12);
             this.MyMoney.Name = "MyMoney";
             this.MyMoney.Size = new System.Drawing.Size(88, 17);
             this.MyMoney.TabIndex = 17;
@@ -128,7 +130,7 @@
             this.HumeurLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HumeurLabel.AutoSize = true;
-            this.HumeurLabel.Location = new System.Drawing.Point(655, 43);
+            this.HumeurLabel.Location = new System.Drawing.Point(1050, 43);
             this.HumeurLabel.Name = "HumeurLabel";
             this.HumeurLabel.Size = new System.Drawing.Size(66, 17);
             this.HumeurLabel.TabIndex = 19;
@@ -138,7 +140,7 @@
             // 
             this.MoneyGestionOpen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MoneyGestionOpen.Location = new System.Drawing.Point(658, 85);
+            this.MoneyGestionOpen.Location = new System.Drawing.Point(1053, 89);
             this.MoneyGestionOpen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MoneyGestionOpen.Name = "MoneyGestionOpen";
             this.MoneyGestionOpen.Size = new System.Drawing.Size(128, 23);
@@ -150,7 +152,7 @@
             // Burn_button
             // 
             this.Burn_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Burn_button.Location = new System.Drawing.Point(367, 88);
+            this.Burn_button.Location = new System.Drawing.Point(747, 88);
             this.Burn_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Burn_button.Name = "Burn_button";
             this.Burn_button.Size = new System.Drawing.Size(117, 23);
@@ -180,10 +182,21 @@
             this.SaveLabel.Text = "Votre partie à été sauvegardé";
             this.SaveLabel.Visible = false;
             // 
+            // LastPurchase
+            // 
+            this.LastPurchase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LastPurchase.AutoSize = true;
+            this.LastPurchase.Location = new System.Drawing.Point(1205, 12);
+            this.LastPurchase.Name = "LastPurchase";
+            this.LastPurchase.Size = new System.Drawing.Size(16, 17);
+            this.LastPurchase.TabIndex = 24;
+            this.LastPurchase.Text = "0";
+            // 
             // BottomPaneControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LastPurchase);
             this.Controls.Add(this.SaveLabel);
             this.Controls.Add(this.SaveGame);
             this.Controls.Add(this.Burn_button);
@@ -198,7 +211,7 @@
             this.Controls.Add(this.rewind_button);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BottomPaneControl";
-            this.Size = new System.Drawing.Size(840, 117);
+            this.Size = new System.Drawing.Size(1258, 117);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +231,6 @@
         private System.Windows.Forms.Button Burn_button;
         private System.Windows.Forms.Button SaveGame;
         private System.Windows.Forms.Label SaveLabel;
+        private System.Windows.Forms.Label LastPurchase;
     }
 }
