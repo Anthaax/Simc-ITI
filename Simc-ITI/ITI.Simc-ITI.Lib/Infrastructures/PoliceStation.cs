@@ -23,7 +23,7 @@ namespace ITI.Simc_ITI.Build
         public int CostPerMonth { get { return _costPerMonth; } }
     }
     [Serializable]
-    public class PoliceStation : Infrastructure, IPulicBuilding
+    public class PoliceStation : Infrastructure, IPulicBuilding, ISteal
     {
         [field: NonSerialized]
         Bitmap _bmp;
