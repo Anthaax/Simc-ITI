@@ -23,8 +23,11 @@ namespace ITI.Simc_ITI.Rendering
         public event EventHandler GameHasBeenCreated;
         private void NewGame_button_Click(object sender, EventArgs e)
         {
-            string path = @"D:\Documents\Simc_ITI Sauvergardes\NewGame.txt";
-            GameContext.LoadResult _load = GameContext.LoadGame( path );
+            var uri = new Uri( Assembly.GetExecutingAssembly().CodeBase );
+            string localPath = uri.LocalPath;
+            string rootPath = Path.Combine( Path.GetDirectoryName( localPath ), "Save" );
+            string truePath = Path.Combine( rootPath, "NewGame.txt" );
+            GameContext.LoadResult _load = GameContext.LoadGame( truePath );
             if( _load.LoadedGame != null )
             {
                 _game = _load.LoadedGame;

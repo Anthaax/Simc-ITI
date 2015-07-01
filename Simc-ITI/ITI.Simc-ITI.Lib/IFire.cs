@@ -8,6 +8,11 @@ namespace ITI.Simc_ITI.Build
 {
     public interface IFire
     {
+        /// <summary>
+        /// Reduce the fire chance of the box
+        /// </summary>
+        /// <param name="b"> A box with an infrastructure IBurn is required </param>
+        /// <returns></returns>
         int FireChanceImpact( Box b );
     }
 }

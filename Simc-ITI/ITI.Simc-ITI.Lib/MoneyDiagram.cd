@@ -1,10 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ITI.Simc_ITI.Build.MoneyManager">
-    <Position X="1" Y="0.5" Width="1.5" />
+    <Position X="1" Y="0.5" Width="2" />
+    <Members>
+      <Field Name="_lastPourchase" Hidden="true" />
+      <Field Name="_myMoney" Hidden="true" />
+      <Field Name="_taxe" Hidden="true" />
+    </Members>
     <TypeIdentifier>
-      <HashCode>AEAAAAAAAIAAAAAEAAAAAAQAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AEAAQAAAAIAAAAAEAIAAAAQAAAEAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>Money\MoneyManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TaxationManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.TaxationManager">
+    <Position X="4.5" Y="0.5" Width="2.25" />
+    <Members>
+      <Field Name="_commerceTaxation" Hidden="true" />
+      <Field Name="_habitationTaxation" Hidden="true" />
+      <Field Name="_usineTaxation" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>QAAAQAQAAAAAAAAAAAAAQQAAAAAAAAAAAIAAAAAAAAg=</HashCode>
+      <FileName>Money\TaxationManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

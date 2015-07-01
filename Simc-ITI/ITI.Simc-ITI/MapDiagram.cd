@@ -45,18 +45,18 @@
       <Field Name="_column" Hidden="true" />
       <Field Name="_line" Hidden="true" />
       <Field Name="_map" Hidden="true" />
+      <Field Name="_p" Hidden="true" />
       <Field Name="g" Hidden="true" />
       <Field Name="Infrastructure" Hidden="true" />
-      <Field Name="p" Hidden="true" />
       <Field Name="screeng" Hidden="true" />
     </Members>
     <AssociationLine Name="Infrasructure" Type="ITI.Simc_ITI.IInfrastructureForBox">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.643" Y="0.885" />
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.497" Y="0.898" Height="0.182" Width="1.113" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAABAAAoAAAABBAAAAAAAAAAIJCEAAAQABABA=</HashCode>
+      <HashCode>CAAAAAAAABAAAoAAAABBAAAAAAAAAAIJCEQAAQABABA=</HashCode>
       <FileName>Box.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -64,21 +64,21 @@
     </ShowAsAssociation>
   </Class>
   <Interface Name="ITI.Simc_ITI.IInfrastructureType">
-    <Position X="7" Y="0.5" Width="1.5" />
+    <Position X="7" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAEAAAAAEAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IInfrastructureType.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="ITI.Simc_ITI.IInfrastructureForBox">
-    <Position X="7" Y="3" Width="1.5" />
+    <Position X="7" Y="3" Width="2" />
     <AssociationLine Name="Type" Type="ITI.Simc_ITI.IInfrastructureType">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.077" Y="0.785" />
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.623" Y="0.793" Height="0.162" Width="0.537" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAQAAAAIAAAAAgAAAAAAAAAAAABAAAAAAQAAAoAAAAA=</HashCode>
+      <HashCode>AAQAAAAIAAAAAgAAAAAAAAAAAABAAAAAIQAAAoAAAAA=</HashCode>
       <FileName>IInfrastructureForBox.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

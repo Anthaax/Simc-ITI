@@ -73,7 +73,7 @@ namespace ITI.Simc_ITI.Build
             {
                 Random r = new Random();
                 if( BurningBuilding.IsBurning == true ) this.Destroy();
-                else if( r.Next( 1 ) <= BurningBuilding.FireChance )
+                else if( r.Next( 1 ) <= BurningBuilding.BurningChance )
                 {
                     BurningBuilding.IsBurning = true;
                 }
