@@ -35,7 +35,7 @@ namespace ITI.Simc_ITI.Build
         int _costPerMonth;
         int _happynessImpact;
         bool _health = true;
-        int _fireChance = 75;
+        int _burningChance = 75;
         bool _isBurning = false;
         Bitmap _bmp;
 
@@ -70,7 +70,7 @@ namespace ITI.Simc_ITI.Build
             IFire fire = b.Infrasructure as IFire;
             if( fire != null )
             {
-                FireChance = FireChance - fire.FireChanceImpact( Box );
+                BurningChance = BurningChance - fire.FireChanceImpact( Box );
             }
         }
         public override void OnDestroyingAround( Box b )
@@ -83,7 +83,7 @@ namespace ITI.Simc_ITI.Build
             IFire fire = b.Infrasructure as IFire;
             if( fire != null )
             {
-                FireChance = FireChance + fire.FireChanceImpact( Box );
+                BurningChance = BurningChance + fire.FireChanceImpact( Box );
             }
         }
         public int HappynessImpact( Box b )
@@ -105,7 +105,7 @@ namespace ITI.Simc_ITI.Build
         }
         public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public bool Health { get { return _health; } set { _health = value; } }
-        public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
+        public int BurningChance { get { return _burningChance; } set { _burningChance = value; } }
 
         [field : NonSerialized]
         public event EventHandler IsOnFire;

@@ -37,7 +37,7 @@ namespace ITI.Simc_ITI.Build
         Bitmap _bmp;
         int _taxation = 10;
         int _salary = 30000;
-        int _fireChance = 75;
+        int _burningChance = 75;
         bool _isBurning = false;
 
 
@@ -79,7 +79,7 @@ namespace ITI.Simc_ITI.Build
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
         public int Salary { get { return _salary; } }
-        public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
+        public int BurningChance { get { return _burningChance; } set { _burningChance = value; } }
         [field: NonSerialized]
         public event EventHandler IsOnFire;
         public bool IsBurning

@@ -8,6 +8,11 @@ namespace ITI.Simc_ITI.Build
 {
     public interface IHappynessImpact
     {
+        /// <summary>
+        /// Impact the happiness of the box
+        /// </summary>
+        /// <param name="b"></param>
+        /// <returns></returns>
         int HappynessImpact(Box b);
     }
 }

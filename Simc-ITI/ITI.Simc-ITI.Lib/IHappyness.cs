@@ -8,6 +8,9 @@ namespace ITI.Simc_ITI.Build
 {
     public interface IHappyness
     {
+        /// <summary>
+        /// Get or Set Happyness value of the building
+        /// </summary>
         int Happyness { get; set; }
     }
 }

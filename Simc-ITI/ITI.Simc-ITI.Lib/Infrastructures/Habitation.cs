@@ -28,7 +28,7 @@ namespace ITI.Simc_ITI.Build
         int _hapyness;
         int _salary = 7000;
         int _taxation = 10;
-        int _fireChance = 5;
+        int _burningChance = 75;
         bool _isBurning = false;
         int _stealChance = 75;
         bool _isSteal = false;
@@ -67,7 +67,7 @@ namespace ITI.Simc_ITI.Build
             IFire fire = b.Infrasructure as IFire;
             if( fire != null )
             {
-                FireChance = FireChance - fire.FireChanceImpact( Box );
+                BurningChance = BurningChance - fire.FireChanceImpact( Box );
             }
             ISteal steal = b.Infrasructure as ISteal;
             if(steal != null)
@@ -85,7 +85,7 @@ namespace ITI.Simc_ITI.Build
             IFire fire = b.Infrasructure as IFire;
             if( fire != null ) 
             {
-                FireChance = FireChance + fire.FireChanceImpact( Box );
+                BurningChance = BurningChance + fire.FireChanceImpact( Box );
             }
             ISteal steal = b.Infrasructure as ISteal;
             if (steal != null)
@@ -94,7 +94,7 @@ namespace ITI.Simc_ITI.Build
             }
         }
         public int StealChance { get { return _stealChance; } set { _stealChance = value; } }
-        public int FireChance { get { return _fireChance; } set { _fireChance = value; } }
+        public int BurningChance { get { return _burningChance; } set { _burningChance = value; } }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
         public int Salary { get { return _salary; } }
