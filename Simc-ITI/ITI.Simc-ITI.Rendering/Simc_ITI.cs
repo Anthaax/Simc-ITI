@@ -25,9 +25,24 @@ namespace ITI.Simc_ITI.Rendering
             InitializeComponent();
             menuControl1.GameHasBeenCreated += ( s, e ) => InitializeGame();
         }
+        /// <summary>
+        /// Initialize game 
+        /// Use this only if the game wasn't null
+        /// </summary>
         private void InitializeGame()
         {
             _game = menuControl1.GameContext;
+            InitializeUsersControls();
+            scalefactor = _viewPortControl.ViewPort.ActualZoomFactor;
+            MouseEvents();
+            InitialiezBuildingEvent();
+            InitiallizeTimer();
+        }
+        /// <summary>
+        /// Initialize All User Controls
+        /// </summary>
+        private void InitializeUsersControls()
+        {
             menuControl1.Visible = false;
             _bottomPaneControl.Visible = true;
             _leftPaneControl.Visible = true;
@@ -35,32 +50,23 @@ namespace ITI.Simc_ITI.Rendering
             _bottomPaneControl.SetGameandViewport( _game, _viewPortControl );
             _leftPaneControl.SetGameandViewport( _game, _viewPortControl );
             _viewPortControl.SetMap( _game.Map, 5 * 100 );
-            scalefactor = _viewPortControl.ViewPort.ActualZoomFactor;
-            _viewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
-            _viewPortControl.MouseUp += new MouseEventHandler(MouseUnClickEvent);
-            BuildingEvent();
-            InitiallizeTimer();
-            InitializeZoom();
         }
-
-        private void InitializeZoom()
-        {
-            _leftPaneControl.MouseWheel += new MouseEventHandler(TrayIcon_MouseWheel);
-            _bottomPaneControl.MouseWheel += new MouseEventHandler(TrayIcon_MouseWheel);
-            _viewPortControl.MouseWheel += new MouseEventHandler(TrayIcon_MouseWheel);
-            menuControl1.MouseWheel += new MouseEventHandler(TrayIcon_MouseWheel);
-        }
-
+        /// <summary>
+        /// Initialize Timer for the game loop
+        /// </summary>
         private void InitiallizeTimer()
         {
             _timer = new Timer();
             _timer.Interval = 10000;
             _timer.Enabled = true;
-            _timer.Tick += UpdateGame;
+            _timer.Tick += ( s, e ) => UpdateGame();
             _timer.Start();
             _bottomPaneControl.SetTimer( _timer );
         }
-        private void BuildingEvent()
+        /// <summary>
+        /// Initialize all building events
+        /// </summary>
+        private void InitialiezBuildingEvent()
         {
             IEnumerable<InfrastructureType> types = _game.InfrastructureManager.AllTypes;
             foreach( var building in types )
@@ -69,7 +75,22 @@ namespace ITI.Simc_ITI.Rendering
                 building.BuildingHasBeenCreated += ( s, e ) => _bottomPaneControl.AverageHappyness();
             }
         }
-        private void UpdateGame( object sender, EventArgs e )
+        /// <summary>
+        /// Initialize all mouse events
+        /// </summary>
+        private void MouseEvents()
+        {
+            _viewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
+            _viewPortControl.MouseUp += new MouseEventHandler( MouseOneClickEvent );
+            _leftPaneControl.MouseWheel += new MouseEventHandler( TrayIcon_MouseWheel );
+            _bottomPaneControl.MouseWheel += new MouseEventHandler( TrayIcon_MouseWheel );
+            _viewPortControl.MouseWheel += new MouseEventHandler( TrayIcon_MouseWheel );
+            menuControl1.MouseWheel += new MouseEventHandler( TrayIcon_MouseWheel );
+        }
+        /// <summary>
+        /// Update the game
+        /// </summary>
+        private void UpdateGame()
         {
             int update = 0;
             IEnumerable<IInfrastructureForBox> infra = _game.Map.GetAllInfrastucture<IInfrastructureForBox>();
@@ -80,9 +101,12 @@ namespace ITI.Simc_ITI.Rendering
             _game.MoneyManager.LastPurchase = update;
             _viewPortControl.Invalidate();
         }
-
-
-        private void MouseUnClickEvent(object sender, MouseEventArgs e)
+        /// <summary>
+        /// Event use when the mouse click was realesed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"> You need a MouseEvent </param>
+        private void MouseOneClickEvent(object sender, MouseEventArgs e)
         {
 
             int _xBox2;
@@ -96,13 +120,22 @@ namespace ITI.Simc_ITI.Rendering
             if (_yBox2 >= 100) _yBox2 = 99;
             MouseMoveOnDrag(_xBox, _yBox, _xBox2, _yBox2);
         }
+        /// <summary>
+        /// Mouve on the with the mouse release
+        /// </summary>
+        /// <param name="x1"> x position for the first box </param>
+        /// <param name="y1"> y position for the first box </param>
+        /// <param name="x2"> x position for the second box </param>
+        /// <param name="y2"> y position for the second box </param>
         private void MouseMoveOnDrag(int x1, int y1, int x2, int y2)
         {
             int xMove = x1 - x2;
             int yMove = y1 - y2;
             int MoveX = xMove * 10000;
             int MoveY = yMove * 10000;
-            _viewPortControl.KeyMove(MoveX, MoveY);
+            if( MoveX > 10000 && MoveX < -10000 ) MoveX = 0;
+            if( MoveY > 10000 && MoveY < -10000 ) MoveY = 0;
+            if( MoveX != 0 && MoveY != 0 ) _viewPortControl.KeyMove(MoveX, MoveY);
         }
 
         private void TrayIcon_MouseWheel(object sender, MouseEventArgs e)
