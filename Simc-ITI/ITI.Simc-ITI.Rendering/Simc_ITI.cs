@@ -37,6 +37,7 @@ namespace ITI.Simc_ITI.Rendering
             _viewPortControl.SetMap( _game.Map, 5 * 100 );
             scalefactor = _viewPortControl.ViewPort.ActualZoomFactor;
             _viewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
+            _viewPortControl.MouseUp += new MouseEventHandler(MouseUnClickEvent);
             BuildingEvent();
             InitiallizeTimer();
             InitializeZoom();
@@ -80,6 +81,30 @@ namespace ITI.Simc_ITI.Rendering
             _viewPortControl.Invalidate();
         }
 
+
+        private void MouseUnClickEvent(object sender, MouseEventArgs e)
+        {
+
+            int _xBox2;
+            int _yBox2;
+            int _boxInPixel2 = (int)Math.Round(_game.Map.BoxWidth * _viewPortControl.ViewPort.ClientScaleFactor);
+            int _mouseX2 = e.X;
+            int _mouseY2 = e.Y;
+            _xBox2 = Math.Min((_viewPortControl.ViewPort.Area.X / _game.Map.BoxWidth) + _mouseX2 / _boxInPixel2, _game.Map.BoxCount);
+            _yBox2 = Math.Min((_viewPortControl.ViewPort.Area.Y / _game.Map.BoxWidth) + _mouseY2 / _boxInPixel2, _game.Map.BoxCount);
+            if (_xBox2 >= 100) _xBox2 = 99;
+            if (_yBox2 >= 100) _yBox2 = 99;
+            MouseMoveOnDrag(_xBox, _yBox, _xBox2, _yBox2);
+        }
+        private void MouseMoveOnDrag(int x1, int y1, int x2, int y2)
+        {
+            int xMove = x1 - x2;
+            int yMove = y1 - y2;
+            int MoveX = xMove * 10000;
+            int MoveY = yMove * 10000;
+            _viewPortControl.KeyMove(MoveX, MoveY);
+        }
+
         private void TrayIcon_MouseWheel(object sender, MouseEventArgs e)
         {
             if (e.Delta < 0)
@@ -109,22 +134,6 @@ namespace ITI.Simc_ITI.Rendering
             switch( e.KeyCode )
             {
                 case Keys.Add:
-                    if( scalefactor >= 0.1 )
-                    {
-                        scalefactor -= 0.1;
-                        _viewPortControl.Zoom( scalefactor );
-                        x = _viewPortControl.ViewPort.Area.X;
-                        y = _viewPortControl.ViewPort.Area.Y;
-                    }
-                    break;
-                case Keys.Subtract:
-                    if( scalefactor < 1.0 )
-                    {
-                        scalefactor += 0.1;
-                        _viewPortControl.Zoom( scalefactor );
-                        x = _viewPortControl.ViewPort.Area.X;
-                        y = _viewPortControl.ViewPort.Area.Y;
-                    }
                     break;
                 case Keys.NumPad6:
                     x += 10000;
