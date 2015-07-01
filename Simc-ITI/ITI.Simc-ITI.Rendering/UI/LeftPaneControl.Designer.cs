@@ -38,6 +38,16 @@
             this.fireStation_button = new System.Windows.Forms.Button();
             this.Police = new System.Windows.Forms.Button();
             this.HospitalButton = new System.Windows.Forms.Button();
+            this.RoadPrice = new System.Windows.Forms.Label();
+            this.CentralEPrice = new System.Windows.Forms.Label();
+            this.EauPrice = new System.Windows.Forms.Label();
+            this.EcolePrice = new System.Windows.Forms.Label();
+            this.PompierPrice = new System.Windows.Forms.Label();
+            this.PolicePrice = new System.Windows.Forms.Label();
+            this.HopitalPrice = new System.Windows.Forms.Label();
+            this.HabitationPrice = new System.Windows.Forms.Label();
+            this.CommercePrice = new System.Windows.Forms.Label();
+            this.UsinePrice = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Build_Road
@@ -58,7 +68,7 @@
             // 
             this.Centrale_electrique.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Centrale_electrique.Location = new System.Drawing.Point(3, 45);
+            this.Centrale_electrique.Location = new System.Drawing.Point(3, 54);
             this.Centrale_electrique.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Centrale_electrique.Name = "Centrale_electrique";
             this.Centrale_electrique.Size = new System.Drawing.Size(109, 23);
@@ -100,7 +110,7 @@
             // 
             this.Water_Central.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Water_Central.Location = new System.Drawing.Point(3, 97);
+            this.Water_Central.Location = new System.Drawing.Point(3, 107);
             this.Water_Central.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Water_Central.Name = "Water_Central";
             this.Water_Central.Size = new System.Drawing.Size(109, 23);
@@ -114,7 +124,7 @@
             // 
             this.Commerce.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Commerce.Location = new System.Drawing.Point(3, 471);
+            this.Commerce.Location = new System.Drawing.Point(3, 486);
             this.Commerce.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Commerce.Name = "Commerce";
             this.Commerce.Size = new System.Drawing.Size(109, 23);
@@ -128,7 +138,7 @@
             // 
             this.Usine_Button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Usine_Button.Location = new System.Drawing.Point(3, 517);
+            this.Usine_Button.Location = new System.Drawing.Point(3, 540);
             this.Usine_Button.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Usine_Button.Name = "Usine_Button";
             this.Usine_Button.Size = new System.Drawing.Size(109, 23);
@@ -179,11 +189,111 @@
             this.HospitalButton.Visible = false;
             this.HospitalButton.Click += new System.EventHandler(this.Hospital_Click);
             // 
+            // RoadPrice
+            // 
+            this.RoadPrice.AutoSize = true;
+            this.RoadPrice.Location = new System.Drawing.Point(12, 31);
+            this.RoadPrice.Name = "RoadPrice";
+            this.RoadPrice.Size = new System.Drawing.Size(16, 17);
+            this.RoadPrice.TabIndex = 19;
+            this.RoadPrice.Text = "a";
+            // 
+            // CentralEPrice
+            // 
+            this.CentralEPrice.AutoSize = true;
+            this.CentralEPrice.Location = new System.Drawing.Point(12, 84);
+            this.CentralEPrice.Name = "CentralEPrice";
+            this.CentralEPrice.Size = new System.Drawing.Size(16, 17);
+            this.CentralEPrice.TabIndex = 20;
+            this.CentralEPrice.Text = "a";
+            // 
+            // EauPrice
+            // 
+            this.EauPrice.AutoSize = true;
+            this.EauPrice.Location = new System.Drawing.Point(12, 139);
+            this.EauPrice.Name = "EauPrice";
+            this.EauPrice.Size = new System.Drawing.Size(16, 17);
+            this.EauPrice.TabIndex = 21;
+            this.EauPrice.Text = "a";
+            // 
+            // EcolePrice
+            // 
+            this.EcolePrice.AutoSize = true;
+            this.EcolePrice.Location = new System.Drawing.Point(12, 215);
+            this.EcolePrice.Name = "EcolePrice";
+            this.EcolePrice.Size = new System.Drawing.Size(16, 17);
+            this.EcolePrice.TabIndex = 22;
+            this.EcolePrice.Text = "a";
+            // 
+            // PompierPrice
+            // 
+            this.PompierPrice.AutoSize = true;
+            this.PompierPrice.Location = new System.Drawing.Point(12, 268);
+            this.PompierPrice.Name = "PompierPrice";
+            this.PompierPrice.Size = new System.Drawing.Size(16, 17);
+            this.PompierPrice.TabIndex = 23;
+            this.PompierPrice.Text = "a";
+            // 
+            // PolicePrice
+            // 
+            this.PolicePrice.AutoSize = true;
+            this.PolicePrice.Location = new System.Drawing.Point(12, 319);
+            this.PolicePrice.Name = "PolicePrice";
+            this.PolicePrice.Size = new System.Drawing.Size(16, 17);
+            this.PolicePrice.TabIndex = 24;
+            this.PolicePrice.Text = "a";
+            // 
+            // HopitalPrice
+            // 
+            this.HopitalPrice.AutoSize = true;
+            this.HopitalPrice.Location = new System.Drawing.Point(12, 373);
+            this.HopitalPrice.Name = "HopitalPrice";
+            this.HopitalPrice.Size = new System.Drawing.Size(16, 17);
+            this.HopitalPrice.TabIndex = 25;
+            this.HopitalPrice.Text = "a";
+            // 
+            // HabitationPrice
+            // 
+            this.HabitationPrice.AutoSize = true;
+            this.HabitationPrice.Location = new System.Drawing.Point(12, 458);
+            this.HabitationPrice.Name = "HabitationPrice";
+            this.HabitationPrice.Size = new System.Drawing.Size(16, 17);
+            this.HabitationPrice.TabIndex = 26;
+            this.HabitationPrice.Text = "a";
+            // 
+            // CommercePrice
+            // 
+            this.CommercePrice.AutoSize = true;
+            this.CommercePrice.Location = new System.Drawing.Point(12, 515);
+            this.CommercePrice.Name = "CommercePrice";
+            this.CommercePrice.Size = new System.Drawing.Size(16, 17);
+            this.CommercePrice.TabIndex = 27;
+            this.CommercePrice.Text = "a";
+            // 
+            // UsinePrice
+            // 
+            this.UsinePrice.AutoSize = true;
+            this.UsinePrice.Location = new System.Drawing.Point(12, 571);
+            this.UsinePrice.Name = "UsinePrice";
+            this.UsinePrice.Size = new System.Drawing.Size(16, 17);
+            this.UsinePrice.TabIndex = 28;
+            this.UsinePrice.Text = "a";
+            // 
             // LeftPaneControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Controls.Add(this.UsinePrice);
+            this.Controls.Add(this.CommercePrice);
+            this.Controls.Add(this.HabitationPrice);
+            this.Controls.Add(this.HopitalPrice);
+            this.Controls.Add(this.PolicePrice);
+            this.Controls.Add(this.PompierPrice);
+            this.Controls.Add(this.EcolePrice);
+            this.Controls.Add(this.EauPrice);
+            this.Controls.Add(this.CentralEPrice);
+            this.Controls.Add(this.RoadPrice);
             this.Controls.Add(this.HospitalButton);
             this.Controls.Add(this.Police);
             this.Controls.Add(this.fireStation_button);
@@ -196,9 +306,9 @@
             this.Controls.Add(this.Build_Road);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "LeftPaneControl";
-            this.Size = new System.Drawing.Size(115, 555);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveOnTheMap);
+            this.Size = new System.Drawing.Size(115, 600);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -214,5 +324,15 @@
         private System.Windows.Forms.Button fireStation_button;
         private System.Windows.Forms.Button Police;
         private System.Windows.Forms.Button HospitalButton;
+        private System.Windows.Forms.Label RoadPrice;
+        private System.Windows.Forms.Label CentralEPrice;
+        private System.Windows.Forms.Label EauPrice;
+        private System.Windows.Forms.Label EcolePrice;
+        private System.Windows.Forms.Label PompierPrice;
+        private System.Windows.Forms.Label PolicePrice;
+        private System.Windows.Forms.Label HopitalPrice;
+        private System.Windows.Forms.Label HabitationPrice;
+        private System.Windows.Forms.Label CommercePrice;
+        private System.Windows.Forms.Label UsinePrice;
     }
 }

@@ -8,9 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ITI.Simc_ITI.Build;
+using System.Reflection;
+using System.IO;
 
 namespace ITI.Simc_ITI.Rendering
-{
+{ 
     public partial class BottomPaneControl : UserControl
     {
         Timer _timer;
@@ -145,6 +147,7 @@ namespace ITI.Simc_ITI.Rendering
         private void Button_Destroy_Click( object sender, EventArgs e )
         {
             _game.MoneyManager.ActualMoney += _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
+            _game.MoneyManager.LastPurchase = _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
             _game.Map.Boxes[_xBox, _yBox].Infrasructure.Destroy();
             AverageHappyness();
             AllTextOrButtonInvisible();
@@ -190,8 +193,11 @@ namespace ITI.Simc_ITI.Rendering
         }
         private void SaveTheGame( object sender, EventArgs e )
         {
-            string path = @"D:\Documents\Simc_ITI Sauvergardes\Sav1.txt";
-            _game.Save( path );
+            var uri = new Uri( Assembly.GetExecutingAssembly().CodeBase );
+            string localPath = uri.LocalPath;
+            string rootPath = Path.Combine( Path.GetDirectoryName( localPath ), "Save" );
+            string truePath = Path.Combine(  rootPath , "Sav1.txt" );
+            _game.Save( truePath );
             SaveLabel.Visible = true;
         }
     }

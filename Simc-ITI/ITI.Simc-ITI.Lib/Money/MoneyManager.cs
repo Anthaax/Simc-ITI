@@ -33,6 +33,7 @@ namespace ITI.Simc_ITI.Build
                 }
             }
         }
+        [field : NonSerialized]
         public event EventHandler LastPurchaseWasDone;
         public int LastPurchase {
             get { return _lastPourchase; } 

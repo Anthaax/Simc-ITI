@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ITI.Simc_ITI.Build;
+using System.IO;
+using System.Reflection;
 
 namespace ITI.Simc_ITI.Rendering
 {
@@ -38,8 +40,11 @@ namespace ITI.Simc_ITI.Rendering
 
         private void LoadGame_button_Click(object sender, EventArgs e)
         {
-            string path = @"D:\Documents\Simc_ITI Sauvergardes\Sav1.txt";
-            GameContext.LoadResult _load = GameContext.LoadGame( path );
+            var uri = new Uri( Assembly.GetExecutingAssembly().CodeBase );
+            string localPath = uri.LocalPath;
+            string rootPath = Path.Combine( Path.GetDirectoryName( localPath ), "Save" );
+            string truePath = Path.Combine( rootPath, "Sav1.txt" );
+            GameContext.LoadResult _load = GameContext.LoadGame( truePath );
             if( _load.LoadedGame != null )
             {
                 _game = _load.LoadedGame;

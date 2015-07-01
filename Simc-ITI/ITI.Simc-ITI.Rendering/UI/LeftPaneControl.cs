@@ -17,9 +17,6 @@ namespace ITI.Simc_ITI.Rendering
         GameContext _game;
         int _xBox;
         int _yBox;
-        double scalefactor;
-        int x;
-        int y;
         public LeftPaneControl()
         {
             InitializeComponent();
@@ -29,6 +26,7 @@ namespace ITI.Simc_ITI.Rendering
         {
             _game = g;
             _mainViewportControl = v;
+            ChargeAllLabels();
         }
         private void AllButtonInvisible()
         {
@@ -42,6 +40,16 @@ namespace ITI.Simc_ITI.Rendering
             fireStation_button.Visible = false;
             Police.Visible = false;
             HospitalButton.Visible = false;
+            CentralEPrice.Visible = false;
+            CommercePrice.Visible = false;
+            EauPrice.Visible = false;
+            EcolePrice.Visible = false;
+            HabitationPrice.Visible = false;
+            HopitalPrice.Visible = false;
+            PolicePrice.Visible = false;
+            PompierPrice.Visible = false;
+            RoadPrice.Visible = false;
+            UsinePrice.Visible = false;
         }
         private void BuildingConstructionVisible()
         {
@@ -53,11 +61,20 @@ namespace ITI.Simc_ITI.Rendering
             fireStation_button.Visible = true;
             Police.Visible = true;
             HospitalButton.Visible = true;
+            CommercePrice.Visible = true;
+            EcolePrice.Visible = true;
+            HabitationPrice.Visible = true;
+            HopitalPrice.Visible = true;
+            PolicePrice.Visible = true;
+            PompierPrice.Visible = true;
+            UsinePrice.Visible = true;
         }
         private void CentraleConstructionVisibile()
         {
             Centrale_electrique.Visible = true;
+            CentralEPrice.Visible = true;
             Water_Central.Visible = true;
+            EauPrice.Visible = true;
         }
         public void PositionOfTheMouse(int xbox, int ybox)
         {
@@ -137,6 +154,7 @@ namespace ITI.Simc_ITI.Rendering
                 if( _game.InfrastructureManager.Find( "CentraleElectrique" ).CanCreatedNearRoad( _game.Map.Boxes[_xBox, _yBox] ) ) CentraleConstructionVisibile();
                 if( CanCreate( "Habitation", _game.Map.Boxes[_xBox, _yBox] ) ) BuildingConstructionVisible();
                 Build_Road.Visible = true;
+                RoadPrice.Visible = true;
             }
             else
             {
@@ -147,42 +165,18 @@ namespace ITI.Simc_ITI.Rendering
         {
             return _game.InfrastructureManager.Find( building ).CanCreatedNearRoad( b ) && _game.InfrastructureManager.Find( building ).CanCreated( b );
         }
-        private void MoveOnTheMap( object sender, KeyEventArgs e )
+        private void ChargeAllLabels()
         {
-            switch( e.KeyCode )
-            {
-                case Keys.Add:
-                    if( scalefactor >= 0.1 )
-                    {
-                        scalefactor -= 0.1;
-                        _mainViewportControl.Zoom( scalefactor );
-                        x = _mainViewportControl.ViewPort.Area.X;
-                        y = _mainViewportControl.ViewPort.Area.Y;
-                    }
-                    break;
-                case Keys.Subtract:
-                    if( scalefactor < 1.0 )
-                    {
-                        scalefactor += 0.1;
-                        _mainViewportControl.Zoom( scalefactor );
-                        x = _mainViewportControl.ViewPort.Area.X;
-                        y = _mainViewportControl.ViewPort.Area.Y;
-                    }
-                    break;
-                case Keys.NumPad6:
-                    x += 10000;
-                    break;
-                case Keys.NumPad4:
-                    if( x > 0 ) x -= 10000;
-                    break;
-                case Keys.NumPad8:
-                    if( y > 0 ) y -= 10000;
-                    break;
-                case Keys.NumPad2:
-                    y += 10000;
-                    break;
-            }
-            _mainViewportControl.KeyMove( x, y );
+            CentralEPrice.Text = "Price : " + _game.InfrastructureManager.Find( "CentraleElectrique" ).BuildingCost;
+            CommercePrice.Text = "Price : " + _game.InfrastructureManager.Find( "Commerce" ).BuildingCost;
+            EauPrice.Text = "Price : " + _game.InfrastructureManager.Find( "CentraleHydrolique" ).BuildingCost;
+            EcolePrice.Text = "Price : " + _game.InfrastructureManager.Find( "Ecole" ).BuildingCost;
+            HabitationPrice.Text = "Price : " + _game.InfrastructureManager.Find( "Habitation" ).BuildingCost;
+            HopitalPrice.Text = "Price : " + _game.InfrastructureManager.Find( "Hopital" ).BuildingCost;
+            PolicePrice.Text = "Price : " + _game.InfrastructureManager.Find( "PoliceStation" ).BuildingCost;
+            PompierPrice.Text = "Price : " + _game.InfrastructureManager.Find( "Pompier" ).BuildingCost;
+            RoadPrice.Text = "Price : " + _game.InfrastructureManager.Find( "Route" ).BuildingCost;
+            UsinePrice.Text = "Price : " + _game.InfrastructureManager.Find( "Usine" ).BuildingCost;
         }
     }
 }

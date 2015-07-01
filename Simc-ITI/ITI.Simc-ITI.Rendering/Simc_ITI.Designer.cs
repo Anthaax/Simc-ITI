@@ -42,6 +42,7 @@
             this.menuControl1.Name = "menuControl1";
             this.menuControl1.Size = new System.Drawing.Size(1024, 252);
             this.menuControl1.TabIndex = 3;
+            this.menuControl1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveOnTheMap);
             // 
             // _leftPaneControl
             // 
