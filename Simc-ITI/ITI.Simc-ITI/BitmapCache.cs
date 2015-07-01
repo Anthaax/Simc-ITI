@@ -13,14 +13,11 @@ namespace ITI.Simc_ITI
     public class BitmapCache
     {
         readonly Dictionary<string, Bitmap> _textures;
-        readonly string _rootPath;
+        string _rootPath;
 
         public BitmapCache()
         {
             _textures = new Dictionary<string, Bitmap>();
-            var uri = new Uri(Assembly.GetExecutingAssembly().CodeBase);
-            string localPath = uri.LocalPath;
-            _rootPath = Path.Combine( Path.GetDirectoryName(localPath), "Images");
         }
 
         public Bitmap Get( string name )
@@ -29,6 +26,9 @@ namespace ITI.Simc_ITI
             Bitmap image;
             if( !_textures.TryGetValue( name, out image ) )
             {
+                var uri = new Uri(Assembly.GetExecutingAssembly().CodeBase);
+                string localPath = uri.LocalPath;
+                _rootPath = Path.Combine(Path.GetDirectoryName(localPath), "Images");
                 string path = Path.Combine(_rootPath, name);
                 
                 image = new Bitmap(path);
