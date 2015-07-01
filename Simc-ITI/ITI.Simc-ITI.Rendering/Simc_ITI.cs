@@ -39,7 +39,17 @@ namespace ITI.Simc_ITI.Rendering
             _viewPortControl.MouseDown += new MouseEventHandler( MouseClickEvent );
             BuildingEvent();
             InitiallizeTimer();
+            InitializeZoom();
         }
+
+        private void InitializeZoom()
+        {
+            _leftPaneControl.MouseWheel += new MouseEventHandler(TrayIcon_MouseWheel);
+            _bottomPaneControl.MouseWheel += new MouseEventHandler(TrayIcon_MouseWheel);
+            _viewPortControl.MouseWheel += new MouseEventHandler(TrayIcon_MouseWheel);
+            menuControl1.MouseWheel += new MouseEventHandler(TrayIcon_MouseWheel);
+        }
+
         private void InitiallizeTimer()
         {
             _timer = new Timer();
@@ -69,6 +79,31 @@ namespace ITI.Simc_ITI.Rendering
             _game.MoneyManager.LastPurchase = update;
             _viewPortControl.Invalidate();
         }
+
+        private void TrayIcon_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                if (scalefactor < 1.0)
+                {
+                    scalefactor += 0.1;
+                    _viewPortControl.Zoom(scalefactor);
+                    x = _viewPortControl.ViewPort.Area.X;
+                    y = _viewPortControl.ViewPort.Area.Y;
+                }
+            }
+            else if (e.Delta > 0)
+            {
+                if (scalefactor >= 0.1)
+                {
+                    scalefactor -= 0.1;
+                    _viewPortControl.Zoom(scalefactor);
+                    x = _viewPortControl.ViewPort.Area.X;
+                    y = _viewPortControl.ViewPort.Area.Y;
+                }
+            }
+        }
+
         private void MoveOnTheMap( object sender, KeyEventArgs e )
         {
             switch( e.KeyCode )
