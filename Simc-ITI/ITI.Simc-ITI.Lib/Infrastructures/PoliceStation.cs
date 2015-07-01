@@ -81,6 +81,6 @@ namespace ITI.Simc_ITI.Build
             else _stealrate = 3;
             return _stealrate;
         }
-        public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
+        public int CostPerMounth { get { return _costPerMonth; } set { _costPerMonth = value; } }
     }
 }

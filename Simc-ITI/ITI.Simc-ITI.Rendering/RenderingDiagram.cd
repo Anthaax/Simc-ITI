@@ -43,15 +43,12 @@
       <Field Name="HabitationBuild" Hidden="true" />
       <Field Name="HospitalButton" Hidden="true" />
       <Field Name="Police" Hidden="true" />
-      <Field Name="scalefactor" Hidden="true" />
       <Field Name="School_Button" Hidden="true" />
       <Field Name="Usine_Button" Hidden="true" />
       <Field Name="Water_Central" Hidden="true" />
-      <Field Name="x" Hidden="true" />
-      <Field Name="y" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAQAAADAQGAQQCBApEKAAAACAAAAAoAAAANnBgAgJBY=</HashCode>
+      <HashCode>AAQIAADgQGAwQiBApEKEAAACAAAAAoAAAAMGhgAiJBY=</HashCode>
       <FileName>UI\LeftPaneControl.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -88,6 +85,14 @@
         <Point X="4" Y="0.5" />
       </Path>
     </AssociationLine>
+    <AssociationLine Name="_viewPortControl" Type="ITI.Simc_ITI.Rendering.ViewPortControl" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="1.5" Y="0.5" />
+        <Point X="1.5" Y="0.125" />
+        <Point X="13.5" Y="0.125" />
+        <Point X="13.5" Y="0.5" />
+      </Path>
+    </AssociationLine>
     <AssociationLine Name="_bottomPaneControl" Type="ITI.Simc_ITI.Rendering.BottomPaneControl" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="1.5" Y="0.5" />
@@ -104,14 +109,6 @@
         <Point X="11.188" Y="0.5" />
       </Path>
     </AssociationLine>
-    <AssociationLine Name="_viewPortControl" Type="ITI.Simc_ITI.Rendering.ViewPortControl" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="1.5" Y="0.5" />
-        <Point X="1.5" Y="0.125" />
-        <Point X="13.5" Y="0.125" />
-        <Point X="13.5" Y="0.5" />
-      </Path>
-    </AssociationLine>
     <AssociationLine Name="menuControl1" Type="ITI.Simc_ITI.Rendering.MenuControl" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="1.5" Y="0.5" />
@@ -121,24 +118,19 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAIAAQAACAgQAAhAACAAAACAAAAEAgAAAJlIAAIAAQ=</HashCode>
+      <HashCode>AAAIAAYAACAgQAAhAACAAAACAAAAEAgAAAJlIAAIAAQ=</HashCode>
       <FileName>Simc_ITI.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="_game" />
+      <Field Name="_viewPortControl" />
       <Field Name="_bottomPaneControl" />
       <Field Name="_leftPaneControl" />
-      <Field Name="_viewPortControl" />
       <Field Name="menuControl1" />
     </ShowAsAssociation>
   </Class>
   <Class Name="ITI.Simc_ITI.Build.GameContext" Collapsed="true">
     <Position X="3" Y="0.5" Width="2" />
-    <NestedTypes>
-      <Class Name="ITI.Simc_ITI.Build.GameContext.LoadResult" Collapsed="true">
-        <TypeIdentifier />
-      </Class>
-    </NestedTypes>
     <TypeIdentifier />
   </Class>
   <Class Name="ITI.Simc_ITI.Rendering.ViewPortControl">

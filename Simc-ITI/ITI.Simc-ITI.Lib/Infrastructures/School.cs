@@ -103,7 +103,7 @@ namespace ITI.Simc_ITI.Build
             }
             return happyness;
         }
-        public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
+        public int CostPerMounth { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public bool Health { get { return _health; } set { _health = value; } }
         public int BurningChance { get { return _burningChance; } set { _burningChance = value; } }
 

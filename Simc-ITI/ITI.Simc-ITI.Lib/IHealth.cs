@@ -8,6 +8,9 @@ namespace ITI.Simc_ITI.Build
 {
     public interface IHealth
     {
+        /// <summary>
+        /// Get or Set if near an infrastructure have an negative impact 
+        /// </summary>
         bool Health { get; set; } 
     }
 }

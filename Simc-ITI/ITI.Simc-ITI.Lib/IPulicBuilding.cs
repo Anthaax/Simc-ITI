@@ -7,6 +7,9 @@ namespace ITI.Simc_ITI.Build
 {
     public interface IPulicBuilding
     {
-        int CostPerMount { get; set; }
+        /// <summary>
+        /// Get or Set the CostPerMounth of a public building
+        /// </summary>
+        int CostPerMounth { get; set; }
     }
 }

@@ -58,8 +58,8 @@ namespace ITI.Simc_ITI.Build
             IPulicBuilding publicBuilding = this as IPulicBuilding;
             if( publicBuilding != null )
             {
-                _type.GameContext.MoneyManager.ActualMoney -= publicBuilding.CostPerMount / 30;
-                UpdateMoney = -publicBuilding.CostPerMount / 30;
+                _type.GameContext.MoneyManager.ActualMoney -= publicBuilding.CostPerMounth / 30;
+                UpdateMoney = -publicBuilding.CostPerMounth / 30;
             }
 
             ITaxation privateBuilding = this as ITaxation;
