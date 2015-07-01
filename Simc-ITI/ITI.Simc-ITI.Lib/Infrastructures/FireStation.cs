@@ -76,7 +76,7 @@ namespace ITI.Simc_ITI.Build
             else _firerate = 60;
             return _firerate;
         }
-        public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
+        public int CostPerMounth { get { return _costPerMonth; } set { _costPerMonth = value; } }
         public override void ChargeBitMap()
         {
             _bmp = Box.Map.BitmapCache.Get( "Pompier.bmp" );

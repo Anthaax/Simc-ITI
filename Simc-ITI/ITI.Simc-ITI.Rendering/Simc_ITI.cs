@@ -135,6 +135,6 @@ namespace ITI.Simc_ITI.Rendering
             Retail ctaxe = _game.Map.Boxes[_xBox, _yBox].Infrasructure as Retail;
             if( ctaxe != null ) ctaxe.Taxation = _game.MoneyManager.TaxationManager.CommerceTaxation;
             _viewPortControl.Invalidate();
-        }
+        }        
     }
 }

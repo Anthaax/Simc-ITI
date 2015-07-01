@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI.Build
 {
-    class IStolen
+    interface IStolen
     {
+        /// <summary>
+        /// Get or Set StealChance of a building
+        /// </summary>
         int StealChance { get; set; }
+        /// <summary>
+        /// Change the state of an interface
+        /// </summary>
         bool IsSteal { get; set; } 
     }
 }

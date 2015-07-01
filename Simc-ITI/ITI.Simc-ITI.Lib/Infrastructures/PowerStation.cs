@@ -67,6 +67,6 @@ namespace ITI.Simc_ITI.Build
             else happyness = 0;
             return happyness;
         }
-        public int CostPerMount { get { return _costPerMonth; } set { _costPerMonth = value; } }
+        public int CostPerMounth { get { return _costPerMonth; } set { _costPerMonth = value; } }
     }
 }

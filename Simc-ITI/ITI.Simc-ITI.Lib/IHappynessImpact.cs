@@ -11,7 +11,7 @@ namespace ITI.Simc_ITI.Build
         /// <summary>
         /// Impact the happiness of the box
         /// </summary>
-        /// <param name="b"></param>
+        /// <param name="b">A box with an infrastructure IHappyness is required</param>
         /// <returns></returns>
         int HappynessImpact(Box b);
     }
