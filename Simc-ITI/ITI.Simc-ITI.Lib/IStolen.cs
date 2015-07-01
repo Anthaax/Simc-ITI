@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI.Build
 {
-    class IStolen
+    public interface IStolen
     {
         int StealChance { get; set; }
-        bool IsSteal { get; set; } 
+        bool IsSteal { get; set; }
+        int IndicatorSteal { get; set; }
     }
 }

@@ -73,10 +73,18 @@ namespace ITI.Simc_ITI.Build
             {
                 Random r = new Random();
                 if( BurningBuilding.IsBurning == true ) this.Destroy();
-                else if( r.Next( 1 ) <= BurningBuilding.BurningChance )
+                else if( r.Next( 100 ) <= BurningBuilding.BurningChance )
                 {
                     BurningBuilding.IsBurning = true;
                 }
+            }
+            IStolen StealingBuilding = this as IStolen;
+            if(StealingBuilding != null)
+            {
+                Random r = new Random();
+                if (StealingBuilding.IsSteal == true && StealingBuilding.IndicatorSteal == 0) StealingBuilding.IsSteal = false;
+                else if (StealingBuilding.IsSteal == true) StealingBuilding.IndicatorSteal--;
+                else if (r.Next(100) <= StealingBuilding.StealChance) StealingBuilding.IsSteal = true;
             }
             return UpdateMoney;
         }

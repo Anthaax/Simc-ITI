@@ -28,7 +28,7 @@ namespace ITI.Simc_ITI.Build
         int _hapyness;
         int _salary = 7000;
         int _taxation = 10;
-        int _burningChance = 75;
+        int _burningChance = 25;
         bool _isBurning = false;
         int _stealChance = 75;
         bool _isSteal = false;
@@ -43,7 +43,7 @@ namespace ITI.Simc_ITI.Build
             _hapyness = info.Happyness;
             CheckAllNearBoxes();
             IsOnFire += ( s, e ) => ChargeBitMap();
-            IsSteal += (s, e) => ChargeBitMap();
+            IsStolen += (s, e) => ChargeBitMap();
 
         }
 
@@ -101,8 +101,19 @@ namespace ITI.Simc_ITI.Build
         [field: NonSerialized]
         public event EventHandler IsOnFire;
         [field: NonSerialized]
-        public event EventHandler IsSteal;
-        public bool IsStolen { get { return _isSteal; } }
+        public event EventHandler IsStolen;
+
+        public bool IsSteal { get { return _isSteal; }
+            set
+            {
+                if (_isSteal != value)
+                {
+                    _isSteal = value;
+                    var h = IsStolen;
+                    if (h != null) h(this, EventArgs.Empty);
+                }
+            } 
+        }
         public bool IsBurning { get { return _isBurning; } 
             set 
             {
@@ -111,12 +122,6 @@ namespace ITI.Simc_ITI.Build
                     _isBurning = value;
                     var h = IsOnFire;
                     if( h != null ) h( this, EventArgs.Empty );
-                }
-                else if( _isSteal != value )
-                {
-                    _isSteal = value;
-                    var h = IsSteal;
-                    if (h != null) h(this, EventArgs.Empty);
                 }
             } 
         }
@@ -139,7 +144,8 @@ namespace ITI.Simc_ITI.Build
         public override void ChargeBitMap()
         {
             if( _isBurning == true ) _bmp = Box.Map.BitmapCache.Get( "HabitationB.bmp" );
-           else _bmp = Box.Map.BitmapCache.Get( "Habitation.bmp" );
+            else if (_isSteal == true) _bmp = Box.Map.BitmapCache.Get("CrossRoad.bmp");
+            else _bmp = Box.Map.BitmapCache.Get("Habitation.bmp");
         }
     }
 }
