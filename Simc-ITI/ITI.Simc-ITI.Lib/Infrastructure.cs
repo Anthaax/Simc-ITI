@@ -62,23 +62,40 @@ namespace ITI.Simc_ITI.Build
                 UpdateMoney = -publicBuilding.CostPerMounth / 30;
             }
 
+            IHappyness HappynessBuilding = this as IHappyness;
+            if( HappynessBuilding != null )
+            {
+                if( HappynessBuilding.Happyness <= 20 ) Destroy();
+            }
+
             ITaxation privateBuilding = this as ITaxation;
             if( privateBuilding != null )
             {
+                if( privateBuilding.Taxation > 15 )
+                {
+                    if( HappynessBuilding != null && HappynessBuilding.Happyness <= 20 )
+                    {
+                        HappynessBuilding.Happyness = 20;
+                        ChargeBitMap();
+                    }
+                    privateBuilding.Taxation = 20;
+                    privateBuilding.Salary /= 2;
+                }
                 _type.GameContext.MoneyManager.ActualMoney = _type.GameContext.MoneyManager.ActualMoney + privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
                 UpdateMoney = privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
             }
+
             IBurn BurningBuilding = this as IBurn;
             if( BurningBuilding != null )
             {
                 Random r = new Random();
                 if( BurningBuilding.IsBurning == true ) this.Destroy();
-                else if( r.Next( 1 ) <= BurningBuilding.BurningChance )
+                else if( r.Next( 100 ) <= BurningBuilding.BurningChance )
                 {
                     BurningBuilding.IsBurning = true;
                 }
             }
-            return UpdateMoney;
+             return UpdateMoney;
         }
         public abstract void ChargeBitMap();
         public abstract void OnDestroy();

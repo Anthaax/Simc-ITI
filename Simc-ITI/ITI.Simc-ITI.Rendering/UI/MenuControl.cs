@@ -43,20 +43,24 @@ namespace ITI.Simc_ITI.Rendering
 
         private void LoadGame_button_Click(object sender, EventArgs e)
         {
-            var uri = new Uri( Assembly.GetExecutingAssembly().CodeBase );
-            string localPath = uri.LocalPath;
-            string rootPath = Path.Combine( Path.GetDirectoryName( localPath ), "Save" );
-            string truePath = Path.Combine( rootPath, "Sav1.txt" );
-            GameContext.LoadResult _load = GameContext.LoadGame( truePath );
-            if( _load.LoadedGame != null )
+            OpenFileDialog LoadGame = new OpenFileDialog();
+            LoadGame.InitialDirectory = "c:\\";
+            LoadGame.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
+            LoadGame.FilterIndex = 2;
+            LoadGame.RestoreDirectory = true;
+            if( LoadGame.ShowDialog() == DialogResult.OK )
             {
-                _game = _load.LoadedGame;
-                foreach( var boxes in _game.Map.Boxes)
+                GameContext.LoadResult _load = GameContext.LoadGame( LoadGame.FileName );
+                if( _load.LoadedGame != null )
                 {
-                    boxes.PenColor = new Pen( Color.DimGray );
+                    _game = _load.LoadedGame;
+                    foreach( var boxes in _game.Map.Boxes )
+                    {
+                        boxes.PenColor = new Pen( Color.DimGray );
+                    }
+                    var h = GameHasBeenCreated;
+                    if( h != null ) h( this, EventArgs.Empty );
                 }
-                var h = GameHasBeenCreated;
-                if( h != null ) h( this, EventArgs.Empty );
             }
         }
 

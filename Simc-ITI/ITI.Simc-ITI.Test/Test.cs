@@ -31,5 +31,41 @@ namespace ITI.Simc_ITI.Test
             GameContext _game = _load.LoadedGame;
             Assert.That( _game.Map.Boxes[5, 5].Infrasructure.Type.Name, Is.EqualTo( "Habitation" ) );
         }
+        [Test]
+        public void CheckFire()
+        {
+            GameContext _game = GameContext.CreateNewGame();
+            _game.InfrastructureManager.Find( "Habitation" ).CreateInfrastructure( _game.Map.Boxes[1, 1] , 0);
+            IBurn BurningBuilding = _game.Map.Boxes[1, 1].Infrasructure as IBurn;
+            Assert.That( BurningBuilding.BurningChance, Is.EqualTo( 75 ) );
+            _game.InfrastructureManager.Find( "Pompier" ).CreateInfrastructure( _game.Map.Boxes[1, 2], 0 );
+            IFire FireStation = _game.Map.Boxes[1, 2].Infrasructure as IFire;
+            Assert.That( BurningBuilding.BurningChance, Is.EqualTo( 5 ) );
+
+            _game = GameContext.CreateNewGame();
+            _game.InfrastructureManager.Find( "Pompier" ).CreateInfrastructure( _game.Map.Boxes[1, 2], 0 );
+            _game.InfrastructureManager.Find( "Habitation" ).CreateInfrastructure( _game.Map.Boxes[1, 1], 0 );
+            Assert.That( BurningBuilding.BurningChance, Is.EqualTo( 5 ) );
+            
+        }
+        [Test]
+        public void TaxationGoDownHappyness()
+        {
+            GameContext _game = GameContext.CreateNewGame();
+            _game.InfrastructureManager.Find( "Habitation" ).CreateInfrastructure( _game.Map.Boxes[1, 1], 0 );
+            ITaxation privateBuilding = _game.Map.Boxes[1, 1].Infrasructure as ITaxation;
+            Assert.That( privateBuilding.Taxation, Is.EqualTo( _game.MoneyManager.TaxationManager.HabitationTaxation ) );
+            _game.MoneyManager.TaxationManager.HabitationTaxation = 21;
+            IEnumerable<Habitation> habitation = _game.Map.GetAllInfrastucture<Habitation>();
+            foreach( var hab in habitation )
+            {
+                hab.Taxation = _game.MoneyManager.TaxationManager.HabitationTaxation;
+            }
+            _game.Map.Boxes[1, 1].Infrasructure.Update();
+            Assert.That( privateBuilding.Taxation, Is.EqualTo( 20 ) );
+            Assert.That( privateBuilding.Salary, Is.EqualTo( 7000 / 2 ) );
+
+
+        }
     }
 }

@@ -14,6 +14,6 @@ namespace ITI.Simc_ITI.Build
         /// <summary>
         /// Get or Set the Salary of an Infrastructure
         /// </summary>
-        int Salary { get; }
+        int Salary { get; set; }
     }
 }

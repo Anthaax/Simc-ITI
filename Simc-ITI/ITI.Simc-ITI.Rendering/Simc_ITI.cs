@@ -137,7 +137,11 @@ namespace ITI.Simc_ITI.Rendering
             if( MoveY > 10000 && MoveY < -10000 ) MoveY = 0;
             if( MoveX != 0 && MoveY != 0 ) _viewPortControl.KeyMove(MoveX, MoveY);
         }
-
+        /// <summary>
+        /// Zoom with mouse wheel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TrayIcon_MouseWheel(object sender, MouseEventArgs e)
         {
             if (e.Delta < 0)
@@ -161,28 +165,11 @@ namespace ITI.Simc_ITI.Rendering
                 }
             }
         }
-
-        private void MoveOnTheMap( object sender, KeyEventArgs e )
-        {
-            switch( e.KeyCode )
-            {
-                case Keys.Add:
-                    break;
-                case Keys.NumPad6:
-                    x += 10000;
-                    break;
-                case Keys.NumPad4:
-                    if( x > 0 ) x -= 10000;
-                    break;
-                case Keys.NumPad8:
-                    if( y > 0 ) y -= 10000;
-                    break;
-                case Keys.NumPad2:
-                    y += 10000;
-                    break;
-            }
-            _viewPortControl.KeyMove( x, y );
-        }
+        /// <summary>
+        /// Select the box with click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MouseClickEvent(object sender, MouseEventArgs e)
         {
             int _boxInPixel = (int)Math.Round( _game.Map.BoxWidth *  _viewPortControl.ViewPort.ClientScaleFactor );
@@ -196,6 +183,9 @@ namespace ITI.Simc_ITI.Rendering
             _leftPaneControl.PositionOfTheMouse( _xBox, _yBox );
             ColorSelectedBox();
         }
+        /// <summary>
+        /// Color the box 
+        /// </summary>
         private void ColorSelectedBox()
         {
             foreach( var box in _game.Map.Boxes )
@@ -205,6 +195,9 @@ namespace ITI.Simc_ITI.Rendering
             _game.Map.Boxes[_xBox, _yBox].PenColor = new Pen( Color.Red );
             _viewPortControl.Invalidate();
         }
+        /// <summary>
+        /// Set the taxation with all Building
+        /// </summary>
         private void AfterBuildAInfrastructure()
         {
             Habitation taxe = _game.Map.Boxes[_xBox, _yBox].Infrasructure as Habitation;

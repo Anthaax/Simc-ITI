@@ -67,6 +67,11 @@ namespace ITI.Simc_ITI.Build
             {
                 Happyness = Happyness + impact.HappynessImpact( Box );
             }
+            IFire fire = b.Infrasructure as IFire;
+            if( fire != null )
+            {
+                BurningChance = BurningChance - fire.FireChanceImpact( Box );
+            }
         }
         public override void OnDestroyingAround( Box b )
         {
@@ -75,10 +80,15 @@ namespace ITI.Simc_ITI.Build
             {
                 Happyness = Happyness - impact.HappynessImpact( Box );
             }
+            IFire fire = b.Infrasructure as IFire;
+            if( fire != null )
+            {
+                BurningChance = BurningChance + fire.FireChanceImpact( Box );
+            }
         }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
-        public int Salary { get { return _salary; } }
+        public int Salary { get { return _salary; } set { _salary = value; } }
         public int BurningChance { get { return _burningChance; } set { _burningChance = value; } }
         [field: NonSerialized]
         public event EventHandler IsOnFire;
@@ -122,6 +132,7 @@ namespace ITI.Simc_ITI.Build
         public override void ChargeBitMap()
         {
             if( _isBurning == true ) _bmp = Box.Map.BitmapCache.Get( "CommercesB.bmp" );
+            else if( _taxation == 20 ) _bmp = Box.Map.BitmapCache.Get( "CommercesH.bmp" );
             else _bmp = Box.Map.BitmapCache.Get( "Commerces.bmp" );
         }
     }

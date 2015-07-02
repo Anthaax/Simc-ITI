@@ -97,7 +97,7 @@ namespace ITI.Simc_ITI.Build
         public int BurningChance { get { return _burningChance; } set { _burningChance = value; } }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
-        public int Salary { get { return _salary; } }
+        public int Salary { get { return _salary; } set { _salary = value; } }
         [field: NonSerialized]
         public event EventHandler IsOnFire;
         [field: NonSerialized]
@@ -139,7 +139,8 @@ namespace ITI.Simc_ITI.Build
         public override void ChargeBitMap()
         {
             if( _isBurning == true ) _bmp = Box.Map.BitmapCache.Get( "HabitationB.bmp" );
-           else _bmp = Box.Map.BitmapCache.Get( "Habitation.bmp" );
+            else if( _taxation == 20 ) _bmp = Box.Map.BitmapCache.Get( "HabitationH.bmp" );
+            else _bmp = Box.Map.BitmapCache.Get( "Habitation.bmp" );
         }
     }
 }

@@ -42,7 +42,6 @@
             this.menuControl1.Name = "menuControl1";
             this.menuControl1.Size = new System.Drawing.Size(1063, 252);
             this.menuControl1.TabIndex = 3;
-            this.menuControl1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveOnTheMap);
             // 
             // _leftPaneControl
             // 
@@ -54,7 +53,6 @@
             this._leftPaneControl.Size = new System.Drawing.Size(115, 252);
             this._leftPaneControl.TabIndex = 2;
             this._leftPaneControl.Visible = false;
-            this._leftPaneControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveOnTheMap);
             // 
             // _bottomPaneControl
             // 
@@ -65,7 +63,6 @@
             this._bottomPaneControl.Size = new System.Drawing.Size(1178, 126);
             this._bottomPaneControl.TabIndex = 1;
             this._bottomPaneControl.Visible = false;
-            this._bottomPaneControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveOnTheMap);
             // 
             // _viewPortControl
             // 
@@ -78,7 +75,6 @@
             this._viewPortControl.TabIndex = 0;
             this._viewPortControl.Text = "viewPortControl1";
             this._viewPortControl.Visible = false;
-            this._viewPortControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveOnTheMap);
             // 
             // Simc_ITI
             // 
@@ -90,7 +86,6 @@
             this.Name = "Simc_ITI";
             this.Text = "Simc\'ITI";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MoveOnTheMap);
             this.ResumeLayout(false);
 
         }

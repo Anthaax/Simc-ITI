@@ -35,6 +35,7 @@ namespace ITI.Simc_ITI.Rendering
             MyMoney.Text = " Mon Argent : " + _game.MoneyManager.ActualMoney.ToString();
             _game.MoneyManager.ActualMoneyChanged += label_MonArgent_text;
             _game.MoneyManager.LastPurchaseWasDone += ( s, e ) => LastPurchaseChange();
+            _game.MoneyManager.TaxationManager.TaxationAsChanged += ( s, e ) => TaxationWasChanged();
         }
         public void SetTimer(Timer t)
         {
@@ -193,12 +194,16 @@ namespace ITI.Simc_ITI.Rendering
         }
         private void SaveTheGame( object sender, EventArgs e )
         {
-            var uri = new Uri( Assembly.GetExecutingAssembly().CodeBase );
-            string localPath = uri.LocalPath;
-            string rootPath = Path.Combine( Path.GetDirectoryName( localPath ), "Save" );
-            string truePath = Path.Combine(  rootPath , "Sav1.txt" );
-            _game.Save( truePath );
-            SaveLabel.Visible = true;
+            OpenFileDialog SaveGame = new OpenFileDialog();
+            SaveGame.InitialDirectory = "c:\\";
+            SaveGame.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
+            SaveGame.FilterIndex = 2;
+            SaveGame.RestoreDirectory = true;
+            if( SaveGame.ShowDialog() == DialogResult.OK )
+            {
+                _game.Save( SaveGame.FileName );
+                SaveLabel.Visible = true;
+            }
         }
     }
 }
