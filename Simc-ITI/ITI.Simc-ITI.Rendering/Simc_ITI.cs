@@ -99,6 +99,7 @@ namespace ITI.Simc_ITI.Rendering
                 update += infrastructure.Update();
             }
             _game.MoneyManager.LastPurchase = update;
+            _bottomPaneControl.AverageHappyness();
             _viewPortControl.Invalidate();
         }
         /// <summary>

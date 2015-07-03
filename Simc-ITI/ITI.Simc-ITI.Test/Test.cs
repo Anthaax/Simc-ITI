@@ -62,7 +62,7 @@ namespace ITI.Simc_ITI.Test
                 hab.Taxation = _game.MoneyManager.TaxationManager.HabitationTaxation;
             }
             _game.Map.Boxes[1, 1].Infrasructure.Update();
-            Assert.That( privateBuilding.Taxation, Is.EqualTo( 20 ) );
+            Assert.That( privateBuilding.Taxation, Is.EqualTo( 16 ) );
             Assert.That( privateBuilding.Salary, Is.EqualTo( 7000 / 2 ) );
 
 

@@ -139,7 +139,7 @@ namespace ITI.Simc_ITI.Build
         public override void ChargeBitMap()
         {
             if( _isBurning == true ) _bmp = Box.Map.BitmapCache.Get( "HabitationB.bmp" );
-            else if( _taxation == 20 ) _bmp = Box.Map.BitmapCache.Get( "HabitationH.bmp" );
+            else if( _hapyness <= 20 ) _bmp = Box.Map.BitmapCache.Get( "HabitationH.bmp" );
             else _bmp = Box.Map.BitmapCache.Get( "Habitation.bmp" );
         }
     }

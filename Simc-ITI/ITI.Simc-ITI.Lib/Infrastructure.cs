@@ -65,7 +65,7 @@ namespace ITI.Simc_ITI.Build
             IHappyness HappynessBuilding = this as IHappyness;
             if( HappynessBuilding != null )
             {
-                if( HappynessBuilding.Happyness <= 20 ) Destroy();
+                if( HappynessBuilding.Happyness <= 10 ) Destroy();
             }
 
             ITaxation privateBuilding = this as ITaxation;
@@ -75,11 +75,23 @@ namespace ITI.Simc_ITI.Build
                 {
                     if( HappynessBuilding != null && HappynessBuilding.Happyness <= 20 )
                     {
+                        HappynessBuilding.Happyness -= 2;
+                    }
+                    else if (HappynessBuilding != null )
+                    {
                         HappynessBuilding.Happyness = 20;
+                        privateBuilding.Taxation = 16;
+                        privateBuilding.Salary /= 2;
+                    }
+                    else
+                    {
+                        privateBuilding.Taxation = 20;
+                        privateBuilding.Salary /= 2;
+                    }
+                    if( _box != null )
+                    {
                         ChargeBitMap();
                     }
-                    privateBuilding.Taxation = 20;
-                    privateBuilding.Salary /= 2;
                 }
                 _type.GameContext.MoneyManager.ActualMoney = _type.GameContext.MoneyManager.ActualMoney + privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
                 UpdateMoney = privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
