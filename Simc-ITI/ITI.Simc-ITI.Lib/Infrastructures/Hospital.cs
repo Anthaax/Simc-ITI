@@ -15,7 +15,7 @@ namespace ITI.Simc_ITI.Build
         public HospitalType(GameContext ctx)
             :base(ctx,"Hopital", 500, 10)
         {
-            _costPerMonth = 600;
+            _costPerMonth = 1000;
             _happynessImpactMax = 5;
         }
         protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )

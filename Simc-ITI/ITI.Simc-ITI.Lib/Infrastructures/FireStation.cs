@@ -14,7 +14,7 @@ namespace ITI.Simc_ITI.Build
         public FireStationType(GameContext ctx)
             : base(ctx, "Pompier", 1000, 10)
         {
-            _costPerMonth = 600;
+            _costPerMonth = 1000;
         }
         public int CostPerMounth { get { return _costPerMonth; } set { _costPerMonth = value; } }
         protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )

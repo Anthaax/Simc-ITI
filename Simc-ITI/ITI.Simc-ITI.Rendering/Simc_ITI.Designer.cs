@@ -32,11 +32,12 @@
             this._leftPaneControl = new ITI.Simc_ITI.Rendering.LeftPaneControl();
             this._bottomPaneControl = new ITI.Simc_ITI.Rendering.BottomPaneControl();
             this._viewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
+            this.GameOver_Label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // menuControl1
             // 
-            this.menuControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuControl1.Dock = System.Windows.Forms.DockStyle.Right;
             this.menuControl1.Location = new System.Drawing.Point(115, 0);
             this.menuControl1.Margin = new System.Windows.Forms.Padding(4);
             this.menuControl1.Name = "menuControl1";
@@ -76,9 +77,23 @@
             this._viewPortControl.Text = "viewPortControl1";
             this._viewPortControl.Visible = false;
             // 
+            // GameOver_Label
+            // 
+            this.GameOver_Label.AutoSize = true;
+            this.GameOver_Label.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.GameOver_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GameOver_Label.ForeColor = System.Drawing.Color.Red;
+            this.GameOver_Label.Location = new System.Drawing.Point(470, 136);
+            this.GameOver_Label.Name = "GameOver_Label";
+            this.GameOver_Label.Size = new System.Drawing.Size(323, 69);
+            this.GameOver_Label.TabIndex = 4;
+            this.GameOver_Label.Text = "GameOver";
+            this.GameOver_Label.Visible = false;
+            // 
             // Simc_ITI
             // 
             this.ClientSize = new System.Drawing.Size(1178, 378);
+            this.Controls.Add(this.GameOver_Label);
             this.Controls.Add(this.menuControl1);
             this.Controls.Add(this._leftPaneControl);
             this.Controls.Add(this._bottomPaneControl);
@@ -87,6 +102,7 @@
             this.Text = "Simc\'ITI";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -96,6 +112,7 @@
         private BottomPaneControl _bottomPaneControl;
         private LeftPaneControl _leftPaneControl;
         private MenuControl menuControl1;
+        private System.Windows.Forms.Label GameOver_Label;
 
 
     }

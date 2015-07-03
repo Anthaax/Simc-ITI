@@ -33,7 +33,7 @@ namespace ITI.Simc_ITI.Build
         {
             _map = new Map( 100, 100 );
             _infraManager = new InfrastructureManager( this );
-            _moneyManager = new MoneyManager();
+            _moneyManager = new MoneyManager(this);
         }
 
         public static GameContext CreateNewGame()

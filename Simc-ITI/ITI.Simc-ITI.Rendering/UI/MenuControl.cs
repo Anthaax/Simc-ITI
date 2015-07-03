@@ -31,8 +31,7 @@ namespace ITI.Simc_ITI.Rendering
             if( _load.LoadedGame != null )
             {
                 _game = _load.LoadedGame;
-                _game.MoneyManager.ActualMoney = 4000;
-;                foreach( var boxes in _game.Map.Boxes )
+                ; foreach( var boxes in _game.Map.Boxes )
                 {
                     boxes.PenColor = new Pen( Color.DimGray );
                 }

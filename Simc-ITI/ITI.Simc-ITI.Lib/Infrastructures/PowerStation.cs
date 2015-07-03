@@ -14,7 +14,7 @@ namespace ITI.Simc_ITI.Build
         public PowerStationType( GameContext ctx )
             : base( ctx, "CentraleElectrique", 900, 13 )
         {
-            _costPerMonth = 600;
+            _costPerMonth = 1000;
         }
         protected override Infrastructure DoCreateInfrastructure( Box location, object creationConfig )
         {

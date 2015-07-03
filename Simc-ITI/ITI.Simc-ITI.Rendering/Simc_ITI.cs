@@ -34,6 +34,7 @@ namespace ITI.Simc_ITI.Rendering
             _game = menuControl1.GameContext;
             InitializeUsersControls();
             scalefactor = _viewPortControl.ViewPort.ActualZoomFactor;
+            _game.IsGameOverChanged += ( s, e ) => GameOver();
             MouseEvents();
             InitialiezBuildingEvent();
             InitiallizeTimer();
@@ -206,6 +207,15 @@ namespace ITI.Simc_ITI.Rendering
             Retail ctaxe = _game.Map.Boxes[_xBox, _yBox].Infrasructure as Retail;
             if( ctaxe != null ) ctaxe.Taxation = _game.MoneyManager.TaxationManager.CommerceTaxation;
             _viewPortControl.Invalidate();
-        }        
+        }
+        private void GameOver()
+        {
+            _bottomPaneControl.Visible = false;
+            _leftPaneControl.Visible = false;
+            _viewPortControl.Visible = false;
+            _timer.Enabled = false;
+            GameOver_Label.Visible = true;
+            menuControl1.Visible = true;
+        }
     }
 }

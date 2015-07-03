@@ -10,13 +10,15 @@ namespace ITI.Simc_ITI.Build
     public class MoneyManager
     {
 
-        int _myMoney = 0;
+        int _myMoney;
         int _lastPourchase = 0;
         TaxationManager _taxe;
-        public MoneyManager()
+        GameContext _ctx;
+        public MoneyManager(GameContext ctx)
         {
             ActualMoney = 4000;
             _taxe = new TaxationManager();
+            _ctx = ctx;
         }
         [field: NonSerialized]
         public event EventHandler ActualMoneyChanged;
@@ -28,9 +30,13 @@ namespace ITI.Simc_ITI.Build
                 if( _myMoney != value )
                 {
                     _myMoney = value;
+                    if( _myMoney <= -100 )
+                    {
+                        _ctx.SetGameOver();
+                    }
                     var h = ActualMoneyChanged;
                     if( h != null ) h( this, EventArgs.Empty );
-                }
+                }  
             }
         }
         [field : NonSerialized]
@@ -44,8 +50,7 @@ namespace ITI.Simc_ITI.Build
                     _lastPourchase = value;
                     var h = LastPurchaseWasDone;
                     if( h != null ) h( this, EventArgs.Empty );
-                }
-                 
+                } 
             } 
         }
         public TaxationManager TaxationManager { get { return _taxe; } }
