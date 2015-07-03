@@ -31,7 +31,7 @@ namespace ITI.Simc_ITI.Build
         public PoliceStation(Box b, PoliceStationType info)
             : base(b, info)
         {
-            _bmp = b.Map.BitmapCache.Get("Police.bmp");
+            _bmp = b.Map.BitmapCache.Get("PoliceStation.bmp");
             _costPerMonth = info.CostPerMonth;
             CheckAllNearBoxes();
 
