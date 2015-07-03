@@ -115,6 +115,7 @@ namespace ITI.Simc_ITI.Build
                 {
                     StealingBuilding.IsSteal = false;
                     privateBuilding.Salary = 7000;
+                    StealingBuilding.IndicatorSteal = 5;
                 }
                 else if( StealingBuilding.IsSteal == true ) StealingBuilding.IndicatorSteal--;
                 else if( r.Next( 100 ) <= StealingBuilding.StealChance ) StealingBuilding.IsSteal = true;
