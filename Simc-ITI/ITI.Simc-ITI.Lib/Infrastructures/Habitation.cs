@@ -23,7 +23,7 @@ namespace ITI.Simc_ITI.Build
         public int Happyness { get { return _happyness; } }
     }
     [Serializable]
-    public class Habitation : Infrastructure, IHappyness, ITaxation, IBurn
+    public class Habitation : Infrastructure, IHappyness, ITaxation, IBurn, IStolen
     {
         int _hapyness;
         int _salary = 7000;
@@ -32,6 +32,7 @@ namespace ITI.Simc_ITI.Build
         bool _isBurning = false;
         int _stealChance = 75;
         bool _isSteal = false;
+        int _indicatorSteal = 5;
         [field: NonSerialized]
         Bitmap _bmp;
 
@@ -43,7 +44,7 @@ namespace ITI.Simc_ITI.Build
             _hapyness = info.Happyness;
             CheckAllNearBoxes();
             IsOnFire += ( s, e ) => ChargeBitMap();
-            IsSteal += (s, e) => ChargeBitMap();
+            IsStolen += ( s, e ) => ChargeBitMap();
 
         }
 
@@ -94,6 +95,7 @@ namespace ITI.Simc_ITI.Build
             }
         }
         public int StealChance { get { return _stealChance; } set { _stealChance = value; } }
+        public int IndicatorSteal { get { return _indicatorSteal; } set { _indicatorSteal = value; } }
         public int BurningChance { get { return _burningChance; } set { _burningChance = value; } }
         public int Happyness { get { return _hapyness; } set { _hapyness = value; } }
         public int Taxation { get { return _taxation; } set { _taxation = value; } }
@@ -101,8 +103,20 @@ namespace ITI.Simc_ITI.Build
         [field: NonSerialized]
         public event EventHandler IsOnFire;
         [field: NonSerialized]
-        public event EventHandler IsSteal;
-        public bool IsStolen { get { return _isSteal; } }
+        public event EventHandler IsStolen;
+
+        public bool IsSteal { get { return _isSteal; }
+            set
+            {
+                if (_isSteal != value)
+                {
+                    _salary = 0;
+                    _isSteal = value;
+                    var h = IsStolen;
+                    if (h != null) h(this, EventArgs.Empty);
+                }
+            } 
+        }
         public bool IsBurning { get { return _isBurning; } 
             set 
             {
@@ -111,12 +125,6 @@ namespace ITI.Simc_ITI.Build
                     _isBurning = value;
                     var h = IsOnFire;
                     if( h != null ) h( this, EventArgs.Empty );
-                }
-                else if( _isSteal != value )
-                {
-                    _isSteal = value;
-                    var h = IsSteal;
-                    if (h != null) h(this, EventArgs.Empty);
                 }
             } 
         }
@@ -140,6 +148,7 @@ namespace ITI.Simc_ITI.Build
         {
             if( _isBurning == true ) _bmp = Box.Map.BitmapCache.Get( "HabitationB.bmp" );
             else if( _hapyness <= 20 ) _bmp = Box.Map.BitmapCache.Get( "HabitationH.bmp" );
+            else if (_isSteal == true) _bmp = Box.Map.BitmapCache.Get("CrossRoad.bmp");
             else _bmp = Box.Map.BitmapCache.Get( "Habitation.bmp" );
         }
     }
