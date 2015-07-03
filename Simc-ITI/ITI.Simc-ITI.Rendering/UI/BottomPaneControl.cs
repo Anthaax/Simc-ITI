@@ -194,7 +194,7 @@ namespace ITI.Simc_ITI.Rendering
         }
         private void SaveTheGame( object sender, EventArgs e )
         {
-            OpenFileDialog SaveGame = new OpenFileDialog();
+            SaveFileDialog SaveGame = new SaveFileDialog();
             SaveGame.InitialDirectory = "c:\\";
             SaveGame.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*" ;
             SaveGame.FilterIndex = 2;
