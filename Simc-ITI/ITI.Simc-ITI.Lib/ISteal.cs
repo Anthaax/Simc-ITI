@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI.Build
 {
-    public interface ISteal
+    public interface Isteal
     {
         /// <summary>
-        /// Impact the StealChance of the box
+        /// Get or Set StealChance of a building
         /// </summary>
-        /// <param name="b"> A box with an infrastructure IStolen is required </param>
-        /// <returns></returns>
-        int StealChanceImpact(Box b);
+        int StealChance { get; set; }
+        /// <summary>
+        /// Get the number of turn the habitation will be stolen
+        /// </summary>
+        int IndicatorSteal { get; set; }
+        /// <summary>
+        /// Change the state of an interface
+        /// </summary>
+        bool IsSteal { get; set; } 
     }
 }

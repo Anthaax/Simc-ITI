@@ -63,7 +63,7 @@ namespace ITI.Simc_ITI.Build
                 if( impact.HappynessImpact( Box ) < 0 ) _health = false;
                 else _health = true;
             }
-            IFire fire = b.Infrasructure as IFire;
+            IBurnImpact fire = b.Infrasructure as IBurnImpact;
             if( fire != null )
             {
                 BurningChance = BurningChance - fire.FireChanceImpact( Box );
@@ -76,7 +76,7 @@ namespace ITI.Simc_ITI.Build
             {
                 _health = true;
             }
-            IFire fire = b.Infrasructure as IFire;
+            IBurnImpact fire = b.Infrasructure as IBurnImpact;
             if( fire != null )
             {
                 BurningChance = BurningChance + fire.FireChanceImpact( Box );

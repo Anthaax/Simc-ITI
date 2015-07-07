@@ -34,7 +34,7 @@ namespace ITI.Simc_ITI.Rendering
             _game = menuControl1.GameContext;
             InitializeUsersControls();
             scalefactor = _viewPortControl.ViewPort.ActualZoomFactor;
-            _game.IsGameOverChanged += ( s, e ) => GameOver();
+            
             MouseEvents();
             InitialiezBuildingEvent();
             InitiallizeTimer();
@@ -75,6 +75,8 @@ namespace ITI.Simc_ITI.Rendering
                 building.BuildingHasBeenCreated += ( s, e ) => AfterBuildAInfrastructure();
                 building.BuildingHasBeenCreated += ( s, e ) => _bottomPaneControl.AverageHappyness();
             }
+            _game.IsGameOverChanged += GameOver;
+            _game.MoneyManager.NoMoreMoney += GameOver;
         }
         /// <summary>
         /// Initialize all mouse events
@@ -208,14 +210,13 @@ namespace ITI.Simc_ITI.Rendering
             if( ctaxe != null ) ctaxe.Taxation = _game.MoneyManager.TaxationManager.CommerceTaxation;
             _viewPortControl.Invalidate();
         }
-        private void GameOver()
+        private void GameOver( object sender, EventArgs e )
         {
             _bottomPaneControl.Visible = false;
             _leftPaneControl.Visible = false;
             _viewPortControl.Visible = false;
             _timer.Enabled = false;
             GameOver_Label.Visible = true;
-            menuControl1.Visible = true;
         }
     }
 }

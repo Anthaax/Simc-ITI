@@ -23,7 +23,7 @@ namespace ITI.Simc_ITI.Build
         }
     }
     [Serializable]
-    public class FireStation : Infrastructure, IFire, IPulicBuilding
+    public class FireStation : Infrastructure, IBurnImpact, IPulicBuilding
     {
         int _costPerMonth;
         [field: NonSerialized]

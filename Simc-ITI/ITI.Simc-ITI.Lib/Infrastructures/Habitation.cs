@@ -23,7 +23,7 @@ namespace ITI.Simc_ITI.Build
         public int Happyness { get { return _happyness; } }
     }
     [Serializable]
-    public class Habitation : Infrastructure, IHappyness, ITaxation, IBurn, IStolen
+    public class Habitation : Infrastructure, IHappyness, ITaxation, IBurn, Isteal
     {
         int _hapyness;
         int _salary = 7000;
@@ -65,12 +65,12 @@ namespace ITI.Simc_ITI.Build
             {
                 Happyness = Happyness + impact.HappynessImpact( Box );
             }
-            IFire fire = b.Infrasructure as IFire;
+            IBurnImpact fire = b.Infrasructure as IBurnImpact;
             if( fire != null )
             {
                 BurningChance = BurningChance - fire.FireChanceImpact( Box );
             }
-            ISteal steal = b.Infrasructure as ISteal;
+            IStealImpact steal = b.Infrasructure as IStealImpact;
             if(steal != null)
             {
                 StealChance = StealChance - steal.StealChanceImpact( Box );
@@ -83,12 +83,12 @@ namespace ITI.Simc_ITI.Build
             {
                 Happyness = Happyness - impact.HappynessImpact( Box );
             }
-            IFire fire = b.Infrasructure as IFire;
+            IBurnImpact fire = b.Infrasructure as IBurnImpact;
             if( fire != null ) 
             {
                 BurningChance = BurningChance + fire.FireChanceImpact( Box );
             }
-            ISteal steal = b.Infrasructure as ISteal;
+            IStealImpact steal = b.Infrasructure as IStealImpact;
             if (steal != null)
             {
                 StealChance = StealChance + steal.StealChanceImpact(Box);
@@ -148,7 +148,7 @@ namespace ITI.Simc_ITI.Build
         {
             if( _isBurning == true ) _bmp = Box.Map.BitmapCache.Get( "HabitationB.bmp" );
             else if( _hapyness <= 20 ) _bmp = Box.Map.BitmapCache.Get( "HabitationH.bmp" );
-            else if (_isSteal == true) _bmp = Box.Map.BitmapCache.Get("CrossRoad.bmp");
+            else if (_isSteal == true) _bmp = Box.Map.BitmapCache.Get("HabitationH.bmp");
             else _bmp = Box.Map.BitmapCache.Get( "Habitation.bmp" );
         }
     }

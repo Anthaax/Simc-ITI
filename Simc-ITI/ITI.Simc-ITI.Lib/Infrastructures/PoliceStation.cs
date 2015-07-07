@@ -23,7 +23,7 @@ namespace ITI.Simc_ITI.Build
         public int CostPerMonth { get { return _costPerMonth; } }
     }
     [Serializable]
-    public class PoliceStation : Infrastructure, IPulicBuilding, ISteal
+    public class PoliceStation : Infrastructure, IPulicBuilding, IStealImpact
     {
         [field: NonSerialized]
         Bitmap _bmp;
@@ -31,7 +31,7 @@ namespace ITI.Simc_ITI.Build
         public PoliceStation(Box b, PoliceStationType info)
             : base(b, info)
         {
-            _bmp = b.Map.BitmapCache.Get("Police.bmp");
+            _bmp = b.Map.BitmapCache.Get("PoliceStation.bmp");
             _costPerMonth = info.CostPerMonth;
             CheckAllNearBoxes();
 
@@ -56,7 +56,7 @@ namespace ITI.Simc_ITI.Build
         }
         public override void ChargeBitMap()
         {
-            _bmp = Box.Map.BitmapCache.Get( "Police.bmp" );
+            _bmp = Box.Map.BitmapCache.Get( "PoliceStation.bmp" );
         }
         public void CheckAllNearBoxes()
         {
@@ -77,8 +77,8 @@ namespace ITI.Simc_ITI.Build
             int _stealrate;
             int cDistance = Math.Abs(Box.Column - b.Column);
             int lDistance = Math.Abs(Box.Line - b.Line);
-            if (cDistance < 5 && lDistance < 5) _stealrate = 5;
-            else _stealrate = 3;
+            if (cDistance < 5 && lDistance < 5) _stealrate = 70;
+            else _stealrate = 60;
             return _stealrate;
         }
         public int CostPerMounth { get { return _costPerMonth; } set { _costPerMonth = value; } }

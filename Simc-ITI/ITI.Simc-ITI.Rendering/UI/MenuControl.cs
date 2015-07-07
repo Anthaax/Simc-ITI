@@ -31,7 +31,7 @@ namespace ITI.Simc_ITI.Rendering
             if( _load.LoadedGame != null )
             {
                 _game = _load.LoadedGame;
-                ; foreach( var boxes in _game.Map.Boxes )
+                foreach( var boxes in _game.Map.Boxes )
                 {
                     boxes.PenColor = new Pen( Color.DimGray );
                 }

@@ -28,16 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.GameOver_Label = new System.Windows.Forms.Label();
             this.menuControl1 = new ITI.Simc_ITI.Rendering.MenuControl();
             this._leftPaneControl = new ITI.Simc_ITI.Rendering.LeftPaneControl();
             this._bottomPaneControl = new ITI.Simc_ITI.Rendering.BottomPaneControl();
             this._viewPortControl = new ITI.Simc_ITI.Rendering.ViewPortControl();
-            this.GameOver_Label = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // GameOver_Label
+            // 
+            this.GameOver_Label.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GameOver_Label.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.GameOver_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 150F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GameOver_Label.ForeColor = System.Drawing.Color.Red;
+            this.GameOver_Label.Location = new System.Drawing.Point(12, 9);
+            this.GameOver_Label.Margin = new System.Windows.Forms.Padding(10);
+            this.GameOver_Label.Name = "GameOver_Label";
+            this.GameOver_Label.Size = new System.Drawing.Size(1340, 283);
+            this.GameOver_Label.TabIndex = 4;
+            this.GameOver_Label.Text = "GameOver";
+            this.GameOver_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.GameOver_Label.Visible = false;
             // 
             // menuControl1
             // 
-            this.menuControl1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.menuControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuControl1.Location = new System.Drawing.Point(115, 0);
             this.menuControl1.Margin = new System.Windows.Forms.Padding(4);
             this.menuControl1.Name = "menuControl1";
@@ -77,19 +94,6 @@
             this._viewPortControl.Text = "viewPortControl1";
             this._viewPortControl.Visible = false;
             // 
-            // GameOver_Label
-            // 
-            this.GameOver_Label.AutoSize = true;
-            this.GameOver_Label.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.GameOver_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GameOver_Label.ForeColor = System.Drawing.Color.Red;
-            this.GameOver_Label.Location = new System.Drawing.Point(470, 136);
-            this.GameOver_Label.Name = "GameOver_Label";
-            this.GameOver_Label.Size = new System.Drawing.Size(323, 69);
-            this.GameOver_Label.TabIndex = 4;
-            this.GameOver_Label.Text = "GameOver";
-            this.GameOver_Label.Visible = false;
-            // 
             // Simc_ITI
             // 
             this.ClientSize = new System.Drawing.Size(1178, 378);
@@ -102,7 +106,6 @@
             this.Text = "Simc\'ITI";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

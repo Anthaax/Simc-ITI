@@ -39,7 +39,7 @@ namespace ITI.Simc_ITI.Test
             IBurn BurningBuilding = _game.Map.Boxes[1, 1].Infrasructure as IBurn;
             Assert.That( BurningBuilding.BurningChance, Is.EqualTo( 75 ) );
             _game.InfrastructureManager.Find( "Pompier" ).CreateInfrastructure( _game.Map.Boxes[1, 2], 0 );
-            IFire FireStation = _game.Map.Boxes[1, 2].Infrasructure as IFire;
+            IBurnImpact FireStation = _game.Map.Boxes[1, 2].Infrasructure as IBurnImpact;
             Assert.That( BurningBuilding.BurningChance, Is.EqualTo( 5 ) );
 
             _game = GameContext.CreateNewGame();

@@ -107,7 +107,7 @@ namespace ITI.Simc_ITI.Build
                     BurningBuilding.IsBurning = true;
                 }
             }
-            IStolen StealingBuilding = this as IStolen;
+            Isteal StealingBuilding = this as Isteal;
             if( StealingBuilding != null )
             {
                 Random r = new Random();

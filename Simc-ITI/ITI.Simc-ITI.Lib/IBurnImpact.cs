@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ITI.Simc_ITI.Build
 {
-    public interface IFire
+    public interface IBurnImpact
     {
         /// <summary>
         /// Impact the fire chance of the box

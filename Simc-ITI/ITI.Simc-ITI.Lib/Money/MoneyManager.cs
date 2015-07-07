@@ -22,6 +22,8 @@ namespace ITI.Simc_ITI.Build
         }
         [field: NonSerialized]
         public event EventHandler ActualMoneyChanged;
+        [field: NonSerialized]
+        public event EventHandler NoMoreMoney;
         public int ActualMoney
         {
             get { return _myMoney; }
@@ -33,9 +35,11 @@ namespace ITI.Simc_ITI.Build
                     if( _myMoney <= -100 )
                     {
                         _ctx.SetGameOver();
+                        var h = NoMoreMoney;
+                        if( h != null ) h( this, EventArgs.Empty );
                     }
-                    var h = ActualMoneyChanged;
-                    if( h != null ) h( this, EventArgs.Empty );
+                    var j = ActualMoneyChanged;
+                    if( j != null ) j( this, EventArgs.Empty );
                 }  
             }
         }

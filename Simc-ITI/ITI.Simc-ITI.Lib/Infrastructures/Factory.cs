@@ -54,7 +54,7 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnCreatedAround( Box b )
         {
-            IFire fire = b.Infrasructure as IFire;
+            IBurnImpact fire = b.Infrasructure as IBurnImpact;
             if( fire != null )
             {
                 BurningChance = BurningChance - fire.FireChanceImpact( Box );
@@ -62,7 +62,7 @@ namespace ITI.Simc_ITI.Build
         }
         public override void OnDestroyingAround( Box b )
         {
-            IFire fire = b.Infrasructure as IFire;
+            IBurnImpact fire = b.Infrasructure as IBurnImpact;
             if( fire != null )
             {
                 BurningChance = BurningChance + fire.FireChanceImpact( Box );
