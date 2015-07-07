@@ -43,7 +43,7 @@
             this.GameOver_Label.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.GameOver_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 150F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GameOver_Label.ForeColor = System.Drawing.Color.Red;
-            this.GameOver_Label.Location = new System.Drawing.Point(12, 9);
+            this.GameOver_Label.Location = new System.Drawing.Point(-4, 0);
             this.GameOver_Label.Margin = new System.Windows.Forms.Padding(10);
             this.GameOver_Label.Name = "GameOver_Label";
             this.GameOver_Label.Size = new System.Drawing.Size(1340, 283);

@@ -194,9 +194,9 @@ namespace ITI.Simc_ITI.Rendering
         {
             foreach( var box in _game.Map.Boxes )
             {
-                box.PenColor = new Pen( Color.DimGray );
+                box.Selected = false;
             }
-            _game.Map.Boxes[_xBox, _yBox].PenColor = new Pen( Color.Red );
+            _game.Map.Boxes[_xBox, _yBox].Selected = true;
             _viewPortControl.Invalidate();
         }
         /// <summary>

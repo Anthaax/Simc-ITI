@@ -45,11 +45,14 @@ namespace ITI.Simc_ITI.Build
             IsOnFire += ( s, e ) => ChargeBitMap();
 
         }
-        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
+        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
             Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
-            g.DrawRectangle( penColor, r );
+            if( Box.Selected == true )
+            {
+                g.DrawRectangle( Pens.Red, new Rectangle( 0, 0, Box.Map.BoxWidth - 400, Box.Map.BoxWidth - 400 ) );
+            }
         }
         public override void OnDestroy()
         {

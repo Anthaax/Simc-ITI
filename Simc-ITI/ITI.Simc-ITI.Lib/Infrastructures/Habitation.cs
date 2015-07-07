@@ -26,7 +26,7 @@ namespace ITI.Simc_ITI.Build
     public class Habitation : Infrastructure, IHappyness, ITaxation, IBurn, Isteal
     {
         int _hapyness;
-        int _salary = 7000;
+        int _salary = 4000;
         int _taxation = 10;
         int _burningChance = 75;
         bool _isBurning = false;
@@ -48,11 +48,14 @@ namespace ITI.Simc_ITI.Build
 
         }
 
-        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor, Pen penColor )
+        public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
             Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
             g.DrawImage( _bmp, r );
-            g.DrawRectangle( penColor, r );
+            if( Box.Selected == true )
+            {
+                g.DrawRectangle( Pens.Red, new Rectangle( 0, 0, Box.Map.BoxWidth - 400, Box.Map.BoxWidth - 400 ) );
+            }
         }
         public override void OnDestroy()
         {

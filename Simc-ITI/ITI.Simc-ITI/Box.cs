@@ -16,6 +16,7 @@ namespace ITI.Simc_ITI
         readonly Map _map;
         readonly int _line;
         readonly int _column;
+        private bool _selected = false;
         IInfrastructureForBox Infrastructure;
         public Box( Map map, int line, int column )
         {
@@ -33,7 +34,11 @@ namespace ITI.Simc_ITI
         {
             get { return _column; }
         } 
-
+        public bool Selected
+        {
+            get { return _selected; }
+            set { _selected = value; }
+        }
         public Rectangle Area
         {
             get
@@ -49,11 +54,14 @@ namespace ITI.Simc_ITI
         }
         public virtual void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-            if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor, _p );
+            if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor );
             else
             {
-                g.DrawImage( Map.BitmapCache.Get("Terre.bmp"), new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
-                g.DrawRectangle( _p, new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth) );
+                g.DrawImage( Map.BitmapCache.Get( "Terre.bmp" ), new Rectangle( 0, 0, _map.BoxWidth + 1000, _map.BoxWidth + 1000 ) );
+                if( Selected == true )
+                {
+                    g.DrawRectangle( Pens.Red, new Rectangle( 0, 0, _map.BoxWidth - 400, _map.BoxWidth - 400 ) );
+                }
             }
         }
         public IInfrastructureForBox Infrasructure

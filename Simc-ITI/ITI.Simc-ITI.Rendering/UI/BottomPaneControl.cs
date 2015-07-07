@@ -23,6 +23,7 @@ namespace ITI.Simc_ITI.Rendering
         public BottomPaneControl()
         {
             InitializeComponent();
+            AllTextOrButtonInvisible();
         }
         public void SetGameandViewport( GameContext g, ViewPortControl v )
         {
@@ -47,6 +48,7 @@ namespace ITI.Simc_ITI.Rendering
             Kind_Building.Visible = false;
             Burn_button.Visible = false;
             SaveLabel.Visible = false;
+            PriceAtUpdate.Visible = false;
         }
         public void pause_button_Click( object sender, EventArgs e )
         {
@@ -118,6 +120,18 @@ namespace ITI.Simc_ITI.Rendering
                             }
                         }
                     }
+                }
+                ITaxation privateBuilding = _game.Map.Boxes[_xBox, _yBox].Infrasructure as ITaxation;
+                if( privateBuilding != null )
+                {
+                    PriceAtUpdate.Text = "Revenu Chaque Jour : " + privateBuilding.Salary * privateBuilding.Taxation / 3000 + " €";
+                    PriceAtUpdate.Visible = true;
+                }
+                IPulicBuilding PublicBuilding = _game.Map.Boxes[_xBox, _yBox].Infrasructure as IPulicBuilding;
+                if( PublicBuilding != null )
+                {
+                    PriceAtUpdate.Text = "Depense Chaque Jour : " + PublicBuilding.CostPerMounth / 30 + " €";
+                    PriceAtUpdate.Visible = true;
                 }
             }
             Coordonnées.Visible = true;
@@ -205,5 +219,6 @@ namespace ITI.Simc_ITI.Rendering
                 SaveLabel.Visible = true;
             }
         }
+
     }
 }
