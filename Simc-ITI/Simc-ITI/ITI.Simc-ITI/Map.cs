@@ -4,27 +4,28 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ITI.Simc_ITI.Money.Lib;
 using System.Diagnostics;
 
 namespace ITI.Simc_ITI
 {
+    [Serializable]
     public class Map
     {
         readonly Box[,] _boxes;
         readonly int _boxCount;
         readonly int _boxWidth;
         readonly int _mapWidth;
-        readonly MyMoney m;
+        readonly BitmapCache _bmpCache;
 
         public Map(int boxWidthInMeter, int boxCount)
         {
+            _bmpCache = new BitmapCache();
             _boxes = new Box[boxCount, boxCount];
-            for (int i = 0; i < boxCount; ++i)
+            for (int j = 0; j < boxCount; ++j)
             {
-                for (int j = 0; j < boxCount; ++j)
+                for (int i = 0; i < boxCount; ++i)
                 {
-                    _boxes[i, j] = new Box(this, i, j);
+                    _boxes[i, j] = new Box(this, j, i);
                 }
             }
             _boxCount = boxCount;
@@ -32,6 +33,10 @@ namespace ITI.Simc_ITI
             _mapWidth = _boxCount * _boxWidth;
         }
 
+        /// <summary>
+        /// Gets the number of boxes horizontally or vertically.
+        /// This is the square root of the total number of boxes.
+        /// </summary>
         public int BoxCount
         {
             get { return _boxCount; }
@@ -81,19 +86,18 @@ namespace ITI.Simc_ITI
             int bottom = (r.Bottom - 1) / _boxWidth;
             int right = (r.Right - 1) / _boxWidth;
             int offsetX = 0, offsetY = 0;
-            for (int i = top; i <= bottom; ++i)
+            for (int j = top; j <= bottom; ++j)
             {
-                for (int j = left; j <= right; ++j)
+                for (int i = left; i <= right; ++i)
                 {
                     Box b = _boxes[i, j];
-                    Debug.Assert(b.Area.Width == _boxWidth && b.Area.Height == _boxWidth );
-                    //Debug.Assert(b.Area.IntersectsWith(r), "Boxes from top-bottom, left-right MUST intersect!" );
+                    Debug.Assert(b.Area.IntersectsWith(r));
                     Rectangle rIntersect = r;
                     rIntersect.Intersect(b.Area);
                     rIntersect.Offset(-b.Area.Left, -b.Area.Top);
-                    if (j == left)
+                    if (i == left)
                     {
-                        if (i == top)
+                        if (j == top)
                         {
                             offsetY = -rIntersect.Y;
                         }
@@ -119,14 +123,12 @@ namespace ITI.Simc_ITI
             get { return _boxes; }
         }
 
-        public bool CanBuild (int Price)
+        public IEnumerable<T> GetAllInfrastucture<T>()
         {
-            return m.CanBuid(Price);
+            return _boxes.Cast<Box>().Select( b => b.Infrasructure ).OfType<T>();
         }
 
-        public int MyMoney()
-        {
-            return m.ActualMoney;
-        }
+        public BitmapCache BitmapCache
+        { get { return _bmpCache; } }
     }
 }

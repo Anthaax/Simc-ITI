@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ITI.Simc_ITI.Build.GameContext">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="ITI.Simc_ITI.Build.GameContext.LoadResult" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <AssociationLine Name="Map" Type="ITI.Simc_ITI.Map">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="2.102" Y="0.093" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="InfrastructureManager" Type="ITI.Simc_ITI.Build.InfrastructureManager">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.143" Y="0.093" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="MoneyManager" Type="ITI.Simc_ITI.Build.MoneyManager">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.485" Y="0.077" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Map" />
+      <Property Name="InfrastructureManager" />
+      <Property Name="MoneyManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.InfrastructureManager" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ITI.Simc_ITI.Map" Collapsed="true">
+    <Position X="4.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="ITI.Simc_ITI.Build.MoneyManager" Collapsed="true">
+    <Position X="4.75" Y="2" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

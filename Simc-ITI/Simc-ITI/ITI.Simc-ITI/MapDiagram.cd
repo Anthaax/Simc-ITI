@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ITI.Simc_ITI.Map">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <Members>
+      <Field Name="_bmpCache" Hidden="true" />
+      <Field Name="_boxCount" Hidden="true" />
+      <Field Name="_boxes" Hidden="true" />
+      <Field Name="_boxWidth" Hidden="true" />
+      <Field Name="_mapWidth" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Boxes" Type="ITI.Simc_ITI.Box">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.285" Y="0.085" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="BitmapCache" Type="ITI.Simc_ITI.BitmapCache">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.385" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AhAAAAAAAAAAAgAACEAAAAAAAAAiAAAIABAAAQASABQ=</HashCode>
+      <FileName>Map.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Boxes" />
+      <Property Name="BitmapCache" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ITI.Simc_ITI.BitmapCache">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <Members>
+      <Field Name="_rootPath" Hidden="true" />
+      <Field Name="_textures" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>BitmapCache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ITI.Simc_ITI.Box">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="_column" Hidden="true" />
+      <Field Name="_line" Hidden="true" />
+      <Field Name="_map" Hidden="true" />
+      <Field Name="_p" Hidden="true" />
+      <Field Name="g" Hidden="true" />
+      <Field Name="Infrastructure" Hidden="true" />
+      <Field Name="screeng" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Infrasructure" Type="ITI.Simc_ITI.IInfrastructureForBox">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.497" Y="0.898" Height="0.182" Width="1.113" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAABAAAoAAAABBAAAAAAAAAAIJCEQAAQABABA=</HashCode>
+      <FileName>Box.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Infrasructure" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="ITI.Simc_ITI.IInfrastructureType">
+    <Position X="7" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAEAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IInfrastructureType.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="ITI.Simc_ITI.IInfrastructureForBox">
+    <Position X="7" Y="3" Width="2" />
+    <AssociationLine Name="Type" Type="ITI.Simc_ITI.IInfrastructureType">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.623" Y="0.793" Height="0.162" Width="0.537" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIAAAAAgAAAAAAAAAAAABAAAAAIQAAAoAAAAA=</HashCode>
+      <FileName>IInfrastructureForBox.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Type" />
+    </ShowAsAssociation>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
