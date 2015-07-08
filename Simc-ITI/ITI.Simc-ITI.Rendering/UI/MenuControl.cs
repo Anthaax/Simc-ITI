@@ -31,10 +31,6 @@ namespace ITI.Simc_ITI.Rendering
             if( _load.LoadedGame != null )
             {
                 _game = _load.LoadedGame;
-                foreach( var boxes in _game.Map.Boxes )
-                {
-                    boxes.PenColor = new Pen( Color.Empty );
-                }
             }
             var j = GameHasBeenCreated;
             if( j != null ) j( this, EventArgs.Empty );
@@ -53,10 +49,6 @@ namespace ITI.Simc_ITI.Rendering
                 if( _load.LoadedGame != null )
                 {
                     _game = _load.LoadedGame;
-                    foreach( var boxes in _game.Map.Boxes )
-                    {
-                        boxes.PenColor = new Pen( Color.DimGray );
-                    }
                     var h = GameHasBeenCreated;
                     if( h != null ) h( this, EventArgs.Empty );
                 }
