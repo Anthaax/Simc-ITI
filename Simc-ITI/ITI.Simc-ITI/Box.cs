@@ -4,76 +4,98 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ITI.Simc_ITI.Lib;
 
 namespace ITI.Simc_ITI
-{
+{ [Serializable]
     public class Box
     {
-        private Graphics g, screeng;
+        [field: NonSerialized]
+        Graphics g, screeng;
+        [field: NonSerialized]
+        Pen _p = new Pen( Color.DimGray );
         readonly Map _map;
-        Bitmap bmpPicture = new Bitmap("C:/dev/Textures/college.bmp");
         readonly int _line;
         readonly int _column;
-        Infrastructure _infrastructure;
-        public Box(Map map, int line, int column)
+        private bool _selected = false;
+        IInfrastructureForBox Infrastructure;
+        public Box( Map map, int line, int column )
         {
             _map = map;
             _line = line;
             _column = column;
         }
 
+        public int Line
+        {
+            get { return _line; }
+        }
+
+        public int Column
+        {
+            get { return _column; }
+        } 
+        public bool Selected
+        {
+            get { return _selected; }
+            set { _selected = value; }
+        }
         public Rectangle Area
         {
             get
             {
                 int sz = _map.BoxWidth;
-                return new Rectangle(_column, _line, sz, sz);
+                return new Rectangle( _column*sz, _line*sz, sz, sz );
             }
         }
-
-        static Pen p = new Pen(Color.DarkGreen, 1.0f);
-
-        public virtual void Draw(Graphics g, Rectangle rectSource, float scaleFactor)
+        public Pen PenColor
         {
-            Rectangle r = new Rectangle(0, 0, _map.BoxWidth, _map.BoxWidth);
-            g.DrawImage(bmpPicture, this.Area);
-            g.DrawRectangle(Pens.DarkGreen, this.Area);
-            r.Inflate(-_map.BoxWidth / 12, -_map.BoxWidth / 12);
+            get { return _p; }
+            set { _p = value; }
         }
 
-        private void T_loop(object sender, EventArgs e)
+        /// <summary>
+        /// Draw the box
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="rectSource"></param>
+        /// <param name="scaleFactor"></param>
+        public virtual void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-            g.DrawImage(bmpPicture, new Point(0, 0));
-            screeng.Clear(Color.White);
-
-            //_map.Draw(screeng);
-        }
-
-        public void CreateInfrastructure( int Price, int areaEffect, int pricePermounth, bool IsWater, bool IsElectric, bool RoadNear, bool road, string name )
-        {
-            if( CanBuildInfrastructure( Price ) == true )
+            if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor );
+            else
             {
-                Infrastructure inf = new Infrastructure( Price, areaEffect, pricePermounth, IsWater, IsWater, RoadNear, road, name );
-                _infrastructure = inf;
+                g.DrawImage( Map.BitmapCache.Get( "Terre.bmp" ), new Rectangle( 0, 0, _map.BoxWidth + 1000, _map.BoxWidth + 1000 ) );
+                if( Selected == true )
+                {
+                    g.DrawRectangle( Pens.Red, new Rectangle( 0, 0, _map.BoxWidth - 400, _map.BoxWidth - 400 ) );
+                }
             }
-            else throw new InvalidOperationException( "You can't build your infrastructure you haven't enouth money" );
+        }
+        public IInfrastructureForBox Infrasructure
+        {
+            get { return Infrastructure; }
+            set { Infrastructure = value; }
         }
 
-        private bool CanBuildInfrastructure( int Price )
+        public Map Map
         {
-            return _map.CanBuild( Price );
+            get { return _map; }
         }
-
-        public Infrastructure MyInfrasructure
+        public IEnumerable<Box> NearBoxes( int areaEffect )
         {
-            get { return _infrastructure; }
-        }
-
-        public bool RoadNear(Box Box)
-        {
-            if( Box.MyInfrasructure.MyRoad == null ) return false;
-            return true;
+            List<Box> _nearBoxes = new List<Box>();
+            for( int c = Math.Max( 0, Column - areaEffect ); c <= Math.Min( Map.BoxCount - 1, Column + areaEffect ); c++ ) 
+            {
+                for( int l = Math.Max( 0, Line - areaEffect ); l <= Math.Min( Map.BoxCount - 1, Line + areaEffect ); l++ )
+                {
+                    if( c != Column || l != Line )
+                    {
+                        Box aroundBox = Map.Boxes[c, l];
+                        _nearBoxes.Add( aroundBox );
+                    } 
+                }
+            }
+            return _nearBoxes;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace ITI.Simc_ITI.Rendering
         Rectangle _viewPort;
         double _userZoomFactor;
         int _maxClientSize;
-        float _clientScaleFactor;
+        public float _clientScaleFactor;
 
         public ViewPort( Map m, int minDisplayMeters )
         {
@@ -54,7 +54,7 @@ namespace ITI.Simc_ITI.Rendering
             get { return (double)Math.Max( _viewPort.Width, _viewPort.Height ) / (double)_map.MapWidth; }
         }
 
-        bool SetActualZoomFactor( double value )
+        public bool SetActualZoomFactor( double value )
         {
             Debug.Assert( _map.Area.Contains( _viewPort ) );
             if( value > 1.0 ) value = 1.0;

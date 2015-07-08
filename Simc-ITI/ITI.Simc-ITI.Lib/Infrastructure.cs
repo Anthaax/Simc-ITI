@@ -3,55 +3,127 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ITI.Simc_ITI.Money.Lib;
+using System.Drawing;
+using ITI.Simc_ITI;
 
-namespace ITI.Simc_ITI.Lib
-{
-    public class Infrastructure
+namespace ITI.Simc_ITI.Build
+{ 
+    [Serializable]
+    public abstract class Infrastructure : IInfrastructureForBox
     {
-        Building _building;
-        Road _road;
-        int _price;
-
-        public Infrastructure(int Price, int areaEffect, int pricePermounth, bool IsWater, bool IsElectric, bool RoadNear, bool road, string name)
+        Box _box;
+        InfrastructureType _type;
+        protected Infrastructure(Box b, InfrastructureType i)
         {
-            _price = Price;
-            if( RoadNear == true && road != true )
+            _box = b;
+            _type = i;
+            b.Infrasructure = this;
+        }
+        public Box Box
+        {
+            get { return _box; }
+        }
+        public GameContext GameContext
+        { 
+            get { return _type.GameContext; } 
+        }
+
+        public abstract void Draw( Graphics g, Rectangle rectSource, float scaleFactor );
+        IInfrastructureType IInfrastructureForBox.Type { get { return _type; } }
+        public InfrastructureType Type { get { return _type; } }
+        public abstract void OnCreatedAround( Box b );
+        public abstract void OnDestroyingAround( Box b );
+        public int AreaEffect { get; protected set; }
+        [field: NonSerialized]
+        public event EventHandler Destoyed;
+        public void Destroy()
+        {
+            IEnumerable<Box> nearBox =  _box.NearBoxes( _box.Infrasructure.Type.AreaEffect );
+            foreach( var box in nearBox)
             {
-                
-                CreateBuilding( this, areaEffect, pricePermounth, name );
+                if( box.Infrasructure != null )
+                {
+                    box.Infrasructure.OnDestroyingAround( _box );
+                }
             }
-            else
+            OnDestroy();
+            _box.Infrasructure = null;
+            var h = Destoyed;
+            if( h != null ) h( this, EventArgs.Empty );
+            _box = null;
+        }
+        public int Update()
+        {
+            int UpdateMoney = 0;
+            IPulicBuilding publicBuilding = this as IPulicBuilding;
+            if( publicBuilding != null )
             {
-                CreateRoad( this, IsWater, IsElectric, pricePermounth, name );
+                _type.GameContext.MoneyManager.ActualMoney -= publicBuilding.CostPerMounth / 30;
+                UpdateMoney = -publicBuilding.CostPerMounth / 30;
             }
-        }
 
-        private void CreateRoad( Infrastructure infrastructure, bool IsWater, bool IsElectric, int PricePerMounth, string name)
-        {
-            Road r = new Road(this, IsWater, IsElectric, PricePerMounth, name);
-            _road = r;
-        }
+            IHappyness HappynessBuilding = this as IHappyness;
+            if( HappynessBuilding != null )
+            {
+                if( HappynessBuilding.Happyness <= 10 ) Destroy();
+            }
 
-        private void CreateBuilding( Infrastructure infrastructure, int AreaEffect, int PricePerMounth, string name)
-        {
-            Building b = new Building( this, AreaEffect, PricePerMounth, name );
-            _building = b;
-        }
+            ITaxation privateBuilding = this as ITaxation;
+            if( privateBuilding != null )
+            {
+                if( privateBuilding.Taxation > 15 )
+                {
+                    if( HappynessBuilding != null && HappynessBuilding.Happyness <= 20 )
+                    {
+                        HappynessBuilding.Happyness -= 2;
+                    }
+                    else if (HappynessBuilding != null )
+                    {
+                        HappynessBuilding.Happyness = 20;
+                        privateBuilding.Taxation = 16;
+                        privateBuilding.Salary /= 2;
+                    }
+                    else
+                    {
+                        privateBuilding.Taxation = 20;
+                        privateBuilding.Salary /= 2;
+                    }
+                    if( _box != null )
+                    {
+                        ChargeBitMap();
+                    }
+                }
+                _type.GameContext.MoneyManager.ActualMoney = _type.GameContext.MoneyManager.ActualMoney + privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
+                UpdateMoney = privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
+            }
 
-        public Building MyBuilding
-        {
-            get { return _building; }
-        }
+            IBurn BurningBuilding = this as IBurn;
+            if( BurningBuilding != null )
+            {
+                Random r = new Random();
+                if( BurningBuilding.IsBurning == true ) this.Destroy();
+                else if( r.Next( 100 ) <= BurningBuilding.BurningChance )
+                {
+                    BurningBuilding.IsBurning = true;
+                }
+            }
+            Isteal StealingBuilding = this as Isteal;
+            if( StealingBuilding != null )
+            {
+                Random r = new Random();
+                if( StealingBuilding.IsSteal == true && StealingBuilding.IndicatorSteal == 0 )
+                {
+                    StealingBuilding.IsSteal = false;
+                    privateBuilding.Salary = 7000;
+                    StealingBuilding.IndicatorSteal = 5;
+                }
+                else if( StealingBuilding.IsSteal == true ) StealingBuilding.IndicatorSteal--;
+                else if( r.Next( 100 ) <= StealingBuilding.StealChance ) StealingBuilding.IsSteal = true;
+            }
+             return UpdateMoney;
 
-        public Road MyRoad
-        {
-            get { return _road; }
         }
-
-        public int MyMoney
-        {
-            get { return _price; }
-        }
+        public abstract void ChargeBitMap();
+        public abstract void OnDestroy();
     }
 }
