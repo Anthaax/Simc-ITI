@@ -37,6 +37,7 @@ namespace ITI.Simc_ITI.Rendering
             if( _load.LoadedGame != null )
             {
                 _game = _load.LoadedGame;
+                _game.MoneyManager.ActualMoney = 5000;
             }
             var j = GameHasBeenCreated;
             if( j != null ) j( this, EventArgs.Empty );

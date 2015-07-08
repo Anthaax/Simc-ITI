@@ -49,6 +49,39 @@ namespace ITI.Simc_ITI.Test
             
         }
         [Test]
+        public void CheckSteal()
+        {
+            GameContext _game = GameContext.CreateNewGame();
+            _game.InfrastructureManager.Find("Habitation").CreateInfrastructure(_game.Map.Boxes[1, 1], 0);
+            Isteal StolenBuilding = _game.Map.Boxes[1, 1].Infrasructure as Isteal;
+            Assert.That(StolenBuilding.StealChance, Is.EqualTo(75));
+            _game.InfrastructureManager.Find("PoliceStation").CreateInfrastructure(_game.Map.Boxes[1, 2], 0);
+            IStealImpact PoliceStation = _game.Map.Boxes[1, 2].Infrasructure as IStealImpact;
+            Assert.That(StolenBuilding.StealChance, Is.EqualTo(5));
+
+            _game = GameContext.CreateNewGame();
+            _game.InfrastructureManager.Find("PoliceStation").CreateInfrastructure(_game.Map.Boxes[1, 2], 0);
+            _game.InfrastructureManager.Find("Habitation").CreateInfrastructure(_game.Map.Boxes[1, 1], 0);
+            Assert.That(StolenBuilding.StealChance, Is.EqualTo(5));
+
+        }
+        [Test]
+        public void CheckSteal2()
+        {
+            GameContext _game = GameContext.CreateNewGame();
+            _game.InfrastructureManager.Find("PoliceStation").CreateInfrastructure(_game.Map.Boxes[1, 2], 0);
+            IStealImpact PoliceStation = _game.Map.Boxes[1, 2].Infrasructure as IStealImpact;
+            _game.InfrastructureManager.Find("Habitation").CreateInfrastructure(_game.Map.Boxes[1, 1], 0);
+            Isteal StolenBuilding = _game.Map.Boxes[1, 1].Infrasructure as Isteal;
+            Assert.That(StolenBuilding.StealChance, Is.EqualTo(5));
+
+            _game = GameContext.CreateNewGame();
+            _game.InfrastructureManager.Find("PoliceStation").CreateInfrastructure(_game.Map.Boxes[1, 2], 0);
+            _game.InfrastructureManager.Find("Habitation").CreateInfrastructure(_game.Map.Boxes[1, 1], 0);
+            Assert.That(StolenBuilding.StealChance, Is.EqualTo(5));
+
+        }
+        [Test]
         public void TaxationGoDownHappyness()
         {
             GameContext _game = GameContext.CreateNewGame();

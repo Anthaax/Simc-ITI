@@ -151,7 +151,7 @@ namespace ITI.Simc_ITI.Build
         {
             if( _isBurning == true ) _bmp = Box.Map.BitmapCache.Get( "HabitationB.bmp" );
             else if( _hapyness <= 20 ) _bmp = Box.Map.BitmapCache.Get( "HabitationH.bmp" );
-            else if (_isSteal == true) _bmp = Box.Map.BitmapCache.Get("HabitationH.bmp");
+            else if (_isSteal == true) _bmp = Box.Map.BitmapCache.Get("HabitationV.bmp");
             else _bmp = Box.Map.BitmapCache.Get( "Habitation.bmp" );
         }
     }

@@ -16,7 +16,7 @@ namespace ITI.Simc_ITI.Build
         GameContext _ctx;
         public MoneyManager(GameContext ctx)
         {
-            ActualMoney = 4000;
+            ActualMoney = 5000;
             _taxe = new TaxationManager();
             _ctx = ctx;
         }
