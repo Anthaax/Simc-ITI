@@ -21,6 +21,12 @@ namespace ITI.Simc_ITI.Rendering
             InitializeComponent();
         }
         public event EventHandler GameHasBeenCreated;
+
+        /// <summary>
+        /// Create a new game with a preload map
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NewGame_button_Click(object sender, EventArgs e)
         {
             var uri = new Uri( Assembly.GetExecutingAssembly().CodeBase );
@@ -36,6 +42,11 @@ namespace ITI.Simc_ITI.Rendering
             if( j != null ) j( this, EventArgs.Empty );
         }
 
+        /// <summary>
+        /// Charge a saved game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoadGame_button_Click(object sender, EventArgs e)
         {
             OpenFileDialog LoadGame = new OpenFileDialog();

@@ -51,6 +51,10 @@ namespace ITI.Simc_ITI.Rendering
             RoadPrice.Visible = false;
             UsinePrice.Visible = false;
         }
+
+        /// <summary>
+        /// Affiche les buildings disponible
+        /// </summary>
         private void BuildingConstructionVisible()
         {
             School_Button.Visible = true;
@@ -76,12 +80,24 @@ namespace ITI.Simc_ITI.Rendering
             Water_Central.Visible = true;
             EauPrice.Visible = true;
         }
+
+        /// <summary>
+        /// get the position of the mouse
+        /// </summary>
+        /// <param name="xbox"></param>
+        /// <param name="ybox"></param>
         public void PositionOfTheMouse(int xbox, int ybox)
         {
             _xBox = xbox;
             _yBox = ybox;
             CanCreate();
         }
+
+        /// <summary>
+        /// Build a road
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BuildRoad( object sender, EventArgs e )
         {
             CustomisationBuilding RoadCustom = new CustomisationBuilding( _game.Map.Boxes[_xBox, _yBox], _game.InfrastructureManager );
@@ -89,18 +105,36 @@ namespace ITI.Simc_ITI.Rendering
             AllButtonInvisible();
             _mainViewportControl.Invalidate();
         }
+
+        /// <summary>
+        /// Build an habitation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void CreateHabitation( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Habitation" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
+
+        /// <summary>
+        /// Build a school
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void School_Button_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Ecole" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
+
+        /// <summary>
+        /// Build a power station
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Centrale_electrique_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "CentraleElectrique" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
@@ -108,6 +142,11 @@ namespace ITI.Simc_ITI.Rendering
             AllButtonInvisible();
         }
 
+        /// <summary>
+        /// Build a water station
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Water_Central_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "CentraleHydrolique" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
@@ -115,6 +154,11 @@ namespace ITI.Simc_ITI.Rendering
             AllButtonInvisible();
         }
 
+        /// <summary>
+        /// Build a policestation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Police_Click(object sender, EventArgs e)
         {
             _game.InfrastructureManager.Find("PoliceStation").CreateInfrastructure(_game.Map.Boxes[_xBox, _yBox], 0);
@@ -122,30 +166,57 @@ namespace ITI.Simc_ITI.Rendering
             AllButtonInvisible();
         }
 
+        /// <summary>
+        /// Build a shop
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Commerce_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Commerce" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
+
+        /// <summary>
+        /// Build a factory
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Usine_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Usine" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
+
+        /// <summary>
+        /// Build a firestation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FireStation_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Pompier" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
+
+        /// <summary>
+        /// Build an hospital
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Hospital_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Hopital" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
+
+        /// <summary>
+        /// Check if you can create some others building
+        /// </summary>
         public void CanCreate()
         {
             if( _game.Map.Boxes[_xBox, _yBox].Infrasructure == null )
@@ -165,6 +236,10 @@ namespace ITI.Simc_ITI.Rendering
         {
             return _game.InfrastructureManager.Find( building ).CanCreatedNearRoad( b ) && _game.InfrastructureManager.Find( building ).CanCreated( b );
         }
+
+        /// <summary>
+        /// Loading of the prices
+        /// </summary>
         private void ChargeAllLabels()
         {
             CentralEPrice.Text = "Price : " + _game.InfrastructureManager.Find( "CentraleElectrique" ).BuildingCost;

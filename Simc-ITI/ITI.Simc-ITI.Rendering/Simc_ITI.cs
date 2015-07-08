@@ -124,8 +124,36 @@ namespace ITI.Simc_ITI.Rendering
             if (_yBox2 >= 100) _yBox2 = 99;
             MouseMoveOnDrag(_xBox, _yBox, _xBox2, _yBox2);
         }
+
         /// <summary>
-        /// Mouve on the with the mouse release
+        /// Move on the map with the keyboard
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="keyData"></param>
+        /// <returns></returns>
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Left:
+                    _viewPortControl.ViewPort.Move(-6000, 0);
+                    return true;
+                case Keys.Right:
+                    _viewPortControl.ViewPort.Move(6000, 0);
+                    return true;
+                case Keys.Up:
+                    _viewPortControl.ViewPort.Move(0, -6000);
+                    return true;
+                case Keys.Down:
+                    _viewPortControl.ViewPort.Move(0, 6000);
+                    return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        /// <summary>
+        /// Move on the map with the mouse release
         /// </summary>
         /// <param name="x1"> x position for the first box </param>
         /// <param name="y1"> y position for the first box </param>
@@ -210,6 +238,12 @@ namespace ITI.Simc_ITI.Rendering
             if( ctaxe != null ) ctaxe.Taxation = _game.MoneyManager.TaxationManager.CommerceTaxation;
             _viewPortControl.Invalidate();
         }
+
+        /// <summary>
+        /// Show the game Over
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GameOver( object sender, EventArgs e )
         {
             _bottomPaneControl.Visible = false;

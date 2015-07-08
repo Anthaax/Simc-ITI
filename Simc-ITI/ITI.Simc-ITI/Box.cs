@@ -47,11 +47,12 @@ namespace ITI.Simc_ITI
                 return new Rectangle( _column*sz, _line*sz, sz, sz );
             }
         }
-        public Pen PenColor
-        {
-            get { return _p; }
-            set { _p = value; }
-        }
+        /// <summary>
+        /// Draw the box
+        /// </summary>
+        /// <param name="g"></param>
+        /// <param name="rectSource"></param>
+        /// <param name="scaleFactor"></param>
         public virtual void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
             if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor );
