@@ -21,15 +21,12 @@ namespace ITI.Simc_ITI.Rendering
             InitializeComponent();
         }
         public event EventHandler GameHasBeenCreated;
-<<<<<<< HEAD
 
         /// <summary>
         /// Create a new game with a preload map
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         private void NewGame_button_Click(object sender, EventArgs e)
         {
             var uri = new Uri( Assembly.GetExecutingAssembly().CodeBase );
@@ -40,23 +37,16 @@ namespace ITI.Simc_ITI.Rendering
             if( _load.LoadedGame != null )
             {
                 _game = _load.LoadedGame;
-                foreach( var boxes in _game.Map.Boxes )
-                {
-                    boxes.PenColor = new Pen( Color.Empty );
-                }
             }
             var j = GameHasBeenCreated;
             if( j != null ) j( this, EventArgs.Empty );
         }
 
-<<<<<<< HEAD
         /// <summary>
         /// Charge a saved game
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         private void LoadGame_button_Click(object sender, EventArgs e)
         {
             OpenFileDialog LoadGame = new OpenFileDialog();
@@ -70,10 +60,6 @@ namespace ITI.Simc_ITI.Rendering
                 if( _load.LoadedGame != null )
                 {
                     _game = _load.LoadedGame;
-                    foreach( var boxes in _game.Map.Boxes )
-                    {
-                        boxes.PenColor = new Pen( Color.DimGray );
-                    }
                     var h = GameHasBeenCreated;
                     if( h != null ) h( this, EventArgs.Empty );
                 }

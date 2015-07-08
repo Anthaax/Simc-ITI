@@ -124,7 +124,6 @@ namespace ITI.Simc_ITI.Rendering
             if (_yBox2 >= 100) _yBox2 = 99;
             MouseMoveOnDrag(_xBox, _yBox, _xBox2, _yBox2);
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Move on the map with the keyboard
@@ -154,11 +153,7 @@ namespace ITI.Simc_ITI.Rendering
         }
 
         /// <summary>
-        /// Mouve on the map with the mouse release
-=======
-        /// <summary>
-        /// Mouve on the with the mouse release
->>>>>>> origin/Devellop
+        /// Move on the map with the mouse release
         /// </summary>
         /// <param name="x1"> x position for the first box </param>
         /// <param name="y1"> y position for the first box </param>
@@ -243,15 +238,12 @@ namespace ITI.Simc_ITI.Rendering
             if( ctaxe != null ) ctaxe.Taxation = _game.MoneyManager.TaxationManager.CommerceTaxation;
             _viewPortControl.Invalidate();
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Show the game Over
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         private void GameOver( object sender, EventArgs e )
         {
             _bottomPaneControl.Visible = false;

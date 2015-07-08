@@ -47,13 +47,6 @@ namespace ITI.Simc_ITI
                 return new Rectangle( _column*sz, _line*sz, sz, sz );
             }
         }
-        public Pen PenColor
-<<<<<<< HEAD
-        {
-            get { return _p; }
-            set { _p = value; }
-        }
-
         /// <summary>
         /// Draw the box
         /// </summary>
@@ -62,14 +55,6 @@ namespace ITI.Simc_ITI
         /// <param name="scaleFactor"></param>
         public virtual void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-=======
-        {
-            get { return _p; }
-            set { _p = value; }
-        }
-        public virtual void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
-        {
->>>>>>> origin/Devellop
             if( Infrastructure != null ) Infrasructure.Draw( g, rectSource, scaleFactor );
             else
             {
@@ -81,7 +66,6 @@ namespace ITI.Simc_ITI
             }
         }
         public IInfrastructureForBox Infrasructure
-<<<<<<< HEAD
         {
             get { return Infrastructure; }
             set { Infrastructure = value; }
@@ -93,19 +77,6 @@ namespace ITI.Simc_ITI
         }
         public IEnumerable<Box> NearBoxes( int areaEffect )
         {
-=======
-        {
-            get { return Infrastructure; }
-            set { Infrastructure = value; }
-        }
-
-        public Map Map
-        {
-            get { return _map; }
-        }
-        public IEnumerable<Box> NearBoxes( int areaEffect )
-        {
->>>>>>> origin/Devellop
             List<Box> _nearBoxes = new List<Box>();
             for( int c = Math.Max( 0, Column - areaEffect ); c <= Math.Min( Map.BoxCount - 1, Column + areaEffect ); c++ ) 
             {

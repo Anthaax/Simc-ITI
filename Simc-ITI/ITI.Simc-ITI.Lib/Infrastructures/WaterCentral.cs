@@ -36,7 +36,7 @@ namespace ITI.Simc_ITI.Build
         }
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
         {
-            Rectangle r = new Rectangle( 0, 0, Box.Map.BoxWidth, Box.Map.BoxWidth );
+            Rectangle r = new Rectangle(0, 0, Box.Map.BoxWidth + 400, Box.Map.BoxWidth + 400);
             g.DrawImage( _bmp, r );
             if( Box.Selected == true )
             {

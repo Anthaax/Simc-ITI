@@ -51,13 +51,10 @@ namespace ITI.Simc_ITI.Rendering
             RoadPrice.Visible = false;
             UsinePrice.Visible = false;
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Affiche les buildings disponible
         /// </summary>
-=======
->>>>>>> origin/Devellop
         private void BuildingConstructionVisible()
         {
             School_Button.Visible = true;
@@ -83,30 +80,24 @@ namespace ITI.Simc_ITI.Rendering
             Water_Central.Visible = true;
             EauPrice.Visible = true;
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// get the position of the mouse
         /// </summary>
         /// <param name="xbox"></param>
         /// <param name="ybox"></param>
-=======
->>>>>>> origin/Devellop
         public void PositionOfTheMouse(int xbox, int ybox)
         {
             _xBox = xbox;
             _yBox = ybox;
             CanCreate();
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Build a road
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         private void BuildRoad( object sender, EventArgs e )
         {
             CustomisationBuilding RoadCustom = new CustomisationBuilding( _game.Map.Boxes[_xBox, _yBox], _game.InfrastructureManager );
@@ -114,45 +105,36 @@ namespace ITI.Simc_ITI.Rendering
             AllButtonInvisible();
             _mainViewportControl.Invalidate();
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Build an habitation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         void CreateHabitation( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Habitation" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Build a school
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         private void School_Button_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Ecole" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Build a power station
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         private void Centrale_electrique_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "CentraleElectrique" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
@@ -160,14 +142,11 @@ namespace ITI.Simc_ITI.Rendering
             AllButtonInvisible();
         }
 
-<<<<<<< HEAD
         /// <summary>
         /// Build a water station
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         private void Water_Central_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "CentraleHydrolique" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
@@ -175,14 +154,11 @@ namespace ITI.Simc_ITI.Rendering
             AllButtonInvisible();
         }
 
-<<<<<<< HEAD
         /// <summary>
         /// Build a policestation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         private void Police_Click(object sender, EventArgs e)
         {
             _game.InfrastructureManager.Find("PoliceStation").CreateInfrastructure(_game.Map.Boxes[_xBox, _yBox], 0);
@@ -190,72 +166,57 @@ namespace ITI.Simc_ITI.Rendering
             AllButtonInvisible();
         }
 
-<<<<<<< HEAD
         /// <summary>
         /// Build a shop
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         private void Commerce_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Commerce" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Build a factory
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         private void Usine_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Usine" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Build a firestation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         private void FireStation_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Pompier" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Build an hospital
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-=======
->>>>>>> origin/Devellop
         private void Hospital_Click( object sender, EventArgs e )
         {
             _game.InfrastructureManager.Find( "Hopital" ).CreateInfrastructure( _game.Map.Boxes[_xBox, _yBox], 0 );
             _mainViewportControl.Invalidate();
             AllButtonInvisible();
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Check if you can create some others building
         /// </summary>
-=======
->>>>>>> origin/Devellop
         public void CanCreate()
         {
             if( _game.Map.Boxes[_xBox, _yBox].Infrasructure == null )
@@ -275,13 +236,10 @@ namespace ITI.Simc_ITI.Rendering
         {
             return _game.InfrastructureManager.Find( building ).CanCreatedNearRoad( b ) && _game.InfrastructureManager.Find( building ).CanCreated( b );
         }
-<<<<<<< HEAD
 
         /// <summary>
         /// Loading of the prices
         /// </summary>
-=======
->>>>>>> origin/Devellop
         private void ChargeAllLabels()
         {
             CentralEPrice.Text = "Price : " + _game.InfrastructureManager.Find( "CentraleElectrique" ).BuildingCost;
