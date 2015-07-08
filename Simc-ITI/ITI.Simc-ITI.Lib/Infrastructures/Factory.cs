@@ -40,6 +40,7 @@ namespace ITI.Simc_ITI.Build
             _bmp = b.Map.BitmapCache.Get( "Usines.bmp" );
             _hapyness = info.Happyness;
             IsOnFire += ( s, e ) => ChargeBitMap();
+            CheckAllNearBoxes();
         }
 
         public override void Draw( Graphics g, Rectangle rectSource, float scaleFactor )
@@ -96,6 +97,20 @@ namespace ITI.Simc_ITI.Build
                     _isBurning = value;
                     var h = IsOnFire;
                     if( h != null ) h( this, EventArgs.Empty );
+                }
+            }
+        }
+        public void CheckAllNearBoxes()
+        {
+            IEnumerable<Box> nearBox = Box.NearBoxes( Box.Map.BoxCount );
+            foreach( var box in nearBox )
+            {
+                if( box.Infrasructure != null )
+                {
+                    if( box.Line - box.Infrasructure.Type.AreaEffect <= Box.Line || box.Line + box.Infrasructure.Type.AreaEffect >= Box.Line || box.Column - box.Infrasructure.Type.AreaEffect <= Box.Column || box.Column + box.Infrasructure.Type.AreaEffect >= Box.Column )
+                    {
+                        OnCreatedAround( box );
+                    }
                 }
             }
         }

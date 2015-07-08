@@ -23,11 +23,13 @@ namespace ITI.Simc_ITI.Build
         public int CostPerMonth { get { return _costPerMonth; } }
     }
     [Serializable]
-    public class PoliceStation : Infrastructure, IPulicBuilding, IStealImpact
+    public class PoliceStation : Infrastructure, IPulicBuilding, IStealImpact, IBurn
     {
         [field: NonSerialized]
         Bitmap _bmp;
-        int _costPerMonth; 
+        int _costPerMonth;
+        int _burningChance = 70;
+        bool _isBurning = false;
         public PoliceStation(Box b, PoliceStationType info)
             : base(b, info)
         {
@@ -49,17 +51,26 @@ namespace ITI.Simc_ITI.Build
         {
             _bmp = null;
         }
-        public override void OnCreatedAround(Box b)
+        public override void OnCreatedAround( Box b )
         {
-
+            IBurnImpact fire = b.Infrasructure as IBurnImpact;
+            if( fire != null )
+            {
+                BurningChance = BurningChance - fire.FireChanceImpact( Box );
+            }
         }
-        public override void OnDestroyingAround(Box b)
+        public override void OnDestroyingAround( Box b )
         {
-
+            IBurnImpact fire = b.Infrasructure as IBurnImpact;
+            if( fire != null )
+            {
+                BurningChance = BurningChance + fire.FireChanceImpact( Box );
+            }
         }
         public override void ChargeBitMap()
         {
-            _bmp = Box.Map.BitmapCache.Get( "PoliceStation.bmp" );
+            if( _isBurning == true ) _bmp = Box.Map.BitmapCache.Get( "PoliceStationBurn.bmp" );
+            else _bmp = Box.Map.BitmapCache.Get( "PoliceStation.bmp" );
         }
         public void CheckAllNearBoxes()
         {
@@ -85,5 +96,21 @@ namespace ITI.Simc_ITI.Build
             return _stealrate;
         }
         public int CostPerMounth { get { return _costPerMonth; } set { _costPerMonth = value; } }
+        public int BurningChance { get { return _burningChance; } set { _burningChance = value; } }
+        [field: NonSerialized]
+        public event EventHandler IsOnFire;
+        public bool IsBurning
+        {
+            get { return _isBurning; }
+            set
+            {
+                if( _isBurning != value )
+                {
+                    _isBurning = value;
+                    var h = IsOnFire;
+                    if( h != null ) h( this, EventArgs.Empty );
+                }
+            }
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace ITI.Simc_ITI.Test
         public void CheckFire()
         {
             GameContext _game = GameContext.CreateNewGame();
-            _game.InfrastructureManager.Find( "Habitation" ).CreateInfrastructure( _game.Map.Boxes[1, 1] , 0);
+            _game.InfrastructureManager.Find( "Usine" ).CreateInfrastructure( _game.Map.Boxes[1, 1] , 0);
             IBurn BurningBuilding = _game.Map.Boxes[1, 1].Infrasructure as IBurn;
             Assert.That( BurningBuilding.BurningChance, Is.EqualTo( 75 ) );
             _game.InfrastructureManager.Find( "Pompier" ).CreateInfrastructure( _game.Map.Boxes[1, 2], 0 );
@@ -44,7 +44,7 @@ namespace ITI.Simc_ITI.Test
 
             _game = GameContext.CreateNewGame();
             _game.InfrastructureManager.Find( "Pompier" ).CreateInfrastructure( _game.Map.Boxes[1, 2], 0 );
-            _game.InfrastructureManager.Find( "Habitation" ).CreateInfrastructure( _game.Map.Boxes[1, 1], 0 );
+            _game.InfrastructureManager.Find( "Usine" ).CreateInfrastructure( _game.Map.Boxes[1, 1], 0 );
             Assert.That( BurningBuilding.BurningChance, Is.EqualTo( 5 ) );
             
         }
