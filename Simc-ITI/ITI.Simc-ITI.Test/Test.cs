@@ -53,7 +53,9 @@ namespace ITI.Simc_ITI.Test
         {
             GameContext _game = GameContext.CreateNewGame();
             _game.InfrastructureManager.Find( "Habitation" ).CreateInfrastructure( _game.Map.Boxes[1, 1], 0 );
-            ITaxation privateBuilding = _game.Map.Boxes[1, 1].Infrasructure as ITaxation;
+            _game.InfrastructureManager.Find( "PoliceStation" ).CreateInfrastructure( _game.Map.Boxes[1, 2], 0 );
+            _game.InfrastructureManager.Find( "Commerce" ).CreateInfrastructure( _game.Map.Boxes[1, 0], 0 );
+            Habitation privateBuilding = _game.Map.Boxes[1, 1].Infrasructure as Habitation;
             Assert.That( privateBuilding.Taxation, Is.EqualTo( _game.MoneyManager.TaxationManager.HabitationTaxation ) );
             _game.MoneyManager.TaxationManager.HabitationTaxation = 21;
             IEnumerable<Habitation> habitation = _game.Map.GetAllInfrastucture<Habitation>();
@@ -63,9 +65,16 @@ namespace ITI.Simc_ITI.Test
             }
             _game.Map.Boxes[1, 1].Infrasructure.Update();
             Assert.That( privateBuilding.Taxation, Is.EqualTo( 16 ) );
-            Assert.That( privateBuilding.Salary, Is.EqualTo( 7000 / 2 ) );
-
-
+            Assert.That( privateBuilding.Salary, Is.EqualTo( 4000 / 2 ) );
+            _game.MoneyManager.TaxationManager.HabitationTaxation = 14;
+            foreach( var hab in habitation )
+            {
+                hab.Taxation = _game.MoneyManager.TaxationManager.HabitationTaxation;
+            }
+            _game.Map.Boxes[1, 1].Infrasructure.Update();
+            Assert.That( privateBuilding.Taxation, Is.EqualTo( 14 ) );
+            Assert.That( privateBuilding.Salary, Is.EqualTo( 4000 ) );
+            Assert.That( privateBuilding.Happyness, Is.EqualTo( 52 ) );
         }
     }
 }

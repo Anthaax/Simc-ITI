@@ -34,7 +34,6 @@ namespace ITI.Simc_ITI.Rendering
             _game = menuControl1.GameContext;
             InitializeUsersControls();
             scalefactor = _viewPortControl.ViewPort.ActualZoomFactor;
-            
             MouseEvents();
             InitialiezBuildingEvent();
             InitiallizeTimer();
@@ -76,7 +75,7 @@ namespace ITI.Simc_ITI.Rendering
                 building.BuildingHasBeenCreated += ( s, e ) => _bottomPaneControl.AverageHappyness();
             }
             _game.IsGameOverChanged += GameOver;
-            _game.MoneyManager.NoMoreMoney += GameOver;
+            _bottomPaneControl.GameOver += GameOver;
         }
         /// <summary>
         /// Initialize all mouse events

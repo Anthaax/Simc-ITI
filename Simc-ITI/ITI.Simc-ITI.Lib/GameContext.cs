@@ -111,7 +111,7 @@ namespace ITI.Simc_ITI.Build
         {
             _isGameOver = true;
             var h = IsGameOverChanged;
-                if( h != null ) h( this, EventArgs.Empty );
+            if( h != null ) h( this, EventArgs.Empty );
         }
         public Map Map { get { return _map; } }
         public InfrastructureManager InfrastructureManager { get { return _infraManager; } }

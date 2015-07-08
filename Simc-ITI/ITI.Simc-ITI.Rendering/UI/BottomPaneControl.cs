@@ -217,6 +217,7 @@ namespace ITI.Simc_ITI.Rendering
             _mainViewportControl.Invalidate();
             AllTextOrButtonInvisible();
         }
+        public event EventHandler GameOver;
         public void AverageHappyness()
         {
             int totalHappyness = 0;
@@ -230,6 +231,11 @@ namespace ITI.Simc_ITI.Rendering
                 }
                 totalHappyness = totalHappyness / happy.Count<IHappyness>();
                 HumeurLabel.Text = "Humeur : " + totalHappyness + "%";
+            }
+            if( totalHappyness <= 15 )
+            {
+                var h = GameOver;
+                if( h != null ) h( this, EventArgs.Empty );
             }
         }
 

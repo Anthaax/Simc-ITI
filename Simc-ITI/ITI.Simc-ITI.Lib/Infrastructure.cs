@@ -7,13 +7,13 @@ using System.Drawing;
 using ITI.Simc_ITI;
 
 namespace ITI.Simc_ITI.Build
-{ 
+{
     [Serializable]
     public abstract class Infrastructure : IInfrastructureForBox
     {
         Box _box;
         InfrastructureType _type;
-        protected Infrastructure(Box b, InfrastructureType i)
+        protected Infrastructure( Box b, InfrastructureType i )
         {
             _box = b;
             _type = i;
@@ -24,8 +24,8 @@ namespace ITI.Simc_ITI.Build
             get { return _box; }
         }
         public GameContext GameContext
-        { 
-            get { return _type.GameContext; } 
+        {
+            get { return _type.GameContext; }
         }
 
         public abstract void Draw( Graphics g, Rectangle rectSource, float scaleFactor );
@@ -38,8 +38,8 @@ namespace ITI.Simc_ITI.Build
         public event EventHandler Destoyed;
         public void Destroy()
         {
-            IEnumerable<Box> nearBox =  _box.NearBoxes( _box.Infrasructure.Type.AreaEffect );
-            foreach( var box in nearBox)
+            IEnumerable<Box> nearBox = _box.NearBoxes( _box.Infrasructure.Type.AreaEffect );
+            foreach( var box in nearBox )
             {
                 if( box.Infrasructure != null )
                 {
@@ -75,9 +75,9 @@ namespace ITI.Simc_ITI.Build
                 {
                     if( HappynessBuilding != null && HappynessBuilding.Happyness <= 20 )
                     {
-                        HappynessBuilding.Happyness -= 2;
+                        HappynessBuilding.Happyness -= 3;
                     }
-                    else if (HappynessBuilding != null )
+                    else if( HappynessBuilding != null )
                     {
                         HappynessBuilding.Happyness = 20;
                         privateBuilding.Taxation = 16;
@@ -91,6 +91,15 @@ namespace ITI.Simc_ITI.Build
                     if( _box != null )
                     {
                         ChargeBitMap();
+                    }
+                }
+                else
+                {
+                    privateBuilding.Salary *= 2;
+                    if( HappynessBuilding != null )
+                    {
+                        HappynessBuilding.Happyness = 50;
+                        AddHappyness();
                     }
                 }
                 _type.GameContext.MoneyManager.ActualMoney = _type.GameContext.MoneyManager.ActualMoney + privateBuilding.Salary * privateBuilding.Taxation / 100 / 30;
@@ -120,10 +129,32 @@ namespace ITI.Simc_ITI.Build
                 else if( StealingBuilding.IsSteal == true ) StealingBuilding.IndicatorSteal--;
                 else if( r.Next( 100 ) <= StealingBuilding.StealChance ) StealingBuilding.IsSteal = true;
             }
-             return UpdateMoney;
+            return UpdateMoney;
 
         }
         public abstract void ChargeBitMap();
         public abstract void OnDestroy();
+        public void AddHappyness()
+        {
+            IEnumerable<Box> nearBox = Box.NearBoxes( Box.Map.BoxCount );
+            foreach( var box in nearBox )
+            {
+                if( box.Infrasructure != null )
+                {
+                    if( box.Line - box.Infrasructure.Type.AreaEffect <= Box.Line || box.Line + box.Infrasructure.Type.AreaEffect >= Box.Line || box.Column - box.Infrasructure.Type.AreaEffect <= Box.Column || box.Column + box.Infrasructure.Type.AreaEffect >= Box.Column )
+                    {
+                        IHappynessImpact impact = box.Infrasructure as IHappynessImpact;
+                        if( impact != null )
+                        {
+                            IHappyness HappynessBuilding = this as IHappyness;
+                            if( HappynessBuilding != null )
+                            {
+                                HappynessBuilding.Happyness += impact.HappynessImpact( Box );
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
