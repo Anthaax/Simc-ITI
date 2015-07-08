@@ -58,7 +58,8 @@ namespace ITI.Simc_ITI.Rendering
         private void InitiallizeTimer()
         {
             _timer = new Timer();
-            _timer.Interval = 10000;
+            // Timer in milliseconds 
+            _timer.Interval = 20000;
             _timer.Enabled = true;
             _timer.Tick += ( s, e ) => UpdateGame();
             _timer.Start();
