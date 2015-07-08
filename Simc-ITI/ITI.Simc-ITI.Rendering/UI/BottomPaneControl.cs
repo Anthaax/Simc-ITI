@@ -31,10 +31,13 @@ namespace ITI.Simc_ITI.Rendering
             _mainViewportControl = v;
             AllEvent();
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Inisialize the events
         /// </summary>
+=======
+>>>>>>> origin/Devellop
         public void AllEvent()
         {
             MyMoney.Text = " Mon Argent : " + _game.MoneyManager.ActualMoney.ToString();
@@ -42,11 +45,14 @@ namespace ITI.Simc_ITI.Rendering
             _game.MoneyManager.LastPurchaseWasDone += ( s, e ) => LastPurchaseChange();
             _game.MoneyManager.TaxationManager.TaxationAsChanged += ( s, e ) => TaxationWasChanged();
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Initialize the in game time timer
         /// </summary>
         /// <param name="t"></param>
+=======
+>>>>>>> origin/Devellop
         public void SetTimer(Timer t)
         {
             _timer = t;
@@ -59,12 +65,15 @@ namespace ITI.Simc_ITI.Rendering
             SaveLabel.Visible = false;
             PriceAtUpdate.Visible = false;
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Pause the in game time
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+=======
+>>>>>>> origin/Devellop
         public void pause_button_Click( object sender, EventArgs e )
         {
             if( _timer.Enabled != false )
@@ -78,12 +87,15 @@ namespace ITI.Simc_ITI.Rendering
                 pause_button.Text = "Pause";
             }
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// fastforward the in game time
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+=======
+>>>>>>> origin/Devellop
         public void fastforward_button_Click( object sender, EventArgs e )
         {
             if( _timer.Interval == 30000 )
@@ -97,12 +109,15 @@ namespace ITI.Simc_ITI.Rendering
                 fastforward_button.Text = ">>";
             }
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Slow down the in game time
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+=======
+>>>>>>> origin/Devellop
         public void rewind_button_Click( object sender, EventArgs e )
         {
             if( _timer.Interval == 30000 )
@@ -186,12 +201,15 @@ namespace ITI.Simc_ITI.Rendering
                 LastPurchase.ForeColor = Color.Green;
             }
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Destroy the building and give you back the half of the building price
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+=======
+>>>>>>> origin/Devellop
         private void Button_Destroy_Click( object sender, EventArgs e )
         {
             _game.MoneyManager.ActualMoney += _game.Map.Boxes[_xBox, _yBox].Infrasructure.Type.BuildingCost / 2;
@@ -201,12 +219,15 @@ namespace ITI.Simc_ITI.Rendering
             AllTextOrButtonInvisible();
             _mainViewportControl.Invalidate();
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Stop the building from burning
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+=======
+>>>>>>> origin/Devellop
         private void Burn_Off( object sender, EventArgs e )
         {
             IBurn BurningBuilding = _game.Map.Boxes[_xBox, _yBox].Infrasructure as IBurn;
@@ -232,10 +253,13 @@ namespace ITI.Simc_ITI.Rendering
                 HumeurLabel.Text = "Humeur : " + totalHappyness + "%";
             }
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Change the taxation of a building type
         /// </summary>
+=======
+>>>>>>> origin/Devellop
         public void TaxationWasChanged()
         {
             IEnumerable<Habitation> habitation = _game.Map.GetAllInfrastucture<Habitation>();
@@ -249,12 +273,15 @@ namespace ITI.Simc_ITI.Rendering
                 co.Taxation = _game.MoneyManager.TaxationManager.CommerceTaxation;
             }
         }
+<<<<<<< HEAD
 
         /// <summary>
         /// Save the game
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+=======
+>>>>>>> origin/Devellop
         private void SaveTheGame( object sender, EventArgs e )
         {
             SaveFileDialog SaveGame = new SaveFileDialog();
