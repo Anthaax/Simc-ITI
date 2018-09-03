@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>4.6.2</TargetFramework>
     <RootNamespace>ITI.Simc-ITI</RootNamespace>
   </PropertyGroup>
 
